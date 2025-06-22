@@ -5,50 +5,38 @@ title: Sobre o Minicurso
 
 # {{ page.title }}
 
-## Sobre as aulas
+## Overview do curso
 
-As aulas do nosso curso visam familiarizar os alunos com o sistema operacional ***Linux*** e a temida **linha de comando** bem como com a ferramenta de gerenciamento de versões ***Git***. Muitos hoje em dia abominam a ideia de largar a GUI (interface gráfica) para mexer no computador, imaginando que digitar comandos em um terminal é algo datado, que os desenvolvedores mais experientes utilizam apenas por nostalgia ou estética. Entretanto, nosso minicurso tem como objetivo apresentar a melhor ferramenta na hora de conversar com um computador: o teclado! Ao digitar comandos ao invés de clicar em botões programados em uma interface, o usuário possui muito mais liberdade e uma real noção do que está fazendo, sendo o domínio da linha de comando essencial para qualquer desenvolvedor.
+Esse curso foi desenvolvido pelo PETCC com o objetivo de introduzir conceitos matemáticos - sobretudo aos calouros do BTI e do BCC - e facilitar o entendimento de materiais em disciplinas futuras de matemática discreta ao longo de sua formação.
 
-Na parte de Git, o aluno aprenderá como funciona a ferramenta e terá respostas para perguntas famosas como **o que é um "commit"?** ou **qual a diferença de Git e GitHub?**, bem como aprenderá a trabalhar junto com colegas em projetos envolvendo código.
+Assim, guiados por pesquisas de demanda e interesse realizadas anteriormente pelo PET, procuramos (através da Teoria dos Conjuntos e de ferramentas como o LEAN) introduzir ideias tanto de lógica quanto de matemática discreta e demonstrações, de forma a apresentar, de maneira simples e compreensível, esse mundo novo a vocês!
 
-## Sobre quem ministra as aulas
+O curso em si é dividido em 5 dias, pensados com base em blablablalblablabla:
 
-O Minicurso de Linux e Git é um projeto do PETCC, e as aulas serão ministradas pelos Petianos:
+### DIA 1 - INTRODUÇÃO
+// apresentacao , exemplificacao, ambientacao, entendimento de conceitod basicos
+Como diz o titulo, esse dia é focado em ambientá-los e introduzir o básico daquilo que vamos apresentar ao longo do curso: a relação intrínseca da lógica e da matemática discreta com a computação, a definição e a importância de demonstrações, recursividade, e outros conceitos que serão revisitados em dias mais à frente.
 
-- Adriel Costa
-- Ana Paula Lima
-- Carolina Nascimento
-- José Ivo Schwade
-- Heitor Campos
-- Osvaldo Heitor
+### DIA 2 - LÓGICA
+// intro a logica, implicacoes, tabelas verdade, tautologias e teoremas, conj, dis, quantificadores, resolver problemas de funcoes
+O dia 2 foi planejado
 
-{% include petcclink.html %}
+### DIA 3 - CONJUNTOS
+// intro a teoria dos conjuntos, demonstrações low level, aplicações de demonstrações e demonstrações de teoremas da teoria dos conjuntos
+-- to do
 
-## Referências
+### DIA 4 - LEAN
 
----
+Aqui introduziremos um provador automático de teoremas: o LEAN! 
+-- to do
 
-### Livros
 
-- Robbins, Arnold, e Nelson H. F. Beebe. *Classic Shell Scripting*. O'Reilly Media, 2005. Disponível em: [Amazon](https://www.amazon.com/Classic-Shell-Scripting-Arnold-Robbins/dp/0596005954).
-- Kernighan, Brian W., e Rob Pike. *The UNIX Programming Environment*. Prentice Hall, 1984. Disponível em: [PDF](https://scis.uohyd.ac.in/~apcs/itw/UNIXProgrammingEnvironment.pdf).
-- Shotts, William E. Jr. *The Linux Command Line Fifth Edition*. No Starch Press, 2023. Disponível em: [PDF](https://linuxcommand.org/tlcl.php).
-- Tsouanas, Thanos. *Matemática Funcional para Computação*, 2024. Disponível em: [PDF](https://www.tsouanas.org/fmcbook/)
-- Skoulikari, Anna. *Learning Git: A Hands-On and Visual Guide to the Basics of Git*. O'Reilly Media, 2023. Disponível em: [Amazon](https://www.amazon.com/Learning-Git-Hands-Visual-Basics/dp/1098133919/)
-- Chachon, Scott e Ben Straub. *Pro Git*. Apress, 2014. Disponível em: [PDF](https://github.com/progit/progit2/releases/download/2.1.430/progit.pdf)
+### DIA 5 - PROJETO
 
-### Cursos
 
-- [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/). MIT, 2024.
-- [Unix mini-course](https://unix.imd.ufrn.br/). IMD/UFRN, 2024.
+-- to do
 
-### Artigos online
 
-- [Linux and the GNU System by FSF](https://www.gnu.org/gnu/linux-and-gnu.html). Free Software Foundation, 2024.
-- [GNU/Linux FAQ by FSF](https://www.gnu.org/gnu/gnu-linux-faq.html). Free Software Foundation, 2024.
+Lembre-se que, para obter o certificado de conclusão do curso, o aluno deve ter 75% de presença e 50% de aproveitamento nas atividades realizadas.
 
-### Repositórios
-
-- [git-school/visualizing-git](https://github.com/git-school/visualizing-git) - Github
-
----
+Por último, desejamos um bom curso a todos vocês e esperamos que se encantem pela matemática discreta tanto quanto nós!
