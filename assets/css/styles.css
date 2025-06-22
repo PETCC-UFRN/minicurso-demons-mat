@@ -85,7 +85,7 @@ body {
 }
 
 .navgit{
-    background-color: #F05033;
+    background-color: #893172;
 }
 
 .navgit ul a,
@@ -137,17 +137,27 @@ body {
 }
 
 .layoutGit{
-    background-color: #020728;
-    color: #f0f4ff;
+    /*background-color: #020728; */
+    background-color: #081849;
+
+    /*color: #f0f4ff;*/
+    color: #ECDFD2;
 }
 .layoutGit h1{
+    /*
     color: #F05033;
+    */
+    color: #ECDFD2;
     font-size: 2.5em;
     text-align: center;
 }
 .layoutGit h3{
-    background-color: #F05033; 
+    /*
+    background-color: #F05033;
     color: #f0f4ff;
+    */
+    background-color: #5F3475;
+    color: #ECDFD2;
     padding: 20px;
     font-size: 1.5em;
     margin-top: 20px;
@@ -155,7 +165,10 @@ body {
     border-radius: 5px;
 }
 .layoutGit h2{
+    /*
     color: #F05033;
+    */
+    color: #ECDFD2;
     font-size: 2em;
     text-align: center;
     margin-top: 15px;
@@ -168,8 +181,12 @@ body {
     
 }
 .layoutGit h4{
+    /*
     color: #020728;
     background-color: rgb(250, 156, 140);
+    */
+    color: #081849;
+    background-color: #893172;
     padding: 5px; /* Padding moderado */
     margin-bottom: 10px; 
     font-size: 1em; /* Tamanho moderado */
@@ -178,7 +195,7 @@ body {
     font-weight: bold; /* Peso da fonte alto */
 }
 .layoutGit h5{
-    color: rgba(240, 80, 51,1); 
+    color: #893172; 
     text-decoration: underline;
     padding: 5px; 
     font-size: 1em; 
@@ -200,7 +217,7 @@ body {
 
 .destaque{
     
-    color: #FFC800;
+    color: #ECDFD2;
     font-weight: bold;
     text-decoration: underline;
     
@@ -209,7 +226,7 @@ body {
     color: #000;
 }
 a{
-    color:#FFC800;
+    color:#ECDFD2;
 }
 
 a:hover{
@@ -250,7 +267,7 @@ th, td {
 }
 th {
     background-color: #444444; /* Fundo do cabeçalho */
-    color: #00e300; /* Texto do cabeçalho */
+    color: #CCCACC; /* Texto do cabeçalho */
 }
 td {
     background-color: #333333; /* Fundo das células */
@@ -314,7 +331,7 @@ td {
 .sumario-git{
     background: #020728;
     color: #f0f4ff;
-    border-right: 1px solid #F05033;
+    border-right: 1px solid #893172;
 }
 
 #sumario.hidden {
@@ -337,7 +354,7 @@ td {
     border-radius: 10px; /* Borda arredondada para o polegar */
 }
 .sumario-git::-webkit-scrollbar-thumb{
-    background: #F05033;
+    background: #893172;
     border-radius: 10px;
 }
 
@@ -345,14 +362,14 @@ td {
     background: #00e300; /* Cor do polegar da barra de rolagem quando está sendo rolado */
 }
 .sumario-git::-webkit-scrollbar-thumb:hover {
-    background: #F05033; /* Cor do polegar da barra de rolagem quando está sendo rolado */
+    background: #893172; /* Cor do polegar da barra de rolagem quando está sendo rolado */
 }
 
 .toggle-button{
     font-family: "Source Code Pro", "Menlo", "DejaVu Sans Mono", "Lucida Console", monospace;
     background-color: transparent;
     border: none;
-    color: #00e300;
+    color: #ECDFD2;
     position: fixed;
     left: 0px;
     top: 95%;
