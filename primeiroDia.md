@@ -1,66 +1,31 @@
 ---
-layout: oldschool
+layout: layoutGit
 title: Minicurso de Linux e Git
 ---
 # Primeiros passos no Linux
 
-<div id="sumario" class="sumario-oldschool">
+<div id="sumario" class="sumario-git">
     <h1>Sumário</h1>
     <details>
-        <summary><a href="#introdução">Introdução</a></summary>
+        <summary><a href="#para-que-serve-a-matemática-na-computação">Para que serve a matemática na computação</a></summary>
     <ul>
-        <li><a href="#o-que-é-o-linux">O que é o Linux?</a></li>
-        <li><a href="#família-unix-e-unix-like">Família Unix e Unix-Like</a></li>
-        <li><a href="#distros">Distros</a></li>
+        <li><a href="#a-matemática-como-berço-da-computação ">A matemática como berço da computação</a></li>
+        <li><a href="#a-ponte-para-o-presente">A ponte para o presente</a></li>
     </ul>
     </details>
     <details>
-            <summary><a href="#uso-básico-do-shell">Uso básico do Shell</a></summary>
+            <summary><a href="#as-demonstrações-matemáticas">As demonstrações matemáticas</a></summary>
         <ul>
-            <li><a href="#intro">Intro</a></li>
-            <li><a href="#primeiros-passos">Primeiros passos</a></li>
-            <li><a href="#navegando-com-o-shell">Navegando com o Shell</a></li>
-            <li><a href="#opções-e-argumentos-de-comando">Opções e argumentos de comando</a></li>
-            <li><a href="#como-investigar-comandos">Como investigar comandos</a></li>
+            <li><a href="#como-demonstramos-alguma-coisa">Como demonstramos alguma coisa</a></li>
+            <li><a href="#terminologia-básica">Terminologia básica</a></li>
         </ul>
     </details>
     <details>
-         <summary><a href="#permissões-leitura-e-busca-emde-arquivos">Permissões, leitura e busca em/de arquivos</a></summary>
+         <summary><a href="#exemplos-práticos">Exemplos práticos</a></summary>
         <ul>
-            <li><a href="#long-listing-format-e-permissões">Long listing format e permissões</a></li>
-            <li><a href="#lendo-arquivos">Lendo arquivos</a></li>
+            <li><a href="#demonstrando-a-comutatividade-da-união">Demonstrando a comutatividade da união</a></li>
         </ul>
     </details>
-    <details>
-        <summary><a href="#links-simbólicos-e-links-físicos">Links simbólicos e links físicos</a></summary>
-        <ul>
-            <li><a href="#links-simbólicos-sym-links">Links simbólicos (sym-links)</a></li>
-            <li><a href="#links-físicos-hard-links">Links físicos (hard-links)</a></li>
-        </ul>
-    </details>
-     <details>
-        <summary><a href="#comandos-de-busca">Comandos de Busca</a></summary>
-    <ul>
-        <li><a href="#find-imprime-arquivos-cujo-correspondem-a-um-padrão"><code>find</code> - Imprime arquivos cujo correspondem a um padrão</a></li>
-        <li><a href="#grep-imprime-linhas-que-correspondem-a-um-padrão"><code>grep</code> - Imprime linhas que correspondem a um padrão</a></li>
-    </ul>
-     </details>
-   <details>
-    <summary><a href="#redirecionando-e-combinando-comandos">Redirecionando e combinando comandos</a></summary>
-        <ul>
-            <li><a href="#standard-input-output-e-error">Standard Input, Output e Error</a></li>
-            <li><a href="#redirecionando-o-standard-output-e-standard-error">Redirecionando o Standard Output e Standard Error</a></li>
-            <li><a href="#redirecionando-o-standard-input-e-wildcards">Redirecionando o Standard Input e wildcards</a></li>
-            <li><a href="#combinando-comandos">Combinando comandos</a></li>
-        </ul>
-     </details>
-      <details>
-            <summary><a href="#exercícios">Exercícios</a></summary>
-        <ul>
-            <li><a href="#exercícios-de-fixação">Exercícios de fixação</a></li>
-            <li><a href="#exercícios-obrigatórios">Exercícios Obrigatórios</a><!--toc:end--></li>
-        </ul>
-     </details>
   <button class="toggle-button" id="toggle-button">
   
       Esconder Sumário
