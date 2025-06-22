@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minicurso de Linux e Git</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./assets/css/styles.css">
+        <link rel="stylesheet" href="/minicurso-linux-git/assets/css/syntax.css">
+        <link rel="icon" href="https://i.ibb.co/RD7XwYH/pet-logo.png" type="image/png">
+    </head>
+    <body class="layoutGit">
+        <header>
+    <nav class="navgit">
+        <ul class="listaNavegacao">
+            <li>
+                <a href="index" style="text-decoration:none;">/home</a>
+            </li>
+            <li>
+                <a href="aulas" style="text-decoration:none;">/aulas</a>
+            </li> 
+            <li>
+                <a href="sobre" style="text-decoration:none;">/sobre</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+        <div>
+            <main>
+                <div id="sumario" class="sumario-git">
+    <h1>Sumário</h1>
+    <ul>
+    <details>
+        <summary><a href="#básico-sobre-processos">Básico Sobre Processos</a></summary>
+        <ul class="section-content">
+            <li><a href="#o-que-é-um-processo">O que é um processo?</a></li>
+            <li><a href="#interrompendo-e-listando-processos">Interrompendo e listando processos</a></li>
+            <li><a href="#rodando-processos-em-background">Rodando processos em background</a></li>
+        </ul>
+    </details>
+    <details>
+  <summary><a href="#uso-de-programas-de-compatação-para-compartilhar-e-receber-arquivos">Compactação e Descompactação de Arquivos</a></summary>
+    <ul class="section-content">
+        <li><a href="#compactação">Compactação</a></li>
+        <li><a href="#descompactação">Descompactação</a></li>
+    </ul>
+  </details>
+    <details>
+  <summary><a href="#versionadores-e-git-fundamentos-e-conceitos">Versionadores e Git: Fundamentos e Conceitos</a></summary>
+  <ul class="section-content">
+    <li><a href="#introdução-aos-versionadores">Introdução aos Versionadores</a></li>
+    <li><a href="#introdução-ao-git">Introdução ao Git</a></li>
+    <li><a href="#hospedagem-remota-e-conexões-ssh">Hospedagem Remota e Conexões SSH</a></li>
+    <li><a href="#workflow-e-primeiro-repositório">Workflow e primeiro repositório</a></li>
+    <li><a href="#comandos-e-práticas-do-git">Comandos e Práticas do Git</a></li>
+  </ul>
+  </details>
+  <details>
+  <summary><a href="#exercícios">Exercícios</a></summary>
+  <ul class="section-content">
+   <li><a href="#exercícios-obrigatórios">Exercícios Obrigatórios</a></li>
+  </ul>
+  </details>
+</ul>
+
+  <button class="toggle-button" id="toggle-button">
+  
+      Esconder Sumário
+  
+  </button>
+  
+  </div>
+
+<h1 id="processos-compactação-e-introdução-ao-git">Processos, compactação e introdução ao GIT</h1>
+
+<h2 id="básico-sobre-processos">Básico sobre processos</h2>
+
+<h3 id="o-que-é-um-processo">O que é um processo?</h3>
+
+<p>Um processo é um <span class="destaque">programa em execução</span> .</p>
+
+<p>Um sistema operacional lida com uma infinidade de processos, que possuem as seguintes características:</p>
+
+<ul>
+  <li>Proprietário do processo;</li>
+  <li>Estado do processo (em espera, em execução, etc);</li>
+  <li>Prioridade de execução;</li>
+  <li>Recursos de memória.</li>
+</ul>
+
+<p>Cada processo possui um número identificador, chamado de <span class="destaque">PID</span> (Process Identifier), que é utilizado para controlá-lo.</p>
+
+<h4 id="estados-dos-processos">Estados dos processos</h4>
+
+<ul>
+  <li><span class="destaque">Executável</span>(R): o processo pode ser executado imediatamente;</li>
+  <li><span class="destaque">Dormente</span>(S): o processo precisa <span class="destaque">aguardar</span> algo para ser executado. Só depois desse “algo” acontecer é que ele passa para o estado executável;</li>
+  <li><span class="destaque">Zumbi</span>(Z): o processo é considerado <span class="destaque">“morto”</span>, mas, por alguma razão, ainda existe;</li>
+  <li><span class="destaque">Parado</span>(T): o processo está <span class="destaque">“congelado”</span>, ou seja, não pode ser executado.</li>
+</ul>
+
+<h3 id="interrompendo-e-listando-processos">Interrompendo e listando processos</h3>
+
+<h4 id="visualizando-processos-estaticamente-com-ps">Visualizando processos estaticamente com “ps”</h4>
+
+<p>O comando <code class="language-plaintext highlighter-rouge">ps</code> mostra os processos em execução atualmente e exibe os UIDs e PIDs de cada um.</p>
+
+<p>Ao executar o <code class="language-plaintext highlighter-rouge">ps</code> sem nenhuma opção, serão apresentados os processos em execução no terminal.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ps
+ PID TTY           TIME CMD
+ 1234 pts/0    00:00:02 bash
+ 9101 pts/0    00:00:00 ps
+</code></pre></div></div>
+
+<p>As opções mais importantes para o comando <code class="language-plaintext highlighter-rouge">ps</code> são:</p>
+
+<p><span class="destaque"> -u [username]</span> - mostra os processos existentes de um <span class="destaque">usuário</span> específico;</p>
+
+<p><span class="destaque"> -f</span> -  Exibe uma lista completa com informações adicionais como <span class="destaque">PPID</span> (ID do processo pai).</p>
+
+<p><span class="destaque"> -l</span> - exibe mais <span class="destaque">campos</span> no resultado;</p>
+
+<p><span class="destaque"> -e</span> ou <span class="destaque">-A</span> : Lista <span class="destaque">todos</span> os processos no sistema.</p>
+
+<p><span class="destaque"> -x</span> - exibe os processos que <span class="destaque">não iniciados</span>  no console do terminal junto com os inicializados no console.</p>
+
+<p><span class="destaque">aux</span>: Exibe uma listagem detalhada com o uso de memória por cada processo.</p>
+
+<h5 id="o-uso-do-ps-com-o-grep">O uso do “ps” com o “grep”</h5>
+
+<p>O <code class="language-plaintext highlighter-rouge">ps</code> é uma ferramenta essencial e corriqueira. Já a usamos quase que automaticamente com o <code class="language-plaintext highlighter-rouge">grep</code>, porém, somos limitados a filtrar um processo por vez.
+Por exemplo, para ver os processos systemd:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ps aux | <span class="nb">grep </span>systemd  
+</code></pre></div></div>
+
+<p>Primeiro, o  comando <span class="destaque"><code class="language-plaintext highlighter-rouge">ps aux</code></span> mostra <span class="destaque">todos os processos em execução</span>, enquanto grep systemd filtra apenas os processos que contêm “systemd” em sua descrição.</p>
+
+<h4 id="uso-do-kill">Uso do “kill”</h4>
+
+<p>O comando <code class="language-plaintext highlighter-rouge">kill</code> é usado no Linux para <span class="destaque">enviar sinais a processos</span>. Esses sinais podem instruir o processo a realizar várias ações, como <span class="destaque">terminar</span>, <span class="destaque">parar</span> ou <span class="destaque">continuar</span> a execução. Quando usamos <code class="language-plaintext highlighter-rouge">kill</code> para matar um processo, estamos enviando um sinal específico que informa o processo que ele deve encerrar.</p>
+
+<h5 id="como-ver-os-possíveis-sinais">Como ver os possíveis sinais?</h5>
+
+<p>Existem múltiplos sinais disponíveis no Linux que podem ser utilizados para interromper, encerrar ou pausar processos. O comando pode ser usado como mostrado abaixo:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nb">kill</span> <span class="nt">-l</span>
+</code></pre></div></div>
+
+<p>Este comando irá mostrar uma página do <span class="destaque">manual</span> com diferentes sinais do comando kill e seus respectivos números. Embora existam muitos sinais disponíveis, na maioria das vezes utilizamos o SIGKILL (9) e SIGTERM (15).</p>
+
+<h5 id="significados-dos-principais-sinais">Significados dos principais sinais</h5>
+
+<p><span class="destaque">SIGHUP (1)</span>: Ocorre <span class="destaque">quando o terminal fecha</span> ou quando o processo pai finaliza sua execução.</p>
+
+<p><span class="destaque">SIGINT (2)</span>: <span class="destaque">Interrompe</span> ou <span class="destaque">para</span> um processo, geralmente gerado pelo usuário pressionando <span class="destaque">Ctrl+C</span> no terminal.</p>
+
+<p><span class="destaque">SIGKILL (9)</span>: Força a <span class="destaque">parada imediata</span> de um processo, não pode ser capturado ou ignorado pelo processo.</p>
+
+<p><span class="destaque">SIGTERM (15)</span>: Solicita a <span class="destaque">terminação “elegante”</span> do processo, permitindo que ele libere recursos antes de encerrar, termine o que está fazendo e feche.</p>
+
+<p><span class="destaque">SIGTSTP (20)</span>: Solicita ao terminal a <span class="destaque">interrupção temporária</span> do processo (parar/pausar), geralmente gerado pelo usuário pressionando <span class="destaque">Ctrl+Z</span>.</p>
+
+<p><span class="destaque">SIGCONT (18)</span>: <span class="destaque">Retoma</span> um processo pausado pelo sinal SIGTSTP (ou SIGSTOP).</p>
+
+<h5 id="como-realmente-matar-processos">Como realmente matar processos?</h5>
+
+<p>Por padrão, é enviado o sinal <span class="destaque">SIGTERM</span>, que requisita a finalização do processo, por isso o nome <em>kill</em> (matar). Em geral é usado desta forma:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">kill </span>PID
+</code></pre></div></div>
+
+<p>Você tamvém pode usar o comando kill seguido pelo número do sinal e o PID (Process ID) do processo que deseja terminar.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nb">kill</span> <span class="nt">-8</span> &lt;PID&gt;
+</code></pre></div></div>
+
+<h4 id="uso-do-killall">Uso do killall</h4>
+
+<p>O comando <code class="language-plaintext highlighter-rouge">killall</code> no Linux envia sinais para os processos e recebe como parâmetro não o PID do processo, mas seu nome. Ele é usado geralmente para terminar a execução de processos que possuem diversos <span class="destaque">processos filhos</span> executando ao mesmo tempo.</p>
+
+<h5 id="sintaxe-básica">Sintaxe básica</h5>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>killall <span class="o">[</span>opções] nome_do_processo
+</code></pre></div></div>
+
+<p>Você pode enviar um sinal específico para os processos de mesmo nome como:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>killall <span class="nt">-9</span> firefox
+</code></pre></div></div>
+
+<h5 id="verificando-antes-de-encerrar">Verificando antes de Encerrar</h5>
+
+<p>Para <span class="destaque">verificar</span> quais processos seriam encerrados sem realmente matá-los, use a opção <span class="destaque">-i</span> para interação</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>killall <span class="nt">-i</span> firefox
+</code></pre></div></div>
+
+<h5 id="encerrando-processos-de-um-usuário-específico">Encerrando Processos de um Usuário Específico</h5>
+
+<p>Para encerrar processos de um <span class="destaque">usuário específico</span>, use a opção -u:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>killall <span class="nt">-u</span> usuario firefox
+</code></pre></div></div>
+
+<h4 id="uso-e-visualização-processos-dinâmicamente-com-htop">Uso e visualização processos dinâmicamente com “htop”</h4>
+
+<p>O comando HTOP é um utilitário de linha de comando que tem como objetivo auxiliar o usuário a monitorar de forma interativa e em <span class="destaque">tempo real</span> os recursos de seu sistema operacional Linux.</p>
+
+<h5 id="instalar-htop-no-ubuntu">Instalar “htop” no Ubuntu</h5>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>htop
+</code></pre></div></div>
+
+<p><strong>Iniciar a ferramenta</strong></p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>htop
+</code></pre></div></div>
+
+<p><img style="display: block;margin: 0 auto;" src="https://blog.ironlinux.com.br/images/blog-posts/uploads/2022/05/htop1.png" width="100%" /></p>
+
+<h3 id="rodando-processos-em-background">Rodando processos em background</h3>
+
+<h4 id="uso-do--comercial-no-shell">Uso do &amp; comercial no shell</h4>
+
+<p>No Linux, um processo pode estar em <span class="destaque">foreground</span> ou em <span class="destaque">background</span>, ou seja, em primeiro plano ou em segundo plano. Por exemplo, ao digitar o comando:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ping google.com
+</code></pre></div></div>
+
+<p>Quando você executa o comando ping em <span class="destaque">primeiro plano</span> (sem o ‘&amp;’ no final), ele ocupa o terminal até que você interrompa manualmente a execução. Isso significa que você <span class="destaque">não poderá usar o terminal</span> para outros comandos até que o ping termine ou seja interrompido.</p>
+
+<p>Seu terminal ficará assim:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PING 127.0.0.1 <span class="o">(</span>127.0.0.1<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+64 bytes from 127.0.0.1: <span class="nv">icmp_seq</span><span class="o">=</span>1 <span class="nv">ttl</span><span class="o">=</span>64 <span class="nb">time</span><span class="o">=</span>0.045 ms
+64 bytes from 127.0.0.1: <span class="nv">icmp_seq</span><span class="o">=</span>2 <span class="nv">ttl</span><span class="o">=</span>64 <span class="nb">time</span><span class="o">=</span>0.032 ms
+64 bytes from 127.0.0.1: <span class="nv">icmp_seq</span><span class="o">=</span>3 <span class="nv">ttl</span><span class="o">=</span>64 <span class="nb">time</span><span class="o">=</span>0.030 ms
+</code></pre></div></div>
+
+<p>Para interromper o ping em primeiro plano, use <span class="destaque">Ctrl + C</span>. Isso envia um sinal de interrupção (<span class="destaque">SIGINT</span>) para o processo ping, fazendo com que ele termine a execução e exiba um resumo das estatísticas:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>^C
+<span class="nt">---</span> 127.0.0.1 ping statistics <span class="nt">---</span>
+3 packets transmitted, 3 received, 0% packet loss, <span class="nb">time </span>1999ms
+rtt min/avg/max/mdev <span class="o">=</span> 0.030/0.035/0.045/0.007 ms
+</code></pre></div></div>
+
+<p>Para o exemplo acima, é possível liberar o shell para outras atividades enquanto o o processo gerado pelo comando fica em segundo plano. Basta que você digite:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ping google.com &amp;
+</code></pre></div></div>
+
+<p>O símbolo <span class="destaque"> &amp; </span> indica que o comando deve ser executado em background, ou seja, em <span class="destaque">segundo plano</span>.</p>
+
+<p>Você verá uma mensagem que indica o <span class="destaque">número do trabalho</span> ([1]) e o <span class="destaque">PID</span> do processo (1234):</p>
+
+<h5 id="ver-lista-de-processos-em-segundo-plano">Ver lista de processos em segundo plano</h5>
+
+<p>Para poder ver quais processos em segundo plano, digite:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">jobs</span>
+</code></pre></div></div>
+
+<p>Irá aparecer algo como:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>1]+  Running          ping 127.0.0.1 &amp;
+</code></pre></div></div>
+
+<p>Note que, se você fizer <span class="destaque">CTRL + C</span>, o processo <span class="destaque">não será interrompido</span>, pois ele não está em primeiro plano(foreground).</p>
+
+<h5 id="trazer-para-foreground">Trazer para “foreground”</h5>
+
+<p>Vamos supor que você pretende trazer o processo para primeiro plano. Para isso, utilize o seguinte comando :</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">fg</span> %1
+</code></pre></div></div>
+
+<p>Agora você pode matá-lo diretamente utilizando o <span class="destaque">CTRL + c</span> , que manda o sinal SIGINT, que faz com que ele <span class="destaque">termine a execução</span> e exiba um resumo das estatísticas :</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>^C
+<span class="nt">---</span> 127.0.0.1 ping statistics <span class="nt">---</span>
+3 packets transmitted, 3 received, 0% packet loss, <span class="nb">time </span>1999ms
+rtt min/avg/max/mdev <span class="o">=</span> 0.030/0.035/0.045/0.007 ms
+</code></pre></div></div>
+
+<h5 id="retomando-processos-suspensos-em-background">Retomando processos suspensos em background</h5>
+
+<p>Agora, digite o seguinte comando:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ping 127.0.0.1
+</code></pre></div></div>
+
+<p>Em seguida, digite  <span class="destaque"><code class="language-plaintext highlighter-rouge">CTRL + Z</code></span> para <span class="destaque">suspender</span> o comando bing. Esse comando pausa o processo e o colocar em <span class="destaque">segundo plano</span> em estado de pausa(suspenso).</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>^Z
+<span class="o">[</span>1]+  Stopped                 ping 127.0.0.1
+</code></pre></div></div>
+
+<p>Para retomar o processo em segundo plano, é necessário utilizar o comando bg da seguinte forma:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">bg</span> %1
+</code></pre></div></div>
+
+<p>Agora, vamos digitar o comando <span class="destaque">jobs</span> para ver o estado dos processos em background.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">jobs</span>
+ <span class="o">[</span>1]+  Running                 ping 127.0.0.1 &amp;
+</code></pre></div></div>
+
+<h4 id="uso-do-nohup">Uso do “nohup”</h4>
+
+<p>Mesmo que um processo esteja em <span class="destaque">segundo plano</span>, ele pode ser <span class="destaque">interrompido</span> por vários motivos.</p>
+
+<p>Digamos que você tenha terminado seu trabalho e feche sua sessão de SSH. Lembra daquele processo de longa duração que você iniciou? Sumiu! Quando você <span class="destaque">sai da sessão</span>, o sistema envia um sinal especial para cada processo iniciado que ainda está em execução chamado <span class="destaque">“SIGHUP”</span>. Esse sinal <span class="destaque">desliga</span> o processo mesmo quando ele ainda tem trabalho a fazer. Isso é o que o comando <span class="destaque"><code class="language-plaintext highlighter-rouge">nohup</code></span> pretende corrigir.</p>
+
+<p>Há outras maneiras, é claro, para um processo ser encerrado, mas o comando nohup refere-se especificamente aos encerrados devido ao sinal SIGHUP.</p>
+
+<p>Nohup - abreviação de ‘<em>no hang up</em>’, ou ‘não desligar’, em Português - é um comando em sistemas Linux que <span class="destaque">mantém os processos em execução</span> mesmo depois de <span class="destaque">sair do shell ou terminal</span>. O Nohup impede que os processos ou trabalhos recebam o sinal SIGHUP (Signal Hang UP). Este é um sinal que é enviado para um processo ao fechar ou sair do terminal.</p>
+
+<h5 id="sintaxe-do-comando-nohup">Sintaxe do comando nohup</h5>
+
+<p>A sintaxe para usar o comando Nohup é direta:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">nohup command</span> <span class="o">[</span>options] &amp;
+</code></pre></div></div>
+
+<p><span class="destaque">command</span>: especifica o <span class="destaque">comando</span> ou script que você deseja executar.</p>
+
+<p><span class="destaque">[options]</span>: argumentos opcionais ou sinalizadores que modificam o <span class="destaque">comportamento</span>  do comando.</p>
+
+<p><span class="destaque">&amp;</span>: Colocar este símbolo ao final de um comando instrui o shell a executar esse comando em <span class="destaque">segundo plano</span>.</p>
+
+<h5 id="iniciando-um-processo-usando-o-nohup">Iniciando um processo usando o Nohup</h5>
+
+<p>Para iniciar um processo usando o Nohup, basta preceder o comando desejado com <code class="language-plaintext highlighter-rouge">nohup</code>. Por exemplo, se você deseja executar o comando <code class="language-plaintext highlighter-rouge">sleep 60</code>(que faz o sistema esperar 60 segundos) chamado usando Nohup, você deve usar o seguinte comando:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">nohup sleep </span>60 &amp;
+</code></pre></div></div>
+
+<p>Com o comando acima, o sistema executa um comando “sleep”, que normalmente <span class="destaque">bloqueia todas as entradas</span>, mas isso as envia para o segundo plano, graças ao parâmetro “&amp;”. Executá-lo tem a seguinte aparência:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">nohup sleep </span>60 &amp;
+<span class="o">[</span>1] 4003
+<span class="nv">$ </span><span class="nb">nohup</span> : ignoring input and appending output to <span class="s1">'nohup.out'</span>
+</code></pre></div></div>
+
+<h5 id="deixando-de-fora-o-caractere-">Deixando de fora o caractere ‘&amp;’</h5>
+
+<p>Você pode até mesmo usar o comando nohup sem o caractere “&amp;” enviando o processo para o segundo plano. Mas isso simplesmente significa que o <span class="destaque">processo será executado</span> em primeiro plano e que você <span class="destaque">não poderá fazer nenhum outro trabalho no terminal</span> até que ele seja concluído. Geralmente, para tarefas de <span class="destaque">longa duração</span>, o usuário envia para segundo plano, já que não faz sentido esperar sem necessidade.</p>
+
+<p>Caso você use o nohup mantendo o processo em primeiro plano, pode ter certeza de que, se <span class="destaque">o terminal for fechado</span>, ou a <span class="destaque">conectividade com a Internet for perdida</span>, ou algo mais acontecer, o processo <span class="destaque">não será interrompido</span>. Mas, como mencionado acima, você quase sempre vai querer executar o comando em segundo plano.</p>
+
+<h4 id="uso-do-wait">Uso do “wait”</h4>
+
+<p>O comando <span class="destaque">“wait”</span> é uma ferramenta poderosa no  Linux que permite que os scripts <span class="destaque">aguardem a conclusão</span> de outros processos antes de <span class="destaque">continuar a execução</span>.</p>
+
+<p>Por exemplo:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">nohup sleep </span>30 &amp;
+ <span class="o">[</span>1] 5010
+<span class="nv">$ </span><span class="nb">wait </span>5010
+</code></pre></div></div>
+
+<p>Depois de digitar o comando  <span class="destaque"><code class="language-plaintext highlighter-rouge">wait &lt;PID&gt;</code></span>, o terminal irá esperar o proceso ser finalizado.</p>
+
+<h2 id="uso-de-programas-de-compatação-para-compartilhar-e-receber-arquivos">Uso de programas de compatação para compartilhar e receber arquivos</h2>
+
+<h3 id="compactação">Compactação</h3>
+
+<h4 id="compactando-diretórios-com-zip">Compactando diretórios com zip</h4>
+
+<p>Compactar arquivos significa <span class="destaque">juntar</span> todos eles em um único arquivo de modo que eles ocupem um <span class="destaque">espaço menor</span>.</p>
+
+<p>Provavelmente você já viu algum arquivo com a <span class="destaque">extensão .zip</span>. No Linux, para compactar arquivos no formato .zip, é utilizado o comando <span class="destaque"><code class="language-plaintext highlighter-rouge">zip</code></span>.</p>
+
+<p>Vamos supor que temos uma pasta chamada “projetos” e, dentro dela, dois subdiretórios chamados “ITP” e “PC”, onde estão todos os programas que você fez durante as disciplinas. Surgiu o seguinte problema: você gostaria de enviar esses arquivos pelo WhatsApp para um colega recém-chegado no curso, mas o WhatsApp não permite o envio devido ao tamanho dos arquivos. Por isso, você decidiu compactar os projetos.</p>
+
+<p>Para isso, digitou:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    zip projetos.zip projetos/
+</code></pre></div></div>
+
+<p>depois, executou o seguinte comando para poder <span class="destaque">visualizar</span> se todos os <span class="destaque">diretórios </span>foram armazenados no arquivo compactado “projetos.zip”:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    unzip <span class="nt">-l</span> projetos.zip 
+</code></pre></div></div>
+
+<p>e viu o seguinte:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>Archive:  projetos.zip
+    Length      Date    Time    Name
+    <span class="nt">---------</span>  <span class="nt">----------</span> <span class="nt">-----</span>   <span class="nt">----</span>
+            0  2023-07-09 12:00   projetos/
+    <span class="nt">---------</span>                     <span class="nt">-------</span>
+            0                     1 file
+</code></pre></div></div>
+
+<p>Note que ocorreu um problema, pois <span class="destaque">os subdiretórios não foram inseridos</span> na compactação. Isso ocorre pois, por padrão, o comando <code class="language-plaintext highlighter-rouge">zip</code> não inclui os arquivos e subdiretórios de um diretório. Assim, nosso .zip contém apenas o diretório Projetos/ vazio. Para resolver, basta passar o argumento <span class="destaque">-r</span>(recursive).</p>
+
+<p>O -r fará com que o comando zip <span class="destaque">processe recursivamente</span> todos os subdiretórios e arquivos dentro do diretório especificado, garantindo que <span class="destaque">tudo seja incluído</span> no arquivo compactado. Vamos corrigir o comando para incluir o argumento -r:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    zip <span class="nt">-r</span> projetos.zip projetos/
+</code></pre></div></div>
+
+<p>Agora, vamos ver se tudo foi compactado:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$ </span>unzip <span class="nt">-l</span> projetos.zip 
+    Archive:  projetos.zip
+    Length      Date    Time    Name
+    <span class="nt">---------</span>  <span class="nt">----------</span> <span class="nt">-----</span>   <span class="nt">----</span>
+            0  2023-07-09 12:00   projetos/
+            0  2023-07-09 12:00   projetos/ITP/
+        2048  2023-07-09 12:00   projetos/ITP/programa1.c
+        1024  2023-07-09 12:00   projetos/ITP/programa2.c
+            0  2023-07-09 12:00   projetos/PC/
+        5120  2023-07-09 12:00   projetos/PC/programa1.py
+    <span class="nt">---------</span>                     <span class="nt">-------</span>
+        8192                     6 files
+</code></pre></div></div>
+
+<h4 id="compactando-arquivos-e-diretórios-com-tar-e-gzip">Compactando arquivos e diretórios com tar e gzip</h4>
+
+<p>Outra forma de compactar arquivos é utilizando <span class="destaque">tar</span> e <span class="destaque">gzip</span>. Quando nos deparamos com arquivos do tipo <span class="destaque">arquivo.tar.gz</span>, significa que ocorreram <span class="destaque">dois processos</span>.</p>
+
+<ul>
+  <li>Primeiro, ocorreu o <span class="destaque">empacotamento dos arquivos</span> no formato <code class="language-plaintext highlighter-rouge">.tar</code> e depois foi feita a <span class="destaque">compactação dos arquivo</span> no formato <code class="language-plaintext highlighter-rouge">gzip</code>.</li>
+</ul>
+
+<h5 id="qual-a-vantagem-do-tar">Qual a vantagem do tar?</h5>
+
+<p>A vantagem é que o tar consegue manter as <span class="destaque">permissões dos arquivos</span>, bem como <span class="destaque">links diretos</span> e <span class="destaque">simbólicos</span>, sendo interessante, por exemplo, para realizar <span class="destaque">backups</span>.</p>
+
+<p>Utilizamos o comando tar para realizar as compactações. A compactação do diretório “projetos/” ficaria da seguinte forma:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-czf</span> projetos.tar.gz projetos/
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p><span class="destaque">-c</span> - create: indica que desejamos <span class="destaque">criar</span> um arquivo.</p>
+  </li>
+  <li>
+    <p><span class="destaque">-z</span> - gzip: indica que queremos <span class="destaque">compactar</span> com gzip.</p>
+  </li>
+  <li>
+    <p><span class="destaque">-f</span> - file: especifica o <span class="destaque">nome</span> do arquivo compactado.</p>
+  </li>
+</ul>
+
+<p>Note que não precisamos usar o <code class="language-plaintext highlighter-rouge">-r</code>. Isso acontece pois o <code class="language-plaintext highlighter-rouge">tar</code> age de forma <span class="destaque">recursiva por padrão</span>.</p>
+
+<h3 id="descompactação">Descompactação</h3>
+
+<h4 id="descompactando-diretórios-com-unzip">Descompactando diretórios com unzip</h4>
+
+<p>Vamos supor que seu colega, que recebeu o arquivo <span class="destaque">projetos.zip</span>, deseja <span class="destaque">descompactá-los </span>. Para isso, ele executará os seguintes passos:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unzip projetos.zip
+</code></pre></div></div>
+
+<p>Isso irá <span class="destaque">extrair</span> todos os <span class="destaque">arquivos</span> e <span class="destaque">diretórios</span> contidos no arquivo “projetos.zip” para o <span class="destaque">diretório atual</span>. Se desejar extrair para um diretório <span class="destaque">específico</span>, você pode usar a opção <span class="destaque"><code class="language-plaintext highlighter-rouge">-d</code></span>:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unzip projetos.zip <span class="nt">-d</span> /home/ubuntu/Music
+</code></pre></div></div>
+
+<p>Se você quiser que <span class="destaque">o progresso não apareça</span> e sua tela fique cheia de informações, é possível utilizar o <span class="destaque">-q</span>, que significa <span class="destaque">quiet</span>, para que ele apenas descompacte e não mostre cada coisa que fez:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>unzip <span class="nt">-q</span> projetos.zip <span class="nt">-d</span> /home/ubuntu/Music
+</code></pre></div></div>
+
+<h4 id="descompactando-arquivos-e-diretórios-com-tar-e-gunzip">Descompactando arquivos e diretórios com tar e gunzip</h4>
+
+<p>Para descompactar um arquivo <span class="destaque">tarball comprimido com gzip</span>, utilizamos o comando tar novamente, desta vez com a opção <span class="destaque">-x</span> para <span class="destaque">extrair</span> o conteúdo. Vamos supor que você recebeu o arquivo “projetos.tar.gz” e deseja extrair seu conteúdo:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-xzf</span> projetos.tar.gz
+</code></pre></div></div>
+
+<ul>
+  <li><span class="destaque">-x</span> - extract: <span class="destaque">extrai</span> o conteúdo do arquivo tar.</li>
+  <li><span class="destaque">-z</span> - gzip: <span class="destaque">descomprime</span> o arquivo usando gzip.</li>
+  <li><span class="destaque">-f</span> - file: especifica o <span class="destaque">nome</span> do arquivo tar.</li>
+</ul>
+
+<h2 id="versionadores-e-git-fundamentos-e-conceitos">Versionadores e Git: Fundamentos e Conceitos</h2>
+
+<h3 id="introdução-aos-versionadores">Introdução aos Versionadores</h3>
+
+<h4 id="o-que-são-versionadores">O que são Versionadores?</h4>
+
+<p>Versionadores são sistemas que registram <span class="destaque">alterações</span> em um arquivo ou conjunto de arquivos ao longo do tempo, permitindo lembrar <span class="destaque">versões</span> específicas mais tarde. Eles surgiram devido à necessidade de aumentar a <span class="destaque">eficiência</span>, gerenciar um número maior de <span class="destaque">colaboradores</span> e projetos de <span class="destaque">software moderno</span>.</p>
+
+<p><img style="display: block;margin: 0 auto;" src="https://hackmd.io/_uploads/ryblu7zSR.png" width="70%" /></p>
+
+<h4 id="tipos-de-versionadores">Tipos de Versionadores</h4>
+
+<h5 id="1-sistemas-locais">1. Sistemas Locais</h5>
+
+<p>Utilizam um <span class="destaque">banco de dados simples</span> para manter todas as alterações nos arquivos sob controle de versão.</p>
+
+<p><img style="display: block;margin: 0 auto;" src="https://hackmd.io/_uploads/SJv-sbGHA.png" width="70%" /></p>
+
+<h5 id="2-sistemas-centralizados">2. Sistemas Centralizados</h5>
+
+<p>Têm um <span class="destaque">único servidor</span> que contém todos os arquivos de controle de versão e um número de clientes que usam esses arquivos a partir desse lugar central.
+Suas <span class="destaque">desvantagens</span> incluem a necessidade de estar <span class="destaque">sempre conectado</span> ao servidor e a paralisação em caso de <span class="destaque">falha do servidor</span>.</p>
+
+<p>São utilizados por plataformas como a Wikipédia.</p>
+
+<p><img style="display: block;margin: 0 auto;" src="https://hackmd.io/_uploads/By_qMTBHR.png" width="70%" /></p>
+
+<ul>
+  <li>
+    <p><strong>Vantagens dos Sistemas Centralizados</strong></p>
+
+    <ul>
+      <li><span class="destaque">Simples</span> de utilizar, ideal para <span class="destaque">equipes pequenas</span>.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img style="display: block;margin: 0 auto;" src="https://hackmd.io/_uploads/HJUGsZzB0.png" width="70%" /></p>
+
+<h5 id="3-sistemas-distribuídos">3. Sistemas Distribuídos</h5>
+
+<p>Cada cliente possui uma cópia completa do repositório, funcionando como um backup completo de todos os dados.</p>
+
+<p>Não dependem de um servidor central, oferecendo maior eficiência e segurança contra ataques.</p>
+
+<p><img style="display: block;margin: 0 auto;" src="https://hackmd.io/_uploads/SJpghZzrA.png" width="70%" /></p>
+
+<p><strong>Vantagens dos Sistemas Distribuídos</strong></p>
+
+<p><strong>Escalabilidade:</strong> Suporta um grande número de colaboradores.</p>
+
+<p><strong>Independência:</strong> Não depende de um servidor central.</p>
+
+<p><strong>Eficiência:</strong> Processos mais rápidos e eficientes.</p>
+
+<p><strong>Segurança:</strong> Maior proteção contra falhas e ataques.</p>
+
+<p><img style="display: block;margin: 0 auto;" src="https://hackmd.io/_uploads/S12LXpBHA.png" width="70%" /></p>
+
+<h2 id="introdução-ao-git">Introdução ao Git</h2>
+
+<h3 id="surgimento-do-git">Surgimento do Git</h3>
+
+<p>A criação do <span class="destaque">Linux</span> foi um marco importante na história do desenvolvimento de software, principalmente por sua natureza <span class="destaque">colaborativa</span> e <span class="destaque">open-source</span>. <span class="destaque">Linus Torvalds</span>, o criador do Linux, enfrentou desafios significativos ao <span class="destaque">coordenar as contribuições</span> de inúmeros desenvolvedores ao redor do mundo.</p>
+
+<p>Durante os anos iniciais do <span class="destaque">Linux Kernel</span>, as mudanças eram gerenciadas através do envio de arquivos entre desenvolvedores. Posteriormente, usou-se o versionador BitKeeper, mas quando este se tornou pago, a comunidade Linux, liderada por <span class="destaque">Torvalds</span>, decidiu criar o Git, aprendendo com as lições adquiridas durante o uso do BitKeeper e com um desafio de fazer um sistema de versionamento mais eficiente e com funcionalidades que acelerassem o processo de desenvolvimento de software.</p>
+
+<p>Os objetivos principais para o novo sistema incluíam:</p>
+
+<ul>
+  <li>
+    <p><span class="destaque"><strong>Velocidade</strong></span>;</p>
+  </li>
+  <li>
+    <p><span class="destaque"><strong>Design simples</strong></span>;</p>
+  </li>
+  <li>
+    <p><strong>Forte suporte para o <span class="destaque">desenvolvimento não linear </span></strong> (milhares de branches paralelas);</p>
+  </li>
+  <li>
+    <p><strong><span class="destaque">Alta distribuição</span></strong>;</p>
+  </li>
+  <li>
+    <p><strong>Capacidade de lidar com <span class="destaque">grandes projetos</span></strong>, como o kernel do Linux, de forma eficiente.</p>
+  </li>
+</ul>
+
+<h3 id="de-onde-vem-o-nome-git">De onde vem o nome “Git”?</h3>
+
+<p>O nome “Git” tem uma origem curiosa. Em uma entrevista, Linus Torvalds explicou sarcasticamente que ele nomeia todos os seus projetos <span class="destaque">em sua homenagem</span> , sendo “Linux” o primeiro e “Git” o segundo. Na gíria britânica, “git” significa <span class="destaque">“pessoa desagradável”</span>. Além disso, há uma interpretação alternativa em que “Git” pode significar <span class="destaque">“Global Information Tracker”</span>  quando você estiver de bom humor.</p>
+
+<p>Para mais detalhes, você pode consultar o manual do Git no terminal usando o comando <code class="language-plaintext highlighter-rouge">man git</code>.</p>
+
+<h3 id="git-como-um-versionador">Git como um Versionador</h3>
+
+<p><img style="display: block;margin: 0 auto;" src="https://hackmd.io/_uploads/SJpghZzrA.png" width="70%" /></p>
+
+<p>O Git é um dos sistemas de controle de versão mais utilizados no mundo, conhecido por ser:</p>
+
+<ul>
+  <li><strong>Open Source</strong></li>
+  <li><strong>Ideal para trabalho em equipe</strong></li>
+  <li><strong>Adequado para o desenvolvimento de todos os tipos de software</strong></li>
+  <li><strong>O versionador mais utilizado atualmente</strong></li>
+</ul>
+
+<h3 id="como-o-git-funciona">Como o Git Funciona?</h3>
+
+<p>O Git é uma ferramenta de versionamento que gerencia diferentes versões de um arquivo ou conjunto de arquivos. Sempre que você salva o estado do projeto, o Git <span class="destaque">“tira uma foto”</span> dos arquivos naquele momento e <span class="destaque">salva uma referência</span> a esse snapshot. Por eficiência, se um arquivo <span class="destaque">não foi modificado</span>, o Git <span class="destaque">não o salva novamente</span>, mas cria um “link” para a versão anterior que já está salva.</p>
+
+<p><img style="display: block;margin: 0 auto;" src="https://hackmd.io/_uploads/SkYli-6zR.png" width="70%" /></p>
+
+<p>O Git, em geral, apenas <strong>adiciona</strong> informações. É <span class="destaque">difícil</span> que o sistema <span class="destaque">apague dados</span> ou <span class="destaque">faça algo irreversível</span>, especialmente se você enviar suas alterações para o servidor remoto regularmente (push). Esse comportamento garante a integridade e a segurança do histórico do projeto.</p>
+
+<h2 id="hospedagem-remota-e-conexões-ssh">Hospedagem Remota e Conexões SSH</h2>
+
+<h3 id="introdução-a-plataformas-de-hospedagem-remota">Introdução a plataformas de hospedagem remota</h3>
+
+<h4 id="voltando-aos-versionadores">Voltando aos versionadores</h4>
+
+<p>A utilização de versionadores como o Git se torna ainda mais poderosa quando combinada com plataformas de hospedagem remota.</p>
+
+<p>Essas plataformas permitem que você <span class="destaque">armazene</span>, <span class="destaque">compartilhe</span> e <span class="destaque">colabore</span> em projetos de software com desenvolvedores de todo o mundo. Elas não só armazenam o código, mas também oferecem ferramentas para <span class="destaque">gerenciamento de projetos</span>, <span class="destaque">integração contínua</span>, e muito mais.</p>
+
+<h4 id="algumas-diferentes-plataformas-gitlab-bitbucket-codeberg">Algumas diferentes plataformas: GitLab, BitBucket, Codeberg</h4>
+
+<p>Existem várias plataformas de hospedagem remota que suportam Git, cada uma com suas características únicas.</p>
+
+<ul>
+  <li>
+    <p><strong>GitLab</strong></p>
+  </li>
+  <li>
+    <p><strong>BitBucket</strong></p>
+  </li>
+  <li>
+    <p><strong>Codeberg</strong></p>
+  </li>
+</ul>
+
+<h4 id="git-e-github--diferenças">Git e Github : diferenças</h4>
+
+<p>Embora Git e GitHub sejam frequentemente mencionados juntos, eles não são a mesma coisa. Aqui estão as principais diferenças:</p>
+
+<h5 id="git">Git</h5>
+
+<ul>
+  <li>Git é um <span class="destaque">sistema de controle de versão</span> distribuído.</li>
+  <li>Ferramenta de linha de comando utilizada para <span class="destaque">gerenciar</span> o histórico de versões de arquivos.</li>
+  <li>Funciona localmente, <span class="destaque">independentemente</span> de uma plataforma de <span class="destaque">hospedagem remota</span>.</li>
+</ul>
+
+<h5 id="github">GitHub</h5>
+
+<ul>
+  <li>Hospedagem de Repositórios</li>
+  <li>Se utiliza do Git para fazer o controle de versão dos respositórios hospedados</li>
+  <li>Comunidade ativa</li>
+  <li>Vários outros serviços</li>
+  <li>Um dos maiores repositórios de projetos open source do mundo</li>
+</ul>
+
+<h3 id="chave-ssh">Chave SSH</h3>
+
+<h4 id="para-que-serve-a-chave-ssh">Para que serve a chave SSH?</h4>
+
+<p>As chaves SSH (Secure Shell) são utilizadas para <span class="destaque">autenticar conexões seguras</span> entre computadores, permitindo uma comunicação <span class="destaque">criptografada</span>. Elas substituem a necessidade de senhas tradicionais, proporcionando uma maneira mais segura e conveniente de acessar sistemas remotos e serviços, como repositórios Git.</p>
+
+<p>Ao configurar uma chave SSH, você cria um <span class="destaque">par de chaves</span>: uma <span class="destaque">chave privada</span>, que deve ser mantida em segredo no seu computador, e uma <span class="destaque">chave pública</span>, que é adicionada ao servidor ou serviço remoto. Quando uma conexão é iniciada, o servidor usa a chave pública para verificar a identidade do usuário, sem que a chave privada precise ser transmitida pela rede, garantindo assim a segurança.</p>
+
+<p>No contexto do Git, a autenticação via chave SSH é especialmente útil ao interagir com repositórios remotos hospedados em plataformas como GitHub, GitLab e Bitbucket. Essas plataformas suportam autenticação por chave SSH, permitindo que os desenvolvedores <span class="destaque">enviem </span>(push) e <span class="destaque">busquem</span> (pull) alterações de forma segura.</p>
+
+<p><a style="background: #fff;padding:10px;  color: black;" href="https://docs.github.com/pt/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">CLique aqui para ver o manual de como configurar a chave SSH para a sua máquina</a></p>
+
+<h2 id="workflow-e-primeiro-repositório">Workflow e primeiro repositório</h2>
+
+<h3 id="um-pouco-mais-sobre-git">Um pouco mais sobre Git</h3>
+
+<p>O Git é um sistema de controle de versão <span class="destaque">distribuído</span> que gerencia informações armazenando cada versão do projeto como um snapshot completo, em vez de apenas as diferenças entre versões. Ele utiliza uma estrutura de objetos que inclui <span class="destaque">blobs</span> (conteúdo de arquivos), <span class="destaque">trees</span> (diretórios), <span class="destaque">commits</span> (mudanças com metadados) e <span class="destaque">tags</span> (marcadores de versão).</p>
+
+<p><span class="destaque">Cada objeto</span> é identificado por um <span class="destaque">hash SHA-1</span>, garantindo a integridade dos dados. Git permite a criação de <span class="destaque">branches</span> para <span class="destaque">desenvolvimento paralelo</span> e <span class="destaque">merges</span> para combinar mudanças.</p>
+
+<p>As modificações são preparadas na <span class="destaque">staging area</span> antes de serem commitadas.</p>
+
+<p>Com funcionalidades robustas de colaboração e resolução de conflitos, o Git suporta <span class="destaque">operações offline</span> e <span class="destaque">sincronização</span> com repositórios <span class="destaque">remotos</span> através de comandos como push e pull, facilitando o trabalho simultâneo de <span class="destaque">múltiplos desenvolvedores</span>.</p>
+
+<h4 id="workflow-básico">Workflow básico</h4>
+
+<p>1) Você <span class="destaque"><strong>modifica arquivos</strong></span> na sua árvore de trabalho</p>
+
+<p>2) Você <span class="destaque"><strong>seleciona apenas as mudanças que você quer</strong></span> que façam parte do seu próximo commit, e apenas essas mudanças serão adicionadas à staging area</p>
+
+<p>3) Você <span class="destaque"><strong>faz um commit</strong></span>: os arquivos como eles estão na <span class="destaque">staging area</span> são armazenados em forma de <span class="destaque">snapshot permanentemente</span> no seu diretório  Git.</p>
+
+<p><img style="display: block;margin: 0 auto;" src="https://hackmd.io/_uploads/HJKOTMTGC.png" width="70%" /></p>
+
+<p>Assim, podemos perceber que um arquivo pode estar em um dos 3 estados:</p>
+
+<p><span class="destaque"><strong><em>modified</em></strong></span> - quando o arquivo foi modificado e não está rastreado pelo Git.</p>
+
+<p><span class="destaque"><strong><em>staged</em></strong></span> - quando a modificação foi colocada na ‘staging area’ - uma área na qual armazenamos as mudanças antes de tê-las como definitiva para a próxima versão, ou seja, para o próximo commit.</p>
+
+<p><span class="destaque"><strong><em>commited</em></strong></span> - Mudanças que são definitivas, ou seja, a snapshot permanente foi guardada na linha do tempo do Git.</p>
+
+<h3 id="comandos-e-práticas-do-git">Comandos e Práticas do Git</h3>
+
+<h4 id="inicializando-o-git-no-repositório-git-init">Inicializando o git no repositório: “git init”</h4>
+
+<p>Para criar um repositório local, vamos ir ao diretório onde queremos criar o resositório Git e, em seguida, vamos inicializar o Git com o comando <span class="destaque"> git init </span></p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>OneDrive/Documentos/projeto
+git init
+</code></pre></div></div>
+
+<p>Agora, temos um <span class="destaque">subdiretório</span> chamado <span class="destaque">.git</span> que contém todos os arquivos necessários de seu repositório – um esqueleto de repositório Git.</p>
+
+<p>Nada em seu projeto é monitorado ainda.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>OneDrive/Documentos/projeto
+git init
+Initialized empty Git repository <span class="k">in</span> /home/anna/OneDrive/Documentos/projeto/.git/
+</code></pre></div></div>
+
+<h4 id="gravando-alterações-em-seu-repositório">Gravando alterações em seu repositório</h4>
+
+<p>Cada arquivo em seu repsitório pode estar em um dos seguintes estados: <span class="destaque">rastreado</span> e <span class="destaque">não-rastreado</span>. Arquivos rastreados são arquivos que foram incluídos no último snapshot; eles podem ser não modificados, modificados ou preparados (adicionados ao stage). Em resumo, arquivos rastreados são os arquivos que o Git conhece.</p>
+
+<p>Quando você <span class="destaque">clona</span> um repositório pela <span class="destaque">primeira vez</span>, todos os seus arquivos <span class="destaque">serão rastreados</span> e <span class="destaque">não modificados</span>, já que o Git acabou de obtê-los e você ainda não editou nada.</p>
+
+<p>Assim que você <span class="destaque">edita</span> alguns arquivos, Git os considera <span class="destaque">modificados</span>, porque você os editou desde o seu último commit. Você prepara os arquivos editados e então faz commit das suas alterações, e o <span class="destaque">ciclo</span> se repete.</p>
+
+<p><img style="display: block;margin: 0 auto;" src="https://hackmd.io/_uploads/SJWWiARzC.png" width="70%" /></p>
+
+<h4 id="verificando-o-status-dos-arquivos-git-status">Verificando o status dos arquivos: “git status”</h4>
+
+<p>A principal ferramenta que você vai usar para determinar quais arquivos estão em qual <span class="destaque">estado</span> é o comando git status.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
+On branch master
+Your branch is up-to-date with <span class="s1">'origin/master'</span><span class="nb">.</span>
+nothing to commit, working directory clean
+</code></pre></div></div>
+
+<p>Digamos que você adicionou um simples arquivo chamado ‘chat’ ao seu projeto. Se o arquivo não existia antes, e você executar git status, você verá seu arquivo não rastreado da seguinte forma:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="s1">'código do chat'</span> <span class="o">&gt;</span> chat
+<span class="nv">$ </span>git status
+On branch master
+Your branch is up-to-date with <span class="s1">'origin/master'</span><span class="nb">.</span>
+Untracked files:
+<span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to include <span class="k">in </span>what will be committed<span class="o">)</span>
+
+    chat
+
+nothing added to commit but untracked files present <span class="o">(</span>use <span class="s2">"git add"</span> to track<span class="o">)</span>
+</code></pre></div></div>
+
+<p>Nós queremos incluir esse arquivo ‘chat’, então vamos rastreá-lo.</p>
+
+<h4 id="rastreando-arquivos-novos">Rastreando arquivos novos</h4>
+
+<p>Para começar a rastrear um novo arquivo, você deve usar o comando git add</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add chat
+</code></pre></div></div>
+
+<p>Executando o comando status novamente, você pode ver que seu README agora está sendo rastreado e preparado (staged) para o commit:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
+On branch master
+Your branch is up-to-date with <span class="s1">'origin/master'</span><span class="nb">.</span>
+Changes to be committed:
+    <span class="o">(</span>use <span class="s2">"git reset HEAD &lt;file&gt;..."</span> to unstage<span class="o">)</span>
+
+    new file:   chat
+</code></pre></div></div>
+
+<p>É possível saber que o arquivo <span class="destaque">está preparado</span> porque ele aparece sob o título <span class="destaque">“Changes to be committed”</span>. Se você fizer um commit neste momento, a versão do arquivo que existia no instante em que você executou git add, é a que será armazenada no histórico de snapshots.</p>
+
+<h4 id="preparando-arquivos-modificados-adicionando-arquivos-modificados-à-staging-area">Preparando Arquivos Modificados (Adicionando arquivos modificados à staging area)</h4>
+
+<p>Vamos modificar um arquivo que já está sendo rastreado.</p>
+
+<p>Se, por exemplo, adicionarmos mais uma linha de código ao arquivo ‘feed’ que já era rastreado e estava dentro do projeto, e executarmos o <code class="language-plaintext highlighter-rouge">git status</code>, teremos isso:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git status
+On branch master
+Your branch is up-to-date with <span class="s1">'origin/master'</span><span class="nb">.</span>
+Changes to be committed:
+  <span class="o">(</span>use <span class="s2">"git reset HEAD &lt;file&gt;..."</span> to unstage<span class="o">)</span>
+
+    new file:   chat
+
+Changes not staged <span class="k">for </span>commit:
+    <span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to update what will be committed<span class="o">)</span>
+    <span class="o">(</span>use <span class="s2">"git checkout -- &lt;file&gt;..."</span> to discard changes <span class="k">in </span>working directory<span class="o">)</span>
+
+    modified:   feed
+</code></pre></div></div>
+
+<p>Isso significa que o arquivo rastreado foi modificado no diretório mas ainda não foi mandado para o stage (preparado).</p>
+
+<p>Para isso, vamos usar o <span class="destaque"><code class="language-plaintext highlighter-rouge">git add</code></span>.</p>
+
+<p>Pode ser útil pensar nesse comando mais como “adicione este conteúdo ao próximo commit”.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add <span class="nb">.</span>
+<span class="nv">$ </span>git status
+On branch master
+Your branch is up-to-date with <span class="s1">'origin/master'</span><span class="nb">.</span>
+Changes to be committed:
+    <span class="o">(</span>use <span class="s2">"git reset HEAD &lt;file&gt;..."</span> to unstage<span class="o">)</span>
+
+    new file:   chat
+    modified:   feed
+</code></pre></div></div>
+
+<h4 id="fazendo-o-commit-do-que-foi-feito-git-commit">Fazendo o <strong>commit</strong> do que foi feito: “git commit”</h4>
+
+<p>Agora que a <span class="destaque">área de stage está preparada</span>, podemos fazer <span class="destaque">commit</span> nas alterações.</p>
+
+<p>O jeito mais simples de fazer commit é digitar o seguinte comando:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit
+</code></pre></div></div>
+
+<p>e adicionar uma mensagem no editor de texto.</p>
+
+<p>Alternativamente, podemos fazer:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-m</span> <span class="s2">"mensagem"</span>
+</code></pre></div></div>
+
+<p>Lembre-se que o commit grava a <span class="destaque">snapshot</span> que você deixou na <span class="destaque">área de stage</span>. Qualquer alteração que você não tiver mandado para o stage permanecerá como estava, em seu lugar; você pode executar outro commit para adicioná-la ao seu histórico. Sempre que você executa um commit, você está gravando uma snapshot do seu projeto que você pode usar posteriormente para fazer comparações, ou mesmo restaurá-lo.</p>
+
+<p><a href="#exercício-01---iniciando-um-novo-repositório-git"><spam class="destaque" style="font-size:20px;">Exercícios : 1-2</spam></a></p>
+
+<h4 id="configurando-o-repositório-remoto-git-remote">Configurando o Repositório Remoto: “git remote”</h4>
+
+<p>Depois de inicializar o repositório local, você pode querer vinculá-lo a um repositório remoto para facilitar a colaboração e o backup. Para isso, vamos usar o comando <span class="destaque">git remote</span></p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add origin https://github.com/seu-usuario/seu-repositorio.git
+</code></pre></div></div>
+
+<h5 id="como-verificar-os-repositórios-remotos-configurados">Como verificar os repositórios remotos configurados?</h5>
+
+<p>Basta utilizar a opção -v</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote <span class="nt">-v</span>
+</code></pre></div></div>
+
+<p>note o que seguinte aparecerá:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>origin  git@github.com:SEU_USUARIO/SEU_REPOSITORIO.git <span class="o">(</span>fetch<span class="o">)</span>
+origin  git@github.com:SEU_USUARIO/SEU_REPOSITORIO.git <span class="o">(</span>push<span class="o">)</span>
+</code></pre></div></div>
+
+<p>Isso indica que o repositório remoto chamado origin está configurado para <span class="destaque">buscar (fetch)</span> e <span class="destaque">enviar (push)</span> atualizações para a URL especificada, que é onde o seu repositório remoto está.</p>
+
+<h5 id="como-desconectar-o-repositório-local-do-remoto">Como desconectar o repositório local do remoto?</h5>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote remove origin
+</code></pre></div></div>
+
+<p>Depois de executar esses comandos, o repositório local estará desconectado do repositório remoto.</p>
+
+<h5 id="como-renomear-o-repositório-remoto">Como renomear o repositório remoto</h5>
+
+<p>Use o comando ‘git remote rename’ para alterar o nome do repositório remoto. No exemplo abaixo, vamos renomear ‘origin’ para ‘novo-nome’.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote rename origin novo-nome
+</code></pre></div></div>
+
+<p>Note que:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git remote <span class="nt">-v</span>
+novo-nome  git@github.com:SEU_USUARIO/SEU_REPOSITORIO.git <span class="o">(</span>fetch<span class="o">)</span>
+novo-nome  git@github.com:SEU_USUARIO/SEU_REPOSITORIO.git <span class="o">(</span>push<span class="o">)</span>
+</code></pre></div></div>
+
+<p><a href="#exercício-03---configurando-um-repositório-remoto-e-enviando-os-commits"><spam class="destaque" style="font-size:20px;">Exercício : 3</spam></a></p>
+
+<h4 id="como-ver-todos-os-commit-feitos-com-git-log">Como ver todos os commit feitos com “git log”</h4>
+
+<p>É um comando feito para exibir os <span class="destaque">históricos de commits</span> do projeto.</p>
+
+<p>Aparece <span class="destaque">nome</span>, <span class="destaque">hora</span>, <span class="destaque">data</span> e a <span class="destaque">mensagem</span> relacionada a cada commit.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git log
+commit 9fceb02d0ae598e95dc970b74767f19372d61af8
+Author: Jane &lt;jane.doe@example.com&gt;
+Date:   Fri Jun 30 14:32:16 2024 +0000
+
+    Adicionando modificação no feed 
+
+commit 3ad45c37a9f1b251545b8b2f4a3db7b683ed8e53
+Author: John Smith &lt;john.smith@example.com&gt;
+Date:   Thu Jun 29 09:12:10 2024 +0000
+
+    adicionando a funcionalidade chat
+</code></pre></div></div>
+
+<h5 id="uma-flag-eficiente">Uma flag eficiente</h5>
+
+<p>Utilizando o comando <span class="destaque">“git log –oneline”</span>, podemos ver os commits de forma mais simplificada.</p>
+
+<p>Ele irá mostrar o número <span class="destaque">hash</span> ou sha que é o <span class="destaque">identificador (ID)</span> do commit e em seguida a sua <span class="destaque">mensagem</span>.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--oneline</span>
+</code></pre></div></div>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git log <span class="nt">--oneline</span>
+9fceb02 <span class="o">(</span>HEAD -&gt; main<span class="o">)</span> Adicionando modificação no feed 
+b75f610 adicionando a funcionalidade chat
+c1b4d83 Commit inicial com arquivos de configuração <span class="k">do </span>projeto   
+</code></pre></div></div>
+
+<h4 id="clonando-um-repositório">Clonando um repositório</h4>
+
+<p>Para começar a trabalhar com um repositório que já existe em um servidor remoto, você pode cloná-lo para o seu ambiente local usando o comando <span class="destaque">git clone</span>. Este comando cria uma cópia completa do repositório, incluindo todo o histórico de commits e branches.</p>
+
+<p>Para clonar um repositório que está por exemplo no GitHub, faça:</p>
+
+<ol>
+  <li>
+    <p>No GitHub.com, navegue até a página principal do repositório e faça o seguinte:</p>
+
+    <ul>
+      <li>Para clonar o repositório usando HTTPS, em “HTTPS”, clique no ícone de cópia</li>
+      <li>Para clonar o repositório usando uma chave SSH, clique em “SSH” e depois no ícone de cópia.</li>
+      <li>Para clonar um repositório usando a GitHub CLI, clique em “GitHub CLI” e depois no ícone de cópia.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Abra o Terminal.</p>
+  </li>
+  <li>
+    <p>Altere o diretório de trabalho atual para o local em que deseja ter o diretório clonado.</p>
+  </li>
+  <li>
+    <p>Digite <code class="language-plaintext highlighter-rouge">git clone</code> e cole a URL já copiada.</p>
+  </li>
+  <li>
+    <p>Pressione ENTER para criar seu clone local.</p>
+  </li>
+</ol>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+<span class="o">&gt;</span> Cloning into <span class="sb">`</span>YOUR-REPOSITORY<span class="sb">`</span>...
+<span class="o">&gt;</span> remote: Counting objects: 10, <span class="k">done</span><span class="nb">.</span>
+<span class="o">&gt;</span> remote: Compressing objects: 100% <span class="o">(</span>8/8<span class="o">)</span>, <span class="k">done</span><span class="nb">.</span>
+<span class="o">&gt;</span> remote: Total 10 <span class="o">(</span>delta 1<span class="o">)</span>, reused 10 <span class="o">(</span>delta 1<span class="o">)</span>
+<span class="o">&gt;</span> Unpacking objects: 100% <span class="o">(</span>10/10<span class="o">)</span>, <span class="k">done</span><span class="nb">.</span>
+</code></pre></div></div>
+
+<h4 id="subindo-alterações-para-o-repositório-remoto-git-push">Subindo alterações para o repositório remoto: “git push”</h4>
+
+<p>Se você tem um commit pronto e quer <span class="destaque">adiciona-lo ao repositório remoto</span>, podemos fazer:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push 
+</code></pre></div></div>
+
+<p>Fazendo o git push os seus commits irão subir para o seu repositório remoto que foi configurado inicialmente por padrão.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin master
+</code></pre></div></div>
+
+<p>Vamos supor que o nome no repositório remoto seja <spam class="destaque">main</spam>, mas sua cópia local é chamada de <spam class="destaque">master</spam>. Para corrigir essa diferença, você pode <spam class="destaque">referenciar diretamente</spam> a branch (que é o local onde estamos desenvolvendo e enviando as modificações para o Git) do repositório remoto usando o seguinte comando:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin master:main
+</code></pre></div></div>
+
+<p>Dessa forma, você está enviando o conteúdo da sua <spam class="destaque">cópia local</spam> chamada <spam class="destaque">master</spam> para a <spam class="destaque">cópia no repositório remoto</spam> que é chamada de <spam class="destaque">main</spam>.</p>
+
+<h4 id="trazendo-alterações-para-o-repositório-local-git-pull">Trazendo alterações para o repositório local: “git pull”</h4>
+
+<p>Se foram feitas alterações no repositório remoto por outros desenvolvedores ou por você mesmo e você deseja trazê-las para o seu repositório local, basta digitar o comando <span class="destaque">git pull</span>:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull
+</code></pre></div></div>
+
+<p>Por padrão, esse comando irá puxar as alterações do <span class="destaque">origin</span>, que é o nome padrão do repositório remoto referenciado quando você conectou o repositório local com o remoto pela primeira vez. No caso de um clone, o <span class="destaque">origin</span> é o repositório de onde você fez o <span class="destaque">git clone</span>.</p>
+
+<p>Para atualizar uma <span class="destaque">branch</span> local com as alterações da branch remota sem usar diretamente <span class="destaque">git pull</span>, você pode usar o comando <span class="destaque">git pull</span> com a especificação direta da branch remota, o que é na prática uma forma direta de realizar a operação. Aqui está como fazer isso:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull origin nome-da-branch:nome-da-branch-local
+</code></pre></div></div>
+
+<p><a href="#exercício-04---adicionando-funções-de-soma-e-multiplicação-à-calculadora"><spam class="destaque" style="font-size:20px;">Exercícios : 4- 5</spam></a></p>
+
+<h2 id="exercícios">Exercícios</h2>
+
+<h3 id="orientações-sobre-os-exercícios">Orientações sobre os exercícios</h3>
+
+<p>Envie os exercícios de cada dia <em>separados</em> para o email <code class="language-plaintext highlighter-rouge">linuxgitpetcc@gmail.com</code> com o assunto sempre sendo: <code class="language-plaintext highlighter-rouge">Dia (dia de aula) - (Nome do aluno)</code></p>
+
+<h3 id="exercícios-obrigatórios">Exercícios Obrigatórios</h3>
+
+<h4 id="exercício-01---iniciando-um-novo-repositório-git">Exercício 01 - Iniciando um novo repositório Git</h4>
+
+<p><a href="#fazendo-o-commit-do-que-foi-feito-git-commit">Clique para voltar ao conteúdo</a></p>
+
+<ol>
+  <li>
+    <p>Crie um novo diretório chamado projetos.</p>
+  </li>
+  <li>
+    <p>Entre no diretório projetos e crie outro diretório chamado calculadora_pyton.</p>
+  </li>
+  <li>
+    <p>Inicialize um repositório Git vazio no diretório calculadora_pyton.</p>
+  </li>
+  <li>
+    <p>Faça o comando para visualizar a pasta oculta que foi criada.</p>
+  </li>
+</ol>
+
+<p>Como resolução, descreva os passos que você fez em um arquivo de texto com o nome dia3exercicio1.txt para o email “<a href="mailto:linuxgitpetcc@gmail.com">linuxgitpetcc@gmail.com</a>”.
+Lembre-se de adicionar seu nome ao arquivo!</p>
+
+<h4 id="exercício-02---adicionando-arquivos-ao-seu-repositório-git">Exercício 02 - Adicionando arquivos ao seu repositório Git</h4>
+
+<p><a href="#fazendo-o-commit-do-que-foi-feito-git-commit">Clique para voltar ao conteúdo</a></p>
+
+<ol>
+  <li>
+    <p>Crie um arquivo chamado ‘README.md’ dentro do diretório calculadora_pyton.</p>
+  </li>
+  <li>
+    <p>Adicione o conteúdo “Este é um projeto de uma calculadora em Python que realiza operações básicas.” ao README.md.</p>
+  </li>
+  <li>
+    <p>Adicione o arquivo README.md ao repositório Git.</p>
+  </li>
+</ol>
+
+<p>5.Faça um commit no repositório Git com a mensagem “Adicionei o README.md”.</p>
+
+<h4 id="exercício-03---configurando-um-repositório-remoto-e-enviando-os-commits">Exercício 03 - Configurando um repositório remoto e enviando os commits</h4>
+
+<p><a href="#como-desconectar-o-repositório-local-do-remoto">Clique para voltar ao conteúdo</a></p>
+
+<ol>
+  <li>
+    <p>No GitHub, crie um novo repositório chamado calculadora_pyton.</p>
+  </li>
+  <li>
+    <p>No terminal, dentro do diretório calculadora_pyton, configure seu repositório Git local para apontar para este repositório remoto.</p>
+  </li>
+  <li>
+    <p>Envie seus commits para o repositório remoto.</p>
+  </li>
+</ol>
+
+<p>Para a avaliação, mande o link do repositório pelo email “<a href="mailto:linuxgitpetcc@gmail.com">linuxgitpetcc@gmail.com</a>”.</p>
+
+<h4 id="exercício-04---adicionando-funções-de-soma-e-multiplicação-à-calculadora">Exercício 04 - Adicionando funções de soma e multiplicação à calculadora</h4>
+
+<p><a href="#trazendo-alterações-para-o-repositório-local-git-pull">Clique para voltar ao conteúdo</a></p>
+
+<ol>
+  <li>Adicione um novo arquivo chamado calculadora.py com a função de soma:</li>
+</ol>
+
+<p>Copie o seguinte código:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">soma</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Adicione o arquivo ao repositório:</p>
+  </li>
+  <li>
+    <p>Faça um commit com a mensagem “Adicionei a função de soma”.</p>
+  </li>
+  <li>
+    <p>Adicione a função de multiplicação ao arquivo calculadora.py:
+Copie o código da mesma forma que está aqui abaixo (mesmo com o erro):</p>
+  </li>
+</ol>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">multiplicacao</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">c</span><span class="o">+</span><span class="n">b</span><span class="o">=</span><span class="mi">4</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Adicione e “comite” as mudanças com a seguinte mentagem: “Adicionei a função de multiplicação”</p>
+  </li>
+  <li>
+    <p>Verifique o erro após o commit e corrija-o apagando o “c+b=4” no arquivo.</p>
+  </li>
+  <li>
+    <p>Adicione a modificação ao repositório e faça o commit com a mensagem “Correção de bug na função de multiplicação”</p>
+  </li>
+  <li>
+    <p>Use o comando que sobe as alterações locais para o repositório remoto para subir os seus commits.</p>
+  </li>
+</ol>
+
+<h4 id="exercício-05---clonando-um-repositório">Exercício 05 - Clonando um repositório</h4>
+
+<p><a href="#trazendo-alterações-para-o-repositório-local-git-pull">Clique para voltar ao conteúdo</a></p>
+
+<ol>
+  <li><strong>Criar e clonar o repositório:</strong>
+    <ul>
+      <li>O aluno responsável pelo primeiro repositório remoto deve criar um novo repositório no GitHub com o nome “projeto 02” e compartilhar o link com o colega de dupla.</li>
+      <li>O colega deve clonar esse repositório usando o comando <code class="language-plaintext highlighter-rouge">git clone [link do repositório]</code>.</li>
+    </ul>
+  </li>
+  <li><strong>Criar uma pasta no repositório:</strong>
+    <ul>
+      <li>Cada aluno deve criar uma pasta com seu número de matrícula e primeiro nome, seguindo o formato <code class="language-plaintext highlighter-rouge">201003948_luiz</code>.</li>
+      <li>Adicione a pasta ao Git com <code class="language-plaintext highlighter-rouge">git add [nome da pasta]</code> e “comite” com a mensagem “Adicionei a pasta 201003948_luiz”.</li>
+    </ul>
+  </li>
+  <li><strong>Desenvolver o projeto individualmente:</strong>
+    <ul>
+      <li>Dentro da pasta criada, cada aluno pode desenvolver o projeto que quiser, aplicando o que foi aprendido:
+        <ul>
+          <li>Criar uma história fictícia em um arquivo <code class="language-plaintext highlighter-rouge">.txt</code> com 3 capítulos, fazendo commits a cada capítulo, a cada erro ortográfico corrigido ou a cada modificação de personagem.</li>
+          <li>Fazer uma calculadora ou qualquer outro programa em qualquer linguagem de programação, fazendo commits a cada funcionalidade implementada.</li>
+          <li>Fazer um site pequeno e básico, fazendo commits a cada funcionalidade implementada.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Sincronizar as alterações com o repositório remoto:</strong>
+    <ul>
+      <li>Traga para o repositório local as alterações que estão no remoto com <code class="language-plaintext highlighter-rouge">git pull</code> (para verificar se o colega já subiu algum arquivo).</li>
+      <li>Após isso, suba todos os commits para o repositório remoto com <code class="language-plaintext highlighter-rouge">git push</code>.</li>
+    </ul>
+  </li>
+  <li><strong>Criar o segundo repositório:</strong>
+    <ul>
+      <li>O outro aluno da dupla deve criar um novo repositório no GitHub com o nome <strong>“projeto 03”</strong> e repetir os passos 1 a 4, criando sua própria pasta no novo repositório do colega.</li>
+    </ul>
+  </li>
+  <li><strong>Envio dos links dos repositórios:</strong>
+    <ul>
+      <li>Ao final do exercício, cada aluno deve enviar por e-mail os links de ambos os repositórios (<strong>projeto 02</strong> e <strong>projeto03</strong>) para a avaliação.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="o-que-será-avaliado-aqui-são-os-commits-e-não-se-os-códigos-estão-corretos-cada-aluno-deve-fazer-no-mínimo-3-commits-em-cada-projeto">O que será avaliado aqui são os commits, e não se os códigos estão corretos. Cada aluno deve fazer, no mínimo, 3 commits em cada projeto</h2>
+
+<script>
+const dataDia3 = new Date('2025-03-12');
+const agora = new Date();
+
+if (agora < dataDia3) {
+    document.body.innerHTML = '<h1 style="text-align:center; margin-top:20%;">Página Indisponível</h1>' +
+                              '<p style="text-align:center;">Esta página estará disponível a partir de ' + dataDia3.toLocaleDateString() + '.</p>';
+}
+</script>
+
+<div class="small center">
+<p>&copy; PET-CC/UFRN 2024 Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br">CC BY-NC-SA</a>.</p>
+</div>
+
+
+            </main>
+            <script src="./assets/js/sumario_script.js"></script>
+        </div>
+    </body>
+</html>

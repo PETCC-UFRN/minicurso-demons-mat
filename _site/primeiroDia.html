@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minicurso de Linux e Git</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./assets/css/styles.css">
+        <link rel="stylesheet" href="/minicurso-linux-git/assets/css/syntax.css">
+        <link rel="icon" href="https://i.ibb.co/RD7XwYH/pet-logo.png" type="image/png">
+    </head>
+    <body class="oldschool">
+        <header>
+    <nav class="oldschoolnav">
+        <ul class="listaNavegacao">
+            <li>
+                <a href="index" style="text-decoration:none;">/home</a>
+            </li>
+            <li>
+                <a href="aulas" style="text-decoration:none;">/aulas</a>
+            </li> 
+            <li>
+                <a href="sobre" style="text-decoration:none;">/sobre</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+        <div>
+            <main>
+                <h1 id="primeiros-passos-no-linux">Primeiros passos no Linux</h1>
+
+<div id="sumario" class="sumario-oldschool">
+    <h1>Sumário</h1>
+    <details>
+        <summary><a href="#introdução">Introdução</a></summary>
+    <ul>
+        <li><a href="#o-que-é-o-linux">O que é o Linux?</a></li>
+        <li><a href="#família-unix-e-unix-like">Família Unix e Unix-Like</a></li>
+        <li><a href="#distros">Distros</a></li>
+    </ul>
+    </details>
+    <details>
+            <summary><a href="#uso-básico-do-shell">Uso básico do Shell</a></summary>
+        <ul>
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#primeiros-passos">Primeiros passos</a></li>
+            <li><a href="#navegando-com-o-shell">Navegando com o Shell</a></li>
+            <li><a href="#opções-e-argumentos-de-comando">Opções e argumentos de comando</a></li>
+            <li><a href="#como-investigar-comandos">Como investigar comandos</a></li>
+        </ul>
+    </details>
+    <details>
+         <summary><a href="#permissões-leitura-e-busca-emde-arquivos">Permissões, leitura e busca em/de arquivos</a></summary>
+        <ul>
+            <li><a href="#long-listing-format-e-permissões">Long listing format e permissões</a></li>
+            <li><a href="#lendo-arquivos">Lendo arquivos</a></li>
+        </ul>
+    </details>
+    <details>
+        <summary><a href="#links-simbólicos-e-links-físicos">Links simbólicos e links físicos</a></summary>
+        <ul>
+            <li><a href="#links-simbólicos-sym-links">Links simbólicos (sym-links)</a></li>
+            <li><a href="#links-físicos-hard-links">Links físicos (hard-links)</a></li>
+        </ul>
+    </details>
+     <details>
+        <summary><a href="#comandos-de-busca">Comandos de Busca</a></summary>
+    <ul>
+        <li><a href="#find-imprime-arquivos-cujo-correspondem-a-um-padrão"><code>find</code> - Imprime arquivos cujo correspondem a um padrão</a></li>
+        <li><a href="#grep-imprime-linhas-que-correspondem-a-um-padrão"><code>grep</code> - Imprime linhas que correspondem a um padrão</a></li>
+    </ul>
+     </details>
+   <details>
+    <summary><a href="#redirecionando-e-combinando-comandos">Redirecionando e combinando comandos</a></summary>
+        <ul>
+            <li><a href="#standard-input-output-e-error">Standard Input, Output e Error</a></li>
+            <li><a href="#redirecionando-o-standard-output-e-standard-error">Redirecionando o Standard Output e Standard Error</a></li>
+            <li><a href="#redirecionando-o-standard-input-e-wildcards">Redirecionando o Standard Input e wildcards</a></li>
+            <li><a href="#combinando-comandos">Combinando comandos</a></li>
+        </ul>
+     </details>
+      <details>
+            <summary><a href="#exercícios">Exercícios</a></summary>
+        <ul>
+            <li><a href="#exercícios-de-fixação">Exercícios de fixação</a></li>
+            <li><a href="#exercícios-obrigatórios">Exercícios Obrigatórios</a><!--toc:end--></li>
+        </ul>
+     </details>
+  <button class="toggle-button" id="toggle-button">
+  
+      Esconder Sumário
+  
+  </button>
+</div>
+
+<div style="text-align: center;"> <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/linux_dia1_imagem7.png" width="40%" />
+</div>
+<p><br /></p>
+
+<h2 id="para-que-serve-a-matemática-na-computação">Para que serve a matemática na computação?</h2>
+
+<p><cite>— “Por que preciso estudar matemática para aprender a programar?”</cite><br />
+<cite>— “Pra que eu vou usar matemática no mercado de trabalho?”</cite><br />
+<cite>— “Precisa ser bom em matemática pra ser um bom programador?”</cite></p>
+
+<p>Essas são perguntas que você já deve ter ouvido (ou se perguntado) ao refletir sobre o papel da matemática na ciência da computação e suas áreas. A resposta é simples: <strong>a matemática é o alicerce da tecnologia</strong>. Ela vai além da ideia de “contas e fórmulas” do ensino médio/fundamental — seu verdadeiro papel é nos ensinar a <strong>pensar de forma lógica, abstrata e criativa</strong>, habilidades essenciais para resolver problemas complexos. Não é necessário ser um gênio da matemática para ser um bom programador, mas entender os conceitos e aplicações torna seu trabalho muito mais fácil e eficiente.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>»&gt; Seção abaixada gerada por IA, sujeita a mundanças</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="a-matemática-como-berço-da-computação">A matemática como berço da computação</h3>
+<p>A computação moderna nasceu de uma necessidade histórica de automatizar o pensamento humano. No século XIX, durante a Revolução Industrial, <strong>Charles Babbage</strong> projetou a <strong>Máquina Analítica</strong> — a primeira ideia de um computador programável. Mas foi <strong>Ada Lovelace</strong>, matemática e filha do poeta Lord Byron, quem deu vida ao conceito. Em 1843, ao traduzir um artigo sobre a máquina de Babbage, Lovelace acrescentou notas que mudariam a história: ela percebeu que a máquina poderia processar <strong>símbolos além de números</strong> (como música ou texto) se programada com algoritmos matemáticos. Seu algoritmo para calcular números de Bernoulli é considerado o <strong>primeiro programa de computador da história</strong>. Lovelace fez isso porque enxergava a matemática como uma <strong>“linguagem universal”</strong> para expressar qualquer forma de conhecimento.</p>
+
+<p>Quase 100 anos depois, em meio à Segunda Guerra Mundial, o matemático <strong>Alan Turing</strong> enfrentou um problema prático e urgente: decifrar os códigos da máquina <strong>Enigma</strong>, usada pelos nazistas para comunicações secretas. Mas seu trabalho na equipe de Bletchley Park (Reino Unido) só foi possível graças a uma revolução teórica que ele liderara anos antes. Em 1936, Turing respondeu a um desafio matemático do século XX — o <strong>“Entscheidungsproblem”</strong> (problema da decisão), proposto por David Hilbert — criando um modelo abstrato chamado <strong>Máquina de Turing</strong>. Esse dispositivo teórico, baseado em regras lógicas simples (como ler/escrever símbolos e mudar estados), provou que <strong>qualquer problema computável</strong> poderia ser resolvido por algoritmos. A guerra apenas acelerou a aplicação prática: Turing usou estatística e teoria da probabilidade para projetar a <strong>“Bombe”</strong>, máquina que automatizou a quebra da Enigma, salvando milhões de vidas.</p>
+
+<h3 id="a-ponte-para-o-presente">A ponte para o presente</h3>
+<p>Essa evolução mostra como crises históricas (industrialização, guerras) e mentes matemáticas se entrelaçaram:</p>
+<ul>
+  <li>Lovelace transformou <strong>ferramentas de cálculo</strong> em <strong>máquinas de pensamento</strong>;</li>
+  <li>Turing transformou <strong>teoria abstrata</strong> em <strong>salvação prática</strong> durante a guerra;</li>
+  <li>Ambos provaram que computação é <strong>matemática em ação</strong>.</li>
+</ul>
+
+<p>Hoje, quando você usa um GPS (que aplica teoria dos grafos), streaming (recomendação por álgebra linear) ou criptomoedas (criptografia de teoria dos números), está colhendo os frutos dessa jornada. Por isso, começaremos nosso curso com <strong>lógica e demonstrações matemáticas</strong> — não para fazer “contas”, mas para você dominar a arte de <strong>transformar abstrações em revoluções tecnológicas</strong>.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>»&gt; Fim da seção</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="as-demonstrações-matemáticas">As demonstrações matemáticas</h2>
+<p>Uma parte fundamental do trabalho de um matemático é <strong>provar a verdade</strong> do que seu trabalho propõe, é para isso que servem as <strong>demonstrações</strong>, também chamadas de prova formal, ou simplesmente prova. Na computação, as demonstrações são muito utilizadas para provar a <strong>corretude de algoritmos</strong>, como veremos futuramente neste curso.</p>
+
+<h3 id="como-demonstramos-alguma-coisa">Como demonstramos alguma coisa?</h3>
+<p>Diferente de outras ciências, na matemática não provamos coisas a partir de evidências empíricas. O que fazemos é seguir um processo lógico rigoroso, onde partindo de uma verdade (já existente) e chegamos a uma nova verdade (o que se desejava provar) a partir de transformações (como regras de inferência) que preservam a verdade. <strong>Acho q precisa melhorar esse texto dps, mas por enquanto ta bom</strong></p>
+
+<h3 id="terminologia-básica">Terminologia básica</h3>
+
+<p><strong>Proposição</strong>: Uma afirmação que pode ser demonstrada como verdadeira ou falsa. É o bloco básico do raciocínio matemático.</p>
+
+<p><strong>Teorema</strong>: Uma proposição de grande importância que foi demonstrada como verdadeira.</p>
+
+<p><strong>Lema</strong>: Um “teorema auxiliar” - uma proposição provada que serve principalmente como passo intermediário para provar um teorema maior.</p>
+
+<p><strong>Corolário</strong>: Uma consequência direta de um teorema já demonstrado, que muitas vezes requer pouca ou nenhuma prova adicional.</p>
+
+<p><strong>Conjectura</strong>: Uma proposição que se acredita ser verdadeira, mas que ainda não foi provada (nem refutada).</p>
+
+<p><strong>Axioma</strong>: Uma proposição considerada evidentemente verdadeira e que serve como ponto de partida para construir teorias. Não precisa ser demonstrado.</p>
+
+<h2 id="exemplos-práticos">Exemplos práticos</h2>
+<p>Vamos ver alguns exemplos práticos de demonstrações e outros conceitos.</p>
+
+<h3 id="demonstrando-a-comutatividade-da-união">Demonstrando a comutatividade da união</h3>
+<p><strong>Proposição</strong>:
+Para quaisquer conjuntos <code class="language-plaintext highlighter-rouge">(A)</code> e <code class="language-plaintext highlighter-rouge">(B)</code>, vale que <code class="language-plaintext highlighter-rouge">A U B = B U A</code></p>
+
+<p><strong>Prova Direta:</strong>
+Tome <code class="language-plaintext highlighter-rouge">x</code>, tal que <code class="language-plaintext highlighter-rouge">x ∈ A U B</code>.</p>
+
+<p>Pela definição da união, temos que <code class="language-plaintext highlighter-rouge">x ∈ A e x ∈ B</code>.</p>
+
+<p>Pela comutatividade do operador lógio <code class="language-plaintext highlighter-rouge">e</code>, temos que <code class="language-plaintext highlighter-rouge">x ∈ B e x ∈ A</code>.</p>
+
+<p>Novamente aplicando a definição da união, temos <code class="language-plaintext highlighter-rouge">x ∈ B U A</code></p>
+
+<p>Dessa forma, partindo da premissa <code class="language-plaintext highlighter-rouge">x ∈ A U B</code>, chegamos a <code class="language-plaintext highlighter-rouge">x ∈ B U A</code>.
+| Opiniões do formato da demonstração e sugestões de outras demonstrações (mais fáceis, q não usem definições q os alunos n tem conhecimento sla) porfavor. A partir do que a gente decidir, montamos as proximas demonstrações. Tava pensando em usar uns códigos simples em python p ajudar a visualizar essas demonstrações.|</p>
+
+            </main>
+            <script src="./assets/js/sumario_script.js"></script>
+        </div>
+    </body>
+</html>
