@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>{{ page.title }}</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/syntax.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="icon" href="https://i.ibb.co/RD7XwYH/pet-logo.png" type="image/png">
+    </head>
+    <body>
+        {% include nav.html %}
+        <div>
+            <main>
+                {{ content }}
+            </main>
+        </div>
+    </body>
+</html>

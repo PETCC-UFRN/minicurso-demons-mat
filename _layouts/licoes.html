@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ page.title }}</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./assets/css/styles.css">
+        <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/syntax.css">
+        <link rel="icon" href="https://i.ibb.co/RD7XwYH/pet-logo.png" type="image/png">
+    </head>
+    <body class="licoes">
+        {% include nav.html %}
+        <div>
+            <main>
+                <div id="licoes_content">
+                    {{ content }}
+                </div>
+                {% include dias_e_temas.html %}
+
+                <script src="assets/js/script_dia.js"></script>
+            </main>
+        </div>
+    </body>
+</html>
