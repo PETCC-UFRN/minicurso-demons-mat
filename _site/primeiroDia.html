@@ -26,7 +26,7 @@
 
         <div>
             <main>
-                <h1 id="primeiros-passos-no-linux">Primeiros passos no Linux</h1>
+                <h1 id="conceitos-básicos-de-demonstração">Conceitos básicos de demonstração</h1>
 
 <div id="sumario" class="sumario-git">
     <h1>Sumário</h1>
@@ -38,7 +38,7 @@
     </ul>
     </details>
     <details>
-            <summary><a href="#as-demonstrações-matemáticas">As demonstrações matemáticas</a></summary>
+        <summary><a href="#as-demonstrações-matemáticas">As demonstrações matemáticas</a></summary>
         <ul>
             <li><a href="#como-demonstramos-alguma-coisa">Como demonstramos alguma coisa</a></li>
             <li><a href="#terminologia-básica">Terminologia básica</a></li>
@@ -48,6 +48,16 @@
          <summary><a href="#exemplos-práticos">Exemplos práticos</a></summary>
         <ul>
             <li><a href="#demonstrando-a-comutatividade-da-união">Demonstrando a comutatividade da união</a></li>
+            <li><a href="#demonstrando-a-infinitude-dos-números-primos">Demonstrando a infinitude dos números primos</a></li>
+        </ul>
+    </details>
+    <details>
+        <summary><a href="#introdução-a-python-funções-e-recursividade">Introdução a python funções e recursividade</a></summary>
+        <ul>
+            <li><a href="#funções">Funções</a></li>
+            <li><a href="#iteratividade-vs-recursividade">Iteratividade vs recursividade</a></li>
+            <li><a href="#pincelando-os-conceitos-de-lógica">Pincelando os conceitos de lógica</a></li>
+            <li><a href="#quiz-para-testar-o-que-vem-pela-frente">Quiz para testar o que vem pela frente</a></li>
         </ul>
     </details>
   <button class="toggle-button" id="toggle-button">
@@ -57,7 +67,7 @@
   </button>
 </div>
 
-<div style="text-align: center;"> <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/linux_dia1_imagem7.png" width="40%" />
+<div style="text-align: center;"> <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/funny-math-meme.png" width="50%" />
 </div>
 <p><br /></p>
 
@@ -101,8 +111,7 @@
 </table>
 
 <h2 id="as-demonstrações-matemáticas">As demonstrações matemáticas</h2>
-<p>Uma parte fundamental do trabalho de um matemático é <strong>provar a verdade</strong> do que seu trabalho propõe, é para isso que servem as <strong>demonstrações</strong>, também chamadas de prova formal, ou simplesmente prova. Na computação, as demonstrações são muito utilizadas para provar a <strong>corretude de algoritmos</strong>, como veremos futuramente neste curso.</p>
-
+<p>Uma parte fundamental do trabalho de um matemático é <strong>provar a verdade</strong> do que seu trabalho propõe, é para isso que servem as <strong>demonstrações</strong>, também chamadas de prova formal, ou simplesmente prova. Antes de qualquer coisa, é importante definirmos melhor o que são demonstrações: Em um contexto matemático, elas são <strong>argumentos lógicos rigorosos</strong> que provam a <strong>verdade</strong> de uma proposição, partindo de axiomas, definições, e até teoremas previamente aceitos (veremos mais sobre esses conceitos no dia 2!). Ou seja, através de “ferramentas” que temos à nossa disposição, demonstrações são capazes de provar a veracidade (ou a não veracidade) de hipóteses matemáticas. Na computação, as demonstrações são muito utilizadas para provar a <strong>corretude de algoritmos</strong>, como veremos futuramente neste curso.</p>
 <h3 id="como-demonstramos-alguma-coisa">Como demonstramos alguma coisa?</h3>
 <p>Diferente de outras ciências, na matemática não provamos coisas a partir de evidências empíricas. O que fazemos é seguir um processo lógico rigoroso, onde partindo de uma verdade (já existente) e chegamos a uma nova verdade (o que se desejava provar) a partir de transformações (como regras de inferência) que preservam a verdade. <strong>Acho q precisa melhorar esse texto dps, mas por enquanto ta bom</strong></p>
 
@@ -139,33 +148,12 @@ Tome <code class="language-plaintext highlighter-rouge">x</code>, tal que <code 
 <p>Dessa forma, partindo da premissa <code class="language-plaintext highlighter-rouge">x ∈ A U B</code>, chegamos a <code class="language-plaintext highlighter-rouge">x ∈ B U A</code>.
 | Opiniões do formato da demonstração e sugestões de outras demonstrações (mais fáceis, q não usem definições q os alunos n tem conhecimento sla) porfavor. A partir do que a gente decidir, montamos as proximas demonstrações. Tava pensando em usar uns códigos simples em python p ajudar a visualizar essas demonstrações.|</p>
 
-<h2 id="um-breve-histórico-da-ciência-da-computação">Um breve histórico da Ciência da Computação</h2>
-<p>— to do: uma intro melhorzinha. a criatividade nao estava fluindo !</p>
+<h3 id="demonstrando-a-infinitude-dos-números-primos">Demonstrando a infinitude dos números primos</h3>
+<p><strong>Proposição:</strong>
+Os números primos são infinitos.</p>
 
-<p>Mas as bases da Ciência da Computação, por mais irônico que isso soe, são predecessoras dos primeiros computadores! Algoritmos existem desde a antiguidade, e eles são fundamentados em pensamentos lógicos informais: Ábacos, por exemplo, - ainda que fossem operados à mão - computavam operações como adição e subtração com base em algoritmos pré-estabelecidos. Da mesma forma, a Anticítera - um dispositivo desenvolvido pelos gregos para prever posições de corpos celestes, fases da lua e outros eventos astronômicos - é considerado o primeiro computador analógico conhecido!</p>
-
-<p>Assim, ela se estende muito além do limite físico de um computador moderno</p>
-
-<h2 id="matemática-discreta-e-lógica-na-computação">Matemática Discreta e Lógica na Computação</h2>
-
-<p>Muitas vezes, ao nos depararmos com matérias de matemática discreta e lógica, nos perguntamos onde e quando usaremos isso ao longo do nosso curso. Mas a verdade é que, desde sua origem, a computação é profundamente atrelada aos conceitos de lógica e matemática.</p>
-
-<p>— to do</p>
-
-<p>A matemática discreta provides a linguagem e a matemática necessárias para entendermos e desenvolvermos sistemas computacionaus e algoritmos. Além disso, ela é fundamental para e
-É comum pensar que a computação</p>
-
-<h2 id="demonstrações-introdutórias">Demonstrações introdutórias</h2>
-
-<p>Antes de qualquer coisa, é importante definirmos demonstrações: Em um contexto matemático, elas são argumentos lógicos rigorosos que provam a verdade de uma proposição, partindo de axiomas, definições, até teoremas e até previamente aceitos (veremos mais sobre esses conceitos no dia 2!). Ou seja, através de “ferramentas” que temos à nossa disposição, demonstrações são capazes de provar a veracidade (ou a não veracidade!) de hipóteses matemáticas.</p>
-
-<p>Mas antes de colocarmos as nossas mãos na massa, é importante termos um norte de como demostrações de fato funcionam. Para isso, separamos 3 exemplos - todos eles de grande importância para a Computação! - que explicitam bem diferentes formas de demonstração.</p>
-
-<blockquote>
-  <p>Hipótese: Os números primos são infinitos (Teorema de Euclides)</p>
-</blockquote>
-
-<p>Agora, iremos provar a nossa hipótese inicial <em>por casos</em>.
+<p><strong>Prova por casos</strong>:
+Agora, iremos provar a nossa hipótese inicial <em>por casos</em>.
 ***(tinha colocado contradicao, mas aparentemente nao eh considerado contradicao e o nosso mano euclides errou nisso ai)</p>
 
 <p>Considere qualquer lista finita de primos p1, p2, …, pn. Será mostrado que existe pelo menos um número primo que não está na lista.
@@ -182,23 +170,9 @@ Seja Q = P + 1.</p>
 
 <p>Isso prova que, para qualquer lista finita de números primos, existe algum número que não está na lista!</p>
 
-<p>Em uma primeira análise, a infinitude dos primos pode parecer meio inútil para nós leigos. No entanto, ela é extremamente importante em uma das áreas mais cruciais da computação: a cybersegurança. Um dos sistemas de criptografia mais antigos para a transmissão segura de dados é o RSA (Rivest-Shamir-Adleman), que, de maneira breve, se baseia na criação de chaves públicas e privadas para garantir autenticidade ou segurança de dados propagados.</p>
-
-<p>A sacada é: essas chaves são de fato seguras pois são geradas a partir do produto de dois números primos suficientemente grandes e distantes entre si. Para “quebrar” essa criptografia sem o conhecimento desses, a fatoração desse número é necessária - um processo que, para números muito grandes, é extremamente lento. Assim, a infinidade dos primos garante que, mesmo com avanços computacionais, existem números primos grandes o suficiente para a formação de chaves complexas o suficiente, de forma que as informações podem ser transmitidas de forma segura.</p>
-
-<blockquote>
-  <p>Hipótese: A soma n² + n + 41 resulta em um número primo para todo inteiro N</p>
-</blockquote>
-
-<p>— to do: Prova por contraexemplo (maybe pedro queira fazer, ele pareceu animado com esse exemplo em especifico!)</p>
-
-<blockquote>
-  <p>Hipótese: todo par maior que 2 pode ser escrito como a soma de dois primos
-—to do: Conjectura de Goldbach; mostrar que nem sempre podemos provar que algo é verdadeiro ou nao</p>
-</blockquote>
+<h3 id="outros-exemplos">outros exemplos…</h3>
 
 <h2 id="introdução-a-python-funções-e-recursividade">Introdução a Python, Funções e Recursividade</h2>
-
 <p>– to do: fazer um gancho que conecte essa à parte anterior</p>
 
 <p>Para apresentar os conceitos de iteratividade e recursividade, vamos usar uma linguagem de programação que vários de vocês devem conhecer: Python! Com ela, vamos ver um pouco sobre funções, diferentes maneiras de declará-las e seus usos diversos.</p>
