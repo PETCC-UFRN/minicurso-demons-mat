@@ -4,7 +4,7 @@
         <title>Shell Avançado</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="./assets/css/styles.css">
-        <link rel="stylesheet" href="/minicurso-linux-git/assets/css/syntax.css">
+        <link rel="stylesheet" href="/minicurso-demons-mat/assets/css/syntax.css">
         <link rel="icon" href="https://i.ibb.co/RD7XwYH/pet-logo.png" type="image/png">
     </head>
     <body class="oldschool">
@@ -105,7 +105,7 @@ e vai invocar seu real significado. E, de certa forma, conseguimos criar, com is
 
 <p>Agora, uma reflexão interessante a se fazer é pensar como o Shell sabe quais são os apelidos que demos,
 ou, até mesmo, o que é comando ou não.
-<a href="/minicurso-linux-git/primeiroDia.html#comando-date-e-echo">Relembrando quando estávamos começando a usar o Shell</a>, nós não
+<a href="/minicurso-demons-mat/primeiroDia.html#comando-date-e-echo">Relembrando quando estávamos começando a usar o Shell</a>, nós não
 podemos simplesmente digitar qualquer coisa aleatória como <code class="language-plaintext highlighter-rouge">balubslbeuaba</code> e esperar que ele entenda e
 faça algo. Logo, o que o Shell faz é: armazenar, em uma variável, todos os lugares em que supostamente
 existem programas que ele pode executar, e, quando você digita algo, ele vai procurar nesses lugares para ver se
@@ -179,7 +179,7 @@ bem.</p>
 
 <p>O que fazemos, então?</p>
 
-<p><a href="/minicurso-linux-git/primeiroDia.html#links-simbólicos-sym-links">Lembra dos symlinks?</a>. Podemos usá-los para colocar apenas
+<p><a href="/minicurso-demons-mat/primeiroDia.html#links-simbólicos-sym-links">Lembra dos symlinks?</a>. Podemos usá-los para colocar apenas
 o atalho do executável no <code class="language-plaintext highlighter-rouge">PATH</code>, e aí, quando o Shell tentar rodar o programa, ele, na verdade, vai rodar o
 original que está no diretório (de preferência bem acessível e fácil de gerenciar) que você quiser.</p>
 
@@ -308,7 +308,7 @@ do que outros, mas todos com suas próprias especialidades.</p>
 
 <h2 id="shell-scripting">Shell scripting</h2>
 
-<p><a href="/minicurso-linux-git/primeiroDia.html#exercícios">Recapitulando um pouco os exercícios do primeiro dia desse curso</a>, em diversos momentos, foi escrita uma sequência de comandos em um arquivo, que foi executada logo em seguida. Formalmente falando, o que você fez foi criar um script.</p>
+<p><a href="/minicurso-demons-mat/primeiroDia.html#exercícios">Recapitulando um pouco os exercícios do primeiro dia desse curso</a>, em diversos momentos, foi escrita uma sequência de comandos em um arquivo, que foi executada logo em seguida. Formalmente falando, o que você fez foi criar um script.</p>
 
 <p>A “linguagem Shell” é uma <em>linguagem de scripting</em>, e diferentemente de <a href="https://pt.wikipedia.org/wiki/Linguagem_compilada"><em>linguagens compiladas</em></a>, como C,
 C++, Java e Rust (🦀 rust mentioned!), que são interpretadas, traduzidas para uma representação interna, e
@@ -447,7 +447,7 @@ dentro de aspas duplas.</p>
 
 <h3 id="operadores-lógicos-no-shell">Operadores lógicos no Shell</h3>
 
-<p><a href="/minicurso-linux-git/primeiroDia.html#combinando-comandos-usando-pipelines">Lembra do <em>cliffhanger</em> da aula passada?</a>, espero que você tenha percebido que lidar com
+<p><a href="/minicurso-demons-mat/primeiroDia.html#combinando-comandos-usando-pipelines">Lembra do <em>cliffhanger</em> da aula passada?</a>, espero que você tenha percebido que lidar com
 valores booleanos (<code class="language-plaintext highlighter-rouge">verdadeiro</code> e <code class="language-plaintext highlighter-rouge">false</code>) no Shell é conveniente para nós, para que possamos tomar decisões baseadas no resultados
 de comandos. Porém, antes de lidarmos diretamentes com essas operações, precisamos entender o que são
 status de saída, visto que eles definem se o programa executou normalmente ou houve algum problema.</p>
@@ -518,7 +518,7 @@ decide se vai avaliar o resto ou não.</p>
 
 <p>Além das variáveis, também temos as condicionais, que funcionam de um jeito um pouco diferente. Os
 valores booleanos, ou seja, <code class="language-plaintext highlighter-rouge">true</code> e <code class="language-plaintext highlighter-rouge">false</code>, são representados pelos códigos de saída de cada programa,
-como visto no tópico de <a href="/minicurso-linux-git/primeiroDia.html#operadores-lógicos-no-Shell">operadores lógicos</a>. Consequementemente, o jeito mais imediato de usar condicionais é com os <em>if statements</em>, e a sintaxe para
+como visto no tópico de <a href="/minicurso-demons-mat/primeiroDia.html#operadores-lógicos-no-Shell">operadores lógicos</a>. Consequementemente, o jeito mais imediato de usar condicionais é com os <em>if statements</em>, e a sintaxe para
 isso é:</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if  </span>comando <span class="p">;</span> <span class="k">then</span>

@@ -51,7 +51,7 @@ Sejam todos bem vindos ao quarto dia do nosso curso de Introdução as Demonstra
 Existem diferentes estratégias para se demonstrar propriedades matemáticas, e escolher a certa pode, muitas vezes, ser a diferença entre uma demonstração bem sucedida feita em 4 linhas e uma demonstração impossivel de ser concluida.
 Estudaremos algumas delas, entendendo como funcionam e em quais situações elas podem ser úteis para a gente.
 
-<img src="/assets/img/uploads/exerciciodoleitormeme.png" alt="" style="widht:250px;height:150px;">
+<div style="text-align: center;"><img src="assets/images/exerciciodoleitormeme.png" alt="" style="widht:250px;height:150px;"> </div>
 
 ### Demonstração por força bruta
 
@@ -109,7 +109,7 @@ O Lean é uma linguagem de programação que funciona tanto como linguagem funci
 
 Sabe toda aquela conversa sobre alvo, dados e hipóteses? O Lean tem uma aba de visão geral que ajuda bastante, mostrando qual é o alvo a ser demonstrado, os dados disponíveis, as hipóteses e as variáveis que estão no escopo.
 
-<img src="/assets/img/uploads/leanoverview.png" alt="" style="widht:300px;height:400px;">
+<div style="text-align: center;"> <img src="assets/images/leanoverview.png" alt="" style="widht:300px;height:400px;"> </div>
 
 >futuramente o link do live-lang.org
 
