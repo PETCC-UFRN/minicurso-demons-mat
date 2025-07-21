@@ -9,6 +9,17 @@
     100%{opacity:1;top:0px;}
 }
 
+/*
+palheta de cores:
+#000505  //preto
+#231F33  //roxo escuro
+#574E7E  //roxo medio
+#5D5D81  //roxo medio-claro
+#BFCDE0  //azul pastel
+#FEFCFD  //branco
+*/
+
+
 main{
     position: relative;
     animation: slip-fade 0.75s;
@@ -22,14 +33,15 @@ body {
     font-family: "Readex Pro", Lato, sans-serif;
     margin: 0px;
     padding: 0;
-    background-color: #161824;
+    /*background-color: #161824;*/
+    background-color: #231F33;
 }
 .navgit, .menuPrincipal{
     font-family: 'Source Code Pro', sans-serif, monospace;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #89023e;
+    background-color: #5D5D81;
     height: 4vh;
     position: fixed;
     top: 0;
@@ -85,7 +97,7 @@ body {
 }
 
 .navgit{
-    background-color: #893172;
+    background-color: #5D5D81;
 }
 
 .navgit ul a,
@@ -138,16 +150,20 @@ body {
 
 .layoutGit{
     /*background-color: #020728; */
-    background-color: #081849;
+    /*background-color: #081849; */
+    /*background-color: #3B3355 */
+    background-color: #231F33;
 
     /*color: #f0f4ff;*/
-    color: #ECDFD2;
+    /*color: #ECDFD2;*/
+    color: #FEFCFD;
 }
 .layoutGit h1{
     /*
     color: #F05033;
     */
-    color: #ECDFD2;
+    /*color: #ECDFD2;*/
+    color: #FEFCFD;
     font-size: 2.5em;
     text-align: center;
 }
@@ -156,8 +172,10 @@ body {
     background-color: #F05033;
     color: #f0f4ff;
     */
-    background-color: #5F3475;
-    color: #ECDFD2;
+    background-color: #574E7E;
+    /*color: #ECDFD2;*/
+    color: #FEFCFD;
+    
     padding: 20px;
     font-size: 1.5em;
     margin-top: 20px;
@@ -168,7 +186,8 @@ body {
     /*
     color: #F05033;
     */
-    color: #ECDFD2;
+    /*color: #ECDFD2;*/
+    color: #FEFCFD;
     font-size: 2em;
     text-align: center;
     margin-top: 15px;
@@ -185,8 +204,9 @@ body {
     color: #020728;
     background-color: rgb(250, 156, 140);
     */
-    color: #081849;
-    background-color: #893172;
+    background-color: #574E7E;
+    /*color: #ECDFD2;*/
+    color: #FEFCFD;
     padding: 5px; /* Padding moderado */
     margin-bottom: 10px; 
     font-size: 1em; /* Tamanho moderado */
@@ -241,7 +261,8 @@ main{
     padding-top: 4vh;
     width: 50%;
     margin: 0 auto;
-    color: #cdd6f4;
+    /*color: #cdd6f4;*/
+    color: #FEFCFD;
 }
 p{
     text-align: justify;
@@ -251,7 +272,9 @@ p{
 
 
 h1{
-    color: #E8EAEF;
+    /*color: #E8EAEF;*/
+    color : #FEFCFD;
+    text-align: center;
 }
 /*tabelas*/
 table {
@@ -329,9 +352,11 @@ td {
 }
 
 .sumario-git{
-    background: #020728;
+    /*background: #020728;*/
+    /*background: #5D5D81;*/
+    background: rgba(93, 93, 129, 0.5);
     color: #f0f4ff;
-    border-right: 1px solid #893172;
+    /*border-right: 1px solid #893172;*/
 }
 
 #sumario.hidden {
