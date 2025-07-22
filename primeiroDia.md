@@ -67,7 +67,7 @@ A lógica nos permite estruturar soluções de forma clara e concisa. Ao aplicar
 #### Exemplo
 Imagine que queremos criar um programa que verifica se um aluno foi aprovado ou reprovado em uma disciplina. Para ser aprovado, o aluno precisa ter nota maior ou igual a 60 **E** frequência maior ou igual a 75%. Se apenas uma dessas condições não for atendida, ele será reprovado.
 
-```
+```python
 # Lógica bem definida
 nota = 65
 frequencia = 80
@@ -82,7 +82,7 @@ else:
 
 Agora, vamos ver um exemplo de como uma lógica mal definida pode levar a erros.
 
-```
+```python
 # Lógica mal definida
 nota = 70
 frequencia = 70
@@ -104,7 +104,7 @@ Mesmo que você sempre aplique boas técnicas de programação, é comum que alg
 #### Exemplo
 Suponha que temos um programa que calcula o dobro do módulo de um número.
 
-```
+```python
 def calcular_dobro_modulo(numero):
     if numero > 0:
         numero = numero *2
@@ -130,7 +130,7 @@ print(calcular_dobro_modulo(-5))  # Output: 7
 
 **Achamos nosso erro!** No lugar de multiplicar por 2, foi somado 2. Existem muitos motivos que podem ter levado a esse erro, como também existem muitas maneiras de corrigi-lo. A mais simples é trocando o símbolo de soma pelo da multiplicação.
 
-```
+```python
 def calcular_dobro_modulo(numero):
     if numero > 0:
         numero = numero *2
@@ -159,7 +159,7 @@ Imagine que precisamos criar um algoritmo para encontrar o maior número em uma 
 5. Se o número atual for maior que o `maior_numero_encontrado`, então o número atual se torna o novo `maior_numero_encontrado`;
 6. Depois de verificar todos os números, o `maior_numero_encontrado` será o maior número da lista.
 
-```
+```python
 def encontrar_maior_numero(lista):
     # Assume o primeiro como o maior
     maior_numero_encontrado = lista[0]
@@ -192,7 +192,7 @@ Para a nossa função calcular_dobro, vamos pensar em casos de teste usando a l�
 - Caso de Sucesso (zero): Se a entrada é 0, a saída deve ser 0.
 
 
-```
+```python
 def calcular_dobro(numero):
     return numero * 2
 

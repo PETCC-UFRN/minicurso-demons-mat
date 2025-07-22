@@ -93,31 +93,31 @@
 <h4 id="exemplo">Exemplo</h4>
 <p>Imagine que queremos criar um programa que verifica se um aluno foi aprovado ou reprovado em uma disciplina. Para ser aprovado, o aluno precisa ter nota maior ou igual a 60 <strong>E</strong> frequência maior ou igual a 75%. Se apenas uma dessas condições não for atendida, ele será reprovado.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Lógica bem definida
-nota = 65
-frequencia = 80
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Lógica bem definida
+</span><span class="n">nota</span> <span class="o">=</span> <span class="mi">65</span>
+<span class="n">frequencia</span> <span class="o">=</span> <span class="mi">80</span>
 
-if nota &gt;= 60 and frequencia &gt;= 75:
-    print("Aluno Aprovado!")
-else:
-    print("Aluno Reprovado!")
+<span class="k">if</span> <span class="n">nota</span> <span class="o">&gt;=</span> <span class="mi">60</span> <span class="ow">and</span> <span class="n">frequencia</span> <span class="o">&gt;=</span> <span class="mi">75</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Aluno Aprovado!"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Aluno Reprovado!"</span><span class="p">)</span>
 
-# Saída: Aluno Reprovado!
-</code></pre></div></div>
+<span class="c1"># Saída: Aluno Reprovado!
+</span></code></pre></div></div>
 
 <p>Agora, vamos ver um exemplo de como uma lógica mal definida pode levar a erros.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Lógica mal definida
-nota = 70
-frequencia = 70
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Lógica mal definida
+</span><span class="n">nota</span> <span class="o">=</span> <span class="mi">70</span>
+<span class="n">frequencia</span> <span class="o">=</span> <span class="mi">70</span>
 
-if nota &gt;= 70 or frequencia &gt;= 75:
-    print("Aluno Aprovado!")
-else:
-    print("Aluno Reprovado!")
+<span class="k">if</span> <span class="n">nota</span> <span class="o">&gt;=</span> <span class="mi">70</span> <span class="ow">or</span> <span class="n">frequencia</span> <span class="o">&gt;=</span> <span class="mi">75</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Aluno Aprovado!"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Aluno Reprovado!"</span><span class="p">)</span>
 
-# Saída: Aluno Aprovado! (Incorreto, pois a frequência é menor que 75)
-</code></pre></div></div>
+<span class="c1"># Saída: Aluno Aprovado! (Incorreto, pois a frequência é menor que 75)
+</span></code></pre></div></div>
 <p>Nesse segundo exemplo, a utilização do operador ‘ou’ (OR) em vez do ‘e’ (AND) resultou em uma aprovação indevida. Isso demonstra como a precisão na lógica é crucial para o comportamento correto do programa.</p>
 
 <p>Portanto, uma simples mudança no código pode fazer com que os resultados mudem drasticamente. Por mais que seja um exemplo bobinho, é importante que o programador, ao escrever seu código, saiba exatamente como ele deve se comportar.</p>
@@ -128,18 +128,18 @@ else:
 <h4 id="exemplo-1">Exemplo</h4>
 <p>Suponha que temos um programa que calcula o dobro do módulo de um número.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def calcular_dobro_modulo(numero):
-    if numero &gt; 0:
-        numero = numero *2
-        return numero
-    else:
-        numero = numero *-1
-        numero = numero +2
-        return numero
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calcular_dobro_modulo</span><span class="p">(</span><span class="n">numero</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">numero</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">numero</span> <span class="o">=</span> <span class="n">numero</span> <span class="o">*</span><span class="mi">2</span>
+        <span class="k">return</span> <span class="n">numero</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">numero</span> <span class="o">=</span> <span class="n">numero</span> <span class="o">*-</span><span class="mi">1</span>
+        <span class="n">numero</span> <span class="o">=</span> <span class="n">numero</span> <span class="o">+</span><span class="mi">2</span>
+        <span class="k">return</span> <span class="n">numero</span>
     
-print(calcular_dobro_modulo(5))   # Output: 10
-print(calcular_dobro_modulo(-5))  # Output: 7
-</code></pre></div></div>
+<span class="k">print</span><span class="p">(</span><span class="n">calcular_dobro_modulo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>   <span class="c1"># Output: 10
+</span><span class="k">print</span><span class="p">(</span><span class="n">calcular_dobro_modulo</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># Output: 7
+</span></code></pre></div></div>
 
 <p>10 é o dobro do módulo de 5, então nosso código funciona para essa entrada. Porém, 7 não é o dobro do módulo de -5. Vamos investigar:</p>
 
@@ -161,18 +161,18 @@ print(calcular_dobro_modulo(-5))  # Output: 7
 
 <p><strong>Achamos nosso erro!</strong> No lugar de multiplicar por 2, foi somado 2. Existem muitos motivos que podem ter levado a esse erro, como também existem muitas maneiras de corrigi-lo. A mais simples é trocando o símbolo de soma pelo da multiplicação.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def calcular_dobro_modulo(numero):
-    if numero &gt; 0:
-        numero = numero *2
-        return numero
-    else:
-        numero = numero *-1
-        numero = numero *2
-        return numero
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calcular_dobro_modulo</span><span class="p">(</span><span class="n">numero</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">numero</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">numero</span> <span class="o">=</span> <span class="n">numero</span> <span class="o">*</span><span class="mi">2</span>
+        <span class="k">return</span> <span class="n">numero</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">numero</span> <span class="o">=</span> <span class="n">numero</span> <span class="o">*-</span><span class="mi">1</span>
+        <span class="n">numero</span> <span class="o">=</span> <span class="n">numero</span> <span class="o">*</span><span class="mi">2</span>
+        <span class="k">return</span> <span class="n">numero</span>
     
-print(calcular_dobro_modulo(5))   # Output: 10
-print(calcular_dobro_modulo(-5))  # Output: 10
-</code></pre></div></div>
+<span class="k">print</span><span class="p">(</span><span class="n">calcular_dobro_modulo</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>   <span class="c1"># Output: 10
+</span><span class="k">print</span><span class="p">(</span><span class="n">calcular_dobro_modulo</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">))</span>  <span class="c1"># Output: 10
+</span></code></pre></div></div>
 
 <p>Mais uma vez, um exemplo simples, mas que mostra que esse tipo de abordagem pode ser útil. Por mais que pareça bobinho, esse tipo de erro de digitação é relativamente comum.</p>
 
@@ -191,21 +191,21 @@ print(calcular_dobro_modulo(-5))  # Output: 10
   <li>Depois de verificar todos os números, o <code class="language-plaintext highlighter-rouge">maior_numero_encontrado</code> será o maior número da lista.</li>
 </ol>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def encontrar_maior_numero(lista):
-    # Assume o primeiro como o maior
-    maior_numero_encontrado = lista[0]
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">encontrar_maior_numero</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+    <span class="c1"># Assume o primeiro como o maior
+</span>    <span class="n">maior_numero_encontrado</span> <span class="o">=</span> <span class="n">lista</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    # Itera sobre os elementos da lista
-    for numero in lista:
-        if numero &gt; maior_numero_encontrado:
-            maior_numero_encontrado = numero
+    <span class="c1"># Itera sobre os elementos da lista
+</span>    <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">numero</span> <span class="o">&gt;</span> <span class="n">maior_numero_encontrado</span><span class="p">:</span>
+            <span class="n">maior_numero_encontrado</span> <span class="o">=</span> <span class="n">numero</span>
 
-    return maior_numero_encontrado
+    <span class="k">return</span> <span class="n">maior_numero_encontrado</span>
 
-lista = [10, 5, 20, 8, 15]
-print(encontrar_maior_numero(lista))
-# Saída: 20
-</code></pre></div></div>
+<span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">encontrar_maior_numero</span><span class="p">(</span><span class="n">lista</span><span class="p">))</span>
+<span class="c1"># Saída: 20
+</span></code></pre></div></div>
 
 <h3 id="verificação-e-testes">Verificação e Testes</h3>
 <p>Depois de escrever um programa, precisamos ter certeza de que ele funciona como esperado, ou seja, precisamos testá-lo. Esta etapa pode não fazer muito sentido em <em>softwares</em> mais simples (trabalhos da faculdade, por exemplo), mas Aplicações Críticas ou Aplicações Comerciais/Empresariais têm uma tolerância menor a comportamentos inesperados, então a parte de testes acaba tendo uma importância bem maior. A lógica nos ajuda a formular testes que cubram diferentes caminhos de execução do código, validando todas as condições lógicas e ramificações.</p>
@@ -226,15 +226,15 @@ print(encontrar_maior_numero(lista))
   <li>Caso de Sucesso (zero): Se a entrada é 0, a saída deve ser 0.</li>
 </ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def calcular_dobro(numero):
-    return numero * 2
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calcular_dobro</span><span class="p">(</span><span class="n">numero</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">numero</span> <span class="o">*</span> <span class="mi">2</span>
 
-# Casos de Teste
-assert calcular_dobro(5) == 10, "Erro: 5 * 2 deveria ser 10"
-assert calcular_dobro(-5) == -10, "Erro: -5 * 2 deveria ser -10"
-assert calcular_dobro(0) == 0, "Erro: 0 * 2 deveria ser 0"
+<span class="c1"># Casos de Teste
+</span><span class="k">assert</span> <span class="n">calcular_dobro</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"Erro: 5 * 2 deveria ser 10"</span>
+<span class="k">assert</span> <span class="n">calcular_dobro</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="s">"Erro: -5 * 2 deveria ser -10"</span>
+<span class="k">assert</span> <span class="n">calcular_dobro</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s">"Erro: 0 * 2 deveria ser 0"</span>
 
-print("Todos os testes passaram para calcular_dobro!")
+<span class="k">print</span><span class="p">(</span><span class="s">"Todos os testes passaram para calcular_dobro!"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Abordagens de testes guiadas por raciocínio lógico nos permite não apenas verificar se o código funciona para casos óbvios, mas também garantir sua robustez em cenários complexos e nos limites das condições. Testes são, em essência, pequenas demonstrações de que nosso código se comporta conforme o esperado sob certas condições. Eles não provam a ausência de bugs, mas aumentam significativamente a confiança na qualidade e na corretude do software, reduzindo riscos e facilitando a manutenção a longo prazo.
