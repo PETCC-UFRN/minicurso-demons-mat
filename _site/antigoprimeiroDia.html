@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minicurso de Linux e Git</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./assets/css/styles.css">
+        <link rel="stylesheet" href="/minicurso-demons-mat/assets/css/syntax.css">
+        <link rel="icon" href="https://i.ibb.co/RD7XwYH/pet-logo.png" type="image/png">
+    </head>
+    <body class="layoutGit">
+        <header>
+    <nav class="navgit">
+        <ul class="listaNavegacao">
+            <li>
+                <a href="index" style="text-decoration:none;">/home</a>
+            </li>
+            <li>
+                <a href="aulas" style="text-decoration:none;">/aulas</a>
+            </li> 
+            <li>
+                <a href="sobre" style="text-decoration:none;">/sobre</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+        <div>
+            <main>
+                <h1 id="conceitos-básicos-de-demonstração">Conceitos básicos de demonstração</h1>
+
+<div id="sumario" class="sumario-git">
+    <h1>Sumário</h1>
+    <details>
+        <summary><a href="#para-que-serve-a-matemática-na-computação">Para que serve a matemática na computação</a></summary>
+    <ul>
+        <li><a href="#a-matemática-como-berço-da-computação ">A matemática como berço da computação</a></li>
+        <li><a href="#a-ponte-para-o-presente">A ponte para o presente</a></li>
+    </ul>
+    </details>
+    <details>
+        <summary><a href="#as-demonstrações-matemáticas">As demonstrações matemáticas</a></summary>
+        <ul>
+            <li><a href="#como-demonstramos-alguma-coisa">Como demonstramos alguma coisa</a></li>
+            <li><a href="#terminologia-básica">Terminologia básica</a></li>
+        </ul>
+    </details>
+    <details>
+         <summary><a href="#exemplos-práticos">Exemplos práticos</a></summary>
+        <ul>
+            <li><a href="#demonstrando-a-comutatividade-da-união">Demonstrando a comutatividade da união</a></li>
+            <li><a href="#demonstrando-a-infinitude-dos-números-primos">Demonstrando a infinitude dos números primos</a></li>
+        </ul>
+    </details>
+    <details>
+        <summary><a href="#introdução-a-python-funções-e-recursividade">Introdução a python funções e recursividade</a></summary>
+        <ul>
+            <li><a href="#funções">Funções</a></li>
+            <li><a href="#iteratividade-vs-recursividade">Iteratividade vs recursividade</a></li>
+            <li><a href="#pincelando-os-conceitos-de-lógica">Pincelando os conceitos de lógica</a></li>
+            <li><a href="#quiz-para-testar-o-que-vem-pela-frente">Quiz para testar o que vem pela frente</a></li>
+        </ul>
+    </details>
+  <button class="toggle-button" id="toggle-button">
+  
+      Esconder Sumário
+  
+  </button>
+</div>
+
+<div style="text-align: center;"> <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/funny-math-meme.png" width="50%" />
+</div>
+<p><br /></p>
+
+<h2 id="para-que-serve-a-matemática-na-computação">Para que serve a matemática na computação?</h2>
+
+<p><cite>— “Por que preciso estudar matemática para aprender a programar?”</cite><br />
+<cite>— “Pra que eu vou usar matemática no mercado de trabalho?”</cite><br />
+<cite>— “Precisa ser bom em matemática pra ser um bom programador?”</cite></p>
+
+<p>Essas são perguntas que você já deve ter ouvido (ou se perguntado) ao refletir sobre o papel da matemática na ciência da computação e suas áreas. A resposta é simples: <strong>a matemática é o alicerce da tecnologia</strong>. Ela vai além da ideia de “contas e fórmulas” do ensino médio/fundamental — seu verdadeiro papel é nos ensinar a <strong>pensar de forma lógica, abstrata e criativa</strong>, habilidades essenciais para resolver problemas complexos. Não é necessário ser um gênio da matemática para ser um bom programador, mas entender os conceitos e aplicações torna seu trabalho muito mais fácil e eficiente.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>»&gt; Seção abaixada gerada por IA, sujeita a mundanças</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="a-matemática-como-berço-da-computação">A matemática como berço da computação</h3>
+<p>A computação moderna nasceu de uma necessidade histórica de automatizar o pensamento humano. No século XIX, durante a Revolução Industrial, <strong>Charles Babbage</strong> projetou a <strong>Máquina Analítica</strong> — a primeira ideia de um computador programável. Mas foi <strong>Ada Lovelace</strong>, matemática e filha do poeta Lord Byron, quem deu vida ao conceito. Em 1843, ao traduzir um artigo sobre a máquina de Babbage, Lovelace acrescentou notas que mudariam a história: ela percebeu que a máquina poderia processar <strong>símbolos além de números</strong> (como música ou texto) se programada com algoritmos matemáticos. Seu algoritmo para calcular números de Bernoulli é considerado o <strong>primeiro programa de computador da história</strong>. Lovelace fez isso porque enxergava a matemática como uma <strong>“linguagem universal”</strong> para expressar qualquer forma de conhecimento.</p>
+
+<p>Quase 100 anos depois, em meio à Segunda Guerra Mundial, o matemático <strong>Alan Turing</strong> enfrentou um problema prático e urgente: decifrar os códigos da máquina <strong>Enigma</strong>, usada pelos nazistas para comunicações secretas. Mas seu trabalho na equipe de Bletchley Park (Reino Unido) só foi possível graças a uma revolução teórica que ele liderara anos antes. Em 1936, Turing respondeu a um desafio matemático do século XX — o <strong>“Entscheidungsproblem”</strong> (problema da decisão), proposto por David Hilbert — criando um modelo abstrato chamado <strong>Máquina de Turing</strong>. Esse dispositivo teórico, baseado em regras lógicas simples (como ler/escrever símbolos e mudar estados), provou que <strong>qualquer problema computável</strong> poderia ser resolvido por algoritmos. A guerra apenas acelerou a aplicação prática: Turing usou estatística e teoria da probabilidade para projetar a <strong>“Bombe”</strong>, máquina que automatizou a quebra da Enigma, salvando milhões de vidas.</p>
+
+<h3 id="a-ponte-para-o-presente">A ponte para o presente</h3>
+<p>Essa evolução mostra como crises históricas (industrialização, guerras) e mentes matemáticas se entrelaçaram:</p>
+<ul>
+  <li>Lovelace transformou <strong>ferramentas de cálculo</strong> em <strong>máquinas de pensamento</strong>;</li>
+  <li>Turing transformou <strong>teoria abstrata</strong> em <strong>salvação prática</strong> durante a guerra;</li>
+  <li>Ambos provaram que computação é <strong>matemática em ação</strong>.</li>
+</ul>
+
+<p>Hoje, quando você usa um GPS (que aplica teoria dos grafos), streaming (recomendação por álgebra linear) ou criptomoedas (criptografia de teoria dos números), está colhendo os frutos dessa jornada. Por isso, começaremos nosso curso com <strong>lógica e demonstrações matemáticas</strong> — não para fazer “contas”, mas para você dominar a arte de <strong>transformar abstrações em revoluções tecnológicas</strong>.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>»&gt; Fim da seção</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="as-demonstrações-matemáticas">As demonstrações matemáticas</h2>
+<p>Uma parte fundamental do trabalho de um matemático é <strong>provar a verdade</strong> do que seu trabalho propõe, é para isso que servem as <strong>demonstrações</strong>, também chamadas de prova formal, ou simplesmente prova. Antes de qualquer coisa, é importante definirmos melhor o que são demonstrações: Em um contexto matemático, elas são <strong>argumentos lógicos rigorosos</strong> que provam a <strong>verdade</strong> de uma proposição, partindo de axiomas, definições, e até teoremas previamente aceitos (veremos mais sobre esses conceitos no dia 2!). Ou seja, através de “ferramentas” que temos à nossa disposição, demonstrações são capazes de provar a veracidade (ou a não veracidade) de hipóteses matemáticas. Na computação, as demonstrações são muito utilizadas para provar a <strong>corretude de algoritmos</strong>, como veremos futuramente neste curso.</p>
+<h3 id="como-demonstramos-alguma-coisa">Como demonstramos alguma coisa?</h3>
+<p>Diferente de outras ciências, na matemática não provamos coisas a partir de evidências empíricas. O que fazemos é seguir um processo lógico rigoroso, onde partindo de uma verdade (já existente) e chegamos a uma nova verdade (o que se desejava provar) a partir de transformações (como regras de inferência) que preservam a verdade. <strong>Acho q precisa melhorar esse texto dps, mas por enquanto ta bom</strong></p>
+
+<h3 id="terminologia-básica">Terminologia básica</h3>
+
+<p><strong>Proposição</strong>: Uma afirmação que pode ser demonstrada como verdadeira ou falsa. É o bloco básico do raciocínio matemático.</p>
+
+<p><strong>Teorema</strong>: Uma proposição de grande importância que foi demonstrada como verdadeira.</p>
+
+<p><strong>Lema</strong>: Um “teorema auxiliar” - uma proposição provada que serve principalmente como passo intermediário para provar um teorema maior.</p>
+
+<p><strong>Corolário</strong>: Uma consequência direta de um teorema já demonstrado, que muitas vezes requer pouca ou nenhuma prova adicional.</p>
+
+<p><strong>Conjectura</strong>: Uma proposição que se acredita ser verdadeira, mas que ainda não foi provada (nem refutada).</p>
+
+<p><strong>Axioma</strong>: Uma proposição considerada evidentemente verdadeira e que serve como ponto de partida para construir teorias. Não precisa ser demonstrado.</p>
+
+<h2 id="exemplos-práticos">Exemplos práticos</h2>
+<p>Vamos ver alguns exemplos práticos de demonstrações e outros conceitos.</p>
+
+<h3 id="demonstrando-a-comutatividade-da-união">Demonstrando a comutatividade da união</h3>
+<p><strong>Proposição</strong>:
+Para quaisquer conjuntos <code class="language-plaintext highlighter-rouge">(A)</code> e <code class="language-plaintext highlighter-rouge">(B)</code>, vale que <code class="language-plaintext highlighter-rouge">A U B = B U A</code></p>
+
+<p><strong>Prova Direta:</strong>
+Tome <code class="language-plaintext highlighter-rouge">x</code>, tal que <code class="language-plaintext highlighter-rouge">x ∈ A U B</code>.</p>
+
+<p>Pela definição da união, temos que <code class="language-plaintext highlighter-rouge">x ∈ A e x ∈ B</code>.</p>
+
+<p>Pela comutatividade do operador lógio <code class="language-plaintext highlighter-rouge">e</code>, temos que <code class="language-plaintext highlighter-rouge">x ∈ B e x ∈ A</code>.</p>
+
+<p>Novamente aplicando a definição da união, temos <code class="language-plaintext highlighter-rouge">x ∈ B U A</code></p>
+
+<p>Dessa forma, partindo da premissa <code class="language-plaintext highlighter-rouge">x ∈ A U B</code>, chegamos a <code class="language-plaintext highlighter-rouge">x ∈ B U A</code>.
+| Opiniões do formato da demonstração e sugestões de outras demonstrações (mais fáceis, q não usem definições q os alunos n tem conhecimento sla) porfavor. A partir do que a gente decidir, montamos as proximas demonstrações. Tava pensando em usar uns códigos simples em python p ajudar a visualizar essas demonstrações.|</p>
+
+<h3 id="demonstrando-a-infinitude-dos-números-primos">Demonstrando a infinitude dos números primos</h3>
+<p><strong>Proposição:</strong>
+Os números primos são infinitos.</p>
+
+<p><strong>Prova por casos</strong>:
+Agora, iremos provar a nossa hipótese inicial <em>por casos</em>.
+***(tinha colocado contradicao, mas aparentemente nao eh considerado contradicao e o nosso mano euclides errou nisso ai)</p>
+
+<p>Considere qualquer lista finita de primos p1, p2, …, pn. Será mostrado que existe pelo menos um número primo que não está na lista.
+Seja P o produto de todos os números na lista. P = p1 * p2 * … * pn.
+Seja Q = P + 1.</p>
+
+<p>Então temos 2 casos:</p>
+<ul>
+  <li>Q é primo. 
+      Então, existe algum número primo que não está lista de primos (nesse caso, o próprio Q).</li>
+  <li>Q não é primo.
+      Então, existe algum primo p’ que divide Q. Caso p’ estivesse na lista, então ele dividiria ambos P e Q. Se p’ divide P e Q, então pela onerigneirnge (encontrar o nome da propriedade), p’ também deve dividir a diferença entre P e Q, que é (P+1)-P = 1. Já que nenhum primo divide 1, p’ não pode dividir Q e P ao mesmo tempo, e, portanto, não está na lista. Então, existe algum número primo que não está lista de primos.</li>
+</ul>
+
+<p>Isso prova que, para qualquer lista finita de números primos, existe algum número que não está na lista!</p>
+
+<h3 id="outros-exemplos">outros exemplos…</h3>
+
+<h2 id="introdução-a-python-funções-e-recursividade">Introdução a Python, Funções e Recursividade</h2>
+<p>– to do: fazer um gancho que conecte essa à parte anterior</p>
+
+<p>Para apresentar os conceitos de iteratividade e recursividade, vamos usar uma linguagem de programação que vários de vocês devem conhecer: Python! Com ela, vamos ver um pouco sobre funções, diferentes maneiras de declará-las e seus usos diversos.</p>
+
+<h3 id="funções">Funções</h3>
+
+<p>Uma função, de maneira bem bruta, é um bloco de código reutilizável que realiza uma tarefa específica. No python, podemos declarar uma função simples com a <em>keyword</em> def, seguida do nome que queremos usar e de seus argumentos. No exemplo a seguir, definimos uma função de adição simples <em>add</em>, que nos devolve a soma dos 2 números passados durante a chamada de função.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span>
+</code></pre></div></div>
+<p>Essa função então, sempre que utilizada ao longo do cógigo de vocês, vai retornar a soma dos dois números passados:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span> <span class="n">num2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">num1</span> <span class="o">+</span> <span class="n">num2</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="o">-----------------------</span>
+<span class="mi">9</span>
+</code></pre></div></div>
+
+<p>Mas digamos que vocês precisem codar uma função <em>potencia2</em> que, ao receber um número b, te devolve 2 elevado a b. Como vocês fariam isso?</p>
+
+<p>Bem, há várias maneiras diferentes de realizar o pedido, mas todas elas estão englobadas em 2 grandes eixos: o de abordagens iterativas e o de abordagens recursivas.</p>
+
+<h3 id="iteratividade-vs-recursividade">Iteratividade Vs. Recursividade</h3>
+
+<p>O conceito de iteratividade, derivada da palavra “Iterativo”, se refere à característica de algo que se repete ou involve repetições. Assim, uma função iterativa seria uma função que involve aquelas estruturas de repetição (também chamadas de laços ou <em>loops</em>) - o <em>for</em>, o <em>while</em>, o <em>do while</em> - que aprendemos sobre em matérias como PC ou ITP. Uma abordagem iterativa para o problema proposto há pouco é a seguinte:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">potencia2_it</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">resultado</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="n">resultado</span> <span class="o">*=</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">resultado</span>
+</code></pre></div></div>
+<p>Note que, no código acima, um laço <em>for</em> é utilizado para atualizar b vezes o valor da variável <em>resultado</em>. Mas, para conseguirmos de fato definir os futuros valores dessa variável, temos que inicializá-la com o valor 1 (o elemento neutro da multiplicação!). Assim, para uma chamada de função onde b = 3, realizaríamos a operação <em>resultado *= 2</em> 3 vezes, obtendo <em>resultado = 1*2*2*2 = 8</em> e retornando o número 8.</p>
+
+<p>Por outro lado, a definição de recursividade está atrelada à caracteristica de fazer a mesma coisa ou repetir um processo várias vezes, definindo um conceito através de uma versão simples ou anterior de si (O que, de fato, soa parecido com o conceito de iteração. Mas vamos ver que, na verdade, são bem diferentes!).</p>
+
+<p>De maneira mais prática, funções recursivas são todas aquelas que “chamam a si mesmas”, ou seja, definem um termo atual com base em algum anterior. Assim, elas chamam recursivamente (aha!) a si mesmas, pausando as chamadas antecedentes de forma a “buscar” termos anteriores para definir o elemento em questão.</p>
+
+<p>Nesse caso, note que o resultado de uma potência de base 2 e expoente b é sempre a potência de base 2 e expoente <em>b-1</em> multiplicado por 2. Assim, podemos escrever um termo b com base em termos anteriores:</p>
+
+<p>—- colocar imagem aqui</p>
+
+<p>No entanto, notamos que, ao executar o programa e chamar a seguinte função para qualquer inteiro n, o programa roda infinitamente e não retorna um resultado.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">potencia2_rec</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">potencia2</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
+</code></pre></div></div>
+
+<p>Isso ocorre porque, assim como na matemática, uma recursão precisa de <em>casos base</em> para funcionar corretamente. De fato, não temos como definir termos com base em termos anteriores sem nunca definirmos um “primeiro termo”: estaríamos chamando a função referente ao número anterior sem nunca parar!</p>
+
+<p>Logo, precisamos adicionar uma condição de parada referente ao primeiro termo da nossa sequência (nesse caso, o 2⁰ = 1).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">potencia2_rec</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span> <span class="c1"># caso base
+</span>        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">potencia2</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span> <span class="c1"># chamada recursiva
+</span></code></pre></div></div>
+
+<p>Dessa maneira, para um b = 3, seriam feitas outras 3 chamadas recursivas antes da nossa função retornar um valor: para b = 2, b = 1 e b = 0. Note que, ao chegarmos em b = 0, o programa irá entrar na condicional de caso base que estabelecemos e retornar um valor definido. A partir daí, as chamadas anteriores são completas, e retornamos os valores de <em>potencia2rec(1) = potencia2rec(1) * 2 = 2</em> e <em>potencia2rec(2) = potencia2rec(1)*2 = 4</em> recursivamente, até atingirmos nossa chamada original de b = 3.</p>
+
+<p>Em uma primeira exposição, a recorrência pode parecer distante da realidade e até meio “inútil”. Mas alguns casos, caracterizados por uma “natureza recursiva” - ou seja, baseiam suas definições em versões anteriores de si mesmas (como a sequência de Fibonacci ou o fatorial de um número natural) - podem ser representados muito mais facilmente pela recursão! Ela torna o código mais legível e, muitas vezes, mais elegante.</p>
+
+<p>Abaixo, são comparados 2 códigos - uma definição recursiva da sequência de fibonacci e uma definição iterativa.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="nb">int</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">fib2</span><span class="p">(</span><span class="nb">int</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">ante</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">ante2</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">result</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">ante</span> <span class="o">+</span> <span class="n">ante2</span>
+        <span class="n">ante2</span> <span class="o">=</span> <span class="n">ante</span>
+        <span class="n">ante</span> <span class="o">=</span> <span class="n">result</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></div>
+<p>Note que, na versão iterativa, temos que criar diversas variáveis e alterar seus valores várias vezes para mantê-las atualizadas. Por sua vez, na versão recursiva, a função estará sempre gerando esses valores de maneira recorrente, conforme à árvore representada abaixo</p>
+
+<p>— to do: gerar e colocar imagem de árvore de chamadas para fibonacci</p>
+
+<p>É importante ressaltar que a versão recursiva é muitas vezes, caso não otimizada, muito mais lenta e de complexidade computacional muito mais alta do que a sua equivalente iterativa - isso ocorre porque, para cada chamada em uma recursão, são geradas todas aquelas anteriores, como ilustra a árvore acima. Isso não vai ser importante para esse minicurso, mas é interessante manter isso em mente para o futuro! Essa complexidade é de suma importância em várias áreas da computação, (e até em maratonas de programação!) onde buscamos codar funções rápidas e efetivas.</p>
+
+<h2 id="pincelando-os-conceitos-de-lógica">Pincelando os Conceitos de Lógica</h2>
+
+<p>— to do</p>
+
+<h2 id="quiz-para-testar-o-que-vem-pela-frente">Quiz para testar o que vem pela frente!!</h2>
+
+<p>— to do: fazer quiz e colocar link aqui</p>
+
+            </main>
+            <script src="./assets/js/sumario_script.js"></script>
+        </div>
+    </body>
+</html>
