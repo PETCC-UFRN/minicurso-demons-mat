@@ -73,7 +73,7 @@
 
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-<h1 id="teoria-dos-conjuntos">Teoria dos Conjuntos</h1>
+<h2 id="teoria-dos-conjuntos">Teoria dos Conjuntos</h2>
 
 <p>Agora que fomos apresentados às utilidades dos conjuntos na programação, podemos utilizar a Teoria dos Conjuntos para aprofundar nosso conhecimento sobre as definições matemáticas nas quais são embasadas todas as estruturas de dados vistas anteriormente!</p>
 
@@ -104,7 +104,7 @@
 
 <p>Ou seja, só podemos perguntar se um elemento <strong>do mesmo tipo dos elementos do conjunto A</strong> pertence ou não ao conjunto.</p>
 
-<p>Logo, os seguintes exemplos <strong>não</strong> são “perguntas” válidas ao nosso conjunto A:</p>
+<p>Dessa forma, os seguintes exemplos <strong>não</strong> são “perguntas” válidas ao nosso conjunto A:</p>
 
 <ul>
   <li>Fiat uno ∈ A</li>
@@ -118,9 +118,17 @@
 
 <p>Podemos definir um conjunto de várias maneiras, dentre elas:</p>
 
-<p>-Citar diretamente todos os elementos do conjunto, usando chaves ({ }) : A = {1, 2, 3, 7, 5, 42}
--definir o que significa pertencer ao conjunto: x ∈ A ≝ x tem propriedade y
--set comprehension: A ≝ {x | x tem propriedade y}</p>
+<ul>
+  <li>
+    <p>Citar diretamente todos os elementos do conjunto, usando chaves ({ }) : A = {1, 2, 3, 7, 5, 42}</p>
+  </li>
+  <li>
+    <p>Definir o que significa pertencer ao conjunto: x ∈ A ≝ x tem propriedade y</p>
+  </li>
+  <li>
+    <p>Set comprehension: A ≝ {x | x tem propriedade y}</p>
+  </li>
+</ul>
 
 <p>Vamos definir o conjunto de todas as pessoas com cabelo longo, usando dois dos métodos que acabamos de conhecer:</p>
 
@@ -131,6 +139,8 @@
 <blockquote>
   <p>p ∈ L ≝ p tem cabelo longo</p>
 </blockquote>
+
+<hr />
 
 <h5 id="exercícios">Exercícios</h5>
 
@@ -153,6 +163,8 @@
 
 <p style="text-align: center;"><strong>x ∈ A∪B ≝ x ∈ A ou x ∈ B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A∪B ≝ {x | x ∈ A ou x ∈ B}</strong></p>
 
+<p>Para ajudar na compreensão, podemos visualizar a união dos conjuntos A e B no diagrama:</p>
+
 <div style="text-align: center;"><img src="assets/images/AuniaoB.png" alt="" style="widht:300px;height:300px;" /> </div>
 
 <h4 id="interseção">Interseção</h4>
@@ -161,13 +173,17 @@
 
 <p style="text-align: center;"><strong>x ∈ A∩B ≝ …&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A∩B ≝ …</strong></p>
 
+<p>Para ajudar na compreensão, podemos visualizar a interseção dos conjuntos A e B no diagrama:</p>
+
 <div style="text-align: center;"><img src="assets/images/AinterB.png" alt="" style="widht:300px;height:300px;" /> </div>
 
 <h4 id="diferença">Diferença</h4>
 
 <p>Dados dois conjuntos A e B de um mesmo tipo, podemos definir a diferença () de dois conjuntos como sendo:</p>
 
-<p style="text-align: center;"><strong>x ∈ A\B ≝ x ∈ A e x ∉ B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A\B ≝ {x \| x ∈ A e x ∉ B}</strong></p>
+<p style="text-align: center;"><strong>x ∈ A\B ≝ x ∈ A e x ∉ B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A\B ≝ {x | x ∈ A e x ∉ B}</strong></p>
+
+<p>Para ajudar na compreensão, podemos visualizar a diferença dos conjuntos A e B no diagrama:</p>
 
 <div style="text-align: center;"><img src="assets/images/AforaB.png" alt="" style="widht:300px;height:300px;" /> </div>
 
@@ -175,7 +191,9 @@
 
 <p>Dado um conjunto A, podemos definir seu complemento como:</p>
 
-<p style="text-align: center;"><strong>Aᶜ ≝ x ∉ A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aᶜ ≝ {x \| x ∉ A}</strong></p>
+<p style="text-align: center;"><strong>Aᶜ ≝ x ∉ A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aᶜ ≝ {x | x ∉ A}</strong></p>
+
+<p>Para ajudar na compreensão, podemos visualizar o complemento do conjunto A no diagrama:</p>
 
 <div style="text-align: center;"><img src="assets/images/Acomplementar.png" alt="" style="widht:300px;height:300px;" /> </div>
 
@@ -203,9 +221,13 @@
 
 <p style="text-align: center;"><strong>A = B ≝ A ⊆ B e B ⊆ A</strong></p>
 
+<blockquote>
+  <p>Se abrirmos a definição de (⊆), podemos ler da seguinte forma: A é igual a B, sse todo elemento de A pertencer à B e todo elemento de B pertencer à A.</p>
+</blockquote>
+
 <h3 id="demonstrações-sobre-conjuntos">Demonstrações sobre conjuntos</h3>
 
-<p>Proposições sobre conjuntos são demonstradas ou refutadas utilizando das próprias definições dos conjuntos, operações entre conjuntos e relações entre conjuntos vistas anteriormente. Vamos ver um exemplo:</p>
+<p>Proposições sobre conjuntos são demonstradas ou refutadas utilizando das próprias definições, operações, e relações que vimos anteriormente. Vamos dar uma olhadinha em como se parece uma demonstração envolvendo conjuntos:</p>
 
 <p><strong>Sejam A, B e C conjuntos tais que  A ⊆ B e B ⊆ C, demonstre que A ⊆ C.</strong></p>
 
@@ -227,6 +249,8 @@
   <p>Como todos os elementos de A pertencem a B, e todos os elementos de B pertencem a C, então todos os elementos de A pertencem a C.</p>
 </blockquote>
 
+<hr />
+
 <h5 id="exercícios-1">Exercícios</h5>
 
 <p>Seguindo a mesma idéia da demonstração que acabamos de ver, demonstre as seguintes proposições:</p>
@@ -237,10 +261,14 @@
 
 <ul>
   <li>Se A = B e B ⊆ C , então A ⊆ C.</li>
-  <li>A  ⊆ A ∪ B</li>
+  <li>A ⊆ A ∪ B</li>
   <li>A ⊈ B\A</li>
   <li>Se A ⊆ B &amp; x ∈ A, então x ∈ B</li>
 </ul>
+
+<blockquote>
+  <p>Nota: sinta-se livre para pedir ajuda caso não consiga prosseguir com alguma demonstração!</p>
+</blockquote>
 
             </main>
             <script src="./assets/js/sumario_script.js"></script>

@@ -50,7 +50,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-# Teoria dos Conjuntos
+## Teoria dos Conjuntos
 
 Agora que fomos apresentados às utilidades dos conjuntos na programação, podemos utilizar a Teoria dos Conjuntos para aprofundar nosso conhecimento sobre as definições matemáticas nas quais são embasadas todas as estruturas de dados vistas anteriormente! 
 
@@ -74,7 +74,7 @@ Dado o conjunto de inteiros A = {3, 5, 7, 90, 21, 42}, a única forma válida de
 
 Ou seja, só podemos perguntar se um elemento **do mesmo tipo dos elementos do conjunto A** pertence ou não ao conjunto.
 
-Logo, os seguintes exemplos **não** são "perguntas" válidas ao nosso conjunto A:
+Dessa forma, os seguintes exemplos **não** são "perguntas" válidas ao nosso conjunto A:
 
 - Fiat uno ∈ A
 - umberto ∉ A
@@ -87,9 +87,11 @@ Logo, os seguintes exemplos **não** são "perguntas" válidas ao nosso conjunto
 
 Podemos definir um conjunto de várias maneiras, dentre elas:
 
--Citar diretamente todos os elementos do conjunto, usando chaves ({ }) : A = {1, 2, 3, 7, 5, 42}
--definir o que significa pertencer ao conjunto: x ∈ A ≝ x tem propriedade y
--set comprehension: A ≝ {x \| x tem propriedade y}
+- Citar diretamente todos os elementos do conjunto, usando chaves ({ }) : A = {1, 2, 3, 7, 5, 42}
+
+- Definir o que significa pertencer ao conjunto: x ∈ A ≝ x tem propriedade y
+
+- Set comprehension: A ≝ {x \| x tem propriedade y}
 
 Vamos definir o conjunto de todas as pessoas com cabelo longo, usando dois dos métodos que acabamos de conhecer:
 
@@ -97,6 +99,7 @@ Vamos definir o conjunto de todas as pessoas com cabelo longo, usando dois dos m
 
 > p ∈ L ≝ p tem cabelo longo
 
+---
 
 ##### Exercícios
 
@@ -111,13 +114,13 @@ Agora que aprendemos a definir conjuntos, defina os conjuntos a seguir, utilizan
 
 Assim como temos definidas operações entre números inteiros como a soma e a multiplicação, podemos definir operações entre dois ou mais conjuntos de um mesmo tipo, vamos explorar algumas delas!
 
-
-
 #### União
 
 Dados dois conjuntos A e B de um mesmo tipo, podemos definir a união (∪) binária como:
 
 <p style="text-align: center;"><strong>x ∈ A∪B ≝ x ∈ A ou x ∈ B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A∪B ≝ {x | x ∈ A ou x ∈ B}</strong></p>
+
+Para ajudar na compreensão, podemos visualizar a união dos conjuntos A e B no diagrama:
 
 <div style="text-align: center;"><img src="assets/images/AuniaoB.png" alt="" style="widht:300px;height:300px;"> </div>
 
@@ -125,8 +128,9 @@ Dados dois conjuntos A e B de um mesmo tipo, podemos definir a união (∪) bin�
 
 Dados dois conjuntos A e B de um mesmo tipo, defina a interseção binária (∩):
 
-
 <p style="text-align: center;"><strong>x ∈ A∩B ≝ …&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A∩B ≝ …</strong></p>
+
+Para ajudar na compreensão, podemos visualizar a interseção dos conjuntos A e B no diagrama:
 
 <div style="text-align: center;"><img src="assets/images/AinterB.png" alt="" style="widht:300px;height:300px;"> </div>
 
@@ -134,7 +138,9 @@ Dados dois conjuntos A e B de um mesmo tipo, defina a interseção binária (∩
 
 Dados dois conjuntos A e B de um mesmo tipo, podemos definir a diferença (\) de dois conjuntos como sendo:
 
-<p style="text-align: center;"><strong>x ∈ A\B ≝ x ∈ A e x ∉ B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A\B ≝ {x \| x ∈ A e x ∉ B}</strong></p>
+<p style="text-align: center;"><strong>x ∈ A\B ≝ x ∈ A e x ∉ B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A\B ≝ {x | x ∈ A e x ∉ B}</strong></p>
+
+Para ajudar na compreensão, podemos visualizar a diferença dos conjuntos A e B no diagrama:
 
 <div style="text-align: center;"><img src="assets/images/AforaB.png" alt="" style="widht:300px;height:300px;"> </div>
 
@@ -142,7 +148,9 @@ Dados dois conjuntos A e B de um mesmo tipo, podemos definir a diferença (\) de
 
 Dado um conjunto A, podemos definir seu complemento como:
 
-<p style="text-align: center;"><strong>Aᶜ ≝ x ∉ A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aᶜ ≝ {x \| x ∉ A}</strong></p>
+<p style="text-align: center;"><strong>Aᶜ ≝ x ∉ A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aᶜ ≝ {x | x ∉ A}</strong></p>
+
+Para ajudar na compreensão, podemos visualizar o complemento do conjunto A no diagrama:
 
 <div style="text-align: center;"><img src="assets/images/Acomplementar.png" alt="" style="widht:300px;height:300px;"> </div>
 
@@ -169,9 +177,11 @@ Sendo A e B conjuntos, temos:
 
 <p style="text-align: center;"><strong>A = B ≝ A ⊆ B e B ⊆ A</strong></p>
 
+> Se abrirmos a definição de (⊆), podemos ler da seguinte forma: A é igual a B, sse todo elemento de A pertencer à B e todo elemento de B pertencer à A.
+
 ### Demonstrações sobre conjuntos
 
-Proposições sobre conjuntos são demonstradas ou refutadas utilizando das próprias definições dos conjuntos, operações entre conjuntos e relações entre conjuntos vistas anteriormente. Vamos ver um exemplo:
+Proposições sobre conjuntos são demonstradas ou refutadas utilizando das próprias definições, operações, e relações que vimos anteriormente. Vamos dar uma olhadinha em como se parece uma demonstração envolvendo conjuntos: 
 
 **Sejam A, B e C conjuntos tais que  A ⊆ B e B ⊆ C, demonstre que A ⊆ C.**
 
@@ -185,6 +195,8 @@ Demonstração:
 
 > Como todos os elementos de A pertencem a B, e todos os elementos de B pertencem a C, então todos os elementos de A pertencem a C.
 
+---
+
 ##### Exercícios
 
 Seguindo a mesma idéia da demonstração que acabamos de ver, demonstre as seguintes proposições:
@@ -192,6 +204,8 @@ Seguindo a mesma idéia da demonstração que acabamos de ver, demonstre as segu
 > Considere A, B e C conjuntos do mesmo tipo.
 
 - Se A = B e B ⊆ C , então A ⊆ C.
-- A  ⊆ A ∪ B
+- A ⊆ A ∪ B
 - A ⊈ B\A
 - Se A ⊆ B & x ∈ A, então x ∈ B
+
+> Nota: sinta-se livre para pedir ajuda caso não consiga prosseguir com alguma demonstração!
