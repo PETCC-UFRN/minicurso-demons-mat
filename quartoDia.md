@@ -3,9 +3,6 @@ layout: layoutGit
 title: Minicurso de Linux e Git
 ---
 
-
-# Git avançado
-
 <div id="sumario" class="sumario-git">
     <h1>Sumário</h1>
     <summary><a href="#git-avancado">Git avançado</a></summary>
@@ -44,268 +41,157 @@ title: Minicurso de Linux e Git
   
   </button>
   </div>
-Sejam todos bem vindos ao quarto dia do nosso curso de Introdução as Demonstrações Matemáticas! Nesse dia nos aprofundaremos nas diferentes formas e estratégias de demonstração presentes na Matemática e seremos aprensentados ao Lean, um assistente de demonstrações poderoso que nos ajudará a demonstrar propriedades matemáticas de maneira mais eficaz e assertiva.
 
-## As diferentes formas de demonstração
+# Interseção entre Conjuntos e Programação
 
-Existem diferentes estratégias para se demonstrar propriedades matemáticas, e escolher a certa pode, muitas vezes, ser a diferença entre uma demonstração bem sucedida feita em 4 linhas e uma demonstração impossivel de ser concluida.
-Estudaremos algumas delas, entendendo como funcionam e em quais situações elas podem ser úteis para a gente.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-<div style="text-align: center;"><img src="assets/images/exerciciodoleitormeme.png" alt="" style="widht:250px;height:150px;"> </div>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-### Demonstração por força bruta
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+# Teoria dos Conjuntos
 
-O método mais simples para demonstrações pequenas, que dependem de poucos casos específicos.
+Agora que fomos apresentados às utilidades dos conjuntos na programação, podemos utilizar a Teoria dos Conjuntos para aprofundar nosso conhecimento sobre as definições matemáticas nas quais são embasadas todas as estruturas de dados vistas anteriormente! 
 
-> Exemplo: demonstrar que todos os membros do conjunto de naturais {1, 3, 15,78, 6, 4, 2} são menores do que 80.
+### Conjuntos
 
-Imagine ter que demonstrar uma propriedade para um conjunto de 500 mil elementos!
+Na matemática, um conjunto (denotado por {}), é uma coleção de elementos de um mesmo tipo independente de ordem e da repetição de seus elementos. Vamos entender um pouco essa definição:
 
-Como conseguiriamos utilizar isso para demonstrar uma propriedade de um conjunto infinito? Spoiler: Não dá!
+- Independente de ordem: Os conjuntos {1, 2, 3, 4} e {4, 3, 1, 2} são iguais por definição.
 
-### Demonstração direta
+- Independente de repetição: Os conjuntos {42, 42 ,84} e {42, 84} são iguais por definição.
 
+#### "Interface" dos conjuntos
 
-É chamada de demonstração direta quando conseguimos demonstrar o nosso alvo apenas utilizando os quantificadores em sua forma “padrão” e os dados que temos ou obtivemos.
+Pela definição de um conjunto, as únicas “perguntas” que podemos fazer a ele são se um elemento de um mesmo tipo pertence ou não a ele. Como assim?
 
+Dado o conjunto de inteiros A = {3, 5, 7, 90, 21, 42}, a única forma válida de acessar os elementos desse conjunto são pelas proposições que seguem o seguinte formato:
 
-> Exemplo: utilizar de exemplo alguma demonstração simples feita no dia 3 sobre conjuntos.
+- 5 ∈ A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[possui valor True]
+- 42 ∉ A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[possui valor False]
+- 12 ∈ A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[possui valor False]
 
+Ou seja, só podemos perguntar se um elemento **do mesmo tipo dos elementos do conjunto A** pertence ou não ao conjunto.
 
-### Demonstração por escolha ou contra-exemplo
+Logo, os seguintes exemplos **não** são "perguntas" válidas ao nosso conjunto A:
 
+- Fiat uno ∈ A
+- umberto ∉ A
+- 43,9 ∈ A
+- 4 está no indice 3 do conjunto A
+- 3 aparece 2 vezes no conjunto A
 
-Para lidar com o quantificador do existêncial (∃), basta escolhermos alguém que satisfaça suas condições necessárias. A mesma coisa acontece quando queremos demonstrar a negação ou refutar um para todo (∀), basta escolhermos um contra-exemplo que **não** satisfaça tais propriedades. 
 
-> Exemplo: (∃p ∈ Primos)[p par]
+#### Definindo um conjunto
 
-> Exemplo: (∀ p ∈ Primos)[p ímpar];
+Podemos definir um conjunto de várias maneiras, dentre elas:
 
-### Demonstração por contradição 💥(BOOM!)💥
+-Citar diretamente todos os elementos do conjunto, usando chaves ({ }) : A = {1, 2, 3, 7, 5, 42}
+-definir o que significa pertencer ao conjunto: x ∈ A ≝ x tem propriedade y
+-set comprehension: A ≝ {x \| x tem propriedade y}
 
+Vamos definir o conjunto de todas as pessoas com cabelo longo, usando dois dos métodos que acabamos de conhecer:
 
-Imagine que apartir de uma hipotese seja possível de chegar na conclusão de que 0 = 1? Assim é chamada a demonstração por contradição. Tendo nossas hipotéses, podemos supor por contradição que o alvo é falso e tentar chegar a algo claramente falso.
+> L = { p \| p tem cabelo longo}
 
->Exemplo: -INCOMPLETO-
+> p ∈ L ≝ p tem cabelo longo
 
-### Demonstração por indução/recursão
 
-Podemos utilizar da recursão para demonstrar algumas propriedades desejadas. Para isso, precisamos ter um passo base e um passo recursivo:
+##### Exercícios
 
- >Exemplo: -INCOMPLETO-
- 
-## Ferramentas de Proof Assistant e Introdução ao Lean
+Agora que aprendemos a definir conjuntos, defina os conjuntos a seguir, utilizando a notação que você mais gostou:
 
-Já pensou se nossas demonstrações matemáticas fossem cercadas de incertezas, e se pudessem estar erradas por causa de erros ou desvios? Quais seriam as consequências disso nas aplicações que dependem dessas demonstrações? BOOM!
+- Conjunto de todos os primos pares
+- Conjunto de todos os ímpares, menos o 2
+- Conjunto com apenas o 2
+- Conjunto de conjuntos de racionais
 
-Foi a partir dessas dúvidas que surgiram ferramentas que ajudam nas demonstrações matemáticas — os chamados Proof Assistants, ou provadores de teoremas.
+### Operações de conjuntos
 
-O provador de teoremas que vamos usar se chama Lean, um sistema criado no Brasil e que hoje é utilizado pela comunidade matemática internacional.
+Assim como temos definidas operações entre números inteiros como a soma e a multiplicação, podemos definir operações entre dois ou mais conjuntos de um mesmo tipo, vamos explorar algumas delas!
 
-O Lean é uma linguagem de programação que funciona tanto como linguagem funcional quanto como provador de teoremas.
 
-### Lean Overview
 
-Sabe toda aquela conversa sobre alvo, dados e hipóteses? O Lean tem uma aba de visão geral que ajuda bastante, mostrando qual é o alvo a ser demonstrado, os dados disponíveis, as hipóteses e as variáveis que estão no escopo.
+#### União
 
-<div style="text-align: center;"> <img src="assets/images/leanoverview.png" alt="" style="widht:300px;height:400px;"> </div>
+Dados dois conjuntos A e B de um mesmo tipo, podemos definir a união (∪) binária como:
 
->futuramente o link do live-lang.org
+<p style="text-align: center;"><strong>x ∈ A∪B ≝ x ∈ A ou x ∈ B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A∪B ≝ {x | x ∈ A ou x ∈ B}</strong></p>
 
-### Quantificadores em Lean
+<div style="text-align: center;"><img src="assets/images/AuniaoB.png" alt="" style="widht:300px;height:300px;"> </div>
 
-Em Lean, os quantificadores funcionam da mesma maneira na qual foram abordados anteriormente.
+#### Interseção 
 
-### Lean tactics
+Dados dois conjuntos A e B de um mesmo tipo, defina a interseção binária (∩):
 
-As táticas do Lean são os "comandos" utilizados nas demonstrações. A ideia é bem parecida com o que fizemos até então nas demonstrações feitas em sala. Para cada quantificador, temos maneiras diferentes de atacá-los ou utilizá-los. Algumas táticas também são utilizadas para criarmos novos dados e terminar a demonstração.
 
-#### intro
-`intro` é a maneira de atacar um alvo da forma (∀) ou de atacar uma implicação, ou seja, supor algo. Numa demonstração feita no papel escreveríamos "Seja x" ou "suponha p". A única diferença é que quando estamos supondo uma hipótese, invés de escrevermos a hipótese toda, escreveremos apelas um "apelido" para ela. Por exemplo, não escreveriamos `intro x ∈ A`, mas sim `intro h`, e h vira o "apelido" de x ∈ A.
+<p style="text-align: center;"><strong>x ∈ A∩B ≝ …&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A∩B ≝ …</strong></p>
 
-#### exact
-`exact` é a principal maneira de terminar uma demonstração. Quando temos em nossos dados a coisa que queremos demonstrar, usamos `exact (apelido da hipótese)`. No papel escreveriamos "Logo" ou "então".
+<div style="text-align: center;"><img src="assets/images/AinterB.png" alt="" style="widht:300px;height:300px;"> </div>
 
-Dado o enunciado `(∀x)(∀ A conjunto)[x ∈ A ⇒ x ∈ A]`, o demonstrariamos da seguinte maneira no papel:
-```
-Seja x.
-Seja A um conjunto.
-Suponha x ∈ A.
-Então x ∈ A.
-```
-Essa mesma demonstração ficaria da seguinte maneira em Lean:
+#### Diferença
 
-```lean
-example : ∀ (x : α) (A : Set α), x ∈ A → x ∈ A := by {
- intro x  -- Seja x.
- intro A  -- Seja A.
- intro h  -- Suponha h : x ∈ A.
- exact h  -- Então h : x ∈ A.
-}
-```
+Dados dois conjuntos A e B de um mesmo tipo, podemos definir a diferença (\) de dois conjuntos como sendo:
 
-Note que nem a lógica, nem os passos da demonstração mudaram!
-
-#### use
-`use` é a maneira de atacar um alvo de forma (∃). Numa demonstração no papel diríamos "tome x" ou "use x".
-
-Dado o enunciado (∃ x natural)[x ∈ {n l n > 0}], o demonstrariamos da seguinte forma no papel:
-
-```
-Use 1.
-Como 1 > 0, então 1 ∈ {n l n > 0}.
-```
-
-A mesma demonstração em Lean ficaria da seguinte maneira:
-
-```lean
-example : ∃ x : Nat, x ∈ {n | n > 0} := by {               
-use 1   -- use 1
--- a partir daqui, nos resta demonstrar que 1>0
-exact Nat.one_pos  -- Nat.one_pos é o axioma que diz que 1>0, então faz sentido usar esse exact.
-}
-```
-A lógica da demonstração em Lean segue parecida, a diferença é que quando escrevemos no papel, tendemos a deixar algumas informações implicitas, o que a princiípio não é problema, mas pode se transformar em um, a depender do tamanho da nossa demonstração.
-
-#### have
-`have` é a maneira de criar um dado novo utilizando dados que já temos. Note que você não pode "criar" um dado do nada, precisa demonstrá-lo! No papel escreveriamos "vou demonstrar que", "temos que _, visto que _", "temos _, logo _"
-
-Dado o enunciado (∀x) (∀ A, B, C conjuntos) [A ⊆ B ⇒ B ⊆ C ⇒ x ∈ A ⇒ x ∈ C], o demonstrariamos no papel da seguinte maneira:
-```
-Seja x.
-Sejam A, B, C conjuntos.
-Suponha A ⊆ B.
-Suponha B ⊆ C.
-Suponha x ∈ A.
-Temos que x ∈ B, visto que x ∈ A e A ⊆ B.
-Logo, temos que x ∈ C visto que x ∈ B e B ⊆ C.
-```
-
-Em Lean, a demonstração segue a mesma lógica:
-
-```lean
-example {α} : ∀ (x : α ) (A B C : Set α ), A ⊆ B → B ⊆ C → x ∈ A → x ∈ C := by {
-intro x      -- seja x
-intro A B C  -- sejam A, B, C
-intro h1     -- suponha h1 : A ⊆ B
-intro h2     -- suponha h2 : B ⊆ C
-intro h3     -- suponha h3 : x ∈ A
-
-have h4 : x ∈ B := h1 h3 -- Temos h4 : x ∈ B, visto que h1 : A ⊆ B e h3 : x ∈ A
-have h5 : x ∈ C := h2 h4 -- Temos h5 : x ∈ C, visto que h2 : B ⊆ C e h4 : x ∈ B
-exact h5
-}
-```
-A sintaxe funciona da seguinte maneira:
-
-`nome_da_hipótese : hipótese := demonstração`
-
-#### apply
-`apply` é a tática que serve para aplicarmos uma hipótese em nosso alvo ou em outra hipótese, mudando sua forma. No papel escreveriamos "basta demonstrar que  _". Aplicar uma hipótese x a uma hipótese y muda a forma da hipótese y.
-Por exemplo, se x : (∀ n natural)[n impar ⇒ n > 0] e y : n impar, `apply x at y` mudaria y para y : n > 0.
-
-Utilizando da mesma demonstração passada, podemos demonstrar ela no papel seguindo um caminho diferente:
-
-Enunciado : (∀x) (∀ A, B, C conjuntos) [A ⊆ B ⇒ B ⊆ C ⇒ x ∈ A ⇒ x ∈ C]
-
-```
-Seja x.
-Sejam A, B, C conjuntos
-Suponha A ⊆ B.
-Suponha B ⊆ C.
-Suponha x ∈ A.
-como B ⊆ C, então basta demonstrar que x ∈ B.
-como A ⊆ B, então basta demonstrar que x ∈ A.
-Então x ∈ A.
-```
-
-Em Lean, essa estratégia diferente fica da seguinte maneira:
-
-```lean
-example {α} : ∀ (x : α ) (A B C : Set α ), A ⊆ B → B ⊆ C → x ∈ A → x ∈ C := by {
-intro x      -- Seja x
-intro A B C  -- Sejam A, B, C conjuntos
-intro h1     -- Suponha A ⊆ B
-intro h2     -- Suponha B ⊆ C
-intro h3     -- Suponha x ∈ A
-
-apply h2     -- como B ⊆ C, então basta demonstrar que x ∈ B
-apply h1     -- como A ⊆ B, então basta demonstrar que x ∈ A
-exact h3
-}
-```
-
-#### rw[_]
-Quando queremos substituir algo no nosso alvo ou em alguma hipótese por algo que já temos nos nossos dados, podemos usar a tática `rw [dado]`, que reescreve o alvo ou a hipótese. No papel escreveriamos "Como x = y, então basta demostrar P(y)"
-
-Dado o enunciado (∀x) (A, B cojuntos) [B = A ⇒ x ∈ A ⇒ x ∈ B], o demonstrariamos da seguinte maneira no papel:
-```
-Seja x.
-Sejam A, B conjuntos.
-Suponha B = A.
-Suponha x ∈ A.
-Como B = A, então basta demonstrar que x ∈ A.
-Então x ∈ B.
-```
-
-Em Lean, a mesma demonstração fica da seguinte maneira:
-```lean
-example {α} : ∀ (x : α) (A B : Set α), B = A → x ∈ A → x ∈ B := by {
-intro x            -- Seja x
-intro A B          -- Sejam A, B conjuntos
-intro hipotese.BA  -- Suponha B = A
-intro hipotese.A   -- Suponha x ∈ A
-rw[hipotese.BA]    -- Como B = A, então reesreva meu alvo
-exact hipotese.A
-}
-```
-Mais uma vez, a lógica da demonstração em Lean é parecida com a demonstração no papel, a diferença é que essa "reescrita" no papel é feita de maneira mais implicita.
-
-
-## Tabelinha das tactics
-
-Para ajudar a lembrar da utilidade de cada tactis, criamos essa tabelinha com seu nome, sua utilidade e sua tradução. Existem muito mais tactics em Lean, mas essas são as principais que aparecem em todas as demonstrações!
-
-<table>
-  <thead>
-    <tr>
-      <th>Tactic</th>
-      <th>Utilidade</th>
-      <th>Tradução</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Intro</td>
-      <td>Usado em (∀) e para supor hipóteses</td>
-      <td>"Seja" ou "Suponha"</td>
-    </tr>
-    <tr>
-      <td>Exact</td>
-      <td>Termina a demonstração.</td>
-      <td>"exatamente"</td>
-    </tr>
-    <tr>
-      <td>Use</td>
-      <td>usado em (∃)</td>
-      <td>"Use" ou "Tome"</td>
-    </tr>
-    <tr>
-      <td>Have</td>
-      <td>cria um novo dado</td>
-      <td>"Temos"</td>
-    </tr>
-    <tr>
-      <td>Apply</td>
-      <td>aplica uma hipotese ao alvo ou a um dado</td>
-      <td>"Basta demonstrar que" ou "aplico x em y para obter _"</td>
-    </tr>
-    <tr>
-      <td>rw[]</td>
-      <td>reescreve o alvo ou o dado</td>
-      <td>"Como x=y e P(x), então P(y)"</td>
-    </tr>
-
-  </tbody>
-</table>
+<p style="text-align: center;"><strong>x ∈ A\B ≝ x ∈ A e x ∉ B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A\B ≝ {x \| x ∈ A e x ∉ B}</strong></p>
+
+<div style="text-align: center;"><img src="assets/images/AforaB.png" alt="" style="widht:300px;height:300px;"> </div>
+
+#### Complemento
+
+Dado um conjunto A, podemos definir seu complemento como:
+
+<p style="text-align: center;"><strong>Aᶜ ≝ x ∉ A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aᶜ ≝ {x \| x ∉ A}</strong></p>
+
+<div style="text-align: center;"><img src="assets/images/Acomplementar.png" alt="" style="widht:300px;height:300px;"> </div>
+
+### Relações entre conjuntos
+
+Agora que sabemos como definir conjuntos e suas operações, podemos definir duas relações importantíssimas sobre conjuntos, o contém/contido e a igualdade entre conjuntos.
+
+#### Contém e contido
+
+Dados conjuntos A e B do mesmo tipo, podemos enunciar a proposição "A é subconjunto de B" ou "A está contido em B", mas primeiro precisamos definir o que significa ser subconjunto ou estar contido. Sendo A e B conjuntos temos:
+
+<p style="text-align: center;"><strong>A⊆B ≝ (∀x)[x ∈ A ⇒ x ∈ B]</strong></p>
+
+
+> Podemos ler da seguinte maneira: dizemos que A está contido em B (ou A é subconjunto de B) se todos os elementos de A pertencem a B
+
+<div style="text-align: center;"><img src="assets/images/AcontidoB.png" alt="" style="widht:300px;height:300px;"> </div>
+
+#### Igualdade
+
+Finalmente podemos entender o que significa dois conjuntos do mesmo tipo serem iguais. A partir do conhecimento que adquirimos até aqui, podemos definir o seguinte: 
+
+Sendo A e B conjuntos, temos:
+
+<p style="text-align: center;"><strong>A = B ≝ A ⊆ B e B ⊆ A</strong></p>
+
+### Demonstrações sobre conjuntos
+
+Proposições sobre conjuntos são demonstradas ou refutadas utilizando das próprias definições dos conjuntos, operações entre conjuntos e relações entre conjuntos vistas anteriormente. Vamos ver um exemplo:
+
+**Sejam A, B e C conjuntos tais que  A ⊆ B e B ⊆ C, demonstre que A ⊆ C.**
+
+Demonstração:
+
+> Relembrando a definição de A ⊆ C, precisamos demonstrar que todo elemento de A pertence a C.
+
+> Temos que todo elemento de A pertence a B, visto que A ⊆ B.
+
+> Temos que todo elemento de B pertence a C, visto que B ⊆ C.
+
+> Como todos os elementos de A pertencem a B, e todos os elementos de B pertencem a C, então todos os elementos de A pertencem a C.
+
+##### Exercícios
+
+Seguindo a mesma idéia da demonstração que acabamos de ver, demonstre as seguintes proposições:
+
+> Considere A, B e C conjuntos do mesmo tipo.
+
+- Se A = B e B ⊆ C , então A ⊆ C.
+- A  ⊆ A ∪ B
+- A ⊈ B\A
+- Se A ⊆ B & x ∈ A, então x ∈ B
