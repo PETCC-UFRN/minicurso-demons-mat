@@ -27,7 +27,7 @@
         <div>
             <main>
                 <div id="sumario" class="sumario-git">
-    <h1>Sumário</h1>
+    <h1>Dia 1</h1>
     <details>
         <summary><a href="#introdução-ao-curso">Introdução</a></summary>
     <ul>
@@ -57,6 +57,7 @@
                     <li><a href="#contradição">Contradição</a></li>
                 </ul>
             </li>
+            <li><a href="#demonstração-de-equivalências">Demonstração de equivalências</a></li>
         </ul>
     </details>
   <button class="toggle-button" id="toggle-button">
@@ -72,13 +73,7 @@
 
 <p><br /></p>
 
-<h1 id="dia-1--benefícios-da-lógica-na-programação">Dia 1 | Benefícios da Lógica na Programação</h1>
-
-<h2 id="introdução-ao-curso">Introdução ao curso</h2>
-<p>Olá a todos! Sejam bem-vindos ao primeiro dia do nosso minicurso de Introdução às Demonstrações Matemáticas. Neste curso iremos buscar entender qual a ligação entre a Matemática e a Computação, como as Demonstrações Matemáticas são parte essencial da nossa área e quais benefícios podemos tirar delas!</p>
-
-<h3 id="matemática-e-computação">Matemática e Computação</h3>
-<p>A computação tem suas raízes profundamente entrelaçadas com a matemática, visto que toda a sua base teórica veio do trabalho de diversos matemáticos ao longo dos últimos séculos, desde a criação do primeiro algoritmo feito por Ada Lovelace, até as definições formais de computadores, e o significado  “ser computável” feitas por Alan Turing e Alonzo Church. Além disso, figuras como George Boole, criador da álgebra booleana, e John Von Neumann, com sua arquitetura de computadores, mostraram como conceitos puramente matemáticos podem influenciar a nossa área.</p>
+<h1 id="benefícios-da-lógica-na-programação">Benefícios da Lógica na Programação</h1>
 
 <h2 id="lógica">Lógica</h2>
 <p>Para começarmos a entender mais profundamente a influência da matemática na programação, e como conceitos matemáticos se relacionam com a área da Computação, precisamos ser introduzidos à Lógica, que estrutura toda a matemática que conhecemos, e quais seus benefícios na nossa área.</p>
@@ -251,40 +246,31 @@
 <h4 id="exemplo-4">Exemplo</h4>
 <p>Vamos ver alguns exemplos para fixar esse conceito. Para cada frase, digam se é uma proposição e, se for, qual seu valor verdade.</p>
 
+<p>Primeiro, temos dois exemplos para praticarmos juntos. Respondam se é uma proposição, e por quê!</p>
+
+<p>Exemplo 1:</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Natal é a capital do Rio Grande do Norte!
-
-Sim, é uma proposição. O valor verdade é Verdadeiro.
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Natal não é a capital do Rio Grande do Norte!
+<details>
+    <summary>resposta: SPOILER!</summary>
+    Sim, é uma proposição. O valor verdade é Verdadeiro.
+</details>
 
-Sim, é uma proposição. O valor verdade é Falso.
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2 + 2 = 5
-
-Sim, é uma proposição. O valor verdade é Falso
-</code></pre></div></div>
+<p>Exemplo 2:</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Que horas são?
-
-Não, não é uma proposição. É uma pergunta.
 </code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Feche a porta.
+<details>
+    <summary>resposta: SPOILER!</summary>
+    Não, não é uma proposição. É uma pergunta.
+</details>
 
-Não, não é uma proposição. É uma ordem.
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x+3=7.
-
-Não é uma proposição, pois o valor verdade depende do valor de x.
-</code></pre></div></div>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Todo número par é divisível por 2.
-
-Sim, é uma proposição. O valor verdade é Verdadeiro.
-</code></pre></div></div>
+<p>Agora, vamos praticar a identificação de proposições lógicas através da plataforma Kahoot!
+<!--Exercício--></p>
+<p style="text-align: center;"><strong>|--------------------------------PAUSA PARA O KAHOOT!--------------------------------|</strong></p>
 
 <ul>
   <li>Se alguns exemplos não ficaram muito claros, não se preocupem, esse tipo de conhecimento vai ser aprimorado com o tempo</li>
@@ -297,11 +283,26 @@ Sim, é uma proposição. O valor verdade é Verdadeiro.
 <h4 id="negação">Negação</h4>
 <p>A negação de uma proposição simplesmente inverte seu valor verdade. Se <strong>P</strong> é verdadeira, <strong>¬P</strong> é falsa, e vice-versa.</p>
 
-<p><strong>Tabela Verdade</strong>
-| P | ¬P |
-|—|—|
-| V | F |
-| F | V |</p>
+<p><strong>Tabela Verdade</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>P</th>
+      <th>¬P</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>V</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <td>F</td>
+      <td>V</td>
+    </tr>
+  </tbody>
+</table>
 
 <ul>
   <li>
@@ -311,6 +312,13 @@ Sim, é uma proposição. O valor verdade é Verdadeiro.
     <p>¬P: ‘O sol não é uma estrela.’ (Falso)</p>
   </li>
 </ul>
+
+<p>Vamos definir a negação (¬) como uma funçãozinha em pseudocódigo:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">not</span> <span class="o">::</span> <span class="kt">Bool</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<span class="n">not</span> <span class="kt">True</span> <span class="o">=</span> <span class="kt">False</span>
+<span class="n">not</span> <span class="kt">False</span> <span class="o">=</span> <span class="kt">True</span>
+</code></pre></div></div>
 
 <h4 id="conjunção">Conjunção</h4>
 <p>A conjunção de duas proposições <strong>P</strong> e <strong>Q</strong> (lê-se <strong>P e Q</strong>) é verdadeira se ambas <strong>P</strong> e <strong>Q</strong> forem verdadeiras. Em todos os outros casos, é falsa.</p>
@@ -358,6 +366,14 @@ Sim, é uma proposição. O valor verdade é Verdadeiro.
 </ul>
 
 <p>Esta proposição será verdadeira apenas se ambas as condições (chuva e guarda-chuva) forem verdadeiras.</p>
+
+<p>Vamos definir a conjunção (∧) como uma funçãozinha em pseudocódigo:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">and</span><span class="p">)</span> <span class="o">::</span> <span class="kt">Bool</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<span class="kt">True</span>  <span class="n">and</span> <span class="kt">True</span>  <span class="o">=</span> <span class="kt">True</span>
+<span class="kt">True</span>  <span class="n">and</span> <span class="kt">False</span> <span class="o">=</span> <span class="kt">False</span>
+<span class="kt">False</span> <span class="n">and</span> <span class="kr">_</span>     <span class="o">=</span> <span class="kt">False</span>
+</code></pre></div></div>
 
 <h4 id="disjunção">Disjunção</h4>
 <p>A disjunção de duas proposições <strong>P</strong> e <strong>Q</strong> (lê-se <strong>P ou Q</strong>) é verdadeira se pelo menos uma das proposições <strong>P</strong> ou <strong>Q</strong> for verdadeira. É falsa apenas se ambas <strong>P</strong> e <strong>Q</strong> forem falsas.</p>
@@ -424,6 +440,21 @@ Sim, é uma proposição. O valor verdade é Verdadeiro.
 
 <p>Esta proposição é verdadeira se eu viajar para João Pessoa, viajar para Recife, ou se eu fizer as duas coisas. Só será falsa se eu não viajar para João Pessoa e não viajar para Recife.</p>
 
+<p>Vamos definir a disjunção (∨) como uma funçãozinha em pseudocódigo:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="n">or</span><span class="p">)</span> <span class="o">::</span> <span class="kt">Bool</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<span class="kt">False</span> <span class="n">or</span> <span class="kt">False</span> <span class="o">=</span> <span class="kt">False</span>
+    <span class="kr">_</span> <span class="n">or</span> <span class="kr">_</span>     <span class="o">=</span> <span class="kt">True</span> 
+</code></pre></div></div>
+
+<h5 id="exercício">Exercício</h5>
+
+<p>Seguindo a mesma ideia das tabelas verdades da conjunção e disjunção, tente montar a tabela verdade da seguinte proposição:</p>
+
+<blockquote>
+  <p>(P ∨ Q) ∧ R</p>
+</blockquote>
+
 <h4 id="implicação">Implicação</h4>
 <p>A implicação de <strong>P</strong> para <strong>Q</strong> (lê-se ‘<strong>Se P então Q</strong>’) é falsa apenas quando <strong>P</strong> é verdadeira e <strong>Q</strong> é falsa. Em todos os outros casos, é verdadeira.”</p>
 
@@ -476,6 +507,13 @@ Sim, é uma proposição. O valor verdade é Verdadeiro.
 </ul>
 
 <p>Esta proposição só será falsa se chover (<strong>P</strong> verdadeira) e a rua não ficar molhada (<strong>Q</strong> falsa), o que é um cenário inconsistente com o senso comum. Se não chover (<strong>P</strong> falsa), a proposição é considerada verdadeira, independentemente se a rua está molhada ou não (pode ter sido lavada, por exemplo).</p>
+
+<p>Vamos definir a disjunção (∨) como uma funçãozinha em pseudocódigo:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="o">==&gt;</span><span class="p">)</span> <span class="o">::</span> <span class="kt">Bool</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<span class="kt">True</span> <span class="o">==&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+<span class="kt">False</span> <span class="o">==&gt;</span> <span class="kr">_</span> <span class="o">=</span> <span class="kt">True</span>
+</code></pre></div></div>
 
 <h5 id="valor-verdade-por-vacuidade">Valor Verdade por Vacuidade:</h5>
 
@@ -535,6 +573,14 @@ Sim, é uma proposição. O valor verdade é Verdadeiro.
   </li>
 </ul>
 
+<h5 id="exercício-1">Exercício</h5>
+
+<p>Seguindo o mesmo padrão das definições anteriores, vamos tentar definir em pseudocódigo a bi-implicação (⟺)!</p>
+
+<blockquote>
+  <p>Dica: Você vai precisar utilizar 2 funções que definimos anteriormente!</p>
+</blockquote>
+
 <h4 id="contradição">Contradição</h4>
 <p>Uma contradição é uma proposição que é sempre falsa, independentemente do valor verdade de suas proposições componentes. Por exemplo, ‘<em>Está chovendo <strong>e</strong> não está chovendo</em>’.</p>
 
@@ -588,6 +634,30 @@ Sim, é uma proposição. O valor verdade é Verdadeiro.
     </tr>
   </tbody>
 </table>
+
+<h4 id="demonstração-de-equivalências">Demonstração de equivalências</h4>
+
+<p>Vamos aprender a como podemos demonstrar a equivalência (bi-implicação) entre proposições lógicas!</p>
+
+<p>Para começar, podemos demonstrar juntos, utilizando do método da igualdade de tabelas verdade, a seguinte proposição:</p>
+
+<ul>
+  <li>P ∨ Q ⟺ Q ∨ P</li>
+</ul>
+
+<blockquote>
+  <p>Nota: É comum ver em livros de lógica proposicional enunciados como esse utilizando o simbolo (≡) ao invés de (⟺), quando se trata da bi-implicação/equivalência de duas sentenças lógicas.</p>
+</blockquote>
+
+<h5 id="exercício-2">Exercício</h5>
+
+<p>Agora é a sua vez de demonstrar algumas equivalências lógicas, utilize do mesmo método que mostramos anterioremente para demonstrar as seguintes bi-implicações:</p>
+
+<div class="language-lean highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">P</span> <span class="o">∧</span> <span class="n">Q</span> <span class="o">≡</span> <span class="n">Q</span> <span class="o">∧</span> <span class="n">P</span>               [<span class="n">Comutatividade</span> <span class="n">da</span> <span class="n">conjun</span><span class="err">çã</span><span class="n">o</span>]
+(<span class="n">P</span> <span class="o">∨</span> <span class="n">Q</span>) <span class="o">∧</span> <span class="n">Q</span> <span class="o">≡</span> <span class="n">Q</span>             [<span class="n">Abrsor</span><span class="err">çã</span><span class="n">o</span> <span class="n">da</span> <span class="n">conjun</span><span class="err">çã</span><span class="n">o</span> <span class="n">sobre</span> <span class="n">a</span> <span class="n">disjun</span><span class="err">çã</span><span class="n">o</span>]
+<span class="o">¬</span>(<span class="o">¬</span><span class="n">P</span>) <span class="o">≡</span> <span class="n">P</span>                   [<span class="n">Nega</span><span class="err">çã</span><span class="n">o</span> <span class="n">da</span> <span class="n">nega</span><span class="err">çã</span><span class="n">o</span>]
+<span class="o">¬</span>(<span class="n">P</span> <span class="o">∧</span> <span class="n">Q</span>) <span class="o">≡</span> (<span class="o">¬</span><span class="n">P</span>) <span class="o">∨</span> (<span class="o">¬</span><span class="n">Q</span>)      [<span class="n">Demorgan</span>]
+</code></pre></div></div>
 
             </main>
             <script src="./assets/js/sumario_script.js"></script>

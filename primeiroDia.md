@@ -3,7 +3,7 @@ layout: layoutGit
 title: Minicurso de Linux e Git
 ---
 <div id="sumario" class="sumario-git">
-    <h1>Sumário</h1>
+    <h1>Dia 1</h1>
     <details>
         <summary><a href="#introdução-ao-curso">Introdução</a></summary>
     <ul>
@@ -33,6 +33,7 @@ title: Minicurso de Linux e Git
                     <li><a href='#contradição'>Contradição</a></li>
                 </ul>
             </li>
+            <li><a href="#demonstração-de-equivalências">Demonstração de equivalências</a></li>
         </ul>
     </details>
   <button class="toggle-button" id="toggle-button">
@@ -48,13 +49,7 @@ title: Minicurso de Linux e Git
 
 <br>
 
-# Dia 1 | Benefícios da Lógica na Programação
-
-## Introdução ao curso
-Olá a todos! Sejam bem-vindos ao primeiro dia do nosso minicurso de Introdução às Demonstrações Matemáticas. Neste curso iremos buscar entender qual a ligação entre a Matemática e a Computação, como as Demonstrações Matemáticas são parte essencial da nossa área e quais benefícios podemos tirar delas! 
-
-### Matemática e Computação
-A computação tem suas raízes profundamente entrelaçadas com a matemática, visto que toda a sua base teórica veio do trabalho de diversos matemáticos ao longo dos últimos séculos, desde a criação do primeiro algoritmo feito por Ada Lovelace, até as definições formais de computadores, e o significado  “ser computável” feitas por Alan Turing e Alonzo Church. Além disso, figuras como George Boole, criador da álgebra booleana, e John Von Neumann, com sua arquitetura de computadores, mostraram como conceitos puramente matemáticos podem influenciar a nossa área.
+# Benefícios da Lógica na Programação
 
 ## Lógica
 Para começarmos a entender mais profundamente a influência da matemática na programação, e como conceitos matemáticos se relacionam com a área da Computação, precisamos ser introduzidos à Lógica, que estrutura toda a matemática que conhecemos, e quais seus benefícios na nossa área.
@@ -218,47 +213,33 @@ Uma proposição é uma **afirmação declarativa que pode ser classificada como
 #### Exemplo
 Vamos ver alguns exemplos para fixar esse conceito. Para cada frase, digam se é uma proposição e, se for, qual seu valor verdade.
 
+Primeiro, temos dois exemplos para praticarmos juntos. Respondam se é uma proposição, e por quê!
+
+Exemplo 1:
+
 ```
 Natal é a capital do Rio Grande do Norte!
-
-Sim, é uma proposição. O valor verdade é Verdadeiro.
 ```
 
-```
-Natal não é a capital do Rio Grande do Norte!
+<details>
+    <summary>resposta: SPOILER!</summary>
+    Sim, é uma proposição. O valor verdade é Verdadeiro.
+</details>
 
-Sim, é uma proposição. O valor verdade é Falso.
-```
-
-```
-2 + 2 = 5
-
-Sim, é uma proposição. O valor verdade é Falso
-```
+Exemplo 2:
 
 ```
 Que horas são?
-
-Não, não é uma proposição. É uma pergunta.
 ```
 
-```
-Feche a porta.
+<details>
+    <summary>resposta: SPOILER!</summary>
+    Não, não é uma proposição. É uma pergunta.
+</details>
 
-Não, não é uma proposição. É uma ordem.
-```
-
-```
-x+3=7.
-
-Não é uma proposição, pois o valor verdade depende do valor de x.
-```
-
-```
-Todo número par é divisível por 2.
-
-Sim, é uma proposição. O valor verdade é Verdadeiro.
-```
+Agora, vamos praticar a identificação de proposições lógicas através da plataforma Kahoot!
+<!--Exercício-->
+<p style="text-align: center;"><strong>|--------------------------------PAUSA PARA O KAHOOT!--------------------------------|</strong></p>
 
 - Se alguns exemplos não ficaram muito claros, não se preocupem, esse tipo de conhecimento vai ser aprimorado com o tempo
 - **OBS:** É comum usar um símbolo para representar uma proposição. Normalmente, as letras **P** e **Q** são utilizadas, mas isso não significa que outros símbolos não possam ser usados.
@@ -270,6 +251,7 @@ As proposições podem ser combinadas para formar proposições mais complexas u
 A negação de uma proposição simplesmente inverte seu valor verdade. Se **P** é verdadeira, **¬P** é falsa, e vice-versa.
 
 **Tabela Verdade**
+
 | P | ¬P |
 |---|---|
 | V | F |
@@ -278,6 +260,15 @@ A negação de uma proposição simplesmente inverte seu valor verdade. Se **P**
 - P: 'O sol é uma estrela.' (Verdadeiro)
 
 - ¬P: 'O sol não é uma estrela.' (Falso)
+
+
+Vamos definir a negação (¬) como uma funçãozinha em pseudocódigo:
+
+```haskell
+not :: Bool -> Bool
+not True = False
+not False = True
+```
 
 #### Conjunção
 A conjunção de duas proposições **P** e **Q** (lê-se **P e Q**) é verdadeira se ambas **P** e **Q** forem verdadeiras. Em todos os outros casos, é falsa.
@@ -298,6 +289,15 @@ Exemplo prático:
 - P ∧ Q: 'Está chovendo e estou com guarda-chuva.'
 
 Esta proposição será verdadeira apenas se ambas as condições (chuva e guarda-chuva) forem verdadeiras.
+
+Vamos definir a conjunção (∧) como uma funçãozinha em pseudocódigo:
+
+```haskell
+(and) :: Bool -> Bool -> Bool
+True  and True  = True
+True  and False = False
+False and _     = False
+```
 
 #### Disjunção
 A disjunção de duas proposições **P** e **Q** (lê-se **P ou Q**) é verdadeira se pelo menos uma das proposições **P** ou **Q** for verdadeira. É falsa apenas se ambas **P** e **Q** forem falsas.
@@ -331,6 +331,21 @@ Exemplo Prático:
 
 Esta proposição é verdadeira se eu viajar para João Pessoa, viajar para Recife, ou se eu fizer as duas coisas. Só será falsa se eu não viajar para João Pessoa e não viajar para Recife.
 
+Vamos definir a disjunção (∨) como uma funçãozinha em pseudocódigo:
+
+```haskell
+(or) :: Bool -> Bool -> Bool
+False or False = False
+    _ or _     = True 
+```
+
+##### Exercício
+
+Seguindo a mesma ideia das tabelas verdades da conjunção e disjunção, tente montar a tabela verdade da seguinte proposição:
+
+> (P ∨ Q) ∧ R
+
+
 
 #### Implicação
 A implicação de **P** para **Q** (lê-se '**Se P então Q**') é falsa apenas quando **P** é verdadeira e **Q** é falsa. Em todos os outros casos, é verdadeira."
@@ -353,6 +368,15 @@ Exemplo Prático:
 - "P ⟹ Q: 'Se chover, então a rua fica molhada.'
 
 Esta proposição só será falsa se chover (**P** verdadeira) e a rua não ficar molhada (**Q** falsa), o que é um cenário inconsistente com o senso comum. Se não chover (**P** falsa), a proposição é considerada verdadeira, independentemente se a rua está molhada ou não (pode ter sido lavada, por exemplo).
+
+
+Vamos definir a disjunção (∨) como uma funçãozinha em pseudocódigo:
+
+```haskell
+(==>) :: Bool -> Bool -> Bool
+True ==> x = x
+False ==> _ = True
+```
 
 ##### Valor Verdade por Vacuidade:
 
@@ -380,6 +404,13 @@ Exemplo Prático:
 
 - Isso significa que passar na disciplina está diretamente ligado a tirar nota 6 ou mais. Se você passar, significa que tirou nota 6 ou mais, e vice-versa. Se uma é verdadeira e a outra falsa, a bi-implicação é falsa."
 
+##### Exercício
+
+Seguindo o mesmo padrão das definições anteriores, vamos tentar definir em pseudocódigo a bi-implicação (⟺)!
+
+> Dica: Você vai precisar utilizar 2 funções que definimos anteriormente!
+
+
 #### Contradição
 Uma contradição é uma proposição que é sempre falsa, independentemente do valor verdade de suas proposições componentes. Por exemplo, '*Está chovendo **e** não está chovendo*'.
 
@@ -400,3 +431,24 @@ Uma tautologia é uma proposição que é sempre verdadeira, independentemente d
 |---|----|--------|
 | V | F  | V |
 | F | V  | V |
+
+#### Demonstração de equivalências
+
+Vamos aprender a como podemos demonstrar a equivalência (bi-implicação) entre proposições lógicas!
+
+Para começar, podemos demonstrar juntos, utilizando do método da igualdade de tabelas verdade, a seguinte proposição:
+
+- P ∨ Q ⟺ Q ∨ P
+
+> Nota: É comum ver em livros de lógica proposicional enunciados como esse utilizando o simbolo (≡) ao invés de (⟺), quando se trata da bi-implicação/equivalência de duas sentenças lógicas.
+
+##### Exercício
+
+Agora é a sua vez de demonstrar algumas equivalências lógicas, utilize do mesmo método que mostramos anterioremente para demonstrar as seguintes bi-implicações:
+
+```lean
+P ∧ Q ≡ Q ∧ P               [Comutatividade da conjunção]
+(P ∨ Q) ∧ Q ≡ Q             [Abrsorção da conjunção sobre a disjunção]
+¬(¬P) ≡ P                   [Negação da negação]
+¬(P ∧ Q) ≡ (¬P) ∨ (¬Q)      [Demorgan]
+```
