@@ -4,7 +4,7 @@ title: Minicurso de Linux e Git
 ---
 
 <div id="sumario" class="sumario-git">
-    <h1>Sumário</h1>
+    <h1>Dia 4</h1>
     <summary><a href="#git-avancado">Git avançado</a></summary>
     <ul>
       <li>
@@ -116,51 +116,51 @@ Assim como temos definidas operações entre números inteiros como a soma e a m
 
 #### União
 
-Dados dois conjuntos A e B de um mesmo tipo, podemos definir a união (∪) binária como:
+A união de dois conjuntos A e B (denotada A∪B) é a operação que combina todos os elementos distintos de ambos os conjuntos. Formalmente definimos da seguinte maneira:
 
 <p style="text-align: center;"><strong>x ∈ A∪B ≝ x ∈ A ou x ∈ B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A∪B ≝ {x | x ∈ A ou x ∈ B}</strong></p>
 
-Para ajudar na compreensão, podemos visualizar a união dos conjuntos A e B no diagrama:
+No diagrama de Venn abaixo, a área branca representa A∪B, que abranje todos os elementos de A e B:
 
 <div style="text-align: center;"><img src="assets/images/AuniaoB.png" alt="" style="widht:300px;height:300px;"> </div>
 
 #### Interseção 
 
-Dados dois conjuntos A e B de um mesmo tipo, defina a interseção binária (∩):
+A interseção de dois conjuntos A e B (denotada A∩B) é o conjunto formado pelos elementos que pertencem simultaneamente a A e a B. Seguindo o mesmo padrão da definição de união que vimos, complete a definição abaixo:
 
 <p style="text-align: center;"><strong>x ∈ A∩B ≝ …&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A∩B ≝ …</strong></p>
 
-Para ajudar na compreensão, podemos visualizar a interseção dos conjuntos A e B no diagrama:
+No diagrama de Venn abaixo, a área branca representa A∩B, que abranje todos os elementos que pertencem simultaneamente a A e a B:
 
 <div style="text-align: center;"><img src="assets/images/AinterB.png" alt="" style="widht:300px;height:300px;"> </div>
 
 #### Diferença
 
-Dados dois conjuntos A e B de um mesmo tipo, podemos definir a diferença (\) de dois conjuntos como sendo:
+A diferença entre dois conjuntos A e B (denotada por A\B ou A-B) é o conjunto dos elementos que pertencem a A mas não pertencem a B. Formalmente, temos a seguinte definição:
 
 <p style="text-align: center;"><strong>x ∈ A\B ≝ x ∈ A e x ∉ B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A\B ≝ {x | x ∈ A e x ∉ B}</strong></p>
 
-Para ajudar na compreensão, podemos visualizar a diferença dos conjuntos A e B no diagrama:
+No diagrama de Venn abaixo, a área branca representa A\B, mostrando a parte que pertence apenas ao conjunto A:
 
 <div style="text-align: center;"><img src="assets/images/AforaB.png" alt="" style="widht:300px;height:300px;"> </div>
 
 #### Complemento
 
-Dado um conjunto A, podemos definir seu complemento como:
+O complemento de um conjunto A (denotado por Aᶜ ou A') é o conjunto de todos os elementos que não pertencem a A, considerando o universo U como referência. Formalmente, temos:
 
 <p style="text-align: center;"><strong>Aᶜ ≝ x ∉ A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aᶜ ≝ {x | x ∉ A}</strong></p>
 
-Para ajudar na compreensão, podemos visualizar o complemento do conjunto A no diagrama:
+No diagrama de Venn abaixo, a área branca, externa ao círculo A, representa Aᶜ.
 
 <div style="text-align: center;"><img src="assets/images/Acomplementar.png" alt="" style="widht:300px;height:300px;"> </div>
 
 ### Relações entre conjuntos
 
-Agora que sabemos como definir conjuntos e suas operações, podemos definir duas relações importantíssimas sobre conjuntos, o contém/contido e a igualdade entre conjuntos.
+As relações entre conjuntos nos permitem comparar e descrever como diferentes conjuntos interagem entre si. Duas das relações mais fundamentais são a relação de inclusão (subconjunto) e a relação de igualdade, que exploraremos a seguir.
 
 #### Contém e contido
 
-Dados conjuntos A e B do mesmo tipo, podemos enunciar a proposição "A é subconjunto de B" ou "A está contido em B", mas primeiro precisamos definir o que significa ser subconjunto ou estar contido. Sendo A e B conjuntos temos:
+Sendo A e B conjuntos de mesmo tipo, podemos dizer que A está contido em B quando todos os elementos de A pertencem a B. Formalmente, estabelecemos a definição da seguinte maneira:
 
 <p style="text-align: center;"><strong>A⊆B ≝ (∀x)[x ∈ A ⇒ x ∈ B]</strong></p>
 
