@@ -42,13 +42,119 @@ title: Minicurso de Linux e Git
   </button>
   </div>
 
+# Dia 4 | Conjuntos
+## Introdução
+
+Olá a todos! Sejam bem-vindos ao quarto dia do nosso minicurso de Introdução às Demonstrações Matemáticas. Hoje iremos aprender sobre conjuntos, tanto pensando em qual a sua relação com a programação como explorando como ela faz parte do mundo das demonstrações matemáticas!
 # Interseção entre Conjuntos e Programação
+Bem, como já sabíamos (ou às vezes até não sabíamos ainda mas agora sabemos), tudo na matemática tradicional é descrito em função de conjuntos e seus elementos. Nesse contexto, os números naturais poderiam ser compreendidos como um subconjunto dos números inteiros, que por sua vez também poderiam ser compreendidos como um subconjunto dos números reais.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Sob essa perspectiva, as funções seriam então viagens de um conjunto de números do domínio da função para outro conjunto de números, o contradomínio. Similarmente, as operações entre números seriam operações feitas dentro dos conjuntos de números, enquanto outras representações seriam duplas ordenadas de conjuntos, como o plano, representado como um conjunto de reais no eixo x junto de um conjunto de reais no eixo y, ou um espaço, dadas as modificações necessárias.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Todavia, no mundo da computação, não são mais os seus habitantes descritos em função de conjuntos e elementos!
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+### Tipos ⨯ Objetos ⨯ Conjuntos
+
+No mundo da computação, existem várias formas de descrever os habitantes de um mundo, sendo as principais os tipos e os objetos.
+
+No caso das linguagens de programação tipadas, cada membro do mundo é de um tipo distinto, e as funções ocorrem de tipo x -> tipo y, retornando o famigerado “type error” caso haja a tentativa inválida de operar com tipos não correspondentes àquela função, e não haja forma de coagir algum dos tipos a se adequar à tipagem esperada. Alguns tipos bastante conhecidos são o Int, o Char, a String, o Bool, etc.
+
+Já no caso de linguagens sem tipos (que também podem ser chamados de tipo único), como a Python, todos os habitantes do mundo são objetos, e as funções ocorrem entre objetos. Por mais que possam ter uma decoração de tipos, os objetos de Python não obedecem às regras do mundo tipado.
+
+Mas então, para onde foram os conjuntos?
+
+## Conjuntos como inspiração para a montagem da lógica de tipos
+
+Em primeiro momento, há de se reconhecer a utilidade de todo o arcabouço teórico matemático garantido pela teoria dos conjuntos. A noção que temos de habitantes de um mundo e de relações entre esses habitantes, o que nos garante as funções computacionais de fato, bebe primordialmente da teoria dos conjuntos!
+
+## Conjuntos como coleções de coisas
+
+Em segundo lugar, os conjuntos voltam a aparecer na computação, agora sob uma nova roupagem, a de coleção de coisas. Como vimos anteriormente no segundo dia, a programação se importa bastante com a possibilidade de reunir diversas coisas em uma única estrutura.
+
+Nesse sentido, o conjunto, ou set, em inglês, destaca-se como uma estrutura que armazena informações e segue um ordenamento próprio. Assim, é fundamental diferenciar de forma mais qualificada, o que seria a especificação de um conjunto, entendido enquanto Tipo Abstrato de Dados, e o que seria uma possível implementação.
+
+### Especificação/Tipo Abstrato de Dados
+
+Quando falamos em especificação, normalmente nos referimos à descrição pormenorizada que o cliente ofereceu do produto/aplicação/programa que ele quer. No caso dos conjuntos, estamos nos referindo à ideia abstrata do que deveria ser um conjunto, ou seja, daquilo que se comporte da forma que esperamos que se comporte um conjunto.
+
+Dentro da computação, chamamos de Tipo Abstrato de Dados, aqueles tipos que são conhecidos de forma abstrata enquanto regras a serem seguidas. Tudo aquilo que for implementado de forma a obedecer todas as regras esperadas pela especificação do conjunto, merecerá o nome de implementação possível de conjunto, naquele dado contexto.
+
+### Implementação
+
+As formas de implementar um conjunto são diversas. Várias linguagens de programação vem com o tipo/objeto set disponível em suas bibliotecas, já implementado, como é o caso de python e C++. Todavia, também nessas linguagens é possível implementar um tipo/objeto novo que respeite a especificação de conjuntos, mas com uma implementação distinta.
+
+Por mais que pareça trabalhoso refazer algo já pronto, por vezes uma boa programadora, ou um bom programador, pode querer reimplementar algum tipo ou função dentro de uma determinada linguagem, buscando melhorar sua eficiência ou reduzir o consumo de memória, para aquela utilização específica. Já para fins pedagógicos, a implementação de Tipos Abstratos de Dados pode ser útil para explorar as diferenças entre essas possíveis implementações.
+
+## Tipos de coleções semelhantes
+
+Assim como os conjuntos, existem outros tipos de coleções que armazenam coisas, as quais têm regras que divergem dos conjuntos, mas que foram criadas a partir dele. Sendo assim, é essencial dominar o funcionamento de conjuntos antes de partir para estruturas mais complexas, uma vez que parte de princípios semelhantes, ainda que mais complexos.
+ 
+Algumas coleções possíveis de serem citadas que tem estrutura que de alguma forma se assemelha a dos conjuntos são:
+
+- Par ordenado : Composto por dois elementos ordenados, acessíveis a partir de suas posições <first,second>
+- Lista finita : Composta por uma série de elementos acoplados, com início e fim
+- Lista infinita : Composta por uma série de elementos acoplados, podendo ter início ou fim
+- Bag/Sacola : Composta por elementos sem posição relevante, mas admitindo repetições
+- Sequência : Composta por uma série de elementos acoplados e ordenados
+- Dicionário : Composta por vários pares ordenados de <Chave, Valor> em que as chaves são únicas e os valores são acessados a partir de suas respectivas chaves
+- Pilha : Composta por elementos acoplados, com inserção no início e remoção no fim
+- Fila : Composta por elementos acoplados, com inserção no início e remoção no início
+
+## Especificação elementar dos conjuntos
+
+Quando falamos de conjuntos, esperamos que algumas coisas sempre aconteçam (no caso que o conjunto siga todas as regras que conhecemos da matemática). Nesse sentido, sempre é importante que esteja presente presente na especificação de um conjunto que ele:
+
+
+- Possa ser construído a partir dos elementos
+- Ignore elementos repetidos
+- Seja capaz de dizer se alguém está dentro ou fora dele
+- Possua ferramentas de inserção e remoção de elementos
+- Possa estar vazio
+- Informe a quantidade de seus elementos, caso finito (ou cardinalidade, caso infinito)
+
+No caso do setI que já vem implementado no C++, encontrado na biblioteca set, são essas algumas das ferramentas que são oferecidas prontas para uso, seguindo a especificação de set:
+
+
+- set( ) (x -> set (x)) : Constrói um set de elementos do tipo x
+- empty( )(set -> bool) : Retorna true se o set está vazio e false se não está
+- size( ) (set -> size_type) : Retorna a quantidade de elementos no set
+- contains( ) (x -> set -> bool) : Retorna true se o elemento inserido como argumento está presente no set e false se não está
+- emplace( ) (x -> Set -> <x , bool>) : Tenta inserir um elemento no conjunto e retorna um par ordenado com o elemento e true se foi possível inseri-lo ou com o elemento e false, se não foi possível inseri-lo 
+- erase() (x-> set -> size_type) : Caso receba um elemento x como argumento, exclui o elemento da lista e retorna a quantidade de elementos removidos, podendo ser 0 ou 1.
+
+Veja aqui um exemplo desse tipo sendo utilizado em C++:
+
+```cpp
+#include <iostream>
+#include <set>
+
+int main() {
+    
+    // Creating a set of integers
+    std::set<int> s = {3, 5, 2, 1};
+    
+    for (int i = 0 ; i < s.size() ; i++)
+        std::cout << x << " ";
+    return 0;
+}
+```
+
+### Ocasiões em que conjuntos podem aparecer
+
+Decerto, quando se fala em estruturas de dados e em tipos abstratos de dados, sempre estaremos discutindo qual a melhor e mais adequada ferramenta para este ou aquele objetivo. No caso dos conjuntos não é diferente, assim como nos são úteis na matemática, eles também podem ser úteis na vida real durante a programação. 
+
+Por vezes, quando se está programando não é possível decidir qual base de dados você irá utilizar. Em casos como listas de participantes com inscrições possivelmente reṕetidas, caso você queira checar se determinado participante deve ser admitido ou não, um conjunto pode ser a melhor solução. Nesse cenário seria muito custoso tratar a base de dados (eliminar as repetições), e por isso um conjunto seria um tipo ideal.
+
+Em outros casos, como quando você quer reduzir o espaço gasto, mas não quer se preocupar com repetições, também é comum usar conjuntos, como quando se está recolhendo espaços já visitados durante o percorrimento de um labirinto,e você necessariamente terá que passar por alguns lugares mais de uma vez.
+
+Além disso, é também na área de dados que os conjuntos e as operações envolvendo conjuntos adquirem mais relevância. Mas como este minicurso é apenas introdutório iremos nos ater ao funcionamento dos conjuntos em si, a fim de que os conceitos básicos sejam dominados para que daí possam ser compreendidos assuntos mais complexos!
+
+### Exercício
+
+Agora, utilizando apenas as ferramentas dispostas na especificação dos conjuntos, você seria capaz de criar um par ordenado?
+
+Resposta: {x, {x,y}}
+
 
 ## Teoria dos Conjuntos
 

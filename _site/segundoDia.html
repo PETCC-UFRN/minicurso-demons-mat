@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Shell Avançado</title>
+        <title>Minicurso de Linux e Git</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="./assets/css/styles.css">
         <link rel="stylesheet" href="/minicurso-demons-mat/assets/css/syntax.css">
         <link rel="icon" href="https://i.ibb.co/RD7XwYH/pet-logo.png" type="image/png">
     </head>
-    <body class="oldschool">
+    <body class="layoutGit">
         <header>
-    <nav class="oldschoolnav">
+    <nav class="navgit">
         <ul class="listaNavegacao">
             <li>
                 <a href="index" style="text-decoration:none;">/home</a>
@@ -26,9 +26,7 @@
 
         <div>
             <main>
-                <h1 id="shell-avançado">Shell Avançado</h1>
-
-<div id="sumario" class="sumario-oldschool">
+                <div id="sumario" class="sumario-git">
     <h1>Sumário</h1>
   <details>
     <summary><a href="#expandindo-a-ideia-de-comandos">Expandindo a ideia de comandos</a></summary>
@@ -73,818 +71,309 @@
   </button>
   </div>
 
-<h2 id="expandindo-a-ideia-de-comandos">Expandindo a ideia de comandos</h2>
+<h1 id="recursão">Recursão</h1>
+<p>Achou que foi por acaso que nós começamos o nosso dia aprendendo sobre indução?</p>
 
-<h3 id="aliases">Aliases</h3>
+<p>Nessa seção, iremos aprender que indução e recursão são duas faces da mesma moeda, correspondendo tanto a indução a um método de prova matemática que pode ser extrapolado para a computação, chegando na recursão, como a recursão a uma ferramenta computacional que pode ser extrapolada para o campo das demonstrações matemáticas, chegando-se na indução.</p>
 
-<p>No decorrer do dia anterior, espero que você tenha notado que a maioria dos comandos é uma abreviação de alguma
-palavra em inglês, que passa uma ideia inicial do que determinado comando faz. Por exemplo: o <code class="language-plaintext highlighter-rouge">ls</code>
-significa <strong>L</strong>i<strong>S</strong>t, o <code class="language-plaintext highlighter-rouge">cp</code> significa <strong>C</strong>o<strong>P</strong>y, o <code class="language-plaintext highlighter-rouge">rm</code> significa <strong>R</strong>e<strong>M</strong>ove e assim
-por diante. Além disso, espero que você perceba que, se é algo que você usa com frequência, é inconveniente
-digitar uma palavra longa toda vez que precisa invocar essa função. Esse mesmo sentimento
-motivou os criadores do sistema a abreviar o nome dos comandos e a criar o que chamamos de <em>alias</em>.</p>
+<p>Da mesma forma que a indução tem sua base e passo indutivo, na recursão também teremos uma base e passo recursivo! (até os nomes se parecem, né?)</p>
 
-<p>Imagine que você usa o seguinte comando com frequência:</p>
+<p>A etimologia da palavra “Recursão” remete ao latim, da palavra recursio, que significa  “corrida de volta”, “retorno” ou “revolução”. Ela parte do sentido de fazer de novo determinado processo, repetir um padrão ou até mesmo seguir construindo algo indefinidamente.</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> <span class="nt">--color</span><span class="o">=</span>auto <span class="nt">--almost-all</span> <span class="nt">--classify</span> <span class="nt">-l</span> <span class="nt">--human-readable</span>
-</code></pre></div></div>
+<h2 id="mas-onde-usamos-a-recursão-na-programação">Mas onde usamos a recursão na programação</h2>
 
-<p>E a maioria das vezes que você quer listar algo, você usa essa variação do <code class="language-plaintext highlighter-rouge">ls</code>. Se você não tem a capacidade
-de digitar instantaneamente o que pensa, deve ser uma chatice ter que digitar isso
-muitas vezes. Assim, o que podemos fazer é dar ao Shell um apelido para este comando. Então, em vez
-de ter que digitar essa coisa toda, poderíamos apenas falar <code class="language-plaintext highlighter-rouge">meuls</code> e o Shell saber exatamente o que
-fazer. A maneira de fazer isso é a seguinte:</p>
+<p>Bem, como já deve ter sido percebido, a computação está sempre se utilizando das ferramentas mais diversas para alcançar seus objetivos, sejam eles o funcionamento do sistema de uma mercearia de bairro, o cálculo da sua nota do sigaa ou garantir que você não tire a bunda da cadeira depois de abrir o TikTok.</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">meuls</span><span class="o">=</span><span class="s1">'ls --color=auto --almost-all --classify -l --human-readable'</span>
-</code></pre></div></div>
+<p>Nesse sentido, a recursão vem na esteira daquelas ferramentas utilizadas, em termos bem simplificados, para facilitar a vida da programadora ou programador, a fim de evitar a realização manual de um trabalho repetitivo. Ontem, vimos na parte de lógica e estruturas de controle, uma ferramenta semelhante à recursão que tinha uma utilidade muito parecida com essa, vocês lembram qual era?</p>
 
-<p>Agora, durante essa sessão do Shell, sempre que digitarmos <code class="language-plaintext highlighter-rouge">meuls</code>, o Shell vai “expandir” esse apelido
-e vai invocar seu real significado. E, de certa forma, conseguimos criar, com isso, um “novo comando”.</p>
+<h3 id="recursão-vs-iteração">Recursão vs. Iteração</h3>
 
-<h3 id="vendo-um-comando-como-arquivo">Vendo um comando como arquivo</h3>
+<div style="text-align: center;"><img src="assets/images/boxing.jpg" alt="" style="widht:300px;height:300px;" /> </div>
 
-<p>Agora, uma reflexão interessante a se fazer é pensar como o Shell sabe quais são os apelidos que demos,
-ou, até mesmo, o que é comando ou não.
-<a href="/minicurso-demons-mat/primeiroDia.html#comando-date-e-echo">Relembrando quando estávamos começando a usar o Shell</a>, nós não
-podemos simplesmente digitar qualquer coisa aleatória como <code class="language-plaintext highlighter-rouge">balubslbeuaba</code> e esperar que ele entenda e
-faça algo. Logo, o que o Shell faz é: armazenar, em uma variável, todos os lugares em que supostamente
-existem programas que ele pode executar, e, quando você digita algo, ele vai procurar nesses lugares para ver se
-de fato o que você digitou é um programa que ele pode executar.</p>
+<p>Isso mesmo! A iteração é uma ferramenta bem parecida com a recursão e normalmente são feitos paralelos entre as duas, sendo muitas vezes possível pensar problemas por uma perspectiva recursiva e por uma perspectiva iterativa.</p>
 
-<p>Como os comandos/programas são simplesmente executáveis que estão em uma pasta “especial”, nós podemos
-perguntar onde eles estão com a seguinte linha:</p>
+<p>Enquanto a iteração está compreendida em comandos como for, range e while, normalmente a recursão é identificada no corpo da própria função, sendo o passo base semelhante a um “ponto de parada”, e a chamada recursiva representada por um novo chamamento daquela mesma função, agora com um argumento distinto, sequencialmente.</p>
 
-<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">[user@hostname ~]$</span><span class="w"> </span>whereis <span class="nb">ls</span>
-<span class="go">ls: /usr/bin/ls /usr/share/man/man1/ls.1.gz
-</span></code></pre></div></div>
-
-<p>O comando <code class="language-plaintext highlighter-rouge">whereis</code> mostra a localização do executável de programas e a localização da sua página no <code class="language-plaintext highlighter-rouge">man</code>. Sabendo disso, você pode executar o <code class="language-plaintext highlighter-rouge">ls</code> ou qualquer outro comando passando o caminho inteiro para seu
-executável, da mesma forma que você usaria normalmente:</p>
-
-<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">[user@hostname ~]$</span><span class="w"> </span>/usr/bin/ls <span class="nt">-l</span>
-</code></pre></div></div>
-
-<p>O Shell utilizada a variável <code class="language-plaintext highlighter-rouge">$PATH</code> para saber onde procurar esses comandos, e nós podemos ver
-o valor que ela armazena digitando o seguinte:</p>
-
-<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">[user@hostname ~]$</span><span class="w"> </span><span class="nb">echo</span> <span class="nv">$PATH</span>
-<span class="go">/usr/local/bin:/usr/bin:/home/user/.local/share/bin
-</span></code></pre></div></div>
-
-<p>A saída pode parecer estranha, mas isso representa vários diretórios separados <code class="language-plaintext highlighter-rouge">:</code>, e o Shell vai em cada um
-deles procurando o que você digitou no terminal.</p>
-
-<h2 id="instalando-programas-no-linux">Instalando programas no Linux</h2>
-
-<h3 id="manualmente">Manualmente</h3>
-
-<p>Agora que já sabemos o que de fato são os comandos que utilizamos no terminal e como o Shell busca esses
-comandos, nós somos (finalmente) capazes de instalar qualquer programa no nosso computador. A ideia é
-bem intuitiva:</p>
-
-<ol>
-  <li>
-    <p>Pegamos nosso executável pra colocar no <code class="language-plaintext highlighter-rouge">$PATH</code>:</p>
-
-    <div style="text-align: center;">
- <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/linux_dia2_imagem1.jpeg" width="80%" />
- </div>
-    <p><br /></p>
-  </li>
-  <li>
-    <p>Queremos colocar o executável em dos diretórios do <code class="language-plaintext highlighter-rouge">$PATH</code>:</p>
-
-    <div style="text-align: center;">
- <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/linux_dia2_imagem2.jpeg" width="80%" />
- </div>
-    <p><br /></p>
-  </li>
-  <li>
-    <p><strong>Colocamos ele <code class="language-plaintext highlighter-rouge">$PATH</code></strong>!!!:</p>
-
-    <div style="text-align: center;">
- <img alt="Meme muito engraçado sobre arquivos do sistema" src="assets/images/linux_dia2_imagem3.jpeg" width="80%" />
- </div>
-    <p><br /></p>
-  </li>
-  <li>
-    <p><strong>E pronto!!!</strong> Instalamos um programa!</p>
-  </li>
-</ol>
-
-<p>É simples assim mesmo, mas trabalhar dessa maneira é um pouco desajeitado, pois existem programas que dependem
-de outros arquivos para funcionar, como arquivos de configuração, de dados, elementos gráficos etc. Não podemos
-simplesmente colocar o executável desse programa em um dos diretórios do <code class="language-plaintext highlighter-rouge">$PATH</code> e esperar que ocorra tudo
-bem.</p>
-
-<p>O que fazemos, então?</p>
-
-<p><a href="/minicurso-demons-mat/primeiroDia.html#links-simbólicos-sym-links">Lembra dos symlinks?</a>. Podemos usá-los para colocar apenas
-o atalho do executável no <code class="language-plaintext highlighter-rouge">PATH</code>, e aí, quando o Shell tentar rodar o programa, ele, na verdade, vai rodar o
-original que está no diretório (de preferência bem acessível e fácil de gerenciar) que você quiser.</p>
-
-<p>Mas, isso não significa que não existam peculiaridades de programa para programa. Às vezes, precisaremos
-descompactar o arquivo que contém o executável do programa que baixamos da internet, ou, então, precisaremos
-compilar o executável do programa, ou, por vezes, baixaremos apenas o executável… Enfim, varia de programa para
-programa. O que precisa ser feito, na maioria das vezes, estará na documentação do que você quer
-instalar.</p>
-
-<h3 id="gerenciadores-de-pacotes">Gerenciadores de pacotes</h3>
-
-<p>Existem maneiras mais simples realizar instalações no seu sistema sem ter que fazer o download do programa na
-internet, compilá-lo e adicioná-lo ao <code class="language-plaintext highlighter-rouge">PATH</code>, mas você vai precisar de permissões de superusuário para
-conseguir fazer isso, a maneira, sem dúvidas, mais utilizada hoje em dia é utilizando o gerenciador de
-pacote da sua distribuição Linux.</p>
-
-<p>Esses gerenciadores de pacotes abstraem o processo de baixar da internet, instalar, atualizar (se futuramente houver atualização), pesquisar programas, e desinstalá-los, no alcance de um comando.
-Essa, inclusive, é uma das grandes vantagens de usar o Linux no âmbito da computação, o processo de
-configurar programas e suas depedências é muito fácil e você tem total autonomia para investigar e resolver
-problemas que possam vir a aparecer.</p>
-
-<p>Como mencionado anteriormente, o uso do gerenciador de pacotes vária de distribuição para distribuição, mas
-vamos pegar como exemplo o gerenciador de pacotes da distruibuição que originou o Ubuntu, o Debian.</p>
-
-<h4 id="exemplo-com-o-uso-do-apt">Exemplo com o uso do <code class="language-plaintext highlighter-rouge">apt</code></h4>
-
-<p>Distribuições que nasceram do Debian, como o Ubuntu, usam o gerenciador de pacotes chamado <code class="language-plaintext highlighter-rouge">apt</code>, que nada
-mais é do que um programa que vem instalado no computador, assim como todos os outros que vimos até agora.
-Logo, podemos investigar seu uso usando o <code class="language-plaintext highlighter-rouge">man</code> como amigo.</p>
-
-<h5 id="tldr-to-long-didnt-read-the-manual">TL;DR (To Long Didn’t Read the manual)</h5>
-
-<p>Mas, se você estiver com preguiça de ler o <code class="language-plaintext highlighter-rouge">man</code>, aqui vai uma ajudinha:</p>
+<p>Pode ter parecido um pouco abstrato demais por agora, mas conforme forem apresentadas as distintas aplicações, cada vez mais fará sentido o tamanho e importância das abordagens recursivas na programação. Mas, vamos lá, se eu (quase) sempre posso utilizar a iteração para resolver os meus problemas, porque eu usaria a recursão?</p>
 
 <ul>
+  <li>Abordagem mais clara e legível para algoritmos complexos</li>
+  <li>Deixa o código mais organizado e bem estruturado</li>
+  <li>Especialmente útil para resolver problemas de natureza recursiva</li>
   <li>
-    <p><strong>Atualizar a lista de pacotes</strong>: Este comando atualiza a lista de pacotes disponíveis a partir dos
-repositórios configurados.</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
-</code></pre></div>    </div>
+    <p>Especialmente útil para utilizar estruturas construídas recursivamente
+Em contrapartida, a abordagem recursiva normalmente perde para a iterativa quando falamos em:</p>
   </li>
-  <li>
-    <p><strong>Instalar um pacote</strong>: Para instalar um pacote, deve-se usar o sub-comando <code class="language-plaintext highlighter-rouge">install</code> seguido do nome do
-pacote.</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>nome-do-pacote
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>Remover um pacote</strong>: Para remover um pacote, você usa o sub-comando <code class="language-plaintext highlighter-rouge">remove</code>.</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt remove nome-do-pacote
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>Atualizar todos os pacotes instalados</strong>: Este comando atualiza todos os pacotes instalados para as
-versões mais recentes disponíveis nos banco de dados do gerenciador.</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt upgrade
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>Pesquisar por um pacote</strong>: Você pode usar o <code class="language-plaintext highlighter-rouge">search</code> para procurar pacotes específicos.</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt search termo-de-busca
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>Limpar pacotes desnecessários</strong>: Após uma atualização ou remoção de pacotes, você pode liberar espaço
-removendo pacotes que não são mais necessários.</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt autoremove
-</code></pre></div>    </div>
-  </li>
+  <li>Situações onde o foco é na eficiência/velocidade do programa</li>
+  <li>Situações onde é necessário reduzir o consumo de memória</li>
 </ul>
 
-<p>Na maioria das distribuições, vão existir comandos ou combinações de comandos equivalentes aos do <code class="language-plaintext highlighter-rouge">apt</code> e
-e conforme o uso esse processo de instalação, atualização e remoção se torna bem natural.</p>
+<p>Ocorre que ambos esses pontos são centrais na maioria das aplicações, fazendo com que um bom programador ou uma boa programadora tenha sempre que não apenas ser capaz de diferenciar os casos onde um é mais viável que o outro, como também ser capaz de aplicar ambos de forma satisfatória.</p>
 
-<h2 id="editores-de-texto">Editores de texto</h2>
+<h2 id="perigos-da-recursão">Perigos da recursão</h2>
 
-<p>Recapitulando um pouco: exploramos bastante o Shell, diferentes maneiras de combinar comandos, e como abreviá-los. Nos exercícios do dia anterior, vocês escreveram em diversos arquivos determinadas sequências de comandos e, depois, foram capazes de realizar algumas ações. Neste tópico, vamos formalizar o que foi feito e expandir um pouco mais esse escopo.</p>
+<p>Sendo assim, vejamos então alguns casos onde a recursão foi usada de forma não satisfatória…</p>
 
-<p>Um Shell é uma linguagem de programação, mais específicamente uma linguagem de scripting assim como Python, Ruby e outras. Por ser uma linguagem de programação, um script em Shell nada mais é do que uma sequência de comandos que
-existem no seu computador escritos num arquivo linha por linha, e, quando você executa o arquivo, seu sistema invoca o
-Shell para interpretar o que ali foi escrito.</p>
+<div style="text-align: center;"><img src="assets/images/ouroboros.jpg" alt="" style="widht:300px;height:300px;" /> </div>
 
-<p>Com o que já vimos, somos plenamente capazes de escrever scripts simples, mas ainda falta dar mais alguns passos de
-complexidade e aprender ferramentas que nos permitam trabalhar de maneira mais confortável, isto é, escrever em arquivos
-sem depender de redirecionamento de streams (<em>stdin</em>, <em>stdout</em>, <em>stderr</em>) ou combinação de comandos. Para conseguir
-fazer isso, precisamos escolher o nosso editor de texto favorito e colocar a mão na massa.</p>
+<h3 id="exemplo-1-chamada-infinita-da-recursão-por-ausência-de-caso-base">Exemplo 1 (chamada infinita da recursão por ausência de caso base)</h3>
 
-<h3 id="escolhendo-um-editor-de-texto">Escolhendo um editor de texto</h3>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Loop</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span> 
+<span class="kt">Loop</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">Loop</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
 
-<p>Provavelmente, seu sistema Linux já veio com alguns editores de texto para experimentar, uns mais difícies de aprender
-do que outros, mas todos com suas próprias especialidades.</p>
+<h3 id="exemplo-2-chamada-infinita-da-recursão-por-buracos-no-caso-base">Exemplo 2 (chamada infinita da recursão por buracos no caso base)</h3>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">LoopHole</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
+<span class="kt">LoopHole</span> <span class="n">n</span>
+    <span class="o">|</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span>      <span class="o">=</span> <span class="mi">0</span>
+    <span class="o">|</span> <span class="n">otherwise</span> <span class="o">=</span> <span class="kt">LoopHole</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+<p>(Atenção: otherwise significa “caso contrário” em inglês)</p>
+
+<h3 id="exemplo-3-chamada-incompleta-por-problemas-no-passo-recursivo">Exemplo 3 (chamada incompleta por problemas no passo recursivo)</h3>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Incomplete</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<span class="kt">Incomplete</span> <span class="n">n</span>
+    <span class="o">|</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span>       <span class="o">=</span> <span class="kt">True</span>
+    <span class="o">|</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span>       <span class="o">=</span> <span class="kt">False</span>
+    <span class="o">|</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">3</span>       <span class="o">=</span> <span class="kt">Incomplete</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">otherwise</span>  <span class="o">=</span> <span class="kt">Incomplete</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="recursão-bem-definida">Recursão bem definida</h2>
+
+<p>Já em outros casos, a recursão pode facilitar bastante a nossa vida, garantindo soluções rápidas para problemas diversos:</p>
+
+<h3 id="exemplo-de-recursão-bem-definida">Exemplo de recursão bem definida</h3>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">IsEven</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<span class="kt">IsEven</span> <span class="n">n</span>
+    <span class="o">|</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">=</span> <span class="kt">True</span>
+    <span class="o">|</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">=</span> <span class="kt">False</span>
+    <span class="o">|</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1</span>   <span class="o">=</span> <span class="kt">IsEven</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">2</span>   <span class="o">=</span> <span class="kt">IsEven</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+<p>(Atenção: IsEven significa “ÉPar” em inglês)</p>
+
+<h2 id="introdução-aos-elementos-básicos-da-recursão">Introdução aos elementos básicos da recursão</h2>
+
+<p>Nos exemplos acima, conseguimos ver com clareza os elementos centrais da recursão, quais sejam, o caso base (ou casos base) e o passo recursivo (ou passos recursivos). Também, vimos quão importante é o domínio de ambos os conceitos para garantir uma função recursiva realmente funcional!</p>
+
+<p>Mas então agora já posso começar a pensar sobre como devo montar meu caso base? Devo refletir sobre quais e quantos passos recursivos minha função deve ter?</p>
+
+<p>Bem, por mais que ter uma boa base de indução ajude bastante na montagem de funções recursivas, uma boa programadora ou bom programador deve ser capaz de visualizar a recursão de forma concreta antes de aplicá-la. Para isso, iremos utilizar a construção de estruturas fundamentalmente recursivas como ferramenta pedagógica para facilitar a absorção desses conceitos.</p>
+
+<h2 id="utilizando-a-recursão-para-construir-coleções-de-coisas">Utilizando a recursão para construir coleções de coisas</h2>
+
+<p>Uma das utilizações mais fundamentais da recursão é o seu uso para construir “coleções de coisas”, mas o que seriam essas coisas? Nesse contexto, coisas referem-se a tipos dos mais diversos, temos coleções de inteiros, de valores booleanos, de strings, de chars, de pessoas, de carros, de funções…</p>
+
+<p>Por sua vez, essas coleções podem ter vários formatos, ordenações, regras, formas de interações, etc. Uma coleção aqui representa tudo aquilo que reúne coisas de determinado tipo em determinada estrutura. E, como iremos conhecer, algumas dessas coleções são fundamentalmente recursivas.</p>
+
+<p>Em específico, iremos trabalhar com a coleção nomeada lista, acerca da qual conhecemos algumas características fundamentais, quais sejam: a mutabilidade dos seus elementos, a relevância de suas posições, a possibilidade de elementos repetidos, a mutabilidade do seu tamanho, e por aí vai.</p>
+
+<p>Você consegue pensar de cabeça em alguma outra coleção de coisas com regras distintas?</p>
 
 <ul>
-  <li>
-    <p><a href="https://neovim.io/">(neo)</a><a href="https://www.vim.org/"><strong>vim</strong></a> (<strong>V</strong>i <strong>IM</strong>proved): O favorito de muitos programadores mas, os que vamos      listar adiante este é, com certeza, o mais
-  difícil para começar a usar. Entretanto, passado a curva de aprendizado inicial, é com certeza um dos editores de
-  texto com a usabilidade mais prazerosa. A lógica de modos de teclado, configuração (isso se for o Neovim), e os atalhos
-  pré-configurado tornam a escrita muito produtiva e divertida.</p>
-  </li>
-  <li>
-    <p><a href="https://code.visualstudio.com/"><strong>vscode</strong></a> (<strong>V</strong>isual <strong>S</strong>tudio <strong>CODE</strong>): Todo programador já usou ou vai usar, pelo menos alguma vez na vida, o
-  Visual Studio Code. Ele é editor de texto da Microsoft, muito configurável e facílimo de começar usar, além de já vir com vários
-  recursos que abstraem sua configuração e recursos para diferentes tipos de linguagem. Embora muitos vejam essa abstração como sua maior vantagem, também pode ser vista como como sua maior desvantagem, pois pode ser muito estressante solucionar problemas sem conseguir entender claramente a causa.</p>
-  </li>
-  <li>
-    <p><a href="https://www.nano-editor.org/"><strong>GNU nano</strong></a>: Assim como o Vim, ele é um editor de texto leve que roda no terminal, porém, sua proposta é se manter simples.
-  Não é possível configurar extensivamente esse editor, mas é muito fácil começar a usá-lo devido a sua
-  interface informativa e pouca complexidade envolvendo o teclado.</p>
-  </li>
+  <li>Conjuntos</li>
+  <li>Duplas</li>
+  <li>Sequências</li>
+  <li>Árvores</li>
+  <li>Arrays</li>
+  <li>Strings</li>
+  <li>Arrays circulares</li>
+  <li>Tabelas</li>
 </ul>
 
-<p>Existem também muitos outros editores de texto populares. Aqui estão alguns deles:</p>
+<p>Ao que pensamos imediatamente quando nos vem à cabeça o nome lista, chamaremos simplificadamente de “especificação”, já à forma como iremos garantir que nossa estrutura dentro de dada linguagem se comporte como pensamos que deva se comportar uma lista, chamaremos simplificadamente de “implementação”.</p>
 
-<ul>
-  <li><a href="https://www.gnu.org/software/emacs/"><strong>GNU emacs</strong></a></li>
-  <li><a href="https://www.gnu.org/software/emacs/"><strong>Sublime Text</strong></a></li>
-  <li><a href="https://zed.dev/"><strong>Zed</strong></a></li>
-  <li><a href="https://notepad-plus-plus.org/downloads/"><strong>Notepad++</strong></a></li>
-</ul>
+<p>Nesse momento, iremos ver uma determinada forma de implementar listas recursivamente, mas as possibilidades são amplas, desde que seja respeitada a especificação esperada desse tipo!</p>
 
-<h2 id="shell-scripting">Shell scripting</h2>
+<h2 id="aplicação-da-recursão-em-listas">Aplicação da recursão em listas</h2>
 
-<p><a href="/minicurso-demons-mat/primeiroDia.html#exercícios">Recapitulando um pouco os exercícios do primeiro dia desse curso</a>, em diversos momentos, foi escrita uma sequência de comandos em um arquivo, que foi executada logo em seguida. Formalmente falando, o que você fez foi criar um script.</p>
+<p>A aplicação da recursão em listas aqui parte de uma construção recursiva (quem diria?) dessa estrutura, a qual nos permite sempre acessar seus membros imediatamente anteriores, ou posteriores (a depender da escolha de implementação), facilmente, como veremos à frente.</p>
 
-<p>A “linguagem Shell” é uma <em>linguagem de scripting</em>, e diferentemente de <a href="https://pt.wikipedia.org/wiki/Linguagem_compilada"><em>linguagens compiladas</em></a>, como C,
-C++, Java e Rust (🦀 rust mentioned!), que são interpretadas, traduzidas para uma representação interna, e
-então executada, os comandos de <em>linguagens de scripting</em> como o Shell, “pulam” essa traduzação interna e
-são diretamentes executados pelo interpretador.</p>
+<h3 id="montando-construtores-de-listas">Montando construtores de listas</h3>
 
-<p>A principal vantagem do uso de linguagens de scripting como “Shell”, Python, Ruby e outras é que elas
-geralmente trabalham num nível que se assemelha a linguagem humana, o que permite que você lide mais
-facilmente com tarefas envolvendo arquivos, diretórios e programas. A principal desvantagem é que essas
-linguagens tendem a ser menos eficientes, entretanto, a troca vale muito a pena para programas que não
-precisam se preocupar com a perfomance.</p>
+<p>Iremos agora construir uma lista do zero, em pseudocódigo, simulando uma linguagem de programação que ainda não tenha implementado esse tipo. Para isso, precisaremos apenas de dois construtores: o caso base, que será a lista vazia, e o passo recursivo, que será a possibilidade de formar uma nova lista a partir de uma lista já existente.</p>
 
-<h3 id="por-quê-shell-scripting">Por quê Shell scripting?</h3>
+<p>Vejamos, como exemplo, a definição de uma lista de coisas x:</p>
 
-<p>O primeiro motivo é que, até este ponto do curso, nós só trabalhamos com o Shell e escrevemos alguns scripts. Portanto, não faria sentido estudar Python ou outra linguagem de script. O segundo e principal motivo é que o Shell é universal entre os sistemas Unix, o que significa que, uma vez escrito com cuidado, ele pode ser executado em qualquer sistema Unix. Além disso, scripts de Shell são extremamente fáceis de escrever, e é bem sabido que são muito úteis para automatizar tarefas. Em pouco tempo, você terá em mãos uma ferramenta muito conveniente.</p>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Define</span> <span class="kt">List</span> <span class="n">x</span> <span class="o">::</span> <span class="kr">type</span> <span class="o">-&gt;</span> <span class="kr">type</span><span class="p">,</span> <span class="kr">where</span>
+<span class="c1">-- Aqui definimos o tipo da nossa List x</span>
+    <span class="kt">[ ]</span> <span class="o">::</span> <span class="kt">List</span> <span class="n">x</span>
+<span class="c1">-- Aqui definimos o nosso caso base</span>
+    <span class="p">(</span> <span class="n">x</span> <span class="o">:</span> <span class="n">xs</span> <span class="p">)</span> <span class="o">::</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="n">x</span>
+<span class="c1">-- Aqui definimos o passo recursivo</span>
+</code></pre></div></div>
+<p>Aqui, definimos um tipo recursivo que pode ser acionado de duas formas:</p>
 
-<h3 id="a-primeira-linha--shebang">A primeira linha: #! (shebang)</h3>
+<p>1) Sem qualquer exigência, podemos chamar sempre o caso base, construindo uma lista vazia com o construtor [ ].</p>
 
-<p>Como um script em Shell não é um programa compilado em linguagem de máquina, o nosso Kernel Linux não sabe
-diretamente o que fazer com ele, então precisamos dizer ao sistema que programa vai ser responsável por
-executar o nosso script. Para isso, usamos o <code class="language-plaintext highlighter-rouge">shebang</code>: uma linha que começa com <code class="language-plaintext highlighter-rouge">#!</code> seguido do
-caminho absoluto do programa que vai executar e interpretar o script.</p>
+<p>2) Caso já tenhamos uma lista, podemos construir uma nova lista, inserindo um elemento na sua “cabeça” (perceba que poderíamos muito bem ter escolhido o “rabo” como outra opção), a partir do comando (x : xs).</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<p>Neste caso, o x pode ser qualquer coisa, vejamos sua aplicação com o tipo dos naturais:</p>
 
-<span class="c"># abobrinha bla bla bla ble</span>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Define</span> <span class="kt">List</span> <span class="kt">Nat</span> <span class="o">::</span> <span class="kr">type</span> <span class="kr">where</span>
+<span class="c1">-- Aqui definimos o tipo da nossa List Nat</span>
+    <span class="kt">[ ]</span> <span class="o">::</span> <span class="kt">List</span> <span class="kt">Nat</span>
+<span class="c1">-- Caso base</span>
+    <span class="p">(</span> <span class="n">x</span> <span class="o">:</span> <span class="n">xs</span> <span class="p">)</span> <span class="o">::</span> <span class="kt">Nat</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="kt">Nat</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="kt">Nat</span>
+<span class="c1">-- Passo recursivo</span>
 </code></pre></div></div>
 
-<p>Em alguns casos, sem a <code class="language-plaintext highlighter-rouge">shebang</code>, seu Shell vai receber o erro de execução do kernel, e vai executar um
-mecanismo que chamamos de <em>fallback</em>, e vai por conta própria escolher um interpretador para o seu script,
-geralmente o <code class="language-plaintext highlighter-rouge">/bin/sh</code>, que é o Shell padrão do sistema. Para o Shell, é como se, ao receber esse erro, ele
-dissesse: “Aha, não é um programa compilado, então vou interpretar isso como um script Shell”; e aí ele
-executa o <code class="language-plaintext highlighter-rouge">/bin/sh</code> e passa o seu script como argumento para ele.</p>
+<p>Agora que temos em mãos os dois construtores das listas de naturais, podemos brincar um pouco, construindo listas com diferentes núermos, veja bem:</p>
 
-<h3 id="variáveis">Variáveis</h3>
-
-<p>Independentemente das linguagens de programação que você já estudou, provavelmente você já se deparou com o conceito de variável - um objeto capaz de reter e representar um valor ou expressão.
-Inclusive, você já se deparou com algumas, lembra do <code class="language-plaintext highlighter-rouge">$PATH</code>? Pois bem, essa é uma das
-variáveis que são compartilhadas entre todos os programas, as chamadas variáveis de ambiente, mas veremos
-mais sobre isso no futuro.</p>
-
-<p>Você pode criar e usar variáveis num script da seguintes maneira:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="nv">fruta</span><span class="o">=</span>banana
-<span class="nb">echo</span> <span class="s2">"</span><span class="nv">$fruta</span><span class="s2">"</span>
-<span class="c"># Vai imprimir "banana", aqui o Shell expande a variável</span>
-<span class="nb">echo</span> <span class="nv">$fruta</span>
-<span class="c"># Também vai imprimir "banana", mas não é recomendado,</span>
-<span class="c"># pois o Shell pode usar certos processamentos e resultar em comportamente idesejado</span>
-<span class="nb">echo</span> <span class="s1">'$fruta'</span>
-<span class="c"># Vai imprimir "$fruta", pois o Shell não vai expandir a variável</span>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">[ ]</span>
+<span class="c1">-- Aqui temos uma lista vazia</span>
+<span class="p">(</span><span class="mi">1</span> <span class="o">:</span> <span class="kt">[ ]</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1">-- Aqui estamos construindo uma lista com um único elemento,</span>
+<span class="c1">-- o número 1, ao inserirmos uma “cabeça” com o elemento</span>
+<span class="c1">-- 1 na lista vazia.</span>
+<span class="p">(</span><span class="mi">3</span> <span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="c1">-- Aqui acabamos de construir uma lista com três elementos,</span>
+<span class="c1">-- inserindo uma “cabeça” com o elemento 3 em uma lista que</span>
+<span class="c1">-- tinha anteriormente apenas o 1 e o 2 de elementos. </span>
+<span class="p">(</span><span class="mi">42</span> <span class="o">:</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">42</span><span class="p">])</span> <span class="o">=</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">42</span><span class="p">]</span>
+<span class="c1">-- Aqui construímos uma lista com 5 elementos 42</span>
 </code></pre></div></div>
 
-<p>Além das variáveis especiais que já vimos, existem outras que são clássicas e muito utéis. Por exemplo, lembra
-que alguns dos programas que você utilizou recebiam argumentos? Pois bem, existem variáveis que armazenam
-os argumentos do último programa que você executou. Digamos que você tenha um script chamado
-<code class="language-plaintext highlighter-rouge">omelhorscript.sh</code>, e você o executou:</p>
+<p>Utilizando esses construtores, você consegue criar alguma outra lista?</p>
 
-<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">[user@hostname ~]$</span><span class="w"> </span>./omelhorscript.sh arg1 arg2 arg3 arg4 arg6 ... arg9
+<h3 id="descobrindo-a-função-length">Descobrindo a função length</h3>
+
+<p>Agora que temos acesso a um tipo definido, por nós mesmos, recursivamente, nós podemos enfim começar a utilizar funções que se aproveitem dessa implementação!</p>
+
+<p>Como primeiro exemplo, iremos definir uma função que recebe listas e retorna inteiros, representativos da quantidade de elementos dessa lista recebida. Mas nós iremos fazê-lo recursivamente!</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">length</span> <span class="o">::</span> <span class="kt">List</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
+<span class="c1">-- O tipo da nossa função recursiva</span>
+<span class="n">length</span> <span class="kt">[ ]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1">-- O caso base</span>
+<span class="n">length</span> <span class="p">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">xs</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">length</span> <span class="n">xs</span>
+<span class="c1">-- O passo recursivo</span>
 </code></pre></div></div>
 
-<p>Quando ele começar a ser interpretado, seu sistema vai ter armazenado o valor de cada argumento passado
-na última linha de comando, e você pode acessar esses valores pelas variáveis <code class="language-plaintext highlighter-rouge">$0</code> <code class="language-plaintext highlighter-rouge">$1</code>, <code class="language-plaintext highlighter-rouge">$2</code>, <code class="language-plaintext highlighter-rouge">$3</code>, …,
-<code class="language-plaintext highlighter-rouge">$9</code>.</p>
+<p>(Atenção: length significa “comprimento” em inglês)</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="nb">echo</span> <span class="s2">"O nome do script é </span><span class="nv">$0</span><span class="s2">"</span>
-<span class="c"># Esse comando vai imprimir "O nome do script é omelhorscript.sh"</span>
-<span class="nb">echo</span> <span class="s2">"O primeiro argumento é </span><span class="nv">$1</span><span class="s2">"</span>
-<span class="c"># Esse comando vai imprimir "O primeiro argumento é arg1"</span>
-<span class="nb">echo</span> <span class="s2">"O segundo argumento é </span><span class="nv">$2</span><span class="s2">"</span>
-<span class="c"># Esse comando vai imprimir "O segundo argumento é arg2"</span>
-<span class="c"># assim por diante</span>
-<span class="nb">echo</span> <span class="s2">"O nono argumento é </span><span class="nv">$9</span><span class="s2">"</span>
+<p>Olhe como foi fácil definir o caso base e o passo recursivo! Caso a lista esteja vazia, a função retorna o inteiro zero, e caso a função tenha “cabeça”, a função retorna o inteiro 1 somado ao resultado da mesma função length, chamada na lista sem essa cabeça.</p>
+
+<p>Vamos tentar desenhar no quadro para ver se dá certo mesmo?</p>
+
+<h3 id="descobrindo-a-função-sum-exercíciodesafio">Descobrindo a função sum (Exercício/desafio)</h3>
+
+<p>A partir da função length definida anteriormente, você consegue pensar como seria a construção de uma função sum (soma), definida usando uma List Nat? Vamos tentar?</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sum</span> <span class="o">::</span> <span class="kt">List</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
+<span class="c1">-- O tipo da nossa função recursiva</span>
+<span class="n">sum</span> <span class="kt">[ ]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1">-- O nosso passo base</span>
+<span class="n">sum</span> <span class="p">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">xs</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">sum</span> <span class="n">xs</span>
+<span class="c1">-- O nosso passo recursivo</span>
 </code></pre></div></div>
 
-<p>Alternativamente, para além do nono argumento e a partir do <code class="language-plaintext highlighter-rouge">$0</code>, a variável <code class="language-plaintext highlighter-rouge">$@</code> armazena todos os
-argumentos passados:</p>
+<p>(Atenção: sum significa “soma” em inglês)</p>
 
-<p>Imagine o outro script <code class="language-plaintext highlighter-rouge">osegundomelhorscript.sh</code>:</p>
+<p>Observe que foi apenas possível fazer esta função pois já havia um tipo Int implementado na nossa linguagem de programação simulada com pseudocódigo, assim como uma operação de soma que recebe dois números do tipo Int e retorna outro Int!</p>
 
-<ul>
-  <li>
-    <p>Você o executou com:</p>
+<h3 id="descobrindo-a-função-filter">Descobrindo a função filter</h3>
 
-    <div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">[user@hostname ~]$</span><span class="w"> </span>./osegundomelhorscript 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>E a sua implementação é:</p>
+<p>É importante perceber que não temos limitações quanto à saída das funções para utilização da recursão! Veja esse exemplo que utiliza um predicado (x -&gt; bool) para filtrar uma lista que queremos que tenha apenas elementos que cumpram um certo critério!</p>
 
-    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="nb">echo</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
-<span class="c"># Vai imprimir "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15"</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
-
-<p>Outra variável interessante é a <code class="language-plaintext highlighter-rouge">$PWD</code>, que armazena o diretório atual que o script está sendo executado.</p>
-
-<h3 id="expansões">Expansões</h3>
-
-<h4 id="expansão-de-comandos-e-variáveis">Expansão de comandos e variáveis</h4>
-
-<p>O que observamos até agora sobre o Shell, em relação às variáveis, é o que chamamos de expansão. O símbolo $, precedendo o nome da variável, faz com que o Shell substitua o nome da variável pelo seu valor. No entanto, o Shell não se limita apenas a isso. Voltando ao exemplo da declaração de variáveis, podemos utilizar a sintaxe <code class="language-plaintext highlighter-rouge">$()</code> para expandir o valor produzido como saída por um determinado comando.</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="c"># O valor armazenado pela variável `hoje` será o resultado do comando `date`</span>
-<span class="nv">hoje</span><span class="o">=</span><span class="si">$(</span><span class="nb">date</span><span class="si">)</span>
-<span class="nb">echo</span> <span class="s2">"Hoje é </span><span class="nv">$hoje</span><span class="s2">"</span>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">filter</span> <span class="o">::</span> <span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="n">x</span>
+<span class="c1">-- O tipo da nossa função recursiva</span>
+<span class="n">filter</span> <span class="n">p</span> <span class="kt">[ ]</span> <span class="o">-&gt;</span> <span class="kt">[ ]</span>
+<span class="c1">-- O nosso caso base</span>
+<span class="n">filter</span> <span class="n">p</span> <span class="p">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">xs</span><span class="p">)</span> <span class="o">=</span>
+<span class="c1">-- Agora iremos inserir uma estrutura if/then/else</span>
+	<span class="kr">if</span> <span class="n">p</span> <span class="n">x</span>
+<span class="c1">-- Caso a “cabeça” passe pelo filtro</span>
+	<span class="kr">then</span> <span class="p">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">filter</span> <span class="n">p</span> <span class="n">xs</span><span class="p">)</span>
+<span class="c1">-- Iremos acoplar ela a uma nova chamada da filter</span>
+	<span class="kr">else</span> <span class="n">filter</span> <span class="n">p</span> <span class="n">xs</span>
+<span class="c1">-- Caso contrário, iremos descartar a cabeça e chamar </span>
+<span class="c1">-- a filter no resto ainda assim</span>
 </code></pre></div></div>
 
-<h4 id="expansão-aritmética">Expansão aritmética</h4>
+<p>Mas o que seria um predicado (x -&gt; bool)? Nós já criamos um hoje mais cedo, lembram qual era?</p>
 
-<p>O Shell também é capaz de realizar a expansão de operações aritméticas, a sintaxe para isso é <code class="language-plaintext highlighter-rouge">$((expressão))</code>, um exemplo de uso seria:</p>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">filter</span> <span class="o">::</span> <span class="p">(</span><span class="kt">Int</span><span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="kt">Int</span>
+<span class="n">filter</span> <span class="n">p</span> <span class="kt">[ ]</span> <span class="o">-&gt;</span> <span class="kt">[ ]</span>
+<span class="n">filter</span> <span class="n">p</span> <span class="p">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">xs</span><span class="p">)</span> <span class="o">=</span>
+	<span class="kr">if</span> <span class="n">p</span> <span class="n">x</span>
+	<span class="kr">then</span> <span class="p">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">filter</span> <span class="n">p</span> <span class="n">xs</span><span class="p">)</span>
+	<span class="kr">else</span> <span class="n">filter</span> <span class="n">p</span> <span class="n">xs</span>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="nv">numero1</span><span class="o">=</span>10
-<span class="nv">numero2</span><span class="o">=</span>42
-<span class="nb">echo</span> <span class="k">$((</span>numero1 <span class="o">+</span> numero2<span class="k">))</span>
-<span class="c"># Alternativamente</span>
-<span class="nb">echo</span> <span class="k">$((</span><span class="m">10</span> <span class="o">+</span> <span class="m">42</span><span class="k">))</span>
+<span class="n">filter</span> <span class="kt">IsEven</span> <span class="kt">[ ]</span> <span class="o">=</span> <span class="kt">[ ]</span>
+<span class="n">filter</span> <span class="kt">IsEven</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">65</span><span class="p">]</span>
+<span class="n">filter</span> <span class="kt">IsEven</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="c1">-- ?</span>
 </code></pre></div></div>
 
-<hr />
+<h3 id="descobrindo-a-função-map">Descobrindo a função map</h3>
 
-<h4 id="nota">Nota</h4>
+<p>Outra função fundamental para entender a lógica da recursão é a map, que mapeia uma determinada função em todos os componentes de uma lista. Pelo nome, você conseguiria adivinhar o que ela faz?</p>
 
-<p>Perceba que dentro de aspas que todas expansões não occorem dentro de apóstrofos, mas continuam funcionando
-dentro de aspas duplas.</p>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">map</span> <span class="o">::</span> <span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="n">x</span>
+<span class="c1">-- O tipo da nossa função recursiva</span>
+<span class="n">map</span> <span class="n">f</span> <span class="kt">[ ]</span> <span class="o">=</span> <span class="kt">[ ]</span>
+<span class="c1">-- O nosso caso base</span>
+<span class="n">map</span> <span class="n">f</span> <span class="p">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">xs</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span> <span class="n">x</span> <span class="o">:</span> <span class="n">map</span> <span class="n">f</span> <span class="n">xs</span><span class="p">)</span>
+<span class="c1">-- O nosso passo recursivo</span>
+<span class="n">double</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
+<span class="c1">-- Aqui definimos uma função double</span>
+<span class="n">double</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="n">n</span><span class="p">)</span>
+<span class="c1">-- Ela recebe um inteiro, e dobra ele</span>
 
-<hr />
-
-<h3 id="condicionais">Condicionais</h3>
-
-<h3 id="operadores-lógicos-no-shell">Operadores lógicos no Shell</h3>
-
-<p><a href="/minicurso-demons-mat/primeiroDia.html#combinando-comandos-usando-pipelines">Lembra do <em>cliffhanger</em> da aula passada?</a>, espero que você tenha percebido que lidar com
-valores booleanos (<code class="language-plaintext highlighter-rouge">verdadeiro</code> e <code class="language-plaintext highlighter-rouge">false</code>) no Shell é conveniente para nós, para que possamos tomar decisões baseadas no resultados
-de comandos. Porém, antes de lidarmos diretamentes com essas operações, precisamos entender o que são
-status de saída, visto que eles definem se o programa executou normalmente ou houve algum problema.</p>
-
-<h4 id="status-de-saída">Status de saída</h4>
-
-<p>Comandos no Linux, ao terminarem, retornam ao sistema um valor que chamamos de status de saída. Esse valor
-é um inteiro que varia de 0 a 255, no qual, por convenção, 0 significa que o programa terminou com sucesso e
-qualquer outro valor indica diferentes tipos de problema, especificados pelo comando. Na prática, podemos
-visualizar isso da seguinte forma:</p>
-
-<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">[user@hostname ~]$</span><span class="w"> </span><span class="nb">ls</span> <span class="nt">-d</span> /usr/bin
-<span class="go">/usr/bin
-</span><span class="gp">[user@hostname ~]$</span><span class="w"> </span><span class="nb">echo</span> <span class="nv">$?</span>
-<span class="go">0
-</span><span class="gp">[user@hostname ~]$</span><span class="w"> </span><span class="nb">ls</span> <span class="nt">-d</span> /bin/usr
-<span class="go">ls: cannot access '/bin/usr': No such file or directory
-</span><span class="gp">[user@hostname ~]$</span><span class="w"> </span><span class="nb">echo</span> <span class="nv">$?</span>
-<span class="go">2
-</span></code></pre></div></div>
-
-<p>Esse <code class="language-plaintext highlighter-rouge">$?</code>, na verdade, é um váriavel especial do Shell, assim como o <code class="language-plaintext highlighter-rouge">$PATH</code>, que guarda o status de saída
-do último comando. Na primeira vez que executamos o <code class="language-plaintext highlighter-rouge">ls</code>, o status de saída foi 0, indicando que o comando
-terminou com sucesso, e, na segunda vez, o status de saída foi 2, indicando que houve algum tipo de problema.
-Podemos investigar qual problema ocorreu, consultando o manual do <code class="language-plaintext highlighter-rouge">ls</code>, ou, se houver, lendo a mensagem de erro.</p>
-
-<p>O Shell tem dois comandos extremamente simples que não fazem nada além de terminar com o status de saída
-0 ou 1, o <code class="language-plaintext highlighter-rouge">true</code> e o <code class="language-plaintext highlighter-rouge">false</code>, respectivamente.</p>
-
-<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">[user@hostname ~]$</span><span class="w"> </span><span class="nb">true</span>
-<span class="gp">[user@hostname ~]$</span><span class="w"> </span><span class="nb">echo</span> <span class="nv">$?</span>
-<span class="go">0
-</span><span class="gp">[user@hostname ~]$</span><span class="w"> </span><span class="nb">false</span>
-<span class="gp">[user@hostname ~]$</span><span class="w"> </span><span class="nb">echo</span> <span class="nv">$?</span>
-<span class="go">1
-</span></code></pre></div></div>
-
-<h4 id="conjunção-e-disjunção">Conjunção e disjunção</h4>
-
-<p>Os status de saída geralmente são usados para lidar com condicionais, ou seja, operações lógicas que
-conhecemos como disjunção (<code class="language-plaintext highlighter-rouge">||</code>) e conjunção (<code class="language-plaintext highlighter-rouge">&amp;&amp;</code>). A disjunção ou o <code class="language-plaintext highlighter-rouge">e</code> no Português, vai ser avaliada
-como verdadeira se os dois operandos forem verdadeiros, e a conjunção ou o <code class="language-plaintext highlighter-rouge">ou</code> no português, é vai ser
-verdadeira se pelo menos um dos operandos for verdadeiro. Podemos visualizar isso como:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">false</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s2">"Opa, vou imprimir isso"</span>
-<span class="c"># Como o primeiro é falso, o segundo vai ser avaliado</span>
-
-<span class="nb">true</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s2">"Não vou ser imprimido"</span>
-<span class="c"># Como o primeiro é verdadeiro, o segundo não vai ser avaliado</span>
-
-<span class="nb">true</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"Things went well"</span>
-<span class="c"># Como o primeiro é verdadeiro, o segundo vai ser avaliado</span>
-
-<span class="nb">false</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"Will not be printed"</span>
-<span class="c"># Como o primeiro é falso, não preciso nem avaliar o segundo</span>
-
-<span class="nb">true</span> <span class="p">;</span> <span class="nb">echo</span> <span class="s2">"Vai sempre rodar"</span>
-<span class="c"># De extra, o `;` é um separador de comandos, logo o segundo comando vai ser executado,</span>
-<span class="c"># independentemente do status do primeiro</span>
-
-<span class="nb">false</span> <span class="p">;</span> <span class="nb">echo</span> <span class="s2">"Sou imbatível"</span>
+<span class="n">map</span> <span class="n">double</span> <span class="kt">[ ]</span> <span class="o">=</span> <span class="kt">[ ]</span>
+<span class="n">map</span> <span class="n">double</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span> <span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="n">map</span> <span class="n">double</span> <span class="p">[</span> <span class="mi">42</span><span class="o">.</span> <span class="mi">43</span><span class="o">.</span> <span class="mi">42</span><span class="p">]</span> <span class="o">=</span> <span class="c1">-- ?</span>
 </code></pre></div></div>
 
-<p>O que o <code class="language-plaintext highlighter-rouge">&amp;&amp;</code> e o <code class="language-plaintext highlighter-rouge">||</code> fazem é o que chamamos de curto circuito: baseado na primeira expressão, o interpretador
-decide se vai avaliar o resto ou não.</p>
+<p>Você consegue imaginar como seria definir essa função de forma iterativa?</p>
 
-<h4 id="if-elif-else-fi">if-elif-else-fi</h4>
+<h3 id="descobrindo-a-função-replicate">Descobrindo a função replicate</h3>
 
-<p>Além das variáveis, também temos as condicionais, que funcionam de um jeito um pouco diferente. Os
-valores booleanos, ou seja, <code class="language-plaintext highlighter-rouge">true</code> e <code class="language-plaintext highlighter-rouge">false</code>, são representados pelos códigos de saída de cada programa,
-como visto no tópico de <a href="/minicurso-demons-mat/primeiroDia.html#operadores-lógicos-no-Shell">operadores lógicos</a>. Consequementemente, o jeito mais imediato de usar condicionais é com os <em>if statements</em>, e a sintaxe para
-isso é:</p>
+<p>De forma semelhante, também podemos diversificar o que colocamos na entrada da nossa função! Veja só a replicate, que pega um número natural, um elemento, e o replica por essa quantidade de vezes formando uma lista!</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if  </span>comando <span class="p">;</span> <span class="k">then</span>
-  <span class="c"># código</span>
-<span class="k">fi</span>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">replicate</span> <span class="o">::</span> <span class="kt">Nat</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="n">x</span>
+<span class="n">replicate</span> <span class="mi">0</span> <span class="kr">_</span> <span class="o">=</span> <span class="kt">[ ]</span>
+<span class="n">replicate</span> <span class="n">n</span> <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">replicate</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">replicate</span> <span class="mi">5</span> <span class="kt">True</span> <span class="o">=</span> <span class="p">[</span><span class="kt">True</span><span class="p">,</span> <span class="kt">True</span><span class="p">,</span> <span class="kt">True</span><span class="p">,</span> <span class="kt">True</span><span class="p">,</span> <span class="kt">True</span><span class="p">]</span>
 </code></pre></div></div>
 
-<p>(<code class="language-plaintext highlighter-rouge">fi</code> é <code class="language-plaintext highlighter-rouge">if</code> de trás pra frente, e é o comando que fecha o bloco de código do <code class="language-plaintext highlighter-rouge">if</code>)</p>
+<h2 id="é-possível-extrapolar-para-outros-tipos">É possível extrapolar para outros tipos?</h2>
 
-<p>O código só será executado se o <code class="language-plaintext highlighter-rouge">comando</code> tiver 0 como código de saída, e você pode adicionar um <code class="language-plaintext highlighter-rouge">else</code>,
-que é executado se o código de saída for diferente de 0.</p>
+<p>Mas somente as listas são tipos recursivos? Ou então apenas as coleções de coisas são tipos recursivos? Quais outros tipos eu posso implementar recursivamente?</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span>comando <span class="p">;</span> <span class="k">then</span>
-  <span class="c"># código</span>
-<span class="k">else</span>
-  <span class="c"># código</span>
-<span class="k">fi</span>
+<p>De forma ilustrativa, iremos apresentar uma possível implementação dos números naturais de forma recursiva, a fim de que possamos apreciar a potência da recursão. Veja como, com apenas dois construtores, podemos criar um tipo de quantidade infinita!</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">define</span> <span class="kt">Nat</span> <span class="o">::</span> <span class="kr">type</span> <span class="kr">where</span>
+	   <span class="kt">O</span> <span class="o">::</span> <span class="kt">Nat</span>
+	   <span class="kt">S</span> <span class="o">::</span> <span class="kt">Nat</span> <span class="o">-&gt;</span> <span class="kt">Nat</span>
 </code></pre></div></div>
 
-<p>Ná prática, nós podemos fazer algo como:</p>
+<p>Agora temos um tipo recursivo representante dos números naturais com dois construtores, você consegue identificar qual o caso base e qual o passo recursivo?</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="c"># Tue é a abreviação de Tuesday, que é terça em inglês</span>
-<span class="k">if </span><span class="nb">date</span> | <span class="nb">grep</span> <span class="nt">-q</span> <span class="s2">"Tue"</span><span class="p">;</span> <span class="k">then
-  </span><span class="nb">echo</span> <span class="s2">"Hoje é terça"</span>
-<span class="k">else
-  </span><span class="nb">echo</span> <span class="s2">"Hoje não é terça"</span>
-<span class="k">fi</span>
+<p>1) Do nada, podemos construir o zero (0)
+2) Caso já tenhamos um número natural, podemos chamar o seu sucessor! (S n)</p>
+
+<p>Nesse sentido, teríamos o 1 representado pelo (S 0), o 2 pelo S(S 0), o 3 pelo S(S(S 0)) e assim em diante!</p>
+
+<h3 id="descobrindo-melhores-funções-even-e-odd">Descobrindo melhores funções even e odd</h3>
+
+<p>Agora que temos os naturais como tipo recursivo, podemos definir uma função ainda melhor para definir se um número é par (even), ou ímpar (odd)!</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">even</span> <span class="o">::</span> <span class="kt">Nat</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<span class="n">even</span> <span class="kt">O</span> <span class="o">=</span> <span class="kt">False</span>
+<span class="n">even</span> <span class="p">(</span><span class="kt">S</span> <span class="kt">O</span><span class="p">)</span> <span class="o">=</span> <span class="kt">True</span>
+<span class="n">even</span> <span class="p">(</span><span class="kt">S</span> <span class="p">(</span><span class="kt">S</span> <span class="n">n</span><span class="p">))</span> <span class="o">=</span> <span class="n">even</span> <span class="n">n</span>
+
+<span class="n">odd</span> <span class="o">::</span> <span class="kt">Nat</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<span class="n">odd</span> <span class="n">n</span> <span class="o">=</span> <span class="n">even</span> <span class="kt">S</span> <span class="n">n</span>
 </code></pre></div></div>
 
-<p>Se o <code class="language-plaintext highlighter-rouge">grep</code> encontrar a expressão <code class="language-plaintext highlighter-rouge">True</code> no output do comando <code class="language-plaintext highlighter-rouge">date</code>, o código de saída do <code class="language-plaintext highlighter-rouge">grep</code> vai ser 0.
-Logo o dia de hoje será terça, caso contrário, não será.</p>
-
-<p>Além disso, temos o <code class="language-plaintext highlighter-rouge">elif</code>, uma abreviação de <code class="language-plaintext highlighter-rouge">else if</code>, e é utilizado para adicionar mais condições
-a um <code class="language-plaintext highlighter-rouge">if</code>.</p>
-
-<h4 id="expressões-lógicas">Expressões lógicas</h4>
-
-<p>Outra forma de usar condicionais é usando o comando <code class="language-plaintext highlighter-rouge">test</code>, que avalia expressões lógicas e retorna 0 se a
-expressão for verdadeira e 1 se for falsa. A sintaxe é a seguinte:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="k">if </span><span class="nb">test </span>expressão <span class="p">;</span> <span class="k">then</span>
-  <span class="c"># código</span>
-<span class="k">fi</span>
-</code></pre></div></div>
-
-<p>Naturalmente, as opções que o <code class="language-plaintext highlighter-rouge">test</code> aceita imitam as expressões que conhecemos na matemática e em outras
-linguagens de programação, por exemplo, o <code class="language-plaintext highlighter-rouge">-eq</code> representa a igualdade entre dois números
-<code class="language-plaintext highlighter-rouge">(1 -eq 0</code> ≅ <code class="language-plaintext highlighter-rouge">1 == 0</code>), o <code class="language-plaintext highlighter-rouge">-lt</code> representa a desigualdade entre dois números (<code class="language-plaintext highlighter-rouge">1 -lt 0</code> ≅ <code class="language-plaintext highlighter-rouge">1 &lt; 0</code>), e assim
-por diante. Você pode verificar todas usando o manual (<code class="language-plaintext highlighter-rouge">man test</code>).</p>
-
-<p>Alternativamente, os <code class="language-plaintext highlighter-rouge">[]</code> servem como um alias para o <code class="language-plaintext highlighter-rouge">test</code></p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="k">if</span> <span class="o">[</span> expressão <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
-  <span class="c"># código</span>
-<span class="k">fi</span>
-</code></pre></div></div>
-
-<p>Algumas das expressões lógicas mais utilizadas são:</p>
-
-<ul>
-  <li>
-    <p><strong>Para inteiros e strings:</strong></p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Operador</th>
-          <th>Verdade se..</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">string</code></td>
-          <td><code class="language-plaintext highlighter-rouge">string</code> não é vazia.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">s1 = s2</code></td>
-          <td>a strings <code class="language-plaintext highlighter-rouge">s1</code> e <code class="language-plaintext highlighter-rouge">s2</code> são iguais.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">s1 != s2</code></td>
-          <td>as string <code class="language-plaintext highlighter-rouge">s1</code> e <code class="language-plaintext highlighter-rouge">s2</code> não são iguais.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">n1 -eq n2</code></td>
-          <td><code class="language-plaintext highlighter-rouge">n1</code> e <code class="language-plaintext highlighter-rouge">n2</code> são iguais.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">n1 -gt n2</code></td>
-          <td><code class="language-plaintext highlighter-rouge">n1</code> é maior que <code class="language-plaintext highlighter-rouge">n2</code>.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">n1 -lt n2</code></td>
-          <td><code class="language-plaintext highlighter-rouge">n1</code> é menor que <code class="language-plaintext highlighter-rouge">n2</code>.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">n1 -ge n2</code></td>
-          <td><code class="language-plaintext highlighter-rouge">n1</code> é maior ou igual a <code class="language-plaintext highlighter-rouge">n2</code>.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">n1 -le n2</code></td>
-          <td><code class="language-plaintext highlighter-rouge">n1</code> é menor ou igual a <code class="language-plaintext highlighter-rouge">n2</code>.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <p><strong>Para arquivos e diretórios:</strong></p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Operador</th>
-          <th>Verdade se</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">-e arquivo</code></td>
-          <td>O <code class="language-plaintext highlighter-rouge">arquivo</code> existe.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">-d arquivo</code></td>
-          <td>O <code class="language-plaintext highlighter-rouge">arquivo</code> é um diretório.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">-f arquivo</code></td>
-          <td>O <code class="language-plaintext highlighter-rouge">arquivo</code> é um arquivo regular.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">-r arquivo</code></td>
-          <td>O <code class="language-plaintext highlighter-rouge">arquivo</code> tem permissão de leitura.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">-w arquivo</code></td>
-          <td>O <code class="language-plaintext highlighter-rouge">arquivo</code> tem permissão de escrita.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">-x arquivo</code></td>
-          <td>O <code class="language-plaintext highlighter-rouge">arquivo</code> tem permissão de execução.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">-s arquivo</code></td>
-          <td>O <code class="language-plaintext highlighter-rouge">arquivo</code> não está vazio.</td>
-        </tr>
-        <tr>
-          <td><code class="language-plaintext highlighter-rouge">-L arquivo</code></td>
-          <td>O <code class="language-plaintext highlighter-rouge">arquivo</code> é um link simbólico.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-</ul>
-
-<p>Cada teste pode ser negado com um <code class="language-plaintext highlighter-rouge">!</code> antes do operador. Por exemplo: <code class="language-plaintext highlighter-rouge">! -e arquivo</code> é verdadeiro se o não
-existe. Vamos experimentar um pouco com isso:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="k">if</span> <span class="o">[</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then 
-  </span><span class="nb">echo</span> <span class="s2">"O arquivo </span><span class="nv">$1</span><span class="s2"> é um arquivo regular"</span>
-<span class="k">elif</span> <span class="o">[</span> <span class="nt">-d</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
-  </span><span class="nb">echo</span> <span class="s2">"O arquivo </span><span class="nv">$1</span><span class="s2"> é um diretório"</span>
-<span class="k">else
-  </span><span class="nb">echo</span> <span class="s2">"O arquivo </span><span class="nv">$1</span><span class="s2"> não é um arquivo regular nem um diretório"</span>
-<span class="k">fi</span>
-</code></pre></div></div>
-
-<p>Por ser também um comando, podemos combinar o <code class="language-plaintext highlighter-rouge">test</code> com outras instâncias de <code class="language-plaintext highlighter-rouge">test</code> usando os operadores
-que já conhecemos:</p>
-
-<ul>
-  <li>
-    <p><em>Usando a conjunção (<code class="language-plaintext highlighter-rouge">&amp;&amp;</code>):</em></p>
-
-    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="k">if</span> <span class="o">[</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> <span class="nt">-r</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
-  </span><span class="nb">echo</span> <span class="s2">"O arquivo </span><span class="nv">$1</span><span class="s2"> é um arquivo regular e tem permissão de leitura"</span>
-<span class="k">fi</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Usando a disjunção (<code class="language-plaintext highlighter-rouge">||</code>):</p>
-
-    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="k">if</span> <span class="o">[</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">]</span> <span class="o">||</span> <span class="o">[</span> <span class="nt">-d</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
-  </span><span class="nb">echo</span> <span class="s2">"O arquivo </span><span class="nv">$1</span><span class="s2"> é um arquivo regular ou um diretório"</span>
-<span class="k">fi</span>
-</code></pre></div>    </div>
-  </li>
-</ul>
-
-<hr />
-
-<h4 id="nota-1">Nota</h4>
-
-<p>Na comparação de strings existe uma certa convenção, pois, se o valor da string for vazio, o <code class="language-plaintext highlighter-rouge">test</code> pode
-ficar confuso, especialmente se você não usar aspas. Por exemplo:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="nv">string</span><span class="o">=</span><span class="s2">""</span>
-<span class="nb">test</span> <span class="nv">$string</span> <span class="o">=</span> <span class="s2">"banana"</span><span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
-<span class="c"># O seu Shell vai retornar um error, pois o comando `test` vai receber 3 argumentos</span>
-</code></pre></div></div>
-
-<p>Então, além de sempre ser recomendado usar aspas, existe uma convenção de prefixar uma string (conjunto de caracteres) com “X”
-durante a comparação, para que esse tipo de erro aconteça, por exemplo:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="nv">string</span><span class="o">=</span><span class="s2">""</span>
-<span class="nb">test</span> <span class="s2">"X</span><span class="nv">$string</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"Xbanana"</span><span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
-<span class="c"># Note a diferença no status de saída</span>
-</code></pre></div></div>
-
-<p>Agora, a comparação não vai resultar em um erro, pois o <code class="language-plaintext highlighter-rouge">test</code> vai receber a quantidade certa de argumentos</p>
-
-<hr />
-
-<h3 id="funções">Funções</h3>
-
-<p>Se você está começando agora na programação, provavelmente ainda não deve estar completamente familiarizado
-com o conceito de funções, mas com certeza é algo que você já usou muitas vezes sem perceber. Quando
-você invoca um comando no Shell, seja com ou sem argumentos, você sempre espera uma determinada saída ou
-resultado. E é exatamente esse o comportamento de uma função, exceto que, no contexto de linguagem de programação,
-geralmente nos referimos a funções como blocos de código independentes que realizam uma tarefa específica
-quando são invocados.</p>
-
-<h4 id="black-boxes">Black boxes</h4>
-
-<p>Tanto na programação quanto na matemática, funções são enxergadas como caixas pretas, visto que não
-precisamos saber como elas funcionam, apenas o que elas recebem como entrada e o que elas retornam como
-saída.</p>
-
-<p>Quando definimos uma função como uma <em>black box</em>, precisamos dizer qual é seu nome, que tipo
-de argumento ela recebe, e que tipo de argumento ela retorna. Por exemplo: Se $f$ é função e $x$ é um argumento
-que ela aceita, a aplicação de $f$ em $x$ é representada por $f(x)$, e o resultado é o valor que ela “retorna”.</p>
-
-<div style="text-align: center;">
-<img alt="funções como black boxes" src="assets/images/linux_dia2_imagem4.png" width="80%" />
-</div>
-<p><br /></p>
-
-<ul>
-  <li>Imagem retirada do livro <em>Matemática Funcional para Computação</em>, Thanos Tsouanas. Disponível em:</li>
-</ul>
-<p><a href="https://www.tsouanas.org/fmcbook/">https://www.tsouanas.org/fmcbook/</a></p>
-
-<h4 id="funções-no-shell">Funções no Shell</h4>
-
-<p>Tradicionalmente, para conseguirmos usar uma função, precisamos defini-la, seja no início do script
-ou em um arquivo separado. A sintaxe para definir e usar uma função é a seguinte:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="c"># Definição</span>
-funcao<span class="o">()</span> <span class="o">{</span>
-  <span class="c"># código</span>
-<span class="o">}</span>
-
-<span class="c"># Uso</span>
-funcao
-</code></pre></div></div>
-
-<p>Alguns exemplos de funções seriam:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="c"># Esta função recebe como argumento algum nome, </span>
-<span class="c"># cria um diretório com esse nome e muda para ele.</span>
-mcd<span class="o">()</span> <span class="o">{</span>
-  <span class="nb">mkdir</span> <span class="nt">-p</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
-  <span class="nb">cd</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
-  <span class="c"># O retorno de funções do Shell sempre são seu código de saída,</span>
-  <span class="k">return</span> <span class="s2">"</span><span class="nv">$?</span><span class="s2">"</span>
-  <span class="c"># Essencialmente podemos emitir esse campo, ou usar um código de saída personalizado</span>
-<span class="o">}</span>
-
-<span class="c"># Esta função recebe como argumento um nome de arquivo,</span>
-<span class="c"># verifica se o arquivo existe ou não e imprime uma mensagem</span>
-regf<span class="o">()</span> <span class="o">{</span>
-  <span class="nb">test</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2"> existe"</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2"> não existe"</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>Como não invocamos essas funçãos no código, nada vai acontecer. Mas podemos “sourcear” o arquivo que as
-contém e invocá-las.</p>
-
-<ul>
-  <li>
-    <p>“Sourceamos” com:</p>
-
-    <div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">[user@hostname ~]$</span><span class="w"> </span><span class="nb">source </span>minhas_funções.sh
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>E invocamos tradicionalmente:</p>
-
-    <div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">[user@hostname ~]$</span><span class="w"> </span>mcd meudiretório
-<span class="gp">[user@hostname meudiretório]$</span><span class="w">
-</span></code></pre></div>    </div>
-  </li>
-</ul>
-
-<h3 id="loops">Loops</h3>
-
-<p>Outro recurso muito característico de linguagens de programação no geral são os <em>loops</em>: blocos de
-códigos que são executados repetidamente até que uma condição de parada seja satisfeita (ou não).</p>
-
-<p>Essencialmente, no Shell, existem 3 tipos de loop, mas veremos apenas 2, o <code class="language-plaintext highlighter-rouge">for</code> e o <code class="language-plaintext highlighter-rouge">while</code>.</p>
-
-<h4 id="while-loop"><code class="language-plaintext highlighter-rouge">while</code> loop</h4>
-
-<p>O <code class="language-plaintext highlighter-rouge">while</code> é um loop que executa um bloco de código enquanto uma condição for verdadeira, por exemplo,<br />
-voltando para os nossos exemplos de <a href="#expressões-lógicas">expressões lógicas</a>, poderiamos criar um <code class="language-plaintext highlighter-rouge">while</code> da seguinte maneira:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">#!/bin/sh</span>
-  <span class="k">while</span> <span class="o">[</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> <span class="nt">-r</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">do
-    </span><span class="nb">echo</span> <span class="s2">"O arquivo </span><span class="nv">$1</span><span class="s2"> é um arquivo regular e tem permissão de leitura"</span>
-  <span class="k">done</span>
-</code></pre></div></div>
-
-<p>Se, por acaso, o arquivo que passamos como argumento for regular e tiver permissão de leitura, o bloco de
-código vai ser executado até que se altere o arquivo ou a permissão dele.</p>
-
-<h4 id="break"><code class="language-plaintext highlighter-rouge">break</code></h4>
-
-<p>O <code class="language-plaintext highlighter-rouge">break</code> é um comando que geralmente é utilizado dentro de loops para evitar que o loop continue
-infinitamente, e evitar casos como o anterior.</p>
-
-<p>Aproveitando o exemplo anterior, poderiamos usar o <code class="language-plaintext highlighter-rouge">break</code> para sair do loop caso a condição seja
-satisfeita.</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">#!/bin/sh</span>
-  <span class="k">while</span> <span class="o">[</span> <span class="nt">-f</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> <span class="nt">-r</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">do
-    </span><span class="nb">echo</span> <span class="s2">"O arquivo </span><span class="nv">$1</span><span class="s2"> é um arquivo regular e tem permissão de leitura"</span>
-    <span class="nb">break
-  </span><span class="k">done</span>
-</code></pre></div></div>
-
-<p>(Note que o bloco de codigo dentro do loop só vai ser executado uma vez).</p>
-
-<h4 id="for-loop"><code class="language-plaintext highlighter-rouge">for</code> loop</h4>
-
-<p>O <code class="language-plaintext highlighter-rouge">for</code> itera sobre uma lista de elementos, e executa um bloco de código para cada elemento da lista. Por
-exemplo, poderiamos usar o <code class="language-plaintext highlighter-rouge">for</code> para iterar sobre uma lista de argumentos de comando:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
-<span class="k">for </span>argumento <span class="k">in</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span><span class="p">;</span> <span class="k">do
-  </span><span class="nb">echo</span> <span class="s2">"O argumento é </span><span class="nv">$argumento</span><span class="s2">"</span>
-<span class="k">done</span>
-</code></pre></div></div>
-
-<p>Além disso, podemos usar o <code class="language-plaintext highlighter-rouge">for</code> para iterar sobre arquivos e diretórios. Por exemplo, para listar todos os
-arquivos do diretório atual:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>arquivo <span class="k">in</span> <span class="k">*</span><span class="p">;</span> <span class="k">do
-  </span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$arquivo</span><span class="s2">"</span>
-<span class="k">done</span>
-</code></pre></div></div>
-
-<p>Alternativamente, se quisermos listar todos os arquivos de um diretório específico, a partir de um <code class="language-plaintext highlighter-rouge">for</code>:</p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>arquivo <span class="k">in</span> /caminho/para/diretório/<span class="k">*</span><span class="p">;</span> <span class="k">do
-  </span><span class="nb">echo</span> <span class="s2">"</span><span class="nv">$arquivo</span><span class="s2">"</span>
-<span class="k">done</span>
-</code></pre></div></div>
+<h3 id="verificando-se-uma-função-foi-bem-definida-recursivamente-kahoot">Verificando se uma função foi bem definida recursivamente (kahoot)</h3>
 
 <h1 id="exercícios">Exercícios</h1>
 
@@ -896,165 +385,21 @@ arquivos do diretório atual:</p>
 
 <h3 id="exercício-1">Exercício 1</h3>
 
-<p>Em programas em C que envolvem muitos arquivos, é comum querermos configurar nosso projeto de modo que facilite o gerenciamento de multiplos arquivos. Entretanto, como você gosta de iniciar muitos projetos, você não quer precisar criar, repetidas vezes, arquivos que sempre vão estar no seu projeto. Por isso, vamos criar um programa que automatize isso.</p>
-
-<p>Imagine que você sempre organiza seu projeto baseado nessa estrutura.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
-├── build
-├── test
-├── lib
-│   └── text_color.h
-├── src
-│   ├── include
-│   │   └── header.h
-│   └── main.c
-├── CMakeLists.txt
-├── LICENSE
-└── README.md
-</code></pre></div></div>
-
-<ol>
-  <li>No diretório <code class="language-plaintext highlighter-rouge">/tmp/petcc/ex006</code>, crie o arquivo <code class="language-plaintext highlighter-rouge">c_project_cfg.sh</code>.</li>
-  <li>
-    <p>Dentro desse arquivo, adicione a seguinte linha.</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c">#!/bin/bash</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Após essa linha, anexe os comandos necessários para criar a estrutura do projeto acima.
-Seu arquivo no final deve ficar assim:</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c">#!/bin/bash</span>
- <span class="c"># Comando 1</span>
- <span class="c"># Comando 2</span>
- <span class="c"># Comando 3</span>
-</code></pre></div>    </div>
-  </li>
-  <li>Para escrever linhas no arquivo, use apenas comandos de redirecionamento, escreva quais foram esses comandos no <code class="language-plaintext highlighter-rouge">/tmp/petcc/ex006/answer.txt</code></li>
-</ol>
-
 <h3 id="exercício-2">Exercício 2</h3>
-
-<ol>
-  <li>Em uma linha, digite a combinação de comando que cria um diretório chamado <code class="language-plaintext highlighter-rouge">myfolder</code> em <code class="language-plaintext highlighter-rouge">/tmp</code> e, somente se esse diretório tenha sido criado com sucesso, crie um arquivo chamado <code class="language-plaintext highlighter-rouge">myinfo.txt</code>.</li>
-  <li>Escreva essa linha de comando no arquivo <code class="language-plaintext highlighter-rouge">/tmp/petcc/ex003/resposta.sh</code></li>
-</ol>
 
 <h2 id="exercícios-da-aula-de-hoje">Exercícios da aula de hoje</h2>
 
 <h3 id="exercício-1-1">Exercício 1</h3>
 
-<p>Instale o Yazi 🦆!</p>
-
-<p>Baixe o arquivo compactado com o binário <a href="https://github.com/sxyazi/yazi/releases">daqui</a>, escolha a
-versão <code class="language-plaintext highlighter-rouge">yazi-x86_64-unknown-linux-gnu.zip</code> e faça o que for necessário para que o programa <code class="language-plaintext highlighter-rouge">yazi</code> seja
-executável em qualquer lugar do seu sistema.</p>
-
-<ul>
-  <li>Para descompactar, use o comando <code class="language-plaintext highlighter-rouge">unzip</code>.</li>
-</ul>
-
-<p>Como resolução, descreva os passos que você fez para instalar o programa em um arquivo de texto, por exemplo: <code class="language-plaintext highlighter-rouge">ans0201.txt</code>.</p>
-
 <h3 id="exercício-2-1">Exercício 2</h3>
-
-<p>Instale o Discord 🎮!</p>
-
-<p>Baixe o arquivo <code class="language-plaintext highlighter-rouge">.tar.gz</code> do <a href="https://discord.com/">site oficial</a>, investigue o comando <code class="language-plaintext highlighter-rouge">tar</code> com <code class="language-plaintext highlighter-rouge">man tar</code>
-e faça o que for necessário para que o programa <code class="language-plaintext highlighter-rouge">discord</code> seja executável em qualquer lugar do seu sistema.</p>
-
-<p>Como resolução, descreva os passos que você fez para instalar o programa em um arquivo de texto, por exemplo: <code class="language-plaintext highlighter-rouge">ans0202.txt</code>.</p>
 
 <h3 id="exercício-3">Exercício 3</h3>
 
-<p>Investigue o <code class="language-plaintext highlighter-rouge">ls</code> com <code class="language-plaintext highlighter-rouge">man ls</code>, e crie uma variação do comando (alias) <code class="language-plaintext highlighter-rouge">ls</code> com suas opções que lista os arquivos
-da seguinte maneira:</p>
-
-<ul>
-  <li>Lista dotfiles</li>
-  <li>Os tamanhos são listados de forma humanamente legível.</li>
-  <li>Os arquivos são ordenados por ordem de modificação.</li>
-  <li>A saída é colorida.</li>
-</ul>
-
-<p>Um exemplo de saída seria:</p>
-
-<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go"> -rw-r--r--   1 user group 1.1M Jan 14 09:53 baz
- drwxr-xr-x   5 user group  160 Jan 14 09:53 .
- -rw-r--r--   1 user group  514 Jan 14 06:42 bar
- -rw-r--r--   1 user group 106M Jan 13 12:12 foo
- drwx------+ 47 user group 1.5K Jan 12 18:08 ..
-</span></code></pre></div></div>
-
-<p>Como resolução será aceita a linha de comando que você usou para criar o alias em formato de arquivo
-de texto.</p>
-
 <h3 id="exercício-4">Exercício 4</h3>
-
-<p>Faça um script para backup!</p>
-
-<p>O seu programa deve receber apenas um argumento: o nome do arquivo ou diretório que você quer fazer backup.</p>
-
-<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">bak.sh FILE 
-</span></code></pre></div></div>
-
-<p>Exemplo de uso:</p>
-
-<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">[user@hostname ~]$</span><span class="w"> </span><span class="nb">ls</span>
-<span class="go">Downloads Documents Pictures
-</span><span class="gp">[user@hostname ~]$</span><span class="w"> </span>sh bak.sh Downloads
-<span class="gp">[user@hostname ~]$</span><span class="w"> </span><span class="nb">ls</span>
-<span class="go">Downloads Downloads.bak Documents Pictures
-</span></code></pre></div></div>
-
-<p>Se o argumento passado for um diretório, todos os seus arquivos e sub-diretórios também devem sofrer backup.
-Caso contrário, apenas o arquivo passado como argumento deve ser copiado.</p>
-
-<p>Além disso, o arquivo gerado deve ter a extensão <code class="language-plaintext highlighter-rouge">.bak</code> e deve ser salvo no mesmo diretório que o arquivo.</p>
-
-<p>Será aceito como resolução o arquivo de código que você usou para implementar o programa.</p>
 
 <h3 id="exercício-5">Exercício 5</h3>
 
-<p>Escreva funções <code class="language-plaintext highlighter-rouge">sh</code>, chamadas <code class="language-plaintext highlighter-rouge">marco</code> e <code class="language-plaintext highlighter-rouge">polo</code> que fazem o seguinte:</p>
-
-<ul>
-  <li>Toda vez que você chamar a função <code class="language-plaintext highlighter-rouge">marco</code>, ela salva o diretório atual de alguma forma.</li>
-  <li>Toda vez que você chamar a função <code class="language-plaintext highlighter-rouge">polo</code>, ela muda para o diretório salvo pela função <code class="language-plaintext highlighter-rouge">marco</code>.</li>
-</ul>
-
-<p>Lembre-se de usar o <code class="language-plaintext highlighter-rouge">source</code> para recarregar as definições para seu Shell.</p>
-
-<p>Como resolução, aceitaremos o(s) arquivo(s) de código que você usou para implementar as funções</p>
-
 <h3 id="exercício-6">Exercício 6</h3>
-
-<p>Crie um programa para ser usado na linha de comando que permita os usuários realizar operações básicas,
-como criar, listar e excluir arquivos e diretórios. O aplicativo deve aceitar opções e argumentos para
-especificar a ação a ser realizada.</p>
-
-<p>Supondo que <code class="language-plaintext highlighter-rouge">$</code> é o prompt do seu Shell, o programa deve funcionar da seguinte maneira:</p>
-
-<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>./fm
-<span class="go">Usage: ./fm [OPTION]... FILE...
-
-Options:
-  -h, --help     Show this help message and exit
-  -l, --list     List all files in the current directory
-  -c, --create   Create a new file
-  -d, --delete   Delete a file
-</span></code></pre></div></div>
-
-<p>Note que seu programa pode receber múltiplos arquivos e opções, além de que a ordem dos argumentos não deve
-importar.</p>
-
-<ul>
-  <li>Dica: Use o caminho do <code class="language-plaintext highlighter-rouge">bash</code> no shebang, para ter acesso ao operador <code class="language-plaintext highlighter-rouge">+=</code> que concatena elementos em um array.</li>
-</ul>
-
-<p>Será aceito como resolução, o arquivo de código que você usou para implementar o programa</p>
 
 <hr />
 <script>
