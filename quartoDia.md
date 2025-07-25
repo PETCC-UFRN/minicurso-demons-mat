@@ -238,7 +238,9 @@ O conjunto vazio é, como o próprio nome diz, o conjunto que não possui elemen
 
 <div style="text-align: center;"><img src="assets/images/black.png" alt="" style="widht:300px;height:300px;"> </div>
 
-Agora, esse outro amiguinho é polêmico. Em resumo, a questão do que seria um “conjunto universal” foi um grande problema na criação da teoria dos conjuntos, já que um “conjunto que tenha tudo” é falha (Paradoxo de Russell). Então, iremos definir o conjunto universo como “o conjunto de todos os elementos em nosso escopo”, sendo essa a definição mais interessante e menos suscetível a erros. Denotaremos o conjunto universo com U (um U maiúsculo).
+Agora, esse outro amiguinho é polêmico. Em resumo, a questão do que seria um “conjunto universal” foi um grande problema na criação da teoria dos conjuntos, já que um “conjunto que contém todos os conjuntos” é falha (Paradoxo de Russell). Então, iremos definir o Universo como “a coleção de todos os conjuntos”, sendo essa a definição mais interessante e menos suscetível a erros. Denotaremos Universo como U (um U maiúsculo).
+<!--Falta corrigir essa parte sobre o pq q é problemático o a classe Universo ser um conjunto na teoria dos conjuntos!-->
+<!--Explicar o pq q um conjunto de todos os conjuntos é problemático (autoreferenciação, etc...)-->
 
 ##### Paradoxo de Russel
 
