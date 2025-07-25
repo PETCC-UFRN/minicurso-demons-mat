@@ -42,7 +42,7 @@ title: Minicurso de Linux e Git
   </button>
   </div>
 
-# Dia 4 | Conjuntos
+# Conjuntos
 ## Introdução
 
 Olá a todos! Sejam bem-vindos ao quarto dia do nosso minicurso de Introdução às Demonstrações Matemáticas. Hoje iremos aprender sobre conjuntos, tanto pensando em qual a sua relação com a programação como explorando como ela faz parte do mundo das demonstrações matemáticas!
@@ -53,15 +53,21 @@ Sob essa perspectiva, as funções seriam então viagens de um conjunto de núme
 
 Todavia, no mundo da computação, não são mais os seus habitantes descritos em função de conjuntos e elementos!
 
+<div style="text-align: center;"><img src="assets/images/programacao.png" alt="" style="widht:300px;height:300px;"> </div>
+
 ### Tipos ⨯ Objetos ⨯ Conjuntos
 
 No mundo da computação, existem várias formas de descrever os habitantes de um mundo, sendo as principais os tipos e os objetos.
+
+<div style="text-align: center;"><img src="assets/images/coding.png" alt="" style="widht:300px;height:300px;"> </div>
 
 No caso das linguagens de programação tipadas, cada membro do mundo é de um tipo distinto, e as funções ocorrem de tipo x -> tipo y, retornando o famigerado “type error” caso haja a tentativa inválida de operar com tipos não correspondentes àquela função, e não haja forma de coagir algum dos tipos a se adequar à tipagem esperada. Alguns tipos bastante conhecidos são o Int, o Char, a String, o Bool, etc.
 
 Já no caso de linguagens sem tipos (que também podem ser chamados de tipo único), como a Python, todos os habitantes do mundo são objetos, e as funções ocorrem entre objetos. Por mais que possam ter uma decoração de tipos, os objetos de Python não obedecem às regras do mundo tipado.
 
 Mas então, para onde foram os conjuntos?
+
+
 
 ## Conjuntos como inspiração para a montagem da lógica de tipos
 
@@ -153,12 +159,16 @@ Além disso, é também na área de dados que os conjuntos e as operações envo
 
 Agora, utilizando apenas as ferramentas dispostas na especificação dos conjuntos, você seria capaz de criar um par ordenado?
 
-Resposta: {x, {x,y}}
-
+<details>
+    <summary>resposta: SPOILER!</summary>
+    Resposta: {x, {x,y}}
+</details>
 
 ## Teoria dos Conjuntos
 
-Agora que fomos apresentados às utilidades dos conjuntos na programação, podemos utilizar a Teoria dos Conjuntos para aprofundar nosso conhecimento sobre as definições matemáticas nas quais são embasadas todas as estruturas de dados vistas anteriormente! 
+Agora que fomos apresentados às utilidades dos conjuntos na programação, podemos utilizar a Teoria dos Conjuntos para aprofundar nosso conhecimento sobre as definições matemáticas nas quais são embasadas todas as estruturas de dados vistas anteriormente!
+
+<div style="text-align: center;"><img src="assets/images/teoriadosconjuntos.png" alt="" style="widht:300px;height:300px;"> </div>
 
 ### Conjuntos
 
@@ -173,6 +183,8 @@ Na matemática, um conjunto (denotado por {}), é uma coleção de elementos de 
 Pela definição de um conjunto, as únicas “perguntas” que podemos fazer a ele são se um elemento de um mesmo tipo pertence ou não a ele. Como assim?
 
 Dado o conjunto de inteiros A = {3, 5, 7, 90, 21, 42}, a única forma válida de acessar os elementos desse conjunto são pelas proposições que seguem o seguinte formato:
+
+> Obs.: Usamos o símbolo (∈) e (∉) para denotar pertencimento e não pertencimento, respectivamente, de um elemento à um conjunto.
 
 - 5 ∈ A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[possui valor True]
 - 42 ∉ A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[possui valor False]
@@ -215,6 +227,50 @@ Agora que aprendemos a definir conjuntos, defina os conjuntos a seguir, utilizan
 - Conjunto de todos os ímpares, menos o 2
 - Conjunto com apenas o 2
 - Conjunto de conjuntos de racionais
+
+#### Conjunto Vazio, Universo e paradoxos
+
+Antes de partimos para entender as operações entre conjuntos, é importante conhecer os conceitos de Vazio e Universo na teoria dos conjuntos, e os possíveis problemas que podem aparecer a depender de suas definições!
+
+<div style="text-align: center;"><img src="assets/images/dangerzone.png" alt="" style="widht:300px;height:300px;"> </div>
+
+O conjunto vazio é, como o próprio nome diz, o conjunto que não possui elementos, ou como é mais comum de ser visto no contexto acadêmico, é o conjunto não habitado. O denotamos com o símbolo ∅.
+
+<div style="text-align: center;"><img src="assets/images/black.png" alt="" style="widht:300px;height:300px;"> </div>
+
+Agora, esse outro amiguinho é polêmico. Em resumo, a questão do que seria um “conjunto universal” foi um grande problema na criação da teoria dos conjuntos, já que um “conjunto que tenha tudo” é falha (Paradoxo de Russell). Então, iremos definir o conjunto universo como “o conjunto de todos os elementos em nosso escopo”, sendo essa a definição mais interessante e menos suscetível a erros. Denotaremos o conjunto universo com U (um U maiúsculo).
+
+##### Paradoxo de Russel
+
+Como já sabemos, podemos criar um conjunto via set-comprehension, certo? Da maneira que aprendemos, então, podemos criar o seguinte conjunto:
+
+> P = { x \| x ∉ P}
+
+Em palavras de rua, esse é o conjunto de todos os elementos que não pertencem a ele! Vamos pensar sobre o quão problemático isso é:
+
+- Caso x ∉ P
+- Caso x ∈ P
+
+<div style="text-align: center;"><img src="assets/images/explosao.png" alt="" style="widht:500px;height:400px;"> </div>
+
+
+Dessa forma, para evitar os paradoxos da chamada “Teoria dos Conjuntos Ingênua”, podemos melhorar nosso conceito de set comprehension e criar certas restrições:
+
+- Um conjunto não pode se auto-referir em sua criação
+- Precisamos de um “filtro” na parte esquerda do set-comprehension
+
+> L = {p ∈ U \| p tem cabelo longo}
+
+##### Exercícios
+Vocês devem ter percebido que não definimos formalmente o conjunto vazio (∅), então, vamos fazer isso!
+
+- Construa um conjunto sem elementos com a notação set comprehension.
+- Construa **OUTRO** conjunto sem elementos com a notação set comprehension.
+
+Responda com seu coração:
+- O que seria a “igualdade” de dois conjuntos?
+- Esses dois conjuntos vazios são iguais?
+- L = L?
 
 ### Operações de conjuntos
 
@@ -315,3 +371,75 @@ Seguindo a mesma idéia da demonstração que acabamos de ver, demonstre as segu
 - Se A ⊆ B & x ∈ A, então x ∈ B
 
 > Nota: sinta-se livre para pedir ajuda caso não consiga prosseguir com alguma demonstração!
+
+### list/set comprehension na programação
+
+Algumas aplicações interessantes dessa noção ocorrem em linguagens como Python, haskell, C# (com extensão), entre outras. Hoje iremos ver sua aplicação em Python.
+
+#### List ⨯ Set
+
+<div style="text-align: center;"><img src="assets/images/versus.png" alt="" style="widht:300px;height:300px;"> </div>
+
+Como visto anteriormente nesse dia, vocês viram que existem algumas estruturas de dados similares aos conjuntos, também viram que as Listas são um exemplo disso.
+Ao contrário de conjuntos, as listas possuem algumas propriedades específicas que tornam ela “especial”, sendo algumas delas:
+
+- Ordem
+- Acesso direto por índice
+- Possibilidade de duplicatas
+
+Apenas olhando dessa forma, vem a pergunta: Então por que utilizamos conjuntos?
+A resposta não é tão simples, pois, o motivo de usar alguma estrutura de dados é variável. Porém, os maiores “defeitos” dos conjuntos se tornam sua “maior virtude”, visto que, o uso de conjuntos tem as seguintes vantagens:
+
+- Elementos únicos.
+- Bem otimizado.
+- Filtragem eficiente.
+
+Sendo assim, temos os seguintes casos para cada estrutura:
+
+List:
+- Ordem importa
+- Possibilidade de elementos repetidos
+- Precisa acessar elementos por índice
+
+uso comum:
+-Histórico
+-Sequência de dados
+
+Sets:
+- Ordem não importa
+- Elementos únicos
+- Eficiência na busca
+
+uso comum:
+- “Limpar” listas com possíveis duplicatas
+- Contagem de itens distintos.
+
+#### Set/List Comprehension em si
+Vamos supor que você tenha uma lista com alguns números e seu chefe tenha solicitado para que você separe cada número ímpar e forme outra lista com o dobro de cada um deles. Bem idiota, não? Provavelmente, o normal seria fazer da seguinte forma:
+
+```python
+numeros = [1, 2, 3, 4, 42, 21, 5]
+trabalho_chato = []
+
+for n in numeros:
+	if n % 2 == 1:
+		trabalho_chato.append(2 * n)
+print(trabalho_chato)
+```
+
+Isso definitivamente não é a forma mais “elegante” de se escrever esse código. O uso de list comprehension é para “simplificar” e deixar o código mais legível, de forma onde não temos que fazer esse loop para gerar uma lista. Por exemplo, podemos alterar esse código para:
+
+```python
+numeros = [1, 2, 3, 4, 42, 21, 5]
+trabalho_legal = [2 * n for n in numeros if n % 2 == 1]
+print(trabalho_legal)
+```
+Note que, é MUITO similar ao que estamos acostumados em conjuntos (no “papel”), já que segue a forma “” elemento -> condição "".
+Na prática não tem diferença entre os dois códigos, porém, note que o de baixo está mais compacto e legível.
+Para utilizar esse conceito em Sets não é tão diferente (obs: pode variar dependendo da linguagem, mas a lógica se mantém), em python por exemplo, a única diferença é que ao invés dos colchetes ([]) utilizamos chaves ({}).
+Vantagens da sintaxe:
+- O código fica menor
+- O código fica mais legível para terceiros
+- Geralmente é mais eficiente do que o “jeito normal”
+
+
