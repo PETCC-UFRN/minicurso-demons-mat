@@ -5,12 +5,6 @@ title: Minicurso de Linux e Git
 <div id="sumario" class="sumario-git">
     <h1>Dia 1</h1>
     <details>
-        <summary><a href="#introdução-ao-curso">Introdução</a></summary>
-    <ul>
-        <li><a href="#matemática-e-computação">Matemática e computação</a></li>
-    </ul>
-    </details>
-    <details>
         <summary><a href="#lógica">Lógica</a></summary>
         <ul>
             <li><a href="#clareza-e-precisão-no-código">Clareza e precisão no código</a></li>

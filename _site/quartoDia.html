@@ -27,174 +27,54 @@
         <div>
             <main>
                 <div id="sumario" class="sumario-git">
-    <h1>Dia 4</h1>
-    <summary><a href="#git-avancado">Git avançado</a></summary>
-    <ul>
-      <li>
-        <details>
-          <summary><a href="#desfazendo-alteracoes">Desfazendo alterações</a></summary>
-          <ul>
-            <li><a href="#desfazendo-commits-sem-ter-publicado">Desfazendo commits sem ter publicado</a></li>
-          </ul>
-        </details>
-      </li>
-      <li>
-        <details>
-          <summary><a href="#workflow-avancado">Workflow avançado</a></summary>
-          <ul>
-            <li><a href="#git-branching">Git branching</a></li>
-          </ul>
-        </details>
-      </li>
-      <li>
-        <details>
-          <summary><a href="#git-merging">Git merging</a></summary>
-          <ul>
-            <li><a href="#fast-forward-merge">Fast-forward merge</a></li>
-            <li><a href="#three-way-merge">Three-way merge</a></li>
-            <li><a href="#lidando-com-conflitos">Lidando com conflitos</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a href="#projeto-pt1">Projeto pt.1</a></li>
-    </ul>
+    <h1>Dia 1</h1>
+    <details>
+        <summary><a href="#teoria-dos-conjuntos">Teoria dos Conjuntos</a></summary>
+        <ul>
+            <li><a href="#conjuntos">Conjuntos</a>
+              <ul> 
+                  <li><a href="#&quot;interface&quot;-dos-conjuntos">"Interface" dos conjuntos</a></li>
+                  <li><a href="#definindo-um-conjunto">Definindo um conjunto</a></li>
+                  <li><a href="#conjunto-vazio">Conjunto Vazio</a></li>
+                  <li><a href="#conjunto-universo">Conjunto Universo</a></li>
+                  <li><a href="#paradoxo-de-russell">Paradoxo de Russell</a></li>
+              </ul>
+            </li>
+            <li><a href="#operações-de-conjuntos">Operações de Conjuntos</a>
+              <ul> 
+                  <li><a href="#união">União</a></li>
+                  <li><a href="#interseção">Interseção</a></li>
+                  <li><a href="#diferença">Diferença</a></li>
+                  <li><a href="#complemento">Complementoo</a></li>
+              </ul>
+            </li>
+            <li><a href="#relações-entre-conjuntos">Relações entre Conjuntos</a>
+              <ul> 
+                  <li><a href="#contém-e-contido">Contém e Contido</a></li>
+                  <li><a href="#igualdade">Igualdade</a></li>
+              </ul>
+            </li>
+            <li><a href="#demonstrações-sobre-conjuntos">Demonstrações sobre Conjuntos</a></li>
+        </ul>
+    </details>
   <button class="toggle-button" id="toggle-button">
   
       Esconder Sumário
   
   </button>
-  </div>
+</div>
 
-<h1 id="conjuntos">Conjuntos</h1>
-<h2 id="introdução">Introdução</h2>
-
-<p>Olá a todos! Sejam bem-vindos ao quarto dia do nosso minicurso de Introdução às Demonstrações Matemáticas. Hoje iremos aprender sobre conjuntos, tanto pensando em qual a sua relação com a programação como explorando como ela faz parte do mundo das demonstrações matemáticas!</p>
 <h1 id="interseção-entre-conjuntos-e-programação">Interseção entre Conjuntos e Programação</h1>
-<p>Bem, como já sabíamos (ou às vezes até não sabíamos ainda mas agora sabemos), tudo na matemática tradicional é descrito em função de conjuntos e seus elementos. Nesse contexto, os números naturais poderiam ser compreendidos como um subconjunto dos números inteiros, que por sua vez também poderiam ser compreendidos como um subconjunto dos números reais.</p>
 
-<p>Sob essa perspectiva, as funções seriam então viagens de um conjunto de números do domínio da função para outro conjunto de números, o contradomínio. Similarmente, as operações entre números seriam operações feitas dentro dos conjuntos de números, enquanto outras representações seriam duplas ordenadas de conjuntos, como o plano, representado como um conjunto de reais no eixo x junto de um conjunto de reais no eixo y, ou um espaço, dadas as modificações necessárias.</p>
-
-<p>Todavia, no mundo da computação, não são mais os seus habitantes descritos em função de conjuntos e elementos!</p>
-
-<div style="text-align: center;"><img src="assets/images/programacao.png" alt="" style="widht:300px;height:300px;" /> </div>
-
-<h3 id="tipos--objetos--conjuntos">Tipos ⨯ Objetos ⨯ Conjuntos</h3>
-
-<p>No mundo da computação, existem várias formas de descrever os habitantes de um mundo, sendo as principais os tipos e os objetos.</p>
-
-<div style="text-align: center;"><img src="assets/images/coding.png" alt="" style="widht:300px;height:300px;" /> </div>
-
-<p>No caso das linguagens de programação tipadas, cada membro do mundo é de um tipo distinto, e as funções ocorrem de tipo x -&gt; tipo y, retornando o famigerado “type error” caso haja a tentativa inválida de operar com tipos não correspondentes àquela função, e não haja forma de coagir algum dos tipos a se adequar à tipagem esperada. Alguns tipos bastante conhecidos são o Int, o Char, a String, o Bool, etc.</p>
-
-<p>Já no caso de linguagens sem tipos (que também podem ser chamados de tipo único), como a Python, todos os habitantes do mundo são objetos, e as funções ocorrem entre objetos. Por mais que possam ter uma decoração de tipos, os objetos de Python não obedecem às regras do mundo tipado.</p>
-
-<p>Mas então, para onde foram os conjuntos?</p>
-
-<h2 id="conjuntos-como-inspiração-para-a-montagem-da-lógica-de-tipos">Conjuntos como inspiração para a montagem da lógica de tipos</h2>
-
-<p>Em primeiro momento, há de se reconhecer a utilidade de todo o arcabouço teórico matemático garantido pela teoria dos conjuntos. A noção que temos de habitantes de um mundo e de relações entre esses habitantes, o que nos garante as funções computacionais de fato, bebe primordialmente da teoria dos conjuntos!</p>
-
-<h2 id="conjuntos-como-coleções-de-coisas">Conjuntos como coleções de coisas</h2>
-
-<p>Em segundo lugar, os conjuntos voltam a aparecer na computação, agora sob uma nova roupagem, a de coleção de coisas. Como vimos anteriormente no segundo dia, a programação se importa bastante com a possibilidade de reunir diversas coisas em uma única estrutura.</p>
-
-<p>Nesse sentido, o conjunto, ou set, em inglês, destaca-se como uma estrutura que armazena informações e segue um ordenamento próprio. Assim, é fundamental diferenciar de forma mais qualificada, o que seria a especificação de um conjunto, entendido enquanto Tipo Abstrato de Dados, e o que seria uma possível implementação.</p>
-
-<h3 id="especificaçãotipo-abstrato-de-dados">Especificação/Tipo Abstrato de Dados</h3>
-
-<p>Quando falamos em especificação, normalmente nos referimos à descrição pormenorizada que o cliente ofereceu do produto/aplicação/programa que ele quer. No caso dos conjuntos, estamos nos referindo à ideia abstrata do que deveria ser um conjunto, ou seja, daquilo que se comporte da forma que esperamos que se comporte um conjunto.</p>
-
-<p>Dentro da computação, chamamos de Tipo Abstrato de Dados, aqueles tipos que são conhecidos de forma abstrata enquanto regras a serem seguidas. Tudo aquilo que for implementado de forma a obedecer todas as regras esperadas pela especificação do conjunto, merecerá o nome de implementação possível de conjunto, naquele dado contexto.</p>
-
-<h3 id="implementação">Implementação</h3>
-
-<p>As formas de implementar um conjunto são diversas. Várias linguagens de programação vem com o tipo/objeto set disponível em suas bibliotecas, já implementado, como é o caso de python e C++. Todavia, também nessas linguagens é possível implementar um tipo/objeto novo que respeite a especificação de conjuntos, mas com uma implementação distinta.</p>
-
-<p>Por mais que pareça trabalhoso refazer algo já pronto, por vezes uma boa programadora, ou um bom programador, pode querer reimplementar algum tipo ou função dentro de uma determinada linguagem, buscando melhorar sua eficiência ou reduzir o consumo de memória, para aquela utilização específica. Já para fins pedagógicos, a implementação de Tipos Abstratos de Dados pode ser útil para explorar as diferenças entre essas possíveis implementações.</p>
-
-<h2 id="tipos-de-coleções-semelhantes">Tipos de coleções semelhantes</h2>
-
-<p>Assim como os conjuntos, existem outros tipos de coleções que armazenam coisas, as quais têm regras que divergem dos conjuntos, mas que foram criadas a partir dele. Sendo assim, é essencial dominar o funcionamento de conjuntos antes de partir para estruturas mais complexas, uma vez que parte de princípios semelhantes, ainda que mais complexos.</p>
-
-<p>Algumas coleções possíveis de serem citadas que tem estrutura que de alguma forma se assemelha a dos conjuntos são:</p>
-
-<ul>
-  <li>Par ordenado : Composto por dois elementos ordenados, acessíveis a partir de suas posições &lt;first,second&gt;</li>
-  <li>Lista finita : Composta por uma série de elementos acoplados, com início e fim</li>
-  <li>Lista infinita : Composta por uma série de elementos acoplados, podendo ter início ou fim</li>
-  <li>Bag/Sacola : Composta por elementos sem posição relevante, mas admitindo repetições</li>
-  <li>Sequência : Composta por uma série de elementos acoplados e ordenados</li>
-  <li>Dicionário : Composta por vários pares ordenados de &lt;Chave, Valor&gt; em que as chaves são únicas e os valores são acessados a partir de suas respectivas chaves</li>
-  <li>Pilha : Composta por elementos acoplados, com inserção no início e remoção no fim</li>
-  <li>Fila : Composta por elementos acoplados, com inserção no início e remoção no início</li>
-</ul>
-
-<h2 id="especificação-elementar-dos-conjuntos">Especificação elementar dos conjuntos</h2>
-
-<p>Quando falamos de conjuntos, esperamos que algumas coisas sempre aconteçam (no caso que o conjunto siga todas as regras que conhecemos da matemática). Nesse sentido, sempre é importante que esteja presente presente na especificação de um conjunto que ele:</p>
-
-<ul>
-  <li>Possa ser construído a partir dos elementos</li>
-  <li>Ignore elementos repetidos</li>
-  <li>Seja capaz de dizer se alguém está dentro ou fora dele</li>
-  <li>Possua ferramentas de inserção e remoção de elementos</li>
-  <li>Possa estar vazio</li>
-  <li>Informe a quantidade de seus elementos, caso finito (ou cardinalidade, caso infinito)</li>
-</ul>
-
-<p>No caso do setI que já vem implementado no C++, encontrado na biblioteca set, são essas algumas das ferramentas que são oferecidas prontas para uso, seguindo a especificação de set:</p>
-
-<ul>
-  <li>set( ) (x -&gt; set (x)) : Constrói um set de elementos do tipo x</li>
-  <li>empty( )(set -&gt; bool) : Retorna true se o set está vazio e false se não está</li>
-  <li>size( ) (set -&gt; size_type) : Retorna a quantidade de elementos no set</li>
-  <li>contains( ) (x -&gt; set -&gt; bool) : Retorna true se o elemento inserido como argumento está presente no set e false se não está</li>
-  <li>emplace( ) (x -&gt; Set -&gt; &lt;x , bool&gt;) : Tenta inserir um elemento no conjunto e retorna um par ordenado com o elemento e true se foi possível inseri-lo ou com o elemento e false, se não foi possível inseri-lo</li>
-  <li>erase() (x-&gt; set -&gt; size_type) : Caso receba um elemento x como argumento, exclui o elemento da lista e retorna a quantidade de elementos removidos, podendo ser 0 ou 1.</li>
-</ul>
-
-<p>Veja aqui um exemplo desse tipo sendo utilizado em C++:</p>
-
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-#include</span> <span class="cpf">&lt;set&gt;</span><span class="cp">
-</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    
-    <span class="c1">// Creating a set of integers</span>
-    <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">};</span>
-    
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span><span class="p">;</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h3 id="ocasiões-em-que-conjuntos-podem-aparecer">Ocasiões em que conjuntos podem aparecer</h3>
-
-<p>Decerto, quando se fala em estruturas de dados e em tipos abstratos de dados, sempre estaremos discutindo qual a melhor e mais adequada ferramenta para este ou aquele objetivo. No caso dos conjuntos não é diferente, assim como nos são úteis na matemática, eles também podem ser úteis na vida real durante a programação.</p>
-
-<p>Por vezes, quando se está programando não é possível decidir qual base de dados você irá utilizar. Em casos como listas de participantes com inscrições possivelmente reṕetidas, caso você queira checar se determinado participante deve ser admitido ou não, um conjunto pode ser a melhor solução. Nesse cenário seria muito custoso tratar a base de dados (eliminar as repetições), e por isso um conjunto seria um tipo ideal.</p>
-
-<p>Em outros casos, como quando você quer reduzir o espaço gasto, mas não quer se preocupar com repetições, também é comum usar conjuntos, como quando se está recolhendo espaços já visitados durante o percorrimento de um labirinto,e você necessariamente terá que passar por alguns lugares mais de uma vez.</p>
-
-<p>Além disso, é também na área de dados que os conjuntos e as operações envolvendo conjuntos adquirem mais relevância. Mas como este minicurso é apenas introdutório iremos nos ater ao funcionamento dos conjuntos em si, a fim de que os conceitos básicos sejam dominados para que daí possam ser compreendidos assuntos mais complexos!</p>
-
-<h3 id="exercício">Exercício</h3>
-
-<p>Agora, utilizando apenas as ferramentas dispostas na especificação dos conjuntos, você seria capaz de criar um par ordenado?</p>
-
-<details>
-    <summary>resposta: SPOILER!</summary>
-    Resposta: {x, {x,y}}
-</details>
+<p>Olá a todos! Sejam bem-vindos ao quarto dia do nosso minicurso de Matemática aplicada à Programação. Hoje iremos aprender sobre conjuntos, tanto pensando na sua definição matemática como explorando a sua relação com a programação!</p>
 
 <h2 id="teoria-dos-conjuntos">Teoria dos Conjuntos</h2>
 
-<p>Agora que fomos apresentados às utilidades dos conjuntos na programação, podemos utilizar a Teoria dos Conjuntos para aprofundar nosso conhecimento sobre as definições matemáticas nas quais são embasadas todas as estruturas de dados vistas anteriormente!</p>
+<p>Antes de vermos as aplicações de conjuntos na Computação, precisamos entender quais as especificações, ou seja, as definições, propriedades e relações, que caracterizam um conjunto na matemática.</p>
 
 <div style="text-align: center;"><img src="assets/images/teoriadosconjuntos.png" alt="" style="widht:300px;height:300px;" /> </div>
 
-<h3 id="conjuntos-1">Conjuntos</h3>
+<h3 id="conjuntos">Conjuntos</h3>
 
 <p>Na matemática, um conjunto (denotado por {}), é uma coleção de elementos de um mesmo tipo independente de ordem e da repetição de seus elementos. Vamos entender um pouco essa definição:</p>
 
@@ -270,23 +150,33 @@
 <ul>
   <li>Conjunto de todos os primos pares</li>
   <li>Conjunto de todos os ímpares, menos o 2</li>
-  <li>Conjunto com apenas o 2</li>
+  <li>Conjunto com apenas o 42</li>
   <li>Conjunto de conjuntos de racionais</li>
 </ul>
 
-<h4 id="conjunto-vazio-universo-e-paradoxos">Conjunto Vazio, Universo e paradoxos</h4>
+<h4 id="conjunto-vazio">Conjunto Vazio</h4>
 
-<p>Antes de partimos para entender as operações entre conjuntos, é importante conhecer os conceitos de Vazio e Universo na teoria dos conjuntos, e os possíveis problemas que podem aparecer a depender de suas definições!</p>
-
-<div style="text-align: center;"><img src="assets/images/dangerzone.png" alt="" style="widht:300px;height:300px;" /> </div>
-
-<p>O conjunto vazio é, como o próprio nome diz, o conjunto que não possui elementos, ou como é mais comum de ser visto no contexto acadêmico, é o conjunto não habitado. O denotamos com o símbolo ∅.</p>
+<p>O conjunto vazio (representado pelo símbolo ∅, ou {}) é o conjunto que não possui elementos.  De maneira mais formal, temos: (∀x)[ x ∉ Ø ]. Lê-se “para todo x, x não pertence ao conjunto vazio”. Assim como qualquer outro conjunto, temos diversas maneiras de defini-lo, isso será um exercício mais para frente!</p>
 
 <div style="text-align: center;"><img src="assets/images/black.png" alt="" style="widht:300px;height:300px;" /> </div>
 
-<p>Agora, esse outro amiguinho é polêmico. Em resumo, a questão do que seria um “conjunto universal” foi um grande problema na criação da teoria dos conjuntos, já que um “conjunto que tenha tudo” é falha (Paradoxo de Russell). Então, iremos definir o conjunto universo como “o conjunto de todos os elementos em nosso escopo”, sendo essa a definição mais interessante e menos suscetível a erros. Denotaremos o conjunto universo com U (um U maiúsculo).</p>
+<h4 id="conjunto-universo">Conjunto Universo</h4>
 
-<h5 id="paradoxo-de-russel">Paradoxo de Russel</h5>
+<p>Para evitarmos alguns paradoxos e contradições, não vamos pensar no Universo como “o conjunto que possui todos os conjuntos” ou “o conjunto que possui todos os elementos”, mas sim como “o conjunto que possui todos os elementos <strong>do nosso escopo</strong>”. Vamos ver alguns exemplos:</p>
+
+<blockquote>
+  <p>se estamos falando de pessoas, podemos definir o universo como o conjunto de todas as pessoas.</p>
+</blockquote>
+
+<blockquote>
+  <p>se estamos falando de números naturais, podemos definir o universo como o conjunto de todos os números naturais.</p>
+</blockquote>
+
+<h4 id="paradoxo-de-russell">Paradoxo de Russell</h4>
+
+<p>Como dito anteriormente, definições mal pensadas podem nos levar a paradoxos e contradições. Vamos ver o nosso primeiro exemplo disso na prática!</p>
+
+<div style="text-align: center;"><img src="assets/images/dangerzone.png" alt="" style="widht:300px;height:300px;" /> </div>
 
 <p>Como já sabemos, podemos criar um conjunto via set-comprehension, certo? Da maneira que aprendemos, então, podemos criar o seguinte conjunto:</p>
 
@@ -294,39 +184,37 @@
   <p>P = { x | x ∉ P}</p>
 </blockquote>
 
-<p>Em palavras de rua, esse é o conjunto de todos os elementos que não pertencem a ele! Vamos pensar sobre o quão problemático isso é:</p>
+<p>Em palavras de rua, esse é um conjunto de todos os elementos que não pertencem a ele! Para começarmos a compreender o quão problemática essa definição pode ser, podemos separar em casos a partir de um elemento x no nosso escopo:</p>
 
 <ul>
-  <li>Caso x ∉ P</li>
-  <li>Caso x ∈ P</li>
+  <li>Caso x ∉ P, então x ∈ P. | <strong>CONTRADIÇÃO!</strong></li>
+  <li>Caso x ∈ P, então x ∉ P. | <strong>CONTRADIÇÃO!</strong></li>
 </ul>
 
 <div style="text-align: center;"><img src="assets/images/explosao.png" alt="" style="widht:500px;height:400px;" /> </div>
 
-<p>Dessa forma, para evitar os paradoxos da chamada “Teoria dos Conjuntos Ingênua”, podemos melhorar nosso conceito de set comprehension e criar certas restrições:</p>
+<p>Dessa forma para evitar os paradoxos da chamada “Teoria dos Conjuntos Ingênua”, podemos melhorar o nosso conceito de set comprehension e criar certas restrições:</p>
 
 <ul>
   <li>Um conjunto não pode se auto-referir em sua criação</li>
   <li>Precisamos de um “filtro” na parte esquerda do set-comprehension</li>
+  <li>Esse filtro precisa ser um conjunto</li>
 </ul>
 
 <blockquote>
-  <p>L = {p ∈ U | p tem cabelo longo}</p>
+  <p>L = {p ∈ P | p tem cabelo longo}</p>
 </blockquote>
 
 <h5 id="exercícios-1">Exercícios</h5>
-<p>Vocês devem ter percebido que não definimos formalmente o conjunto vazio (∅), então, vamos fazer isso!</p>
 
-<ul>
-  <li>Construa um conjunto sem elementos com a notação set comprehension.</li>
-  <li>Construa <strong>OUTRO</strong> conjunto sem elementos com a notação set comprehension.</li>
-</ul>
+<p>Agora que sabemos o que significa ser conjunto Vazio, construa dois conjuntos vazios de <strong>duas maneiras diferentes</strong>,
+utilizando a notação de definir conjuntos de sua preferência!</p>
 
-<p>Responda com seu coração:</p>
+<p>A partir do conhecimento que temos, chute:</p>
 <ul>
   <li>O que seria a “igualdade” de dois conjuntos?</li>
   <li>Esses dois conjuntos vazios são iguais?</li>
-  <li>L = L?</li>
+  <li>L = L? (as duas maneiras que definimos L na seção “Definindo um conjunto”)</li>
 </ul>
 
 <h3 id="operações-de-conjuntos">Operações de conjuntos</h3>
@@ -446,14 +334,126 @@
   <p>Nota: sinta-se livre para pedir ajuda caso não consiga prosseguir com alguma demonstração!</p>
 </blockquote>
 
-<h3 id="listset-comprehension-na-programação">list/set comprehension na programação</h3>
+<h2 id="interseção-entre-conjuntos-e-programação-1">Interseção entre Conjuntos e Programação</h2>
+<p>Bem, como já sabíamos (ou às vezes até não sabíamos ainda mas agora sabemos), tudo na matemática tradicional é descrito em função de conjuntos e seus elementos. Nesse contexto, os números naturais poderiam ser compreendidos como um subconjunto dos números inteiros, que por sua vez também poderiam ser compreendidos como um subconjunto dos números reais.</p>
 
-<p>Algumas aplicações interessantes dessa noção ocorrem em linguagens como Python, haskell, C# (com extensão), entre outras. Hoje iremos ver sua aplicação em Python.</p>
+<p>Sob essa perspectiva, as funções seriam então viagens de um conjunto de números do domínio da função para outro conjunto de números, o contradomínio. Similarmente, as operações entre números seriam operações feitas dentro dos conjuntos de números, enquanto outras representações seriam duplas ordenadas de conjuntos, como o plano, representado como um conjunto de reais no eixo x junto de um conjunto de reais no eixo y, ou um espaço, dadas as modificações necessárias.</p>
 
-<h4 id="list--set">List ⨯ Set</h4>
+<p>Todavia, no mundo da computação, não são mais os seus habitantes descritos em função de conjuntos e elementos!</p>
 
-<div style="text-align: center;"><img src="assets/images/versus.png" alt="" style="widht:300px;height:300px;" /> </div>
+<div style="text-align: center;"><img src="assets/images/programacao.png" alt="" style="widht:300px;height:300px;" /> </div>
 
+<h3 id="tipos--objetos--conjuntos">Tipos ⨯ Objetos ⨯ Conjuntos</h3>
+
+<p>No mundo da computação, existem várias formas de descrever os habitantes de um mundo, sendo as principais os tipos e os objetos.</p>
+
+<div style="text-align: center;"><img src="assets/images/coding.png" alt="" style="widht:300px;height:300px;" /> </div>
+
+<p>No caso das linguagens de programação tipadas, cada membro do mundo é de um tipo distinto, e as funções ocorrem de tipo x -&gt; tipo y, retornando o famigerado “type error” caso haja a tentativa inválida de operar com tipos não correspondentes àquela função, e não haja forma de coagir algum dos tipos a se adequar à tipagem esperada. Alguns tipos bastante conhecidos são o Int, o Char, a String, o Bool, etc.</p>
+
+<p>Já no caso de linguagens sem tipos (que também podem ser chamados de tipo único), como a Python, todos os habitantes do mundo são objetos, e as funções ocorrem entre objetos. Por mais que possam ter uma decoração de tipos, os objetos de Python não obedecem às regras do mundo tipado.</p>
+
+<p>Mas então, para onde foram os conjuntos?</p>
+
+<h3 id="conjuntos-como-inspiração-para-a-montagem-da-lógica-de-tipos">Conjuntos como inspiração para a montagem da lógica de tipos</h3>
+
+<p>Em primeiro momento, há de se reconhecer a utilidade de todo o arcabouço teórico matemático garantido pela teoria dos conjuntos. A noção que temos de habitantes de um mundo e de relações entre esses habitantes, o que nos garante as funções computacionais de fato, bebe primordialmente da teoria dos conjuntos!</p>
+
+<h3 id="conjuntos-como-coleções-de-coisas">Conjuntos como coleções de coisas</h3>
+
+<p>Em segundo lugar, os conjuntos voltam a aparecer na computação, agora sob uma nova roupagem, a de coleção de coisas. Como vimos anteriormente no segundo dia, a programação se importa bastante com a possibilidade de reunir diversas coisas em uma única estrutura.</p>
+
+<p>Nesse sentido, o conjunto, ou set, em inglês, destaca-se como uma estrutura que armazena informações e segue um ordenamento próprio. Assim, é fundamental diferenciar de forma mais qualificada, o que seria a especificação de um conjunto, entendido enquanto Tipo Abstrato de Dados, e o que seria uma possível implementação.</p>
+
+<h3 id="especificaçãotipo-abstrato-de-dados">Especificação/Tipo Abstrato de Dados</h3>
+
+<p>Quando falamos em especificação, normalmente nos referimos à descrição pormenorizada que o cliente ofereceu do produto/aplicação/programa que ele quer. No caso dos conjuntos, estamos nos referindo à ideia abstrata do que deveria ser um conjunto, ou seja, daquilo que se comporte da forma que esperamos que se comporte um conjunto.</p>
+
+<p>Dentro da computação, chamamos de Tipo Abstrato de Dados, aqueles tipos que são conhecidos de forma abstrata enquanto regras a serem seguidas. Tudo aquilo que for implementado de forma a obedecer todas as regras esperadas pela especificação do conjunto, merecerá o nome de implementação possível de conjunto, naquele dado contexto.</p>
+
+<h3 id="implementação">Implementação</h3>
+
+<p>As formas de implementar um conjunto são diversas. Várias linguagens de programação vem com o tipo/objeto set disponível em suas bibliotecas, já implementado, como é o caso de python e C++. Todavia, também nessas linguagens é possível implementar um tipo/objeto novo que respeite a especificação de conjuntos, mas com uma implementação distinta.</p>
+
+<p>Por mais que pareça trabalhoso refazer algo já pronto, por vezes uma boa programadora, ou um bom programador, pode querer reimplementar algum tipo ou função dentro de uma determinada linguagem, buscando melhorar sua eficiência ou reduzir o consumo de memória, para aquela utilização específica. Já para fins pedagógicos, a implementação de Tipos Abstratos de Dados pode ser útil para explorar as diferenças entre essas possíveis implementações.</p>
+
+<h3 id="tipos-de-coleções-semelhantes">Tipos de coleções semelhantes</h3>
+
+<p>Assim como os conjuntos, existem outros tipos de coleções que armazenam coisas, as quais têm regras que divergem dos conjuntos, mas que foram criadas a partir dele. Sendo assim, é essencial dominar o funcionamento de conjuntos antes de partir para estruturas mais complexas, uma vez que parte de princípios semelhantes, ainda que mais complexos.</p>
+
+<p>Algumas coleções possíveis de serem citadas que tem estrutura que de alguma forma se assemelha a dos conjuntos são:</p>
+
+<ul>
+  <li>Par ordenado : Composto por dois elementos ordenados, acessíveis a partir de suas posições &lt;first,second&gt;</li>
+  <li>Lista finita : Composta por uma série de elementos acoplados, com início e fim</li>
+  <li>Lista infinita : Composta por uma série de elementos acoplados, podendo ter início ou fim</li>
+  <li>Bag/Sacola : Composta por elementos sem posição relevante, mas admitindo repetições</li>
+  <li>Sequência : Composta por uma série de elementos acoplados e ordenados</li>
+  <li>Dicionário : Composta por vários pares ordenados de &lt;Chave, Valor&gt; em que as chaves são únicas e os valores são acessados a partir de suas respectivas chaves</li>
+  <li>Pilha : Composta por elementos acoplados, com inserção no início e remoção no fim</li>
+  <li>Fila : Composta por elementos acoplados, com inserção no início e remoção no início</li>
+</ul>
+
+<h3 id="especificação-elementar-dos-conjuntos">Especificação elementar dos conjuntos</h3>
+
+<p>Quando falamos de conjuntos, esperamos que algumas coisas sempre aconteçam (no caso que o conjunto siga todas as regras que conhecemos da matemática). Nesse sentido, sempre é importante que esteja presente presente na especificação de um conjunto que ele:</p>
+
+<ul>
+  <li>Possa ser construído a partir dos elementos</li>
+  <li>Ignore elementos repetidos</li>
+  <li>Seja capaz de dizer se alguém está dentro ou fora dele</li>
+  <li>Possua ferramentas de inserção e remoção de elementos</li>
+  <li>Possa estar vazio</li>
+  <li>Informe a quantidade de seus elementos, caso finito (ou cardinalidade, caso infinito)</li>
+</ul>
+
+<p>No caso do setI que já vem implementado no C++, encontrado na biblioteca set, são essas algumas das ferramentas que são oferecidas prontas para uso, seguindo a especificação de set:</p>
+
+<ul>
+  <li>set( ) (x -&gt; set (x)) : Constrói um set de elementos do tipo x</li>
+  <li>empty( )(set -&gt; bool) : Retorna true se o set está vazio e false se não está</li>
+  <li>size( ) (set -&gt; size_type) : Retorna a quantidade de elementos no set</li>
+  <li>contains( ) (x -&gt; set -&gt; bool) : Retorna true se o elemento inserido como argumento está presente no set e false se não está</li>
+  <li>emplace( ) (x -&gt; Set -&gt; &lt;x , bool&gt;) : Tenta inserir um elemento no conjunto e retorna um par ordenado com o elemento e true se foi possível inseri-lo ou com o elemento e false, se não foi possível inseri-lo</li>
+  <li>erase() (x-&gt; set -&gt; size_type) : Caso receba um elemento x como argumento, exclui o elemento da lista e retorna a quantidade de elementos removidos, podendo ser 0 ou 1.</li>
+</ul>
+
+<p>Veja aqui um exemplo desse tipo sendo utilizado em C++:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;set&gt;</span><span class="cp">
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    
+    <span class="c1">// Creating a set of integers</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">};</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="ocasiões-em-que-conjuntos-podem-aparecer">Ocasiões em que conjuntos podem aparecer</h3>
+
+<p>Decerto, quando se fala em estruturas de dados e em tipos abstratos de dados, sempre estaremos discutindo qual a melhor e mais adequada ferramenta para este ou aquele objetivo. No caso dos conjuntos não é diferente, assim como nos são úteis na matemática, eles também podem ser úteis na vida real durante a programação.</p>
+
+<p>Por vezes, quando se está programando não é possível decidir qual base de dados você irá utilizar. Em casos como listas de participantes com inscrições possivelmente reṕetidas, caso você queira checar se determinado participante deve ser admitido ou não, um conjunto pode ser a melhor solução. Nesse cenário seria muito custoso tratar a base de dados (eliminar as repetições), e por isso um conjunto seria um tipo ideal.</p>
+
+<p>Em outros casos, como quando você quer reduzir o espaço gasto, mas não quer se preocupar com repetições, também é comum usar conjuntos, como quando se está recolhendo espaços já visitados durante o percorrimento de um labirinto,e você necessariamente terá que passar por alguns lugares mais de uma vez.</p>
+
+<p>Além disso, é também na área de dados que os conjuntos e as operações envolvendo conjuntos adquirem mais relevância. Mas como este minicurso é apenas introdutório iremos nos ater ao funcionamento dos conjuntos em si, a fim de que os conceitos básicos sejam dominados para que daí possam ser compreendidos assuntos mais complexos!</p>
+
+<h5 id="exercício">Exercício</h5>
+
+<p>Agora, utilizando apenas as ferramentas dispostas na especificação dos conjuntos, você seria capaz de criar um par ordenado?</p>
+
+<details>
+    <summary>resposta: SPOILER!</summary>
+    Resposta: {x, {x,y}}
+</details>
+
+<h4 id="list-x-set">List X Set</h4>
 <p>Como visto anteriormente nesse dia, vocês viram que existem algumas estruturas de dados similares aos conjuntos, também viram que as Listas são um exemplo disso.
 Ao contrário de conjuntos, as listas possuem algumas propriedades específicas que tornam ela “especial”, sendo algumas delas:</p>
 
@@ -481,11 +481,14 @@ A resposta não é tão simples, pois, o motivo de usar alguma estrutura de dado
   <li>Precisa acessar elementos por índice</li>
 </ul>
 
-<p>uso comum:
--Histórico
--Sequência de dados</p>
+<p>uso comum:</p>
+
+<p>- Histórico</p>
+
+<p>- Sequência de dados</p>
 
 <p>Sets:</p>
+
 <ul>
   <li>Ordem não importa</li>
   <li>Elementos únicos</li>
@@ -493,10 +496,10 @@ A resposta não é tão simples, pois, o motivo de usar alguma estrutura de dado
 </ul>
 
 <p>uso comum:</p>
-<ul>
-  <li>“Limpar” listas com possíveis duplicatas</li>
-  <li>Contagem de itens distintos.</li>
-</ul>
+
+<p>- “Limpar” listas com possíveis duplicatas</p>
+
+<p>- Contagem de itens distintos.</p>
 
 <h4 id="setlist-comprehension-em-si">Set/List Comprehension em si</h4>
 <p>Vamos supor que você tenha uma lista com alguns números e seu chefe tenha solicitado para que você separe cada número ímpar e forme outra lista com o dobro de cada um deles. Bem idiota, não? Provavelmente, o normal seria fazer da seguinte forma:</p>
@@ -507,7 +510,7 @@ A resposta não é tão simples, pois, o motivo de usar alguma estrutura de dado
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numeros</span><span class="p">:</span>
 	<span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
 		<span class="n">trabalho_chato</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">trabalho_chato</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">trabalho_chato</span><span class="p">)</span> 
 </code></pre></div></div>
 
 <p>Isso definitivamente não é a forma mais “elegante” de se escrever esse código. O uso de list comprehension é para “simplificar” e deixar o código mais legível, de forma onde não temos que fazer esse loop para gerar uma lista. Por exemplo, podemos alterar esse código para:</p>
@@ -525,6 +528,45 @@ Vantagens da sintaxe:</p>
   <li>O código fica mais legível para terceiros</li>
   <li>Geralmente é mais eficiente do que o “jeito normal”</li>
 </ul>
+
+<h3 id="funções-na-matemática-vs-funções-na-programação">Funções na matemática vs Funções na programação</h3>
+<h4 id="o-que-são-funções">O que são funções?</h4>
+<p>Entender o que são funções é primordial para a formação de um bom programador, já que afeta diretamente nos seus códigos. Como a maioria são calouros do BTI ou do BCC, já devem ter visto, respectivamente, em ME e Cálculo 1 o que são funções na matemática. Apenas para relembrar, funções na matemática são relações entre elementos de 2 conjuntos, onde, para cada entrada, existe apenas uma saída.
+Por exemplo, caso a gente tenha uma função real f (Domínio e contradomínio real), onde f(x) = x, sabemos que f(1) = 1, f(2) = 2, porém, temos também que f(21) = 42 com toda certeza está errado, já que f(21) = 21.
+Analogamente, temos algumas características dessas funções que serão importantes para o futuro, sendo essas:</p>
+
+<ul>
+  <li>Não alteram o valor de entrada</li>
+  <li>Para qualquer entrada, a saída sempre será a mesma. (Chamamos isso de pureza)</li>
+</ul>
+
+<p>Sobre as funções na programação, vocês também já devem ter visto (PC ou ITP). Em resumo, na programação, funções são blocos de códigos nomeados que executam alguma tarefa onde podem ter valores de entrada e/ou saída.
+Olhando rápido, podem parecer a mesma coisa, porém o ponto chave está no “podem”.
+Funções na programação não são limitadas da mesma forma que as funções na matemática, temos por exemplo as seguintes características:</p>
+
+<ul>
+  <li>PODEM alterar o valor de entrada</li>
+  <li>PODEM variar o valor de saída (impureza)</li>
+</ul>
+
+<p>Funções na programação são como quests pequenas em uma questline de um jogo de RPG, onde cada quest pequena tem um objetivo definido, e logo após terminar ela, voltamos para a questline principal com suas recompensas.</p>
+
+<h4 id="pontos-em-comum">Pontos em comum</h4>
+<p>Como visto anteriormente, as funções na programação tem a possibilidade de manter as características das funções matemáticas, nos permitindo dizer que temos os seguintes pontos em comum:</p>
+
+<ul>
+  <li>Ambas recebem valores de entrada.</li>
+  <li>Ambas podem retornar algum valor de saída.</li>
+  <li>Ambas ajudam a abstrair a complexidade e organizar pensamentos.</li>
+</ul>
+
+<p>E com isso, temos um novo tópico:</p>
+
+<h4 id="aplicação-de-funções-matemáticas-na-programação">Aplicação de funções matemáticas na programação</h4>
+
+<p>A noção de “pureza” que vimos anteriormente será crucial para definir quando uma função será útil.
+Funções puras, onde o valor de saída sempre é o mesmo para as mesmas entradas, são ideais para cálculos e transformações de dados, já que garantem resultados exatos e previsíveis.
+Portanto, ao trabalhar com transformações de dados, observar um modelo de uma função matemática facilita não só na lógica, mas também na sua aplicação e confiabilidade.</p>
 
 
             </main>
