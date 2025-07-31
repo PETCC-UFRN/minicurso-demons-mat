@@ -43,7 +43,7 @@ title: Minicurso de Linux e Git
 
 # Interseção entre Conjuntos e Programação
 
-Olá a todos! Sejam bem-vindos ao quarto dia do nosso minicurso de Matemática aplicada à Programação. Hoje iremos aprender sobre conjuntos, tanto pensando na sua definição matemática como explorando a sua relação com a programação!
+Olá a todos! Sejam bem-vindos ao quarto dia do nosso minicurso de Matemática aplicada à Programação. Hoje iremos aprender sobre conjuntos, tanto pensando na sua definição matemática como explorando a sua relação com a programação! 
 
 ## Teoria dos Conjuntos
 
