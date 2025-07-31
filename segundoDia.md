@@ -6,42 +6,26 @@ title: Minicurso de Matemática aplicada à Computação
 <div id="sumario" class="sumario-git">
     <h1>Dia 2</h1>
   <details>
-    <summary><a href="#expandindo-a-ideia-de-comandos">Expandindo a ideia de comandos</a></summary>
+    <summary><a href="#Indução">Indução</a></summary>
       <ul>
-        <li><a href="#aliases">Aliases</a></li>
-        <li><a href="#vendo-um-comando-como-arquivo">Vendo um comando como arquivo</a></li>
+        <li><a href="#O que é indução">O que é indução</a></li>
+        <li><a href="#Soma de Gauss">Soma de Gauss</a></li>
+        <li><a href="#Indução forte">Indução forte</a></li>
       </ul>
     </details>
     <details>
-    <summary><a href="#instalando-programas-no-linux">Instalando programas no Linux</a></summary>
+    <summary><a href="#Recursão">Recursão</a></summary>
       <ul>
-        <li><a href="#manualmente">Manualmente</a></li>
-        <li><a href="#gerenciadores-de-pacote">Gerenciadores de pacote</a></li>
+        <li><a href="#Onde usamos a recursão na programação">Onde usamos a recursão na programação</a></li>
+        <li><a href="#Perigos da recursão">Perigos da recursão</a></li>
+        <li><a href="#Recursão bem definida">Recursão bem definida</a></li>
+        <li><a href="#Elementos básicos da recursão">Elementos básicos da recursão</a></li>
+        <li><a href="#Construindo coleções de coisas">Construindo coleções de coisas</a></li>
+        <li><a href="#Recursão em listas">Recursão em listas</a></li>
+        <li><a href="#Extrapolando para outros tipos">Extrapolando para outros tipos</a></li>
       </ul>
     </details>
-    <details>
-    <summary><a href="#editores-de-texto">Editores de texto</a></summary>
-      <ul>
-          <li><a href="#escolhendo-um-editor-de-texto">Escolhendo um editor de texto</a></li>
-      </ul>
-    </details>
-    <details>
-    <summary><a href="#Shell-scripting">Shell scripting</a></summary>
-      <ul>
-        <li><a href="#por-quê-Shell-scripting">Por quê Shell scripting?</a></li>
-        <li><a href="#a-primeira-linha-shebang">A primeira linha: #! (shebang)</a></li>
-        <li><a href="#variáveis">Variáveis</a></li>
-        <li><a href="#expansões">Expansões</a></li>
-        <li><a href="#condicionais">Condicionais</a></li>
-        <li><a href="#operadores-lógicos-no-Shell">Operadores lógicos no Shell</a></li>
-        <li><a href="#funções">Funções</a></li>
-        <li><a href="#loops">Loops</a></li>
-      </ul>
-    </details>
-    <details>
-      <summary><a href="#exercícios">Exercícios</a></summary>
-    </details>
-  <button class="toggle-button" id="toggle-button">
+   <button class="toggle-button" id="toggle-button">
   
       Esconder Sumário
   
@@ -182,16 +166,19 @@ Por sua vez, essas coleções podem ter vários formatos, ordenações, regras, 
 
 Em específico, iremos trabalhar com a coleção nomeada lista, acerca da qual conhecemos algumas características fundamentais, quais sejam: a mutabilidade dos seus elementos, a relevância de suas posições, a possibilidade de elementos repetidos, a mutabilidade do seu tamanho, e por aí vai.
 
-Você consegue pensar de cabeça em alguma outra coleção de coisas com regras distintas?
+Você consegue pensar de cabeça em alguma outra coleção de coisas* com regras distintas?
 
-- Conjuntos
-- Duplas
-- Sequências
-- Árvores
-- Arrays
-- Strings
-- Arrays circulares
-- Tabelas
+- Conjunto
+- Par ordenado/dupla
+- Bag/sacola
+- Sequência
+- Array
+- String
+- Array circular
+- Tabela
+- Árvore
+
+*Estamos generalizando aqui alguns conceitos distintos no intuito de simplificar a explicação, utilizando para tal a nomenclatura de coleção de coisas, entendida como mais adequada para o fim pretendido
 
 Ao que pensamos imediatamente quando nos vem à cabeça o nome lista, chamaremos simplificadamente de “especificação”, já à forma como iremos garantir que nossa estrutura dentro de dada linguagem se comporte como pensamos que deva se comportar uma lista, chamaremos simplificadamente de “implementação”.
 
@@ -295,6 +282,27 @@ sum (x : xs) = x + sum xs
 Observe que foi apenas possível fazer esta função pois já havia um tipo Int implementado na nossa linguagem de programação simulada com pseudocódigo, assim como uma operação de soma que recebe dois números do tipo Int e retorna outro Int!
 </div>
 </details>
+
+Além disso, é importante explicitar o quão visível fica o entrelaçamento dos conceitos abordados utilizando-se o exemplo da função acima. Na seara da Matemática e da Indução, calcular a soma de uma quantidade n de termos em dada sequência é um exercício comum.
+
+De forma semelhante, a função sum modificada poderia ser utilizada para calcular os n primeiros termos de uma sequência. E como é construída de forma recursiva, poderíamos utilizar a indução para provar que, assegurados o passo base e o passo indutivo, essa função nos garantiria um resultado correto todas as vezes que a chamassemos.
+
+```haskell
+sum_mod :: Nat -> List Int -> Int
+sum_mod 0 xs = 0
+sum_mod n [x] = sum_mod (n-1) [] + x
+sum_mod n ((xs : x') : []) = sum_mod (n-1) (xs : []) + x'
+-- Aqui colocamos o construtor da lista acessível
+-- tanto pela cabeça como pela cauda para facilitar
+-- o entendimento
+sum_mod n _ = error "too small or not a sequence"
+-- Caso não seja possível acessar o primeiro elemento
+-- ou a lista tenha elementos insuficientes, é exibida
+-- uma mensagem de erro indicando que o argumento
+-- não é compatível
+```
+
+A utilização de demonstrações matemáticas para provar a corretude de uma função é algo amplamente utilizado na programação, em especial em aplicações críticas que não admitam erros. Outra possibilidade é a utilização exaustiva de casos testes e de  failsafes, mas nenhum deles garante que a aplicação não causará erros, algo que a demonstração matemática faz com 100% de certeza.
 
 ### Descobrindo a função <span style="color: #081849; font-weight: bold;">FILTER</span>
 

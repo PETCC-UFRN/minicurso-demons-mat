@@ -29,42 +29,26 @@
                 <div id="sumario" class="sumario-git">
     <h1>Dia 2</h1>
   <details>
-    <summary><a href="#expandindo-a-ideia-de-comandos">Expandindo a ideia de comandos</a></summary>
+    <summary><a href="#Indução">Indução</a></summary>
       <ul>
-        <li><a href="#aliases">Aliases</a></li>
-        <li><a href="#vendo-um-comando-como-arquivo">Vendo um comando como arquivo</a></li>
+        <li><a href="#O que é indução">O que é indução</a></li>
+        <li><a href="#Soma de Gauss">Soma de Gauss</a></li>
+        <li><a href="#Indução forte">Indução forte</a></li>
       </ul>
     </details>
     <details>
-    <summary><a href="#instalando-programas-no-linux">Instalando programas no Linux</a></summary>
+    <summary><a href="#Recursão">Recursão</a></summary>
       <ul>
-        <li><a href="#manualmente">Manualmente</a></li>
-        <li><a href="#gerenciadores-de-pacote">Gerenciadores de pacote</a></li>
+        <li><a href="#Onde usamos a recursão na programação">Onde usamos a recursão na programação</a></li>
+        <li><a href="#Perigos da recursão">Perigos da recursão</a></li>
+        <li><a href="#Recursão bem definida">Recursão bem definida</a></li>
+        <li><a href="#Elementos básicos da recursão">Elementos básicos da recursão</a></li>
+        <li><a href="#Construindo coleções de coisas">Construindo coleções de coisas</a></li>
+        <li><a href="#Recursão em listas">Recursão em listas</a></li>
+        <li><a href="#Extrapolando para outros tipos">Extrapolando para outros tipos</a></li>
       </ul>
     </details>
-    <details>
-    <summary><a href="#editores-de-texto">Editores de texto</a></summary>
-      <ul>
-          <li><a href="#escolhendo-um-editor-de-texto">Escolhendo um editor de texto</a></li>
-      </ul>
-    </details>
-    <details>
-    <summary><a href="#Shell-scripting">Shell scripting</a></summary>
-      <ul>
-        <li><a href="#por-quê-Shell-scripting">Por quê Shell scripting?</a></li>
-        <li><a href="#a-primeira-linha-shebang">A primeira linha: #! (shebang)</a></li>
-        <li><a href="#variáveis">Variáveis</a></li>
-        <li><a href="#expansões">Expansões</a></li>
-        <li><a href="#condicionais">Condicionais</a></li>
-        <li><a href="#operadores-lógicos-no-Shell">Operadores lógicos no Shell</a></li>
-        <li><a href="#funções">Funções</a></li>
-        <li><a href="#loops">Loops</a></li>
-      </ul>
-    </details>
-    <details>
-      <summary><a href="#exercícios">Exercícios</a></summary>
-    </details>
-  <button class="toggle-button" id="toggle-button">
+   <button class="toggle-button" id="toggle-button">
   
       Esconder Sumário
   
@@ -206,18 +190,21 @@ Você concorda que nesse processo a fileira inteira de dominós será derrubada?
 
 <p>Em específico, iremos trabalhar com a coleção nomeada lista, acerca da qual conhecemos algumas características fundamentais, quais sejam: a mutabilidade dos seus elementos, a relevância de suas posições, a possibilidade de elementos repetidos, a mutabilidade do seu tamanho, e por aí vai.</p>
 
-<p>Você consegue pensar de cabeça em alguma outra coleção de coisas com regras distintas?</p>
+<p>Você consegue pensar de cabeça em alguma outra coleção de coisas* com regras distintas?</p>
 
 <ul>
-  <li>Conjuntos</li>
-  <li>Duplas</li>
-  <li>Sequências</li>
-  <li>Árvores</li>
-  <li>Arrays</li>
-  <li>Strings</li>
-  <li>Arrays circulares</li>
-  <li>Tabelas</li>
+  <li>Conjunto</li>
+  <li>Par ordenado/dupla</li>
+  <li>Bag/sacola</li>
+  <li>Sequência</li>
+  <li>Array</li>
+  <li>String</li>
+  <li>Array circular</li>
+  <li>Tabela</li>
+  <li>Árvore</li>
 </ul>
+
+<p>*Estamos generalizando aqui alguns conceitos distintos no intuito de simplificar a explicação, utilizando para tal a nomenclatura de coleção de coisas, entendida como mais adequada para o fim pretendido</p>
 
 <p>Ao que pensamos imediatamente quando nos vem à cabeça o nome lista, chamaremos simplificadamente de “especificação”, já à forma como iremos garantir que nossa estrutura dentro de dada linguagem se comporte como pensamos que deva se comportar uma lista, chamaremos simplificadamente de “implementação”.</p>
 
@@ -314,6 +301,26 @@ Você concorda que nesse processo a fileira inteira de dominós será derrubada?
     <p>Observe que foi apenas possível fazer esta função pois já havia um tipo Int implementado na nossa linguagem de programação simulada com pseudocódigo, assim como uma operação de soma que recebe dois números do tipo Int e retorna outro Int!</p>
   </div>
 </details>
+
+<p>Além disso, é importante explicitar o quão visível fica o entrelaçamento dos conceitos abordados utilizando-se o exemplo da função acima. Na seara da Matemática e da Indução, calcular a soma de uma quantidade n de termos em dada sequência é um exercício comum.</p>
+
+<p>De forma semelhante, a função sum modificada poderia ser utilizada para calcular os n primeiros termos de uma sequência. E como é construída de forma recursiva, poderíamos utilizar a indução para provar que, assegurados o passo base e o passo indutivo, essa função nos garantiria um resultado correto todas as vezes que a chamassemos.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sum_mod</span> <span class="o">::</span> <span class="kt">Nat</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
+<span class="n">sum_mod</span> <span class="mi">0</span> <span class="n">xs</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">sum_mod</span> <span class="n">n</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">sum_mod</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="kt">[]</span> <span class="o">+</span> <span class="n">x</span>
+<span class="n">sum_mod</span> <span class="n">n</span> <span class="p">((</span><span class="n">xs</span> <span class="o">:</span> <span class="n">x'</span><span class="p">)</span> <span class="o">:</span> <span class="kt">[]</span><span class="p">)</span> <span class="o">=</span> <span class="n">sum_mod</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="n">xs</span> <span class="o">:</span> <span class="kt">[]</span><span class="p">)</span> <span class="o">+</span> <span class="n">x'</span>
+<span class="c1">-- Aqui colocamos o construtor da lista acessível</span>
+<span class="c1">-- tanto pela cabeça como pela cauda para facilitar</span>
+<span class="c1">-- o entendimento</span>
+<span class="n">sum_mod</span> <span class="n">n</span> <span class="kr">_</span> <span class="o">=</span> <span class="n">error</span> <span class="s">"too small or not a sequence"</span>
+<span class="c1">-- Caso não seja possível acessar o primeiro elemento</span>
+<span class="c1">-- ou a lista tenha elementos insuficientes, é exibida</span>
+<span class="c1">-- uma mensagem de erro indicando que o argumento</span>
+<span class="c1">-- não é compatível</span>
+</code></pre></div></div>
+
+<p>A utilização de demonstrações matemáticas para provar a corretude de uma função é algo amplamente utilizado na programação, em especial em aplicações críticas que não admitam erros. Outra possibilidade é a utilização exaustiva de casos testes e de  failsafes, mas nenhum deles garante que a aplicação não causará erros, algo que a demonstração matemática faz com 100% de certeza.</p>
 
 <h3 id="descobrindo-a-função-filter">Descobrindo a função <span style="color: #081849; font-weight: bold;">FILTER</span></h3>
 

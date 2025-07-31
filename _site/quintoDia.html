@@ -26,28 +26,20 @@
 
         <div>
             <main>
-                <h1 id="github-e-boas-práticas-de-git">GitHub e boas práticas de Git</h1>
+                <h1 id="projeto-final">Projeto final</h1>
 
 <div id="sumario" class="sumario-git">
-    <h1>Sumário</h1>
-    <summary><a href="#github-e-boas-praticas-de-git">Github e Boas práticas de Git</a></summary>
+    <h1>Dia 5</h1>
+    <summary><a href="#Projeto final">Projeto final</a></summary>
     <ul>
-      <li><a href="#pull-requests">Pull Requests</a></li>
-      <li><a href="#rebase">Rebase</a></li>
-      <li><a href="#stash">Stash</a>
-        <li>
-          <details>
-            <summary><a href="#pout-pourri">Pout-Pourri</a></summary>
-            <ul>
-              <li><a href="#changelog-e-readme">ChangeLog e README</a></li>
-              <li><a href="#perfil-no-github">Perfil no Github</a></li>
-              <li><a href="#issues">Issues</a></li>
-              <li><a href="#forks">Forks</a></li>
-              <li><a href="#conventional-commits">Conventional Commits</a></li>
-            </ul>
-          </details>
-        </li>
-      </li>
+      <li><a href="#Orientações gerais">Orientações Gerais</a></li>
+      <li><a href="#Pontos essenciais">Pontos essenciais</a></li>
+      <li><a href="#Critérios de avaliação">Critérios de avaliação</a></li>
+      <li><a href="#Problema 1">Problema 1</a></li>
+      <li><a href="#Problema 1">Problema 1</a></li>
+      <li><a href="#Problema 2">Problema 2</a></li>
+      <li><a href="#Problema 3">Problema 3</a></li>
+      <li><a href="#Problema 4">Problema 4</a></li>
     </ul>
   <button class="toggle-button" id="toggle-button">
   
@@ -56,242 +48,55 @@
   </button>
   </div>
 
-<p>Na aula anterior, começamos a trabalhar conceitos mais avançados de Git e Github, os quais permitem trabalhar de forma colaborativa em projetos de software. Nesta aula, vamos explorar <spam class="destaque">boas práticas</spam> envolvendo esses conceitos além de descobrir algumas novas funcionalidades do Git.</p>
+<h2 id="orientações-gerais">Orientações gerais:</h2>
 
-<h3 id="pull-requests">Pull requests</h3>
+<p>1) A partir do apresentado, elabore um plano de como a sua equipe solucionaria a atual demanda, indicando cada passo a ser seguido e quais os sub-problemas identificados;</p>
 
-<p>Primeiro, vamos relembrar o que sabemos sobre branches e o workflow tradicional do Git, no qual temos uma branch principal e criamos branches paralelas para desenvolver novas funcionalidades que são posteriormente integradas à branch principal. Num workflow tradicional, o processo de integração ocorre através de merges, e esses merges são <spam class="destaque">executados primeiro localmente</spam> e depois publicados no <spam class="destaque">repositório remoto</spam>. Entretanto, essa não é a única forma de integrar novas funcionalidades ao projeto,ferramentas de hospedagem remota como o <spam class="destaque">GitHub</spam>, por exemplo, permitem que os desenvolvedores criem o que chamamos de <spam class="destaque">pull requests</spam>.</p>
+<p>2) Programe superficialmente um protótipo do sistema requisitado, em pseudocódigo ou em alguma linguagem de programação de sua escolha, que seja capaz de atender de forma eficiente a situação em análise;</p>
 
-<p>O pull request (merge requests), ou PR, nada mais é que uma <spam class="destaque">solicitação</spam> para que as <spam class="destaque">alterações</spam> que foram feitas <spam class="destaque">em uma branch</spam> sejam <spam class="destaque">incorporadas</spam> a outra branch do projeto. A grande vantagem do PR é que ele favorece a <spam class="destaque">comunicação</spam> e a <spam class="destaque">transparência</spam> entre os desenvolvedores, pois, quando um pull request é criado, dentro da plataforma de hospedagem, os <spam class="destaque">colaboradores são notificados</spam> e podem <spam class="destaque">visualizar</spam>, <spam class="destaque">comentar</spam> e <spam class="destaque">revisar</spam> as alterações feitas na branch.</p>
+<p>3) Faça uma apresentação a todo o corpo de colaboradores presentes, esmiuçando os pontos-chaves essenciais à continuidade de ações que garantam um produto final.</p>
 
-<p>O processo de pull request é muito simples e pode ser quebrado em alguns passos:</p>
+<h2 id="pontos-que-devem-estar-presentes-na-apresentação-da-solução-alcançada">Pontos que devem estar presentes na apresentação da solução alcançada:</h2>
 
-<ol>
-  <li>Crie uma <spam class="destaque">branch local</spam> e faça as <spam class="destaque">alterações</spam> desejadas.</li>
-  <li>Faça a <spam class="destaque">publicação da branch</spam> local no repositório remoto.</li>
-  <li>Acesse o repositório remoto e <spam class="destaque">crie um pull request</spam>.</li>
-  <li>Peça para um ou mais colaboradores <spam class="destaque">revisarem</spam> seu código e faça alguma alteração se necessário.</li>
-  <li>Após aprovado e revisado, o pull request pode ser <spam class="destaque">integrado</spam> ao projeto.</li>
-  <li>
-    <spam class="destaque"> Delete a branch</spam>
-    <p>remota e local.</p>
-  </li>
-</ol>
+<p>1) Aspectos observados ao decorrer da solução que se aproximam de conceitos matemáticos já conhecidos;</p>
 
-<p>Algumas boas práticas envolvendo a criação de pull requests são:</p>
+<p>2) Explicação detalhada da lógica por trás do pseudocódigo ou código utilizado;</p>
 
-<ol>
-  <li>Faça uma <spam class="destaque">boa revisão</spam> do seu código e pull request antes de submetê-lo.</li>
-  <li>Escrever um <spam class="destaque">bom título</spam> e <spam class="destaque">descrição concisa</spam> e com propósito claro.</li>
-  <li>Prover <spam class="destaque">contexto</spam> e <spam class="destaque">informações</spam> adicionais que possam ajudar o <spam class="destaque">revisor</spam>.</li>
-</ol>
+<p>3) Checagem de possíveis problemas que podem ocorrer na implementação;</p>
 
-<h2 id="rebase"><em>Rebase</em></h2>
+<p>4) Aplicação em um caso teste hipotético;</p>
 
-<p>Até então, vimos que o Git possui um comando chamado <spam class="destaque">merge</spam> que é usado para <spam class="destaque">integrar alterações</spam> de uma branch, e que também podemos fazer isso remotamente usando um <spam class="destaque">pull request</spam>. Contudo, existe uma outra forma de fazer isso que, em muitos casos, pode ser mais interessante: o <spam class="destaque">rebase</spam>.</p>
+<h2 id="critérios-de-avaliação">Critérios de Avaliação:</h2>
 
-<p>Assim como o <spam class="destaque">merge</spam>, o <spam class="destaque">rebase</spam> também explora o conceito de <spam class="destaque">source branch</spam> e <spam class="destaque">target branch</spam>, mas, ao invés
-de tentar conectar o histórico das duas branches, esse comando <spam class="destaque">reaplica as alterações</spam> da <spam class="destaque">source branch</spam> no <spam class="destaque">topo da target</spam>. Agora, vamos visualizar isso:</p>
+<p>1) Entendimento satisfatório da situação problema;</p>
 
-<ul>
-  <li>
-    <p>Primeiro, imagine o seguinte histórico de commits:</p>
+<p>2) Domínio do código usado como solução;</p>
 
-    <p><img style=" display: block;margin: 0 auto;" src="assets/images/git_dia5_imagem1.jpeg" width="70%" />
-<br /></p>
-  </li>
-  <li>
-    <p>Agora, ao invés de criar um commit extra, quando usamos o comando <spam class="destaque">git rebase feature</spam> todos os commits da <spam class="destaque">branch feature</spam>
-são reaplicados no <spam class="destaque">topo da branch main</spam>:</p>
+<p>3) Boa escolha de caso teste;</p>
 
-    <p><img style=" display: block;margin: 0 auto;" src="assets/images/git_dia5_imagem2.jpeg" width="70%" />
-<br /></p>
-  </li>
-</ul>
+<p>4) Didaticidade e clareza na hora de apresentar a solução encontrada;</p>
 
-<p>Assim como o <em>three-way merge</em>, o <code class="language-plaintext highlighter-rouge">rebase</code> só funciona dessa forma se <spam class="destaque">não houverem conflitos</spam> entre as branches e o processo de resolução de conflitos for análogo ao que vimos anteriormente. A grande <spam class="destaque">vantagem do `rebase` </spam> é que ele mantém o <spam class="destaque">histórico
-de commits mais limpo e linear</spam>, o que pode ser a preferência de muitas equipes. Entretanto, apesar de ser intuitivamente
-mais simples, o <code class="language-plaintext highlighter-rouge">rebase</code> é uma operação <spam class="destaque">relativamente mais complexa</spam> que o <code class="language-plaintext highlighter-rouge">merge</code> e, se não for usada com cuidado, pode lhe
-causar muita dor de cabeça.</p>
+<p>5) Corretude matemática dos algoritmos implementados;</p>
 
-<h3 id="cuidados-com-o-rebase">Cuidados com o <em>rebase</em></h3>
+<p>6) Boas práticas e documentação;</p>
 
-<p>Como foi dito anteriormente, o <code class="language-plaintext highlighter-rouge">rebase</code> é uma operação mais complexa que o <code class="language-plaintext highlighter-rouge">merge</code> e deve ser usada com cuidado, pois essa operação <spam class="destaque">reescreve o histórico de commits</spam>, e isso pode causar problemas chatos de resolver.
-Por isso, existe uma regrinha de ouro que podemos seguir para evitar esse tipo de problema: <strong>Não utilize  rebase em uma branch que outras pessoas estão usando</strong>. Por exemplo, se você publicou uma branch no repositório remoto, agora ela é de domínio público e outras pessoas podem estar trabalhando nela, se você fizer um rebase nessa branch
-as pessoas vão ter que lidar com um histórico de commits completamente diferente e haverão conflitos.</p>
+<h2 id="situação-problema-1-números-bloqueados">Situação Problema 1: Números bloqueados</h2>
 
-<p>Para estar sempre <spam class="destaque">evitando problemas</spam> com o <code class="language-plaintext highlighter-rouge">rebase</code>, use-o se, e somente se:</p>
+<p>Você é encarregado de solucionar a seguinte problemática:</p>
+
+<p>Determinado usuário da empresa faz-tudo para a qual você presta serviços tem recebido uma quantidade excessiva de ligações spam. Ao perceber que muitas dessas ligações eram de números repetidos, o usuário solicitou uma aplicação que fosse capaz de bloquear essas chamadas.</p>
+
+<p>Sendo parte da equipe que ficou com essa demanda, você precisa criar um sistema que armazene os números de telefones bloqueados e, baseando-se nessa coleção de dados, seja capaz de bloquear as chamadas provenientes dos números listados.</p>
+
+<p>A sua equipe deve entregar as seguintes funções implementadas:</p>
 
 <ul>
-  <li>Você tem uma <spam class="destaque">branch local que não foi publicada</spam> no repositório remoto.</li>
-  <li>Você está trabalhando em uma branch local ou remota que você tem <spam class="destaque">certeza</spam> que <spam class="destaque">ninguém mais está usando</spam>.</li>
+  <li>O construtor da estrutura de dados que armazena os números</li>
+  <li>Uma função que verifica a presença ou ausência do número na lista</li>
+  <li>Uma função que adiciona novos números</li>
+  <li>Uma função que remove um número</li>
+  <li>Uma função auxiliar que bloqueia chamadas de números presentes na estrutura de dados</li>
 </ul>
-
-<h2 id="stash">Stash</h2>
-
-<p>Saindo um pouco do assunto de branches e pull requests, vamos falar agora sobre um comando que pode ser muito útil em
-algumas situações do dia-a-dia. O comando <spam class="destaque">git stash</spam> é usado para <spam class="destaque">salvar temporária e rapidamente</spam> as <spam class="destaque">alterações</spam> que
-você estava fazendo na sua <spam class="destaque">branch local</spam>, permitindo que você possa mudar de branch ou fazer outras operações sem ter que
-“commitar” ou descartar as alterações. Seu uso é extremamente simples e pode ser quebrado em alguns passos:</p>
-
-<ol>
-  <li>
-    <p>Salve as alterações que você estava fazendo com <spam class="destaque">git stash</spam>. Alternativamente, use a flag <spam class="destaque">-u</spam> ou <spam class="destaque">-m</spam> para salvar suas
-suas alterações <spam class="destaque">não rastreadas</spam> ou salvar as alterações <spam class="destaque">com mensagens</spam>, respectivamente.</p>
-  </li>
-  <li>
-    <spam class="destaque">Troque de branch</spam>
-    <p>ou faça as operações que você deseja.</p>
-  </li>
-  <li>Recupere as alterações salvas com <spam class="destaque">git stash pop [opcional-nome_do_stash]</spam>, alternativamente, use <spam class="destaque">git stash apply [opcional-nome_do_stash]</spam> para manter as <spam class="destaque">alterações salvas no stash</spam>.</li>
-</ol>
-
-<p>Alguns sub-comandos do <code class="language-plaintext highlighter-rouge">git stash</code> que também podem ser úteis são:</p>
-
-<ul>
-  <li>git stash list: <spam class="destaque">Lista</spam> todos os stashes salvos.</li>
-  <li>git stash drop: <spam class="destaque">Remove</spam> um stash específico.</li>
-  <li>git stash clear: Remove <spam class="destaque">todos</spam> os stashes salvos.</li>
-  <li>git stash show [nome_do_stash]: Mostra as <spam class="destaque">alterações</spam> salvas em um stash específico.</li>
-</ul>
-
-<h2 id="pout-pourri">Pout-Pourri</h2>
-
-<p>Para os propósitos do curso, finalmente exploramos tudo que nós do PET consideramos <spam class="destaque">mais essencial</spam> e suficiente envolvendo <spam class="destaque">Linux, Git e Github</spam>, principalmente no âmbito de cursos de Computação na graduação. Claro que, naturalmente, existem muitas outros conceitos, comandos, ferramentas, histórias e boas práticas que <spam class="destaque">não foram abordadas</spam>, por isso, nestes últimos tópicos, lhe convidamos a explorar alguns assuntos extras que podem ser interessantes para você.</p>
-
-<h3 id="changelog-e-readme">Changelog e README</h3>
-
-<p>Geralmente, quando começamos no Github e passamos a trabalhar em projetos, seguir outros desenvolvedores e ver o que eles
-estão fazendo, é muito comum nos depararmos com arquivos chamados <code class="language-plaintext highlighter-rouge">CHANGELOG.md</code> e <code class="language-plaintext highlighter-rouge">README.md</code> (inclusive, fizemos um deles
-no último projeto). Por exemplo, no repositório do <a href="https://github.com/sxyazi/yazi">yazi</a>:</p>
-
-<p><img style=" display: block;margin: 0 auto;" src="assets/images/git_dia5_imagem3.png" width="70%" />
-<br /></p>
-
-<p>O arquivo <spam class="destaque">README.md </spam> é uma <spam class="destaque">porta de entrada</spam> para o seu projeto, e também pode ser visto como a <spam class="destaque">documentação principal</spam> do
-projeto. Nele, você pode colocar <spam class="destaque">informações sobre o projeto</spam>: como instalar, como usar, quem são os colaboradores, etc.
-Além disso, é o README que vai ser o primeiro arquivo visto por aqueles que acessarem o seu repositório, então, como diz o ditado, a primeira impressão é a que fica.</p>
-
-<p>Além do README, o <spam class="destaque">CHANGELOG</spam> é outro arquivo que pode ser muito importante para um projeto de software, pois é usado para <spam class="destaque">documentar mudanças</spam> significativas foram realizadas entre cada versão do software.
-Para criar um bom <spam class="destaque">CHANGELOG.md</spam> você pode seguir um padrão de formatação
-(<a href="https://keepachangelog.com/en/1.1.0/">keepachangelog</a> em inglês) que segue alguns passos:</p>
-
-<ul>
-  <li>Changelogs são para <spam class="destaque">humanos</spam>, não máquinas.</li>
-  <li>Cada <spam class="destaque">versão</spam> deve ser <spam class="destaque">datada</spam>.</li>
-  <li>Os mesmos <spam class="destaque">tipos de mudanças</spam> devem ser agrupados.</li>
-  <li>As <spam class="destaque">mudanças</spam> devem ser descritas de forma <spam class="destaque">clara</spam> e <spam class="destaque">concisa</spam>.</li>
-  <li>As mudanças devem ser listadas em <spam class="destaque">ordem decrescente</spam> de importância.</li>
-  <li>A <spam class="destaque">última versão</spam> deve ser a <spam class="destaque">primeira entrada</spam>.</li>
-  <li>Mencionar se segue o <a href="https://semver.org/">Semantic Versioning</a>.</li>
-</ul>
-
-<p>Para mais informações sobre o <code class="language-plaintext highlighter-rouge">CHANGELOG.md</code> convido-lhe a acessar o site
-<a href="https://keepachangelog.com/en/1.1.0/">keepachangelog</a>.</p>
-
-<h3 id="perfil-no-github">Perfil no GitHub</h3>
-
-<p>Lembrando que o Github também é uma <spam class="destaque">rede social</spam>, em especial, para desenvolvedores, empresas, equipes, recrutadores e pessoas com interresse em tecnologia do mundo todo, e, por isso, pode ser muito importante
-que você tenha um <spam class="destaque">perfil organizado</spam>, <spam class="destaque">bem apresentável</spam> e <spam class="destaque">bastante ativo</spam>. Algumas dicas relacionadas ao perfil
-do Gihub são:</p>
-
-<ul>
-  <li>Matenha <spam class="destaque">foto de perfil</spam> e informações básicas <spam class="destaque">atualizadas</spam>.</li>
-  <li>Adicione um <spam class="destaque">README.md</spam> ao seu perfil: Assim como o README de um repositório, o README do perfil pode ser usado para se <spam class="destaque">apresentar</spam>, mostrar suas <spam class="destaque">habilidades</spam>, <spam class="destaque">projetos</spam>, etc.</li>
-  <li>Gerencie seus repositórios: Coloque seus <spam class="destaque">repositórios mais relevantes no topo</spam>, organize-os em <spam class="destaque">categorias</spam>, use tópicos, etc.</li>
-  <li>E, principalmente, seja ativo: <spam class="destaque">Contribua em outros projetos</spam>, crie projetos, <spam class="destaque">siga pessoas</spam> e <spam class="destaque">empresas</spam>, etc.</li>
-</ul>
-
-<p><img style=" display: block;margin: 0 auto;" src="assets/images/git_dia5_imagem4.png" width="70%" />
-<br /></p>
-
-<h3 id="issues">Issues</h3>
-
-<p>Lembra do que eu falei sobre ser ativo no Github? Uma das formas mais interessantes de <spam class="destaque">colaborar</spam> para a
-comunidade é <spam class="destaque">através das issues</spam>. As issues, são basicamente um <spam class="destaque">espaço para discussões</spam>, <spam class="destaque">sugestões</spam>, <spam class="destaque">reporte
-de bugs</spam>, <spam class="destaque">problemas</spam> etc. Elas funcionam como uma forma de comunicar diretamente os colaboradores de
-um projeto sobre <spam class="destaque">algo que você encontrou</spam>.</p>
-
-<p><img style=" display: block;margin: 0 auto;" src="assets/images/git_dia5_imagem5.png" width="70%" />
-<br /></p>
-
-<p>A depender do projeto, pode ser necessário que as issues sigam algum <spam class="destaque">template específico</spam>, mas um bom
-guia geral para criar uma issue é:</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
- # Descrição do bug
- Uma descrição clara e concisa sobre o bug.
-
- # Para reproduzir
- Passos para reproduzir o comportamento:
-<span class="p"> 1.</span> Vá até
-<span class="p"> 2.</span> Execute
-<span class="p"> 3.</span> Veja o erro
-
- # Comportamento esperado
- Uma descrição clara e concisa do comportamento esperado.
-
- # Fotos/Screenshots
- Se viável, adicione fotos ou screenshots para ajudar a explicar seu problema.
-
- # Informações do seu sistema
-<span class="p"> -</span> Sistema operacional: ArchLinux
-<span class="p"> -</span> Navegador: Firefox
-<span class="p"> -</span> Versão do software: 22.0.0
-
- # Logs de erro
- Se aplicável, adicione logs de erro.
-
-</code></pre></div></div>
-
-<h3 id="forks">Forks</h3>
-
-<p>Além de issues, outra forma de <spam class="destaque">colaborar</spam> com projetos de software no Github é através dos forks. O fork consiste em <spam class="destaque">adotar uma versão cópia</spam> de algum projeto, e a partir dessa cópia, fazer <spam class="destaque">alterações</spam> que você acha interessante e possívelmente benéficas. Após fazer as alterações, você pode submeter um <spam class="destaque">pull request</spam> para o projeto original, e se os mantenedores do projeto acharem que suas alterações são interessantes, eles podem incorporá-las ao projeto original.</p>
-
-<p><img style=" display: block;margin: 0 auto;" src="assets/images/git_dia5_imagem6.png" width="70%" />
-<br /></p>
-
-<h3 id="conventional-commits">Conventional Commits</h3>
-
-<p>Por fim, vamos falar sobre uma convenção de commits que pode ser muito útil para manter o histórico
-orgaizado e legível. Os <a href="https://www.conventionalcommits.org/en/v1.0.0/"><em>Conventional commits</em></a> oferecem
-um conjunto de regrinhas que padronizam a forma que você escreve suas mensagens de commit, as quais segue a
-seguinte estrutura:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
- &lt;tipo&gt;[escopo (opcional)]: &lt;descrição&gt;
-
- [corpo (opcional)]
-
- [rodapé (opcional)]
-
-</code></pre></div></div>
-
-<p>Em síntese, os tipos de commit que surgem do <a href="https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines"><em>Angular convention</em></a>, são:</p>
-
-<ol>
-  <li><strong>fix</strong>: <spam class="destaque">Correção de um bug</spam> ou problema.</li>
-  <li><strong>feat</strong>: Adição de uma <spam class="destaque">nova funcionalidade</spam>.</li>
-  <li><strong>docs</strong>: Mudanças na <spam class="destaque">documentação</spam>.</li>
-  <li><strong>style</strong>: Mudanças que <spam class="destaque">não afetam o significado</spam> do código (espaços em branco, formatação, etc).</li>
-  <li><strong>refactor</strong>: Mudanças que <spam class="destaque">não corrigem bugs</spam> nem adicionam funcionalidades.</li>
-  <li><strong>perf</strong>: Mudanças que <spam class="destaque">melhoram a performance</spam>.</li>
-  <li><strong>test</strong>: Adição de <spam class="destaque">testes</spam>.</li>
-  <li><strong>build</strong>: Mudanças no <spam class="destaque">processo de build</spam>, ferramentas <spam class="destaque">auxiliares</spam>, etc.</li>
-  <li><strong>ci</strong>: Mudanças em <spam class="destaque">arquivos de configuração e scripts</spam>.</li>
-  <li><strong>BREAKING CHANGE</strong>: Mudanças que <spam class="destaque">quebram a compatibilidade</spam>.</li>
-</ol>
-
-<p>Antes do <spam class="destaque">:</spam> você pode adicionar um <spam class="destaque">!</spam> para sinalizar que o commit é uma mudança significativa.</p>
-
-<p>Um exemplo de commit seguindo a convenção seria:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
- feat: allow provided config object to extend other configs
-
- BREAKING CHANGE: `extends` key in config file is now used for extending other config files
-
-</code></pre></div></div>
 
 <hr />
 <script>

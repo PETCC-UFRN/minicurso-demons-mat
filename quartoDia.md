@@ -47,13 +47,13 @@ Olá a todos! Sejam bem-vindos ao quarto dia do nosso minicurso de Matemática a
 
 ## Teoria dos Conjuntos
 
-Antes de vermos as aplicações de conjuntos na Computação, precisamos entender quais as especificações, ou seja, as definições, propriedades e relações, que caracterizam um conjunto na matemática.
+Antes de vermos as aplicações de conjuntos na Computação, precisamos entender quais as especificações, ou seja, as definições, propriedades e relações, que caracterizam um conjunto na Matemática.
 
 <div style="text-align: center;"><img src="assets/images/teoriadosconjuntos.png" alt="" style="widht:300px;height:300px;"> </div>
 
 ### Conjuntos
 
-Na matemática, um conjunto (denotado por {}), é uma coleção de elementos de um mesmo tipo independente de ordem e da repetição de seus elementos. Vamos entender um pouco essa definição:
+Na Matemática, um conjunto (denotado por {}), é uma coleção de elementos de um mesmo tipo independente de ordem e da repetição de seus elementos. Vamos entender um pouco essa definição:
 
 - Independente de ordem: Os conjuntos {1, 2, 3, 4} e {4, 3, 1, 2} são iguais por definição.
 
@@ -262,54 +262,63 @@ Seguindo a mesma idéia da demonstração que acabamos de ver, demonstre as segu
 
 > Nota: sinta-se livre para pedir ajuda caso não consiga prosseguir com alguma demonstração!
 
-## Interseção entre Conjuntos e Programação
-Bem, como já sabíamos (ou às vezes até não sabíamos ainda mas agora sabemos), tudo na matemática tradicional é descrito em função de conjuntos e seus elementos. Nesse contexto, os números naturais poderiam ser compreendidos como um subconjunto dos números inteiros, que por sua vez também poderiam ser compreendidos como um subconjunto dos números reais.
+## Conjuntos e Programação
+Bem, como já sabíamos (ou às vezes até não sabíamos ainda mas agora sabemos), tudo (ou quase tudo) na Matemática tradicional é descrito em função de conjuntos e seus elementos. Nesse contexto, os números naturais poderiam ser compreendidos como um subconjunto dos números inteiros, que por sua vez também poderiam ser compreendidos como um subconjunto dos números reais.
 
 Sob essa perspectiva, as funções seriam então viagens de um conjunto de números do domínio da função para outro conjunto de números, o contradomínio. Similarmente, as operações entre números seriam operações feitas dentro dos conjuntos de números, enquanto outras representações seriam duplas ordenadas de conjuntos, como o plano, representado como um conjunto de reais no eixo x junto de um conjunto de reais no eixo y, ou um espaço, dadas as modificações necessárias.
 
-Todavia, no mundo da computação, não são mais os seus habitantes descritos em função de conjuntos e elementos!
+Todavia, no mundo da Computação, não são mais os seus habitantes descritos em função de conjuntos e elementos!
+
+(Fun fact: Na Matemática, é chamado de teoria das categorias o campo teórico em que estudamos os diferentes mundos a partir de seus habitantes e das viagens entre eles)
 
 <div style="text-align: center;"><img src="assets/images/programacao.png" alt="" style="widht:300px;height:300px;"> </div>
 
-### Tipos ⨯ Objetos ⨯ Conjuntos
+### Tipos ⨯ Objetos ⨯ Conjuntos/Sets
 
-No mundo da computação, existem várias formas de descrever os habitantes de um mundo, sendo as principais os tipos e os objetos.
+No mundo da Computação, existem várias formas de descrever os habitantes de um mundo, sendo as principais os tipos e os objetos.
 
 <div style="text-align: center;"><img src="assets/images/coding.png" alt="" style="widht:300px;height:300px;"> </div>
 
-No caso das linguagens de programação tipadas, cada membro do mundo é de um tipo distinto, e as funções ocorrem de tipo x -> tipo y, retornando o famigerado “type error” caso haja a tentativa inválida de operar com tipos não correspondentes àquela função, e não haja forma de coagir algum dos tipos a se adequar à tipagem esperada. Alguns tipos bastante conhecidos são o Int, o Char, a String, o Bool, etc.
+Aqui, é importante fazer uma diferenciação de conceitos que se sobrepõem de forma não ignorável! Ocorre que tanto no mundo da Matemática com no mundo da Computação temos tanto tipos como conjuntos, de forma que seria impossível, ou no mínimo imprudente, seguir adiante sem fazer as devidas distinções.
+
+Conjuntos, no mundo da Matemática, referem-se ao que acabamos de ver no tópico anterior, sendo parte componente das bases da matemática tradicional. Tipos, no mundo da matemática, por sua vez, representam uma outra possível diferenciação dos habitantes desse mundo, utilizada na Teoria dos Tipos, e fundamental para garantir uma ponte teórica sólida entre matemática e computação, em especial na esfera axiomática. Todavia, os tipos da teoria dos tipos não estarão sendo abordados no presente minicurso, em razão de sua complexidade teórica e do curso tempo disponível.
+
+Já no mundo da programação, Conjuntos são considerados como um possível tipo, representando uma coleção de coisas, sendo a isso somadas a uma série de regras de utilização e operações. Por conta disso, desse ponto em diante, quando estivermos falando do ponto de vista da Computação, chamaremos conjuntos de Sets (correspondente a tradução de conjuntos para a língua inglesa), a fim de garantir uma fcil diferenciação.
+
+Da mesma forma, também os tipos na programação terão um significado distinto, tendo se escolhido, entretanto, manter a nomenclatura original deste. Sendo assim, daqui em diante, sempre que aparecer o nome tipo, será em razão de estarmos falando da perspectiva computacional. Nesse dentido, no mundod da Computação, tipos será muitas vezes o nome dado aos habitantes do mundo.
+
+No caso das linguagens de programação tipadas, cada membro do mundo é de um tipo distinto, e as funções ocorrem de tipo x para tipo y, retornando-se o famigerado “type error” caso haja a tentativa inválida de operar com tipos não correspondentes àquela função (e caso não haja forma de coagir algum dos tipos a se adequar à tipagem esperada). Alguns tipos bastante conhecidos são o Int, o Char, a String, o Bool, etc.
 
 Já no caso de linguagens sem tipos (que também podem ser chamados de tipo único), como a Python, todos os habitantes do mundo são objetos, e as funções ocorrem entre objetos. Por mais que possam ter uma decoração de tipos, os objetos de Python não obedecem às regras do mundo tipado.
 
-Mas então, para onde foram os conjuntos?
-
+Mas então, como ficam os Sets?
 
 
 ### Conjuntos como inspiração para a montagem da lógica de tipos
 
-Em primeiro momento, há de se reconhecer a utilidade de todo o arcabouço teórico matemático garantido pela teoria dos conjuntos. A noção que temos de habitantes de um mundo e de relações entre esses habitantes, o que nos garante as funções computacionais de fato, bebe primordialmente da teoria dos conjuntos!
+Em primeiro momento, há de se reconhecer a utilidade de todo o arcabouço teórico matemático garantido pela Teoria dos Conjuntos. A noção que temos de habitantes de um mundo e de relações entre esses habitantes, o que nos garante as funções computacionais de fato, bebe primordialmente da Teoria dos Conjuntos!
 
-### Conjuntos como coleções de coisas
+### Sets como coleções de coisas
 
-Em segundo lugar, os conjuntos voltam a aparecer na computação, agora sob uma nova roupagem, a de coleção de coisas. Como vimos anteriormente no segundo dia, a programação se importa bastante com a possibilidade de reunir diversas coisas em uma única estrutura.
+Em segundo lugar, os Conjuntos (que agora chamamos de Sets) voltam a aparecer na Computação, agora sob uma nova roupagem, a de coleção de coisas. Como vimos anteriormente no segundo dia, a programação se importa bastante com a possibilidade de reunir diversas coisas em uma única estrutura.
 
-Nesse sentido, o conjunto, ou set, em inglês, destaca-se como uma estrutura que armazena informações e segue um ordenamento próprio. Assim, é fundamental diferenciar de forma mais qualificada, o que seria a especificação de um conjunto, entendido enquanto Tipo Abstrato de Dados, e o que seria uma possível implementação.
+Nesse sentido, o Set destaca-se como uma estrutura que armazena informações e segue um ordenamento próprio. Assim, é fundamental diferenciar de forma mais qualificada, o que seria a especificação de Set, entendido enquanto Tipo Abstrato de Dados, e o que seria uma possível implementação.
 
 ### Especificação/Tipo Abstrato de Dados
 
 Quando falamos em especificação, normalmente nos referimos à descrição pormenorizada que o cliente ofereceu do produto/aplicação/programa que ele quer. No caso dos conjuntos, estamos nos referindo à ideia abstrata do que deveria ser um conjunto, ou seja, daquilo que se comporte da forma que esperamos que se comporte um conjunto.
 
-Dentro da computação, chamamos de Tipo Abstrato de Dados, aqueles tipos que são conhecidos de forma abstrata enquanto regras a serem seguidas. Tudo aquilo que for implementado de forma a obedecer todas as regras esperadas pela especificação do conjunto, merecerá o nome de implementação possível de conjunto, naquele dado contexto.
+Dentro da Computação, chamamos de Tipo Abstrato de Dados, aqueles tipos que são conhecidos de forma abstrata enquanto regras a serem seguidas. Tudo aquilo que for implementado de forma a obedecer todas as regras esperadas pela especificação do conjunto, merecerá o nome de implementação possível de conjunto, naquele dado contexto.
 
 ### Implementação
 
-As formas de implementar um conjunto são diversas. Várias linguagens de programação vem com o tipo/objeto set disponível em suas bibliotecas, já implementado, como é o caso de python e C++. Todavia, também nessas linguagens é possível implementar um tipo/objeto novo que respeite a especificação de conjuntos, mas com uma implementação distinta.
+As formas de implementar um Set são diversas. Várias linguagens de programação vem com o tipo/objeto set disponível em suas bibliotecas, já implementado, como é o caso de python e C++. Todavia, também nessas linguagens é possível implementar um tipo/objeto novo que respeite a especificação de conjuntos, mas com uma implementação distinta.
 
 Por mais que pareça trabalhoso refazer algo já pronto, por vezes uma boa programadora, ou um bom programador, pode querer reimplementar algum tipo ou função dentro de uma determinada linguagem, buscando melhorar sua eficiência ou reduzir o consumo de memória, para aquela utilização específica. Já para fins pedagógicos, a implementação de Tipos Abstratos de Dados pode ser útil para explorar as diferenças entre essas possíveis implementações.
 
 ### Tipos de coleções semelhantes
 
-Assim como os conjuntos, existem outros tipos de coleções que armazenam coisas, as quais têm regras que divergem dos conjuntos, mas que foram criadas a partir dele. Sendo assim, é essencial dominar o funcionamento de conjuntos antes de partir para estruturas mais complexas, uma vez que parte de princípios semelhantes, ainda que mais complexos.
+Assim como os Sets, existem outros tipos de coleções que armazenam coisas, as quais têm regras que divergem dos conjuntos, mas que foram criadas a partir dele. Sendo assim, é essencial dominar o funcionamento de conjuntos antes de partir para estruturas mais complexas, uma vez que parte de princípios semelhantes, ainda que mais complexos.
  
 Algumas coleções possíveis de serem citadas que tem estrutura que de alguma forma se assemelha a dos conjuntos são:
 
@@ -321,10 +330,11 @@ Algumas coleções possíveis de serem citadas que tem estrutura que de alguma f
 - Dicionário : Composta por vários pares ordenados de <Chave, Valor> em que as chaves são únicas e os valores são acessados a partir de suas respectivas chaves
 - Pilha : Composta por elementos acoplados, com inserção no início e remoção no fim
 - Fila : Composta por elementos acoplados, com inserção no início e remoção no início
+- Árvore : Composta por elementos associados com a utilização de nós, com regras específicas para inserção e exclusão, de forma a garantir que a estrutura siga sendo uma árvore
 
-### Especificação elementar dos conjuntos
+### Especificação elementar dos Sets
 
-Quando falamos de conjuntos, esperamos que algumas coisas sempre aconteçam (no caso que o conjunto siga todas as regras que conhecemos da matemática). Nesse sentido, sempre é importante que esteja presente presente na especificação de um conjunto que ele:
+Quando falamos de Sets, esperamos que algumas coisas sempre aconteçam (no caso que o Set siga todas as regras do conjunto que conhecemos da Matemática). Nesse sentido, sempre é importante que esteja presente presente na especificação de um conjunto que ele:
 
 
 - Possa ser construído a partir dos elementos
@@ -334,7 +344,7 @@ Quando falamos de conjuntos, esperamos que algumas coisas sempre aconteçam (no 
 - Possa estar vazio
 - Informe a quantidade de seus elementos, caso finito (ou cardinalidade, caso infinito)
 
-No caso do setI que já vem implementado no C++, encontrado na biblioteca set, são essas algumas das ferramentas que são oferecidas prontas para uso, seguindo a especificação de set:
+No caso do Set que já vem implementado no C++, encontrado na biblioteca set, são essas algumas das ferramentas que são oferecidas prontas para uso, seguindo a especificação de set:
 
 
 - set( ) (x -> set (x)) : Constrói um set de elementos do tipo x
@@ -361,19 +371,19 @@ int main() {
 }
 ```
 
-### Ocasiões em que conjuntos podem aparecer
+### Ocasiões em que Sets podem aparecer
 
-Decerto, quando se fala em estruturas de dados e em tipos abstratos de dados, sempre estaremos discutindo qual a melhor e mais adequada ferramenta para este ou aquele objetivo. No caso dos conjuntos não é diferente, assim como nos são úteis na matemática, eles também podem ser úteis na vida real durante a programação. 
+Decerto, quando se fala em estruturas de dados e em tipos abstratos de dados, sempre estaremos discutindo qual a melhor e mais adequada ferramenta para este ou aquele objetivo. No caso dos conjuntos não é diferente, assim como nos são úteis na Matemática, eles também podem ser úteis na vida real durante a programação. 
 
-Por vezes, quando se está programando não é possível decidir qual base de dados você irá utilizar. Em casos como listas de participantes com inscrições possivelmente reṕetidas, caso você queira checar se determinado participante deve ser admitido ou não, um conjunto pode ser a melhor solução. Nesse cenário seria muito custoso tratar a base de dados (eliminar as repetições), e por isso um conjunto seria um tipo ideal.
+Por vezes, quando se está programando não é possível decidir qual coleção de dados você irá utilizar. Em casos como listas de participantes com inscrições possivelmente repetidas, caso você queira checar se determinado participante deve ser admitido ou não, um Set pode ser a melhor solução. Nesse cenário seria muito custoso tratar a coleções de dados (eliminar as repetições), e por isso um Sets seria um dos tipos ideais.
 
-Em outros casos, como quando você quer reduzir o espaço gasto, mas não quer se preocupar com repetições, também é comum usar conjuntos, como quando se está recolhendo espaços já visitados durante o percorrimento de um labirinto,e você necessariamente terá que passar por alguns lugares mais de uma vez.
+Em outros casos, como quando você quer reduzir o espaço gasto, mas não quer se preocupar com repetições, também é comum usar Sets, como quando se está recolhendo espaços já visitados durante o percorrimento de um labirinto,e você necessariamente terá que passar por alguns lugares mais de uma vez.
 
-Além disso, é também na área de dados que os conjuntos e as operações envolvendo conjuntos adquirem mais relevância. Mas como este minicurso é apenas introdutório iremos nos ater ao funcionamento dos conjuntos em si, a fim de que os conceitos básicos sejam dominados para que daí possam ser compreendidos assuntos mais complexos!
+Além disso, é também na área de dados que os Sets e as operações envolvendo conjuntos adquirem mais relevância. Mas como este minicurso é apenas introdutório iremos nos ater ao funcionamento dos conjuntos em si, a fim de que os conceitos básicos sejam dominados para que daí possam ser compreendidos assuntos mais complexos!
 
 ##### Exercício
 
-Agora, utilizando apenas as ferramentas dispostas na especificação dos conjuntos, você seria capaz de criar um par ordenado?
+Agora, utilizando apenas as ferramentas dispostas na especificação dos Sets, você seria capaz de criar um par ordenado?
 
 <details>
     <summary>resposta: SPOILER!</summary>
@@ -381,15 +391,15 @@ Agora, utilizando apenas as ferramentas dispostas na especificação dos conjunt
 </details>
 
 #### List X Set
-Como visto anteriormente nesse dia, vocês viram que existem algumas estruturas de dados similares aos conjuntos, também viram que as Listas são um exemplo disso.
-Ao contrário de conjuntos, as listas possuem algumas propriedades específicas que tornam ela “especial”, sendo algumas delas:
+Como visto anteriormente nesse dia, vocês viram que existem algumas estruturas de dados similares aos Sets, também viram que as Listas são um exemplo disso.
+Ao contrário de Sets, as listas possuem algumas propriedades específicas que tornam ela “especial”, sendo algumas delas:
 
 - Ordem
 - Acesso direto por índice
 - Possibilidade de duplicatas
 
-Apenas olhando dessa forma, vem a pergunta: Então por que utilizamos conjuntos?
-A resposta não é tão simples, pois, o motivo de usar alguma estrutura de dados é variável. Porém, os maiores “defeitos” dos conjuntos se tornam sua “maior virtude”, visto que, o uso de conjuntos tem as seguintes vantagens:
+Apenas olhando dessa forma, vem a pergunta: Então por que utilizamos Sets?
+A resposta não é tão simples, pois, o motivo de usar alguma estrutura de dados é variável. Porém, os maiores “defeitos” dos conjuntos se tornam sua “maior virtude”, visto que, o uso de Sets tem as seguintes vantagens:
 
 - Elementos únicos.
 - Bem otimizado.
@@ -440,7 +450,7 @@ numeros = [1, 2, 3, 4, 42, 21, 5]
 trabalho_legal = [2 * n for n in numeros if n % 2 == 1]
 print(trabalho_legal)
 ```
-Note que, é MUITO similar ao que estamos acostumados em conjuntos (no “papel”), já que segue a forma “” elemento -> condição "".
+Note que, é MUITO similar ao que estamos acostumados em Sets (no “papel”), já que segue a forma “” elemento -> condição "".
 Na prática não tem diferença entre os dois códigos, porém, note que o de baixo está mais compacto e legível.
 Para utilizar esse conceito em Sets não é tão diferente (obs: pode variar dependendo da linguagem, mas a lógica se mantém), em python por exemplo, a única diferença é que ao invés dos colchetes ([]) utilizamos chaves ({}).
 Vantagens da sintaxe:
