@@ -34,6 +34,22 @@ title: Minicurso de Linux e Git
             <li><a href="#demonstrações-sobre-conjuntos">Demonstrações sobre Conjuntos</a></li>
         </ul>
     </details>
+    <details>
+        <summary><a href="#Conjuntos e Programação">Conjuntos e Programação</a></summary>
+        <ul>
+            <li><a href="#tipos-x-objetos-x-conjuntos/sets">Tipos ⨯ Objetos ⨯ Conjuntos/Sets</a></li>
+            <li><a href="#conjuntos-como-inspiração-para-a-montagem-da-lógica-de-tipos">Conjuntos como inspiração para a montagem da lógica de tipos</a></li>
+            <li><a href="#sets-como-coleções-de-coisas">Sets como coleções de coisas</a>
+                <ul>
+                    <li><a href="#especificacao/tipo-abstrato-de-dados">Especificação/Tipo Abstrato de Dados</a></li>
+                    <li><a href="#implementacao">Implementação</a></li>
+                </ul>
+            </li>
+            <li><a href="#tipos-de-coleções-semelhantes">Tipos de coleções semelhantes</a></li>
+            <li><a href="#especificação-elementar-dos-sets">Especificação elementar dos Sets</a></li>
+            <li><a href="#ocasiões-em-que-sets-podem-aparecer">Ocasiões em que Sets podem aparecer</a></li>
+        </ul>
+    </details>
   <button class="toggle-button" id="toggle-button">
   
       Esconder Sumário
@@ -411,6 +427,8 @@ Agora, utilizando apenas as ferramentas dispostas na especificação dos Sets, v
     <summary>resposta: SPOILER!</summary>
     Resposta: {x, {x,y}}
 </details>
+
+## Conjuntos e funções
 
 #### List X Set
 Como visto anteriormente nesse dia, vocês viram que existem algumas estruturas de dados similares aos Sets, também viram que as Listas são um exemplo disso.

@@ -5,27 +5,70 @@ title: Minicurso de Matemática aplicada à Computação
 
 <div id="sumario" class="sumario-git">
     <h1>Dia 2</h1>
-  <details>
+   <details>
     <summary><a href="#Indução">Indução</a></summary>
       <ul>
-        <li><a href="#O que é indução">O que é indução</a></li>
-        <li><a href="#Soma de Gauss">Soma de Gauss</a></li>
-        <li><a href="#Indução forte">Indução forte</a></li>
+        <li><a href="#O que é indução">O que é indução</a>
+          <ul>
+            <li><a href="#estrutura-da-indução">Estrutura da Indução</a></li>
+          </ul>
+        </li>
+        <li><a href="#soma-de-gauss">Soma de Gauss</a>
+          <ul>
+            <li><a href="#indução-em-prática">Indução em Prática</a></li>
+          </ul>
+        </li>
+        <li><a href="#indução-forte">Indução forte</a></li>
       </ul>
     </details>
-    <details>
+    <details open>
     <summary><a href="#Recursão">Recursão</a></summary>
       <ul>
-        <li><a href="#Onde usamos a recursão na programação">Onde usamos a recursão na programação</a></li>
-        <li><a href="#Perigos da recursão">Perigos da recursão</a></li>
-        <li><a href="#Recursão bem definida">Recursão bem definida</a></li>
-        <li><a href="#Elementos básicos da recursão">Elementos básicos da recursão</a></li>
-        <li><a href="#Construindo coleções de coisas">Construindo coleções de coisas</a></li>
-        <li><a href="#Recursão em listas">Recursão em listas</a></li>
-        <li><a href="#Extrapolando para outros tipos">Extrapolando para outros tipos</a></li>
+        <li><a href="#Onde usamos a recursão na programação">Onde usamos a recursão na programação</a>
+          <ul>
+            <li><a href="#recursão-vs-iteração">Recursão vs. Iteração</a></li>
+          </ul>
+        </li>
+        <li><a href="#Perigos da recursão">Perigos da recursão</a>
+          <ul>
+            <li><a href="#exemplo-1-chamada-infinita-da-recursão-por-ausência-de-caso-base">Exemplo 1 -> Chamada infinita da recursão por ausência de caso base</a></li>
+            <li><a href="#exemplo-2-chamada-infinita-da-recursão-por-buracos-no-caso-base">Exemplo 2 -> Chamada infinita da recursão por buracos no caso base</a></li>
+            <li><a href="#exemplo-3-chamada-incompleta-por-problemas-no-passo-recursivo">Exemplo 3 -> Chamada incompleta por problemas no passo recursivo</a></li>
+          </ul>
+        </li>
+        <li><a href="#Recursão bem definida">Recursão bem definida</a>
+          <ul>
+            <li><a href="#exemplo-de-recursão-bem-definida">Exemplo de recursão bem definida</a></li>
+          </ul>
+        </li>
+        <li><a href="#Elementos básicos da recursão">Elementos básicos da recursão</a>
+          <ul>
+            <li><a href="#introdução-aos-elementos-básicos-da-recursão">Introdução aos elementos básicos da recursão</a></li>
+          </ul>
+        </li>
+        <li><a href="#construindo-coleções-de-coisas">Construindo coleções de coisas</a>
+          <ul>
+            <li><a href="#utilizando-a-recursão-para-construir-coleções-de-coisas">Utilizando a recursão para construir coleções de coisas</a></li>
+          </ul>
+        </li>
+        <li><a href="#Recursão em listas">Recursão em listas</a>
+          <ul>
+            <li><a href="#montando-construtores-de-listas">Montando construtores de listas</a></li>
+            <li><a href="#descobrindo-a-função-length">Descobrindo a função LENGTH</a></li>
+            <li><a href="#descobrindo-a-função-sum-exercício/desafio">Descobrindo a função SUM (Exercício/desafio)</a></li>
+            <li><a href="#descobrindo-a-função-filter">Descobrindo a função FILTER</a></li>
+            <li><a href="#descobrindo-a-função-map">Descobrindo a função MAP</a></li>
+            <li><a href="#descobrindo-a-função-replicate">Descobrindo a função REPLICATE</a></li>
+          </ul>
+        </li>
+        <li><a href="#Extrapolando para outros tipos">Extrapolando para outros tipos</a>
+          <ul>
+            <li><a href="#descobrindo-melhores-funções-even-e-odd">Descobrindo melhores funções EVEN e ODD</a></li>
+            <li><a href="#verificando-se-uma-função-foi-bem-definida-recursivamente-kahoot">Verificando se uma função foi bem definida recursivamente (kahoot)</a></li>
+          </ul>
+        </li>
       </ul>
-    </details>
-   <button class="toggle-button" id="toggle-button">
+    </details>   <button class="toggle-button" id="toggle-button">
   
       Esconder Sumário
   
