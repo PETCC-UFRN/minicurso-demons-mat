@@ -291,8 +291,9 @@ No caso das linguagens de programação tipadas, cada membro do mundo é de um t
 
 Já no caso de linguagens sem tipos (que também podem ser chamados de tipo único), como a Python, todos os habitantes do mundo são objetos, e as funções ocorrem entre objetos. Por mais que possam ter uma decoração de tipos, os objetos de Python não obedecem às regras do mundo tipado.
 
-Mas então, como ficam os Sets?
+Nesse contexto, também é importante destacar que existe uma outra distinção realizada quando os tipos são elementos básicos da linguagem de programação em si, sendo chamados de tipos primitivos. A partir desses, outros tipos são criados e implementados nas diferentes linguagens de programação, que tem diferentes primitivos. Na maioria das linguages tipadas, também é possível criar novos tipos, definidos durante a escrita do programa.
 
+Mas então, como ficam os Sets?
 
 ### Conjuntos como inspiração para a montagem da lógica de tipos
 
@@ -302,24 +303,26 @@ Em primeiro momento, há de se reconhecer a utilidade de todo o arcabouço teór
 
 Em segundo lugar, os Conjuntos (que agora chamamos de Sets) voltam a aparecer na Computação, agora sob uma nova roupagem, a de coleção de coisas. Como vimos anteriormente no segundo dia, a programação se importa bastante com a possibilidade de reunir diversas coisas em uma única estrutura.
 
+<div style="text-align: center;"><img src="assets/images/box.jpg" alt="" style="widht:300px;height:300px;"> </div>
+
 Nesse sentido, o Set destaca-se como uma estrutura que armazena informações e segue um ordenamento próprio. Assim, é fundamental diferenciar de forma mais qualificada, o que seria a especificação de Set, entendido enquanto Tipo Abstrato de Dados, e o que seria uma possível implementação.
 
 ### Especificação/Tipo Abstrato de Dados
 
 Quando falamos em especificação, normalmente nos referimos à descrição pormenorizada que o cliente ofereceu do produto/aplicação/programa que ele quer. No caso dos conjuntos, estamos nos referindo à ideia abstrata do que deveria ser um conjunto, ou seja, daquilo que se comporte da forma que esperamos que se comporte um conjunto.
 
-Dentro da Computação, chamamos de Tipo Abstrato de Dados, aqueles tipos que são conhecidos de forma abstrata enquanto regras a serem seguidas. Tudo aquilo que for implementado de forma a obedecer todas as regras esperadas pela especificação do conjunto, merecerá o nome de implementação possível de conjunto, naquele dado contexto.
+Dentro da Computação, chamamos de Tipo Abstrato de Dados, aqueles tipos que são conhecidos de forma abstrata enquanto regras a serem seguidas. Tudo aquilo que for implementado de forma a obedecer todas as regras esperadas pela especificação do conjunto, assim como suas operações, merecerá o nome de implementação possível de conjunto, naquele dado contexto.
 
 ### Implementação
 
-As formas de implementar um Set são diversas. Várias linguagens de programação vem com o tipo/objeto set disponível em suas bibliotecas, já implementado, como é o caso de python e C++. Todavia, também nessas linguagens é possível implementar um tipo/objeto novo que respeite a especificação de conjuntos, mas com uma implementação distinta.
+As formas de implementar um Set são diversas. Várias linguagens de programação vem com o tipo/objeto Set disponível com uma implementação específica em suas bibliotecas, como é o caso de python e C++. Todavia, também nessas linguagens é possível implementar um tipo/objeto novo que respeite a especificação de conjuntos, mas com uma implementação distinta.
 
 Por mais que pareça trabalhoso refazer algo já pronto, por vezes uma boa programadora, ou um bom programador, pode querer reimplementar algum tipo ou função dentro de uma determinada linguagem, buscando melhorar sua eficiência ou reduzir o consumo de memória, para aquela utilização específica. Já para fins pedagógicos, a implementação de Tipos Abstratos de Dados pode ser útil para explorar as diferenças entre essas possíveis implementações.
 
 ### Tipos de coleções semelhantes
 
-Assim como os Sets, existem outros tipos de coleções que armazenam coisas, as quais têm regras que divergem dos conjuntos, mas que foram criadas a partir dele. Sendo assim, é essencial dominar o funcionamento de conjuntos antes de partir para estruturas mais complexas, uma vez que parte de princípios semelhantes, ainda que mais complexos.
- 
+Assim como os Sets, existem outros tipos de coleções que armazenam coisas, as quais têm regras que divergem dos Sets, mas que foram criadas a partir dele. Sendo assim, é essencial dominar o funcionamento de conjuntos antes de partir para estruturas mais complexas, uma vez que parte de princípios semelhantes, ainda que mais complexos.
+
 Algumas coleções possíveis de serem citadas que tem estrutura que de alguma forma se assemelha a dos conjuntos são:
 
 - Par ordenado : Composto por dois elementos ordenados, acessíveis a partir de suas posições <first,second>
@@ -327,34 +330,51 @@ Algumas coleções possíveis de serem citadas que tem estrutura que de alguma f
 - Lista infinita : Composta por uma série de elementos acoplados, podendo ter início ou fim
 - Bag/Sacola : Composta por elementos sem posição relevante, mas admitindo repetições
 - Sequência : Composta por uma série de elementos acoplados e ordenados
-- Dicionário : Composta por vários pares ordenados de <Chave, Valor> em que as chaves são únicas e os valores são acessados a partir de suas respectivas chaves
+- Dicionário/Array Associativo : Composta por vários pares ordenados de <Chave, Valor> em que as chaves são únicas e os valores são acessados a partir de suas respectivas chaves
 - Pilha : Composta por elementos acoplados, com inserção no início e remoção no fim
 - Fila : Composta por elementos acoplados, com inserção no início e remoção no início
-- Árvore : Composta por elementos associados com a utilização de nós, com regras específicas para inserção e exclusão, de forma a garantir que a estrutura siga sendo uma árvore
+- Árvore : Composta por elementos associados com a utilização de nós, com regras específicas para inserção e exclusão, de forma a garantir que a estrutura siga sendo uma árvore (a imagem abaixo é de uma árvore)
+
+<div style="text-align: center;"><img src="assets/images/tree.png" alt="" style="widht:300px;height:300px;"> </div>
+
+Perceba que podemos passar de uma estrutura para outra pela mudança de poucos detalhes, com as diferenças observadas tendo um grande impacto na utilidade, na eficiência e no consumo de memória de cada coleção de dados. Uma coleção ordenada terá uma busca de elemento realizada mais rapidamente do que uma coleção desordenada, por exemplo.
 
 ### Especificação elementar dos Sets
 
-Quando falamos de Sets, esperamos que algumas coisas sempre aconteçam (no caso que o Set siga todas as regras do conjunto que conhecemos da Matemática). Nesse sentido, sempre é importante que esteja presente presente na especificação de um conjunto que ele:
+Quando falamos de Sets, esperamos que algumas coisas sempre aconteçam (no caso que o Set siga todas as regras do conjunto que conhecemos da Matemática). Nesse sentido, sempre é importante que esteja presente presente na especificação de um Set a dada estrutura:
 
+- Unicidade dos elementos, em que elementos repetidos são indiferenciáveis
+- Ausência de ordem, em que a ordem dos elementos não é relevante
 
-- Possa ser construído a partir dos elementos
-- Ignore elementos repetidos
-- Seja capaz de dizer se alguém está dentro ou fora dele
-- Possua ferramentas de inserção e remoção de elementos
-- Possa estar vazio
-- Informe a quantidade de seus elementos, caso finito (ou cardinalidade, caso infinito)
+Nessa estrutura, é possível que o Set seja heterogêneo ou homogêneo:
 
-No caso do Set que já vem implementado no C++, encontrado na biblioteca set, são essas algumas das ferramentas que são oferecidas prontas para uso, seguindo a especificação de set:
+- Homogêneo: normalmente obrigatório em linguagens tipadas, sendo nececessário que todos os elementos do Set sejam do mesmo tipo
+- Heterogêneo: possível nas linguagens não tipadas/unitipadas, em que os distintos elementos do Set não precisam ser do mesmo tipo
 
+Além disso, o Set precisa garantir as dadas operações:
 
-- set( ) (x -> set (x)) : Constrói um set de elementos do tipo x
-- empty( )(set -> bool) : Retorna true se o set está vazio e false se não está
-- size( ) (set -> size_type) : Retorna a quantidade de elementos no set
-- contains( ) (x -> set -> bool) : Retorna true se o elemento inserido como argumento está presente no set e false se não está
-- emplace( ) (x -> Set -> <x , bool>) : Tenta inserir um elemento no conjunto e retorna um par ordenado com o elemento e true se foi possível inseri-lo ou com o elemento e false, se não foi possível inseri-lo 
-- erase() (x-> set -> size_type) : Caso receba um elemento x como argumento, exclui o elemento da lista e retorna a quantidade de elementos removidos, podendo ser 0 ou 1.
+- Construtor de um Set vazio a partir do nada
+- Construtor de um Set habitado a partir de seus elementos
+- Modificador que adiciona um elemento
+- Modificador que exclui um elemento
+- Modificador que exclui todos os elementos, deixando o Set vazio
+- Operação de acesso que verifica se o Set contém um elemento
+- Operação de acesso que verifica o tamanho do Set
+- Operação de acesso que verifica se o Set está vazio
 
-Veja aqui um exemplo desse tipo sendo utilizado em C++:
+Perceba a semelhança das operações do Set na Computação com o conjunto na Matemática. Não é por acaso, afinal, como abordado acima, existe uma intenção de garantir que o tipo/objeto computacional corresponda à ideia que temos em nossa cabeça do que deveria ser um conjunto!
+
+Veja aqui um exemplo desse tipo sendo utilizado em Python e C++:
+
+```python
+s = {3, 5, True, "banana"};
+
+s.add(7);
+s.remove(5);
+
+for n in s:
+    print(n, end=" ");
+```
 
 ```cpp
 #include <iostream>
@@ -362,9 +382,11 @@ Veja aqui um exemplo desse tipo sendo utilizado em C++:
 
 int main() {
     
-    // Creating a set of integers
     std::set<int> s = {3, 5, 2, 1};
     
+    s.insert(7);
+    s.erase(5);
+
     for (int i = 0 ; i < s.size() ; i++)
         std::cout << x << " ";
     return 0;
