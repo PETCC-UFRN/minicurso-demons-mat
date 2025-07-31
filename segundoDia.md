@@ -48,6 +48,35 @@ title: Minicurso de Linux e Git
   </button>
   </div>
 
+# Indução
+Aposto que em determinado momento, você já se deparou com algum exercício em específico que foi solicitado para resolver, seja na escola, na própria faculdade ou até mesmo em brincadeiras da internet. E de alguma forma o resolveu por dedução natural, sem utilizar nenhum artifício matemático de forma séria enquanto analisa padrões ou faz tentativa e erro. No fim, chegando a algum palpite, no qual você tem certeza que está certo. 
+
+Dessa forma, chegada à uma conclusão, como podemos provar que uma determinada solução está certa? É aí que entra a Indução
+
+## O que é Indução?
+Indução Matemática ou Indução Finita, nada mais é que um método de demonstração. Sendo uma forma eficaz de verificar a veracidade de uma determinada propriedade.
+
+Imagine uma fileira de dominós, igualmente espaçados entre si, de tal forma que: derrubando um dominó, o próximo também será derrubado. 
+Você concorda que nesse processo a fileira inteira de dominós será derrubada?
+
+A Indução funciona exatamente dessa forma. Provando que uma determinada propriedade é verdade para um valor e em seguida provando que é verdade para o valor seguinte, então é verdade para todos os valores.
+
+### Estrutura da Indução
+A indução atua sobre os números inteiros não negativos (1, 2, 3, 4, 5...) e segue a seguinte estrutura:
+- Passo base: Provamos que é verdade para o primeiro valor.
+- Passo indutivo: Provamos que é verdade para o valor seguinte.
+  	- Hipótese de indução
+  	- Verificação da hipótese
+
+Por enquanto, apenas se familiarize com o que é. Ainda explicaremos como colocar em prática.
+
+## Soma de Gauss
+
+### Indução em Prática
+
+## Exercício 1 
+
+## Indução Forte
 
 # Recursão
 Achou que foi por acaso que nós começamos o nosso dia aprendendo sobre indução?
