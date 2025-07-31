@@ -1,9 +1,9 @@
 ---
 layout: layoutGit
-title: Minicurso de Linux e Git
+title: Minicurso de Matemática aplicada à Computação
 ---
 
-<div id="sumario" class="sumario-git">
+<div id="Dia 2" class="sumario-git">
     <h1>Sumário</h1>
   <details>
     <summary><a href="#expandindo-a-ideia-de-comandos">Expandindo a ideia de comandos</a></summary>
@@ -81,7 +81,7 @@ Por enquanto, apenas se familiarize com o que é. Ainda explicaremos como coloca
 # Recursão
 Achou que foi por acaso que nós começamos o nosso dia aprendendo sobre indução?
 
-Nessa seção, iremos aprender que indução e recursão são duas faces da mesma moeda, correspondendo tanto a indução a um método de prova matemática que pode ser extrapolado para a computação, chegando na recursão, como a recursão a uma ferramenta computacional que pode ser extrapolada para o campo das demonstrações matemáticas, chegando-se na indução.
+Nessa seção, iremos aprender que indução e recursão são duas faces da mesma moeda, correspondendo tanto a indução a um método de prova Matemática que pode ser extrapolado para a Computação, chegando na recursão, como a recursão a uma ferramenta computacional que pode ser extrapolada para o campo das demonstrações Matemáticas, chegando-se na indução.
 
 Da mesma forma que a indução tem sua base e passo indutivo, na recursão também teremos uma base e passo recursivo! (até os nomes se parecem, né?)
 
@@ -89,7 +89,7 @@ A etimologia da palavra “Recursão” remete ao latim, da palavra recursio, qu
 
 ## Mas onde usamos a recursão na programação
 
-Bem, como já deve ter sido percebido, a computação está sempre se utilizando das ferramentas mais diversas para alcançar seus objetivos, sejam eles o funcionamento do sistema de uma mercearia de bairro, o cálculo da sua nota do sigaa ou garantir que você não tire a bunda da cadeira depois de abrir o TikTok.
+Bem, como já deve ter sido percebido, a Computação está sempre se utilizando das ferramentas mais diversas para alcançar seus objetivos, sejam eles o funcionamento do sistema de uma mercearia de bairro, o cálculo da sua nota do sigaa ou garantir que você não tire a bunda da cadeira depois de abrir o TikTok.
 
 Nesse sentido, a recursão vem na esteira daquelas ferramentas utilizadas, em termos bem simplificados, para facilitar a vida da programadora ou programador, a fim de evitar a realização manual de um trabalho repetitivo. Ontem, vimos na parte de lógica e estruturas de controle, uma ferramenta semelhante à recursão que tinha uma utilidade muito parecida com essa, vocês lembram qual era?
 
@@ -107,8 +107,8 @@ Pode ter parecido um pouco abstrato demais por agora, mas conforme forem apresen
 - Deixa o código mais organizado e bem estruturado
 - Especialmente útil para resolver problemas de natureza recursiva
 - Especialmente útil para utilizar estruturas construídas recursivamente
-Em contrapartida, a abordagem recursiva normalmente perde para a iterativa quando falamos em:
 
+Em contrapartida, a abordagem recursiva normalmente perde para a iterativa quando falamos em:
 
 - Situações onde o foco é na eficiência/velocidade do programa
 - Situações onde é necessário reduzir o consumo de memória
@@ -122,14 +122,14 @@ Sendo assim, vejamos então alguns casos onde a recursão foi usada de forma nã
 <div style="text-align: center;"><img src="assets/images/ouroboros.jpg" alt="" style="widht:300px;height:300px;"> </div>
 
 
-### Exemplo 1 (chamada infinita da recursão por ausência de caso base)
+### Exemplo 1 -> Chamada infinita da recursão por ausência de caso base
 
 ```haskell
 Loop :: Int -> Int 
 Loop n = Loop (n+1)
 ```
 
-### Exemplo 2 (chamada infinita da recursão por buracos no caso base)
+### Exemplo 2 -> Chamada infinita da recursão por buracos no caso base
 
 ```haskell
 LoopHole :: Int -> Int
@@ -139,7 +139,7 @@ LoopHole n
 ```
 (Atenção: otherwise significa “caso contrário” em inglês)
 
-### Exemplo 3 (chamada incompleta por problemas no passo recursivo)
+### Exemplo 3 -> Chamada incompleta por problemas no passo recursivo
 
 ```haskell
 Incomplete :: Int -> Bool
@@ -251,7 +251,7 @@ Agora que temos em mãos os dois construtores das listas de naturais, podemos b
 
 Utilizando esses construtores, você consegue criar alguma outra lista?
 
-### Descobrindo a função length
+### Descobrindo a função <span style="color: #081849; font-weight: bold;">LENGTH</span>
 
 Agora que temos acesso a um tipo definido, por nós mesmos, recursivamente, nós podemos enfim começar a utilizar funções que se aproveitem dessa implementação!
 
@@ -274,10 +274,13 @@ Olhe como foi fácil definir o caso base e o passo recursivo! Caso a lista estej
 
 Vamos tentar desenhar no quadro para ver se dá certo mesmo?
 
-### Descobrindo a função sum (Exercício/desafio)
+### Descobrindo a função <span style="color: #081849; font-weight: bold;">SUM</span> (Exercício/desafio)
 
 A partir da função length definida anteriormente, você consegue pensar como seria a construção de uma função sum (soma), definida usando uma List Nat? Vamos tentar?
 
+<details>
+    <summary >SPOILER!</summary>
+<div markdown="1">
 ```haskell
 sum :: List Int -> Int
 -- O tipo da nossa função recursiva
@@ -290,8 +293,10 @@ sum (x : xs) = x + sum xs
 (Atenção: sum significa “soma” em inglês)
 
 Observe que foi apenas possível fazer esta função pois já havia um tipo Int implementado na nossa linguagem de programação simulada com pseudocódigo, assim como uma operação de soma que recebe dois números do tipo Int e retorna outro Int!
+</div>
+</details>
 
-### Descobrindo a função filter
+### Descobrindo a função <span style="color: #081849; font-weight: bold;">FILTER</span>
 
 É importante perceber que não temos limitações quanto à saída das funções para utilização da recursão! Veja esse exemplo que utiliza um predicado (x -> bool) para filtrar uma lista que queremos que tenha apenas elementos que cumpram um certo critério!
 
@@ -313,6 +318,10 @@ filter p (x : xs) =
 
 Mas o que seria um predicado (x -> bool)? Nós já criamos um hoje mais cedo, lembram qual era?
 
+<details>
+    <summary >SPOILER!</summary>
+<div markdown="1">
+
 ```haskell
 filter :: (Int-> Bool) -> List Int -> List Int
 filter p [ ] -> [ ]
@@ -325,9 +334,10 @@ filter IsEven [ ] = [ ]
 filter IsEven [2, 3, 5, 65, 8, 2] = [3, 5, 65]
 filter IsEven [1, 3, 3] = -- ?
 ```
+<div/>
+<details/>
 
-### Descobrindo a função map
-
+### Descobrindo a função <span style="color: #081849; font-weight: bold;">MAP</span>
 Outra função fundamental para entender a lógica da recursão é a map, que mapeia uma determinada função em todos os componentes de uma lista. Pelo nome, você conseguiria adivinhar o que ela faz?
 
 
@@ -350,8 +360,7 @@ map double [ 42. 43. 42] = -- ?
 
 Você consegue imaginar como seria definir essa função de forma iterativa?
 
-### Descobrindo a função replicate
-
+### Descobrindo a função <span style="color: #081849; font-weight: bold;">REPLICATE</span>
 De forma semelhante, também podemos diversificar o que colocamos na entrada da nossa função! Veja só a replicate, que pega um número natural, um elemento, e o replica por essa quantidade de vezes formando uma lista!
 
 ```haskell
@@ -382,7 +391,7 @@ Agora temos um tipo recursivo representante dos números naturais com dois const
 
 Nesse sentido, teríamos o 1 representado pelo (S 0), o 2 pelo S(S 0), o 3 pelo S(S(S 0)) e assim em diante!
 
-### Descobrindo melhores funções even e odd
+### Descobrindo melhores funções <span style="color: #081849; font-weight: bold;">EVEN</span> e <span style="color: #081849; font-weight: bold;">ODD</span>
 
 Agora que temos os naturais como tipo recursivo, podemos definir uma função ainda melhor para definir se um número é par (even), ou ímpar (odd)!
 
@@ -398,36 +407,6 @@ odd n = even S n
 
 ### Verificando se uma função foi bem definida recursivamente (kahoot)
 
-# Exercícios
-
-## Orientações sobre os exercícios
-
-Envie os exercícios de cada dia *separados* para o email `linuxgitpetcc@gmail.com` com o assunto sempre sendo: `Dia (dia de aula) - (Nome do aluno)`
-
-## Exercícios de Revisão da aula passada
-
-### Exercício 1
-
-### Exercício 2
-
-## Exercícios da aula de hoje
-
-### Exercício 1
-
-
-### Exercício 2
-
-
-### Exercício 3
-
-
-### Exercício 4
-
-
-### Exercício 5
-
-
-### Exercício 6
 
 ---
 <script>
