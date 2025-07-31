@@ -1,6 +1,6 @@
 --- 
 layout: home
-title: Minicurso de Introdução às Demonstrações Matemáticas
+title: Matemática aplicada à Computação
 ---
 
 
