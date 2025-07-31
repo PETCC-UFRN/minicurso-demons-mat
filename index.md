@@ -1,6 +1,6 @@
 --- 
 layout: home
-title: Matemática aplicada à Computação
+title: Minicurso de Matemática aplicada à Computação
 ---
 
 
