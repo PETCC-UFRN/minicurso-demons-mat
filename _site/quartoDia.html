@@ -82,7 +82,7 @@
 
 <h1 id="interseção-entre-conjuntos-e-programação">Interseção entre Conjuntos e Programação</h1>
 
-<p>Olá a todos! Sejam bem-vindos ao quarto dia do nosso minicurso de Matemática aplicada à Programação. Hoje iremos aprender sobre conjuntos, tanto pensando na sua definição matemática como explorando a sua relação com a programação!</p>
+<p>Olá a todos! Sejam bem-vindos ao quarto dia do nosso minicurso de Matemática aplicada à Computação. Hoje iremos aprender sobre conjuntos, tanto pensando na sua definição matemática como explorando a sua relação com a programação!</p>
 
 <h2 id="teoria-dos-conjuntos">Teoria dos Conjuntos</h2>
 
@@ -309,12 +309,14 @@ utilizando a notação de definir conjuntos de sua preferência!</p>
 
 <p>Proposições sobre conjuntos são demonstradas ou refutadas utilizando das próprias definições, operações, e relações que vimos anteriormente. Vamos dar uma olhadinha em como se parece uma demonstração envolvendo conjuntos:</p>
 
-<p><strong>Sejam A, B e C conjuntos tais que  A ⊆ B e B ⊆ C, demonstre que A ⊆ C.</strong></p>
+<p><strong>Sejam A, B e C conjuntos, demonstre que  (A ⊆ B ∧ B ⊆ C) → A ⊆ C.</strong></p>
 
 <p>Demonstração:</p>
 
+<p>Relembrando a definição de A ⊆ C, precisamos demonstrar que todo elemento de A pertence a C.</p>
+
 <blockquote>
-  <p>Relembrando a definição de A ⊆ C, precisamos demonstrar que todo elemento de A pertence a C.</p>
+  <p>Suponha A ⊆ B ∧ B ⊆ C</p>
 </blockquote>
 
 <blockquote>
@@ -369,11 +371,11 @@ utilizando a notação de definir conjuntos de sua preferência!</p>
 
 <p>Aqui, é importante fazer uma diferenciação de conceitos que se sobrepõem de forma não ignorável! Ocorre que tanto no mundo da Matemática com no mundo da Computação temos tanto tipos como conjuntos, de forma que seria impossível, ou no mínimo imprudente, seguir adiante sem fazer as devidas distinções.</p>
 
-<p>Conjuntos, no mundo da Matemática, referem-se ao que acabamos de ver no tópico anterior, sendo parte componente das bases da matemática tradicional. Tipos, no mundo da matemática, por sua vez, representam uma outra possível diferenciação dos habitantes desse mundo, utilizada na Teoria dos Tipos, e fundamental para garantir uma ponte teórica sólida entre matemática e computação, em especial na esfera axiomática. Todavia, os tipos da teoria dos tipos não estarão sendo abordados no presente minicurso, em razão de sua complexidade teórica e do curso tempo disponível.</p>
+<p>Conjuntos, no mundo da Matemática, referem-se ao que acabamos de ver no tópico anterior, sendo parte componente das bases da Mtemática tradicional. Tipos, no mundo da Matemática, por sua vez, representam uma outra possível diferenciação dos habitantes desse mundo, utilizada na Teoria dos Tipos, e fundamental para garantir uma ponte teórica sólida entre Matemática e Computação, em especial na esfera axiomática. Todavia, os tipos da Teoria dos Tipos não estarão sendo abordados no presente minicurso, em razão de sua complexidade teórica e do tempo disponível.</p>
 
-<p>Já no mundo da programação, Conjuntos são considerados como um possível tipo, representando uma coleção de coisas, sendo a isso somadas a uma série de regras de utilização e operações. Por conta disso, desse ponto em diante, quando estivermos falando do ponto de vista da Computação, chamaremos conjuntos de Sets (correspondente a tradução de conjuntos para a língua inglesa), a fim de garantir uma fcil diferenciação.</p>
+<p>Já no mundo da programação, Conjuntos são considerados como um possível tipo, representando uma coleção de coisas, sendo a isso somadas a uma série de regras de utilização e operações. Por conta disso, desse ponto em diante, quando estivermos falando do ponto de vista da Computação, chamaremos conjuntos de Sets (correspondente a tradução de conjuntos para a língua inglesa), a fim de garantir uma fácil diferenciação.</p>
 
-<p>Da mesma forma, também os tipos na programação terão um significado distinto, tendo se escolhido, entretanto, manter a nomenclatura original deste. Sendo assim, daqui em diante, sempre que aparecer o nome tipo, será em razão de estarmos falando da perspectiva computacional. Nesse dentido, no mundod da Computação, tipos será muitas vezes o nome dado aos habitantes do mundo.</p>
+<p>Da mesma forma, também os tipos na programação terão um significado distinto, tendo se escolhido, entretanto, manter a nomenclatura original deste. Sendo assim, daqui em diante, sempre que aparecer o nome tipo, será em razão de estarmos falando da perspectiva computacional. Nesse dentido, no mundo da Computação, tipos será muitas vezes o nome dado aos habitantes do mundo.</p>
 
 <p>No caso das linguagens de programação tipadas, cada membro do mundo é de um tipo distinto, e as funções ocorrem de tipo x para tipo y, retornando-se o famigerado “type error” caso haja a tentativa inválida de operar com tipos não correspondentes àquela função (e caso não haja forma de coagir algum dos tipos a se adequar à tipagem esperada). Alguns tipos bastante conhecidos são o Int, o Char, a String, o Bool, etc.</p>
 
