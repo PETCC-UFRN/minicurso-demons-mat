@@ -35,7 +35,7 @@ title: Minicurso de Linux e Git
 
 ## Pontos que devem estar presentes na apresentação da solução alcançada:
 
-1) Aspectos observados ao decorrer da solução que se aproximam de conceitos matemáticos já conhecidos;
+1) Aspectos observados ao decorrer da solução que se aproximam de conceitos matemáticos vistos nesse curso;
 
 2) Explicação detalhada da lógica por trás do pseudocódigo ou código utilizado;
 
