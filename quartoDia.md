@@ -251,11 +251,13 @@ Sendo A e B conjuntos, temos:
 
 Proposições sobre conjuntos são demonstradas ou refutadas utilizando das próprias definições, operações, e relações que vimos anteriormente. Vamos dar uma olhadinha em como se parece uma demonstração envolvendo conjuntos: 
 
-**Sejam A, B e C conjuntos tais que  A ⊆ B e B ⊆ C, demonstre que A ⊆ C.**
+**Sejam A, B e C conjuntos, demonstre que  (A ⊆ B ∧ B ⊆ C) → A ⊆ C.**
 
 Demonstração:
 
-> Relembrando a definição de A ⊆ C, precisamos demonstrar que todo elemento de A pertence a C.
+Relembrando a definição de A ⊆ C, precisamos demonstrar que todo elemento de A pertence a C.
+
+> Suponha A ⊆ B ∧ B ⊆ C
 
 > Temos que todo elemento de A pertence a B, visto que A ⊆ B.
 

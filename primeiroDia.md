@@ -441,8 +441,8 @@ Para começar, podemos demonstrar juntos, utilizando do método da igualdade de 
 Agora é a sua vez de demonstrar algumas equivalências lógicas, utilize do mesmo método que mostramos anterioremente para demonstrar as seguintes bi-implicações:
 
 ```lean
-P ∧ Q ≡ Q ∧ P               [Comutatividade da conjunção]
-(P ∨ Q) ∧ Q ≡ Q             [Abrsorção da conjunção sobre a disjunção]
-¬(¬P) ≡ P                   [Negação da negação]
-¬(P ∧ Q) ≡ (¬P) ∨ (¬Q)      [Demorgan]
+P ∧ Q ≡ Q ∧ P               --[Comutatividade da conjunção]
+(P ∨ Q) ∧ Q ≡ Q             --[Abrsorção da conjunção sobre a disjunção]
+¬(¬P) ≡ P                   --[Negação da negação]
+¬(P ∧ Q) ≡ (¬P) ∨ (¬Q)      --[Demorgan]
 ```

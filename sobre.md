@@ -7,11 +7,11 @@ title: Sobre o Minicurso
 
 ## Overview do curso
 
-Esse curso foi desenvolvido pelo PETCC com o objetivo de introduzir conceitos matemáticos - sobretudo aos calouros do BTI e do BCC - e facilitar o entendimento de materiais em disciplinas futuras de matemática discreta ao longo de sua formação.
-
-Assim, guiados por pesquisas de demanda e interesse realizadas anteriormente pelo PET, procuramos (através da Teoria dos Conjuntos e de ferramentas como o LEAN) introduzir ideias tanto de lógica quanto de matemática discreta e demonstrações, de forma a apresentar, de maneira simples e compreensível, esse mundo novo a vocês!
+Neste curso iremos explorar a profunda conexão entre matemática e programação, entendendo como conceitos abstratos matemáticos se transformar em soluções computacionais mais seguras e eficientes.
 
 O curso em si é dividido em 5 dias, pensados com base em blablablalblablabla:
+
+O curso é dividido em 5 dias, pensados com base em conteúdos matemáticos essenciais abordados nas disciplinas de Matemática Computacional e Fundamentos Matemáticos da Computação. A divisão dos conteúdos é feita da seguinte maneira:
 
 ### DIA 1 - INTRODUÇÃO
 // apresentacao , exemplificacao, ambientacao, entendimento de conceitod basicos

@@ -15,4 +15,6 @@ A declaracão de participação será fornecida para os participantes que tivere
 ## Submissão dos exercícios
 
 A submissão dos exercícios se dará por via email, até o final da aula os participantes devem submeter as
-respostas do exercícios conforme descrito no enunciado ao email: <linuxgitpetcc@gmail.com>
+respostas do exercícios conforme descrito no enunciado ao email: <???????????????>
+
+Nota.: discutir sobre a submissão dos exercícios na reunião!
