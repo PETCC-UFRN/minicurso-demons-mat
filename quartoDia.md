@@ -59,7 +59,7 @@ title: Minicurso de Linux e Git
 
 # Interseção entre Conjuntos e Programação
 
-Olá a todos! Sejam bem-vindos ao quarto dia do nosso minicurso de Matemática aplicada à Programação. Hoje iremos aprender sobre conjuntos, tanto pensando na sua definição matemática como explorando a sua relação com a programação! 
+Olá a todos! Sejam bem-vindos ao quarto dia do nosso minicurso de Matemática aplicada à Computação. Hoje iremos aprender sobre conjuntos, tanto pensando na sua definição matemática como explorando a sua relação com a programação! 
 
 ## Teoria dos Conjuntos
 
@@ -299,7 +299,7 @@ No mundo da Computação, existem várias formas de descrever os habitantes de u
 
 Aqui, é importante fazer uma diferenciação de conceitos que se sobrepõem de forma não ignorável! Ocorre que tanto no mundo da Matemática com no mundo da Computação temos tanto tipos como conjuntos, de forma que seria impossível, ou no mínimo imprudente, seguir adiante sem fazer as devidas distinções.
 
-Conjuntos, no mundo da Matemática, referem-se ao que acabamos de ver no tópico anterior, sendo parte componente das bases da matemática tradicional. Tipos, no mundo da matemática, por sua vez, representam uma outra possível diferenciação dos habitantes desse mundo, utilizada na Teoria dos Tipos, e fundamental para garantir uma ponte teórica sólida entre matemática e computação, em especial na esfera axiomática. Todavia, os tipos da teoria dos tipos não estarão sendo abordados no presente minicurso, em razão de sua complexidade teórica e do tempo disponível.
+Conjuntos, no mundo da Matemática, referem-se ao que acabamos de ver no tópico anterior, sendo parte componente das bases da matemática tradicional. Tipos, no mundo da matemática, por sua vez, representam uma outra possível diferenciação dos habitantes desse mundo, utilizada na Teoria dos Tipos, e fundamental para garantir uma ponte teórica sólida entre matemática e computação, em especial na esfera axiomática. Todavia, os tipos da Teoria dos Tipos não estarão sendo abordados no presente minicurso, em razão de sua complexidade teórica e do tempo disponível.
 
 Já no mundo da programação, Conjuntos são considerados como um possível tipo, representando uma coleção de coisas, sendo a isso somadas a uma série de regras de utilização e operações. Por conta disso, desse ponto em diante, quando estivermos falando do ponto de vista da Computação, chamaremos conjuntos de Sets (correspondente a tradução de conjuntos para a língua inglesa), a fim de garantir uma fácil diferenciação.
 

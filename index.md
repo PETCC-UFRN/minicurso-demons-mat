@@ -11,9 +11,9 @@ title: Minicurso de Introdução às Demonstrações Matemáticas
 </div>
 <br>
 
-Bem vindo ao site oficial do Minicurso de Introdução às Demonstrações Matemáticas ofertado pelo PET de Ciência da Computação.
+Bem vindo ao site oficial do Minicurso de Matemática aplicada à Computação ofertado pelo PET de Ciência da Computação.
 
-O Minicurso será ofertado do perído de 04/08/2025 até 08/08/2025, e as aulas serão das 14h até as 18h, no Laboratório 2 do Departamento de Informática e Matemática Aplicada (DIMAP), UFRN.
+O Minicurso será ofertado do perído de 04-08/08/2025, e as aulas serão das 14h até as 18h, no LCC2 do Departamento de Informática e Matemática Aplicada (DIMAP), UFRN.
 
 Você pode consultar o material das aulas que foram ministradas até agora em [`/aulas`](/aulas.md) e saber mais sobre o Minicurso em geral em [`/sobre`](/sobre.md).
 
@@ -27,7 +27,7 @@ Assim, guiados por pesquisas de demanda e interesse realizadas anteriormente pel
 -->
 ## Introdução ao curso
 
-Olá a todos! Sejam bem-vindos ao curso de Matemática aplicada à Programação do PET-CC. Neste curso iremos explorar a profunda conexão entre matemática e programação, entendendo como conceitos abstratos matemáticos se transformar em soluções computacionais mais seguras e eficientes. Veremos que por trás de todo algoritmo, estrutura de dados ou sistema inteligente existe um fundamento matemático essencial!
+Olá a todos! Sejam bem-vindos ao curso de Matemática aplicada à Computação do PET-CC. Neste curso iremos explorar a profunda conexão entre matemática e programação, entendendo como conceitos abstratos matemáticos se transformar em soluções computacionais mais seguras e eficientes. Veremos que por trás de todo algoritmo, estrutura de dados ou sistema inteligente existe um fundamento matemático essencial!
 
 ### Matemática e Computação
 
@@ -57,5 +57,5 @@ A Computação tem suas raízes profundamente entrelaçadas com a Matemática, v
 
 ---
 <div class="small center">
-<p>&copy; PET-CC/UFRN 2024 Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br">CC BY-NC-SA</a>.</p>
+<p>&copy; PET-CC/UFRN 2025 Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt-br">CC BY-NC-SA</a>.</p>
 </div>
