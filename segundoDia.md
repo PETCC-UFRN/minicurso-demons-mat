@@ -3,8 +3,8 @@ layout: layoutGit
 title: Minicurso de Matemática aplicada à Computação
 ---
 
-<div id="Dia 2" class="sumario-git">
-    <h1>Sumário</h1>
+<div id="sumario" class="sumario-git">
+    <h1>Dia 2</h1>
   <details>
     <summary><a href="#expandindo-a-ideia-de-comandos">Expandindo a ideia de comandos</a></summary>
       <ul>
@@ -334,8 +334,9 @@ filter IsEven [ ] = [ ]
 filter IsEven [2, 3, 5, 65, 8, 2] = [3, 5, 65]
 filter IsEven [1, 3, 3] = -- ?
 ```
-<div/>
-<details/>
+
+</div>
+</details>
 
 ### Descobrindo a função <span style="color: #081849; font-weight: bold;">MAP</span>
 Outra função fundamental para entender a lógica da recursão é a map, que mapeia uma determinada função em todos os componentes de uma lista. Pelo nome, você conseguiria adivinhar o que ela faz?

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Minicurso de Linux e Git</title>
+        <title>Minicurso de Matemática aplicada à Computação</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="./assets/css/styles.css">
         <link rel="stylesheet" href="/minicurso-demons-mat/assets/css/syntax.css">
@@ -27,7 +27,7 @@
         <div>
             <main>
                 <div id="sumario" class="sumario-git">
-    <h1>Sumário</h1>
+    <h1>Dia 2</h1>
   <details>
     <summary><a href="#expandindo-a-ideia-de-comandos">Expandindo a ideia de comandos</a></summary>
       <ul>
@@ -106,7 +106,7 @@ Você concorda que nesse processo a fileira inteira de dominós será derrubada?
 <h1 id="recursão">Recursão</h1>
 <p>Achou que foi por acaso que nós começamos o nosso dia aprendendo sobre indução?</p>
 
-<p>Nessa seção, iremos aprender que indução e recursão são duas faces da mesma moeda, correspondendo tanto a indução a um método de prova matemática que pode ser extrapolado para a computação, chegando na recursão, como a recursão a uma ferramenta computacional que pode ser extrapolada para o campo das demonstrações matemáticas, chegando-se na indução.</p>
+<p>Nessa seção, iremos aprender que indução e recursão são duas faces da mesma moeda, correspondendo tanto a indução a um método de prova Matemática que pode ser extrapolado para a Computação, chegando na recursão, como a recursão a uma ferramenta computacional que pode ser extrapolada para o campo das demonstrações Matemáticas, chegando-se na indução.</p>
 
 <p>Da mesma forma que a indução tem sua base e passo indutivo, na recursão também teremos uma base e passo recursivo! (até os nomes se parecem, né?)</p>
 
@@ -114,7 +114,7 @@ Você concorda que nesse processo a fileira inteira de dominós será derrubada?
 
 <h2 id="mas-onde-usamos-a-recursão-na-programação">Mas onde usamos a recursão na programação</h2>
 
-<p>Bem, como já deve ter sido percebido, a computação está sempre se utilizando das ferramentas mais diversas para alcançar seus objetivos, sejam eles o funcionamento do sistema de uma mercearia de bairro, o cálculo da sua nota do sigaa ou garantir que você não tire a bunda da cadeira depois de abrir o TikTok.</p>
+<p>Bem, como já deve ter sido percebido, a Computação está sempre se utilizando das ferramentas mais diversas para alcançar seus objetivos, sejam eles o funcionamento do sistema de uma mercearia de bairro, o cálculo da sua nota do sigaa ou garantir que você não tire a bunda da cadeira depois de abrir o TikTok.</p>
 
 <p>Nesse sentido, a recursão vem na esteira daquelas ferramentas utilizadas, em termos bem simplificados, para facilitar a vida da programadora ou programador, a fim de evitar a realização manual de um trabalho repetitivo. Ontem, vimos na parte de lógica e estruturas de controle, uma ferramenta semelhante à recursão que tinha uma utilidade muito parecida com essa, vocês lembram qual era?</p>
 
@@ -132,10 +132,12 @@ Você concorda que nesse processo a fileira inteira de dominós será derrubada?
   <li>Abordagem mais clara e legível para algoritmos complexos</li>
   <li>Deixa o código mais organizado e bem estruturado</li>
   <li>Especialmente útil para resolver problemas de natureza recursiva</li>
-  <li>
-    <p>Especialmente útil para utilizar estruturas construídas recursivamente
-Em contrapartida, a abordagem recursiva normalmente perde para a iterativa quando falamos em:</p>
-  </li>
+  <li>Especialmente útil para utilizar estruturas construídas recursivamente</li>
+</ul>
+
+<p>Em contrapartida, a abordagem recursiva normalmente perde para a iterativa quando falamos em:</p>
+
+<ul>
   <li>Situações onde o foco é na eficiência/velocidade do programa</li>
   <li>Situações onde é necessário reduzir o consumo de memória</li>
 </ul>
@@ -148,13 +150,13 @@ Em contrapartida, a abordagem recursiva normalmente perde para a iterativa quand
 
 <div style="text-align: center;"><img src="assets/images/ouroboros.jpg" alt="" style="widht:300px;height:300px;" /> </div>
 
-<h3 id="exemplo-1-chamada-infinita-da-recursão-por-ausência-de-caso-base">Exemplo 1 (chamada infinita da recursão por ausência de caso base)</h3>
+<h3 id="exemplo-1---chamada-infinita-da-recursão-por-ausência-de-caso-base">Exemplo 1 -&gt; Chamada infinita da recursão por ausência de caso base</h3>
 
 <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Loop</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span> 
 <span class="kt">Loop</span> <span class="n">n</span> <span class="o">=</span> <span class="kt">Loop</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h3 id="exemplo-2-chamada-infinita-da-recursão-por-buracos-no-caso-base">Exemplo 2 (chamada infinita da recursão por buracos no caso base)</h3>
+<h3 id="exemplo-2---chamada-infinita-da-recursão-por-buracos-no-caso-base">Exemplo 2 -&gt; Chamada infinita da recursão por buracos no caso base</h3>
 
 <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">LoopHole</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
 <span class="kt">LoopHole</span> <span class="n">n</span>
@@ -163,7 +165,7 @@ Em contrapartida, a abordagem recursiva normalmente perde para a iterativa quand
 </code></pre></div></div>
 <p>(Atenção: otherwise significa “caso contrário” em inglês)</p>
 
-<h3 id="exemplo-3-chamada-incompleta-por-problemas-no-passo-recursivo">Exemplo 3 (chamada incompleta por problemas no passo recursivo)</h3>
+<h3 id="exemplo-3---chamada-incompleta-por-problemas-no-passo-recursivo">Exemplo 3 -&gt; Chamada incompleta por problemas no passo recursivo</h3>
 
 <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Incomplete</span> <span class="o">::</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 <span class="kt">Incomplete</span> <span class="n">n</span>
@@ -272,7 +274,7 @@ Em contrapartida, a abordagem recursiva normalmente perde para a iterativa quand
 
 <p>Utilizando esses construtores, você consegue criar alguma outra lista?</p>
 
-<h3 id="descobrindo-a-função-length">Descobrindo a função length</h3>
+<h3 id="descobrindo-a-função-length">Descobrindo a função <span style="color: #081849; font-weight: bold;">LENGTH</span></h3>
 
 <p>Agora que temos acesso a um tipo definido, por nós mesmos, recursivamente, nós podemos enfim começar a utilizar funções que se aproveitem dessa implementação!</p>
 
@@ -292,23 +294,28 @@ Em contrapartida, a abordagem recursiva normalmente perde para a iterativa quand
 
 <p>Vamos tentar desenhar no quadro para ver se dá certo mesmo?</p>
 
-<h3 id="descobrindo-a-função-sum-exercíciodesafio">Descobrindo a função sum (Exercício/desafio)</h3>
+<h3 id="descobrindo-a-função-sum-exercíciodesafio">Descobrindo a função <span style="color: #081849; font-weight: bold;">SUM</span> (Exercício/desafio)</h3>
 
 <p>A partir da função length definida anteriormente, você consegue pensar como seria a construção de uma função sum (soma), definida usando uma List Nat? Vamos tentar?</p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sum</span> <span class="o">::</span> <span class="kt">List</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
+<details>
+    <summary>SPOILER!</summary>
+<div>
+    <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sum</span> <span class="o">::</span> <span class="kt">List</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">Int</span>
 <span class="c1">-- O tipo da nossa função recursiva</span>
 <span class="n">sum</span> <span class="kt">[ ]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="c1">-- O nosso passo base</span>
 <span class="n">sum</span> <span class="p">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">xs</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">sum</span> <span class="n">xs</span>
 <span class="c1">-- O nosso passo recursivo</span>
-</code></pre></div></div>
+</code></pre></div>    </div>
 
-<p>(Atenção: sum significa “soma” em inglês)</p>
+    <p>(Atenção: sum significa “soma” em inglês)</p>
 
-<p>Observe que foi apenas possível fazer esta função pois já havia um tipo Int implementado na nossa linguagem de programação simulada com pseudocódigo, assim como uma operação de soma que recebe dois números do tipo Int e retorna outro Int!</p>
+    <p>Observe que foi apenas possível fazer esta função pois já havia um tipo Int implementado na nossa linguagem de programação simulada com pseudocódigo, assim como uma operação de soma que recebe dois números do tipo Int e retorna outro Int!</p>
+  </div>
+</details>
 
-<h3 id="descobrindo-a-função-filter">Descobrindo a função filter</h3>
+<h3 id="descobrindo-a-função-filter">Descobrindo a função <span style="color: #081849; font-weight: bold;">FILTER</span></h3>
 
 <p>É importante perceber que não temos limitações quanto à saída das funções para utilização da recursão! Veja esse exemplo que utiliza um predicado (x -&gt; bool) para filtrar uma lista que queremos que tenha apenas elementos que cumpram um certo critério!</p>
 
@@ -329,7 +336,11 @@ Em contrapartida, a abordagem recursiva normalmente perde para a iterativa quand
 
 <p>Mas o que seria um predicado (x -&gt; bool)? Nós já criamos um hoje mais cedo, lembram qual era?</p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">filter</span> <span class="o">::</span> <span class="p">(</span><span class="kt">Int</span><span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="kt">Int</span>
+<details>
+    <summary>SPOILER!</summary>
+<div>
+
+    <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">filter</span> <span class="o">::</span> <span class="p">(</span><span class="kt">Int</span><span class="o">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="kt">Int</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="kt">Int</span>
 <span class="n">filter</span> <span class="n">p</span> <span class="kt">[ ]</span> <span class="o">-&gt;</span> <span class="kt">[ ]</span>
 <span class="n">filter</span> <span class="n">p</span> <span class="p">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">xs</span><span class="p">)</span> <span class="o">=</span>
 	<span class="kr">if</span> <span class="n">p</span> <span class="n">x</span>
@@ -339,10 +350,12 @@ Em contrapartida, a abordagem recursiva normalmente perde para a iterativa quand
 <span class="n">filter</span> <span class="kt">IsEven</span> <span class="kt">[ ]</span> <span class="o">=</span> <span class="kt">[ ]</span>
 <span class="n">filter</span> <span class="kt">IsEven</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">65</span><span class="p">]</span>
 <span class="n">filter</span> <span class="kt">IsEven</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="c1">-- ?</span>
-</code></pre></div></div>
+</code></pre></div>    </div>
 
-<h3 id="descobrindo-a-função-map">Descobrindo a função map</h3>
+  </div>
+</details>
 
+<h3 id="descobrindo-a-função-map">Descobrindo a função <span style="color: #081849; font-weight: bold;">MAP</span></h3>
 <p>Outra função fundamental para entender a lógica da recursão é a map, que mapeia uma determinada função em todos os componentes de uma lista. Pelo nome, você conseguiria adivinhar o que ela faz?</p>
 
 <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">map</span> <span class="o">::</span> <span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="n">x</span>
@@ -363,8 +376,7 @@ Em contrapartida, a abordagem recursiva normalmente perde para a iterativa quand
 
 <p>Você consegue imaginar como seria definir essa função de forma iterativa?</p>
 
-<h3 id="descobrindo-a-função-replicate">Descobrindo a função replicate</h3>
-
+<h3 id="descobrindo-a-função-replicate">Descobrindo a função <span style="color: #081849; font-weight: bold;">REPLICATE</span></h3>
 <p>De forma semelhante, também podemos diversificar o que colocamos na entrada da nossa função! Veja só a replicate, que pega um número natural, um elemento, e o replica por essa quantidade de vezes formando uma lista!</p>
 
 <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">replicate</span> <span class="o">::</span> <span class="kt">Nat</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="kt">List</span> <span class="n">x</span>
@@ -392,7 +404,7 @@ Em contrapartida, a abordagem recursiva normalmente perde para a iterativa quand
 
 <p>Nesse sentido, teríamos o 1 representado pelo (S 0), o 2 pelo S(S 0), o 3 pelo S(S(S 0)) e assim em diante!</p>
 
-<h3 id="descobrindo-melhores-funções-even-e-odd">Descobrindo melhores funções even e odd</h3>
+<h3 id="descobrindo-melhores-funções-even-e-odd">Descobrindo melhores funções <span style="color: #081849; font-weight: bold;">EVEN</span> e <span style="color: #081849; font-weight: bold;">ODD</span></h3>
 
 <p>Agora que temos os naturais como tipo recursivo, podemos definir uma função ainda melhor para definir se um número é par (even), ou ímpar (odd)!</p>
 
@@ -406,32 +418,6 @@ Em contrapartida, a abordagem recursiva normalmente perde para a iterativa quand
 </code></pre></div></div>
 
 <h3 id="verificando-se-uma-função-foi-bem-definida-recursivamente-kahoot">Verificando se uma função foi bem definida recursivamente (kahoot)</h3>
-
-<h1 id="exercícios">Exercícios</h1>
-
-<h2 id="orientações-sobre-os-exercícios">Orientações sobre os exercícios</h2>
-
-<p>Envie os exercícios de cada dia <em>separados</em> para o email <code class="language-plaintext highlighter-rouge">linuxgitpetcc@gmail.com</code> com o assunto sempre sendo: <code class="language-plaintext highlighter-rouge">Dia (dia de aula) - (Nome do aluno)</code></p>
-
-<h2 id="exercícios-de-revisão-da-aula-passada">Exercícios de Revisão da aula passada</h2>
-
-<h3 id="exercício-1-1">Exercício 1</h3>
-
-<h3 id="exercício-2">Exercício 2</h3>
-
-<h2 id="exercícios-da-aula-de-hoje">Exercícios da aula de hoje</h2>
-
-<h3 id="exercício-1-2">Exercício 1</h3>
-
-<h3 id="exercício-2-1">Exercício 2</h3>
-
-<h3 id="exercício-3">Exercício 3</h3>
-
-<h3 id="exercício-4">Exercício 4</h3>
-
-<h3 id="exercício-5">Exercício 5</h3>
-
-<h3 id="exercício-6">Exercício 6</h3>
 
 <hr />
 <script>
