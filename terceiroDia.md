@@ -8,6 +8,34 @@ title: Minicurso de Linux e Git
     <h1>Sumário</h1>
     <ul>
     <details>
+        <summary><a href="#introdução-aos-inteiros">Introdução aos inteiros</a></summary>
+        <ul class="section-content">
+            <li><a href="#definição-dos-naturais">Definição dos Naturais</a></li>
+            <li><a href="#definição-dos-inteiros">Definição dos Inteiros</a></li>
+        </ul>
+    </details>
+    <details>
+        <summary><a href="#divisibilidade-e-primos">Divisibilidade e Primos</a></summary>
+        <ul class="section-content">
+            <li><a href="#relação-de-divisibilidade-e-o-teorema-da-divisão">Relação de Divisibilidade e o Teorema da Divisão</a></li>
+            <details>
+            <summary><a href="#teorema-fundamental-da-aritmética">Teorema Fundamental da Aritmética</a></summary>
+            <ul class="section-content">
+              <li><a href="#qualquer-número-é-primo-ou-composto-por-uma-fatoração-de-primos">Qualquer número é primo, ou composto por uma fatoração de primos</a></li>
+              <li><a href="#a-fatoração-acima-é-única">A Fatoração acima é Única</a></li>
+              <li><a href="#juntando-as-peças">Juntando as peças</a></li>
+              </ul>
+            </details>
+            <details>
+            <summary><a href="#múltiplos-e-divisores-comuns">Múltiplos e Divisores comuns</a></summary>
+            <ul class="section-content">
+              <li><a href="#mmc">MMC</a></li>
+              <li><a href="#mdc">MDC</a></li>
+              <li><a href="#algoritmo-de-euclides-e-o-teorema-de-bezout">Algoritmo de Euclides e o Teorema de Bezout</a></li>
+            </ul></details>
+        </ul>
+    </details>
+    <details>
         <summary><a href="#relações-de-congruência">Relações de Congruência</a></summary>
         <ul class="section-content">
             <li><a href="#o-que-é-um-processo">Conceitualização?</a></li>
@@ -32,6 +60,313 @@ title: Minicurso de Linux e Git
   </button>
   
   </div>
+
+# Introdução aos Inteiros 
+
+## Definição dos Naturais
+Iremos começar o dia definindo o conjunto dos números naturais. Porém, iremos poupar um pouco
+vocês disso e apenas mostrar por cima alguns axiomas de Peano, já que não temos tanto tempo
+para nos aprofundar nessa parte.
+
+```
+1) O 0 existe.
+0 ∈ Nat
+
+2) O sucessor existe.
+(∀n ∈ Nat)[Succ(n) ∈ Nat]
+
+3) O 0 não é sucessor.
+(∀n ∈ Nat)[0 ̸= Succ(n)]
+
+4) Injetividade dos sucessores.
+(∀n, m ∈ Nat)[Succ(n) = Succ(m) → n = m]
+```
+
+Com isso, estamos prontos para criar o conjunto dos inteiros!
+
+## Definição dos Inteiros
+
+
+A nossa definição de inteiros vai utilizar alguns conceitos interessantes sobre classes de equivalência:
+
+Sejam n, m, i, k ∈ Nat e a relação de equivalência (∼).
+Sejam, então, as tuplas (n, m), (i, k) :: Nat X Nat.
+Definimos a relação (∼):
+```
+(∼) :: (Nat × Nat) × (Nat × Nat) → Prop
+
+(n, m) ∼ (i, k) ↔ n + i = k + m.
+
+[(n, m)] = {(k, i) : (k, i) ∈ Nat × Nat e (n, m) ∼ (k, i)}
+
+```
+
+Um pouco dificil de entender, mas, vamos analisar essa definição.
+
+Vamos pegar como exemplo a tupla (2, 3). a classe [(2, 3)] será o conjunto de todas as tuplas que
+tem a relação 2 + k = 3 + i para quaisquer k e i naturais, ou seja, (2, 3), (3, 4), (4, 5), ..., e
+também, caso não tenha notado, essa classe [(2, 3)] representa o inteiro -1.
+
+Sendo assim, temos que o conjunto dos inteiros é o conjunto de todas as classes de congruência (∼).
+Exemplos:
+
+```
+[(3, 2)] := 1
+
+[(5, 2)] := 3
+
+[(0, 42)] := −42
+```
+
+
+# Divisibilidade e Primos
+
+## Relação de divisibilidade e o Teorema da divisão
+
+Agora que definimos o nosso escopo, estamos interessados em construir relações para ele, sendo
+o nosso objetivo principal encontrar jeitos de relacionar cada número inteiro. Iniciaremos com as
+seguintes relações:
+
+```
+(+) :: Int x Int → Int
+(*) :: Int x Int → Int
+(−) :: Int → Int
+( | ) :: Int x Int → Prop
+```
+
+Já estamos acostumados com os três primeiros, porém, essa última pode ser um pouco confusa caso vista pela primeira vez.
+
+Sejam a, b ∈ Int com a ̸= 0, temos que a|b significa ”a divide b”, quase como se fosse uma divisão,
+mas retornaria ”true” ou ”false” caso o resultado seja inteiro, ou não. Sendo essa operação o nosso
+tópico principal.
+Definimos a|b da seguinte forma:
+
+```
+a|b ↔ (∃k :: int)[k * a = b]
+```
+
+Alguns podem ter notado que essa relação na verdade não é ”quase como se fosse uma divisão”, como dito antes,
+mas sim, o nosso primeiro passo para construir a própria divisão.
+
+Como o objetivo era ”relacionar cada inteiro”, vamos ”reformular” essa relacão de modo em que
+caso tenhamos 2 inteiros, nós conseguimos extrair uma relação entre os dois:
+
+```
+(∀a, b :: int)(∃!q, r :: int)[0 ≤ r < |b| ⇒ a = q * b + r]
+```
+
+Chamamos essa proposição de o Teorema da Divisão. Caso os simbolos feios tenham deixado
+dificil entender, esse teorema diz que conseguimos relacionar quaisquer dois inteiros de uma única forma.
+
+Note que, quando temos que r = 0, o teorema da divisão é muito similar a nossa relação de divisibilidade,
+o motivo disso é que olhamos esse ”r” como o ”resto” da divisão entre a e b, e caso você se
+lembre do seu 5 ano do fundamental, quando temos resto 0, é quando um inteiro é divisor de outro.
+
+Exemplos:
+```
+a := 42, b := 9:
+42 = 4 * 9 + 6 (q = 4, r = 6)
+
+a := 5, b := 2:
+5 = 2 * 2 + 1 (q = 2, r = 1)
+
+a := 4, b := 5
+4 = 0 * 5 + 4 (q = 0, r = 4)
+```
+Logo, chamaremos de div e mod as relações onde:
+```
+a div b = div(a, b) = q.
+a mod b = r.
+```
+Com isso, estamos preparados para trabalhar em alto nível.
+
+## Teorema Fundamental da Aritmética
+
+Iremos começar montando nossos planos para construir o Teorema Fundamental da Aritmética:
+1) Definir o que são primos.
+2) Mostrar que qualquer número é um primo ou composto por uma fatoração de primos
+3) Mostrar que essa fatoração é única.
+
+
+### O que são Primos?
+
+Primeiramente, iremos definir o que são números primos (viu o que eu fiz? >:))
+
+Seja p um número primo. Temos que o p tem as seguintes características:
+```
+(I) p ∈ Int
+(II) p > 1.
+(III) p não tem divisores além de 1 e ele mesmo.
+```
+
+Podemos também reescrever o (II) como:
+
+```
+p primo ↔ (∀a ∈ Int)[a ̸= 1 & a ̸= p =⇒ a ∤ p]
+```
+
+Ou reduzindo a complexidade para:
+
+```
+p primo ↔ (∀a < p)[a > 1 =⇒ a ∤ p]
+```
+
+OU REDUZINDO MAIS AINDA PARA:
+
+```
+p primo ↔ (∀a primo)[a ≤ √p ⇒ a ∤ p]
+```
+
+Brincadeiras a parte, iremos utilizar qualquer uma das duas primeiras reescritas como uma ”definição”, 
+a terceira é conhecida como o Crivo de Eratóstenes, antes de utilizar ele, vocês precisarão demonstrar :). Obs: vocês também precisam definir o que é uma raiz quadrada >:).
+
+Analogamente, chamaremos os números que ”não são primos” como números compostos.
+
+### Qualquer número é primo, ou composto por uma fatoração de primos
+Irei demonstrar em uma linguagem um pouco mais "low level":
+
+```haskell
+-- Iremos mostrar que (∀n > 1)(∃p primo)[p | n]
+Seja n :: Int>1, Inducao forte em n.
+Passo base: -- n = 2
+Imediato [2 primo e 2|2]
+Passo Indutivo:      --Hipotese: (∀k)[1 < k < n ⇒ (∃p primo)[p | k]]
+
+Caso n primo:
+Imediato [n | n]
+Caso n composto:
+Sejam a, b tq n = a*b
+Logo, a > 1, n > b [Teorema ?]
+Logo, pela Hipotese, a e b sao primos, ou compostos por primos.
+Logo, n  ́e composto por primos [Transitividade]
+```
+
+Note que escrevi [Teorema ?] na linha 10, tente descobrir qual teorema eu usei e demonstre-o.
+
+### A fatoração acima é única
+
+```haskell
+--Iremos mostrar a unicidade dessa fatoração.
+Seja n composto. Suponha que n tenha duas fatoracoes distintas.
+Sejam s e t tq, sem perda de generalidade, s ≤ t.
+Logo, temos que n = p₁ * p₂ * ... * pₛ, onde cada p sao primos que estao em ordem crescente
+Analogamente, temos que n = q₁ * q₂ * ...qₜ, onde cada q sao primos que estao em ordem crescente.
+Como p₁ | n, temos que p₁|q₁ * q₂ * ... * qₜ.
+Logo, seja h tq p₁ = qₕ  [Lema ?]
+Logo, p₁ ≥ q₁ [h ≥ 1]. -- chamarei esse passo de h1.
+Logo, q₁ ≥ p₁ [h1]
+Logo, p₁ = q₁
+Analogamente, temos que p₂ * p₃ * ... * pₛ = q₂ * q₃ * ... * qₜ. [p₁ = q₁]
+Analogamente, para cada pₖ e qₖ com 1 < k < s, pₖ = qₖ.
+Caso s < t:
+Logo, 1 = qₛ₊₁ * qₛ₊₂ * ... * qₜ.
+Contradicao [qₖ primo para cada 1 < k < t].
+Logo, s = t e pₖ = qₖ para cada 1 < k < t
+```
+Similar a última demonstração, encontre o [Lema ?] e o demonstre.
+
+### Juntando as peças
+Juntando tudo isso, para qualquer inteiro positivo a, ou ele é um primo, ou pode ser escrito como uma fatoração
+de primos, onde essa fatoração é única, a menos da ordem de seus fatores.
+
+Podemos ver da seguinte forma:
+
+Para qualquer n > 1, podemos escrever n como:
+
+```
+n = p₁ᵏ¹ * p₂ᵏ² * ... * pᵣᵏʳ
+```
+
+Onde, para i = 1, 2, ... , r, cada kᵢ é um inteiro positivo e cada pᵢ é um número primo, tal
+que p₁ < p₂ < ... < pᵣ.
+
+SIM MATEMATICOS, EU SEI QUE ISSO FICARIA MUITO MAIS BONITO COM UMA PRODUTÓRIA.
+
+Chamamos essa forma de forma canônica.
+Note que, o nosso objetivo de ”relacionar dois inteiros quaisquer” já foi cumprido. Esse teorema
+é extremamente poderoso e é a ”base para a matemática básica que vemos nas escolas". A partir
+disso, podemos iniciar tópicos um pouco mais complexos.
+
+## Múltiplos e Divisores comuns
+Sim, de fato iremos ver isso.
+
+O Teorema Fundamental da Aritmética nos permite especificar cada divisor/múltiplo comum de
+quaisquer números inteiros, então, iremos analisar como as operações de MMC e MDC nos
+permitem trabalhar melhor com números primos.
+
+### MMC
+O MMC (Mínimo Múltiplo Comum), como o nome já diz, á a operação que vê o menor número
+que é divisível por outros dois (ou mais). Definimos da seguinte forma:
+
+```
+MMC(a, b) = min(c : a|c & b|c)
+```
+
+Uma definição um pouco diferente do que estamos acostumados, mas que não é tão dificil de
+se compreender, já que ela (literalmente) pega o menor fator "c", onde a | c e b | c.
+
+### MDC
+
+Agora, iremos ver o ”mais interessante” que é o MDC. Como o nome já diz, o MDC (Máximo
+Divisor Comum) não foge muito do padrão. Similar ao seu irmão mais novo (MMC), podemos
+utilizar a seguinte definição:
+
+```
+MDC(a, b) = max(c : c|a & c|b)
+```
+
+Onde ela pega o maior fator "c" onde a divide c e b divide c.
+
+Note que, unindo as duas operações, temos que:
+```
+MDC(a, b) * MMC(a, b) = a * b
+```
+
+### Algoritmo de Euclides e o Teorema de Bezout
+
+Podemos utilizar o seguinte algoritmo para calcular o MDC de 2 números:
+```
+MDC(c, 0) = c
+MDC(a, b) = M DC(b, r)
+```
+Onde o r é o resto da divisão de a por b.
+Chamamos esse algoritmo de ”Algoritmo de Euclides”. A ”extratégia” do uso desse algoritmo é continuar
+dividindo o número ”na esquerda” pelo ”da direita” até encontrar o MDC na forma MDC(c.0) para simplificar como apenas ”c”.
+
+O interessante surge quando Bezout constrói seu mais famoso teorema:
+
+(∀a, b ∈ Int=0)(∃s, t ∈ Int)[MDC(a, b) = a * s + b * t]
+
+Em outras palavras, podemos colocar MDC(a, b) como uma combinação linear de a e b.
+Agora, juntando isso com o Algoritmo de Euclides, temos o Algoritmo Extendido de Euclides (nome criativo).
+Nele, buscamos encontrar o ”r” (como no Algoritmo de Euclides), mas, voltamos para encontrar
+a combinaçãoo linear. Confuso? Sim. Útil? MUITO!!
+Exemplo:
+
+```haskell
+MDC(252, 198)
+252 = 1*198 + 54 -> 54 = 252 - 1*198 (I)
+198 = 3*54 + 36  -> 36 = 198 - 3*54 (II)
+54 = 1*36 + 18   -> 18 = 54 - 1*36 (III)
+36 = 2 * 18 + 0
+calc:
+18 = 54 - 1*36 [III]
+18 = 54 -1*(198 - 3*54) [II]
+18 = -198 + 4*54
+18 = -198 + 4*(252 - 1*198) [I]
+18 = 4*252 -5*198
+Logo, MDC(252, 198) = s*252 + t*198 onde s = 4 e t = -5.
+```
+
+Se fosse apenas isso, não teria sentido em ver isso agora, porém, esse algoritmo tem diversos usos na área de Aritmética Modular.
+Já pararam para pensar em qual é o menor valor possivel para o MDC?
+De fato é beeem contraditório, já que na operação buscamos o valor máximo, mas,
+temos que o menor valor é o 1, já que o 1 divide qualquer número. Essa parte fica interessante quando a gente faz a seguinte pergunta:
+
+Quando que o MDC de dois números resulta em 1?
+
+Spoiler, ocorre quando nenhum número (além do 1) divide os outros dois (wooow). Nesse caso,
+falaremos que os dois números são ”primos entre si” ou ”coprimos”. Essa informação sobre primos e coprimos será extremamtente útil na área de Aritmética Modular, mais especificamente em teoremas um pouco mais avançados como os teoremas de Fermat.
 
 # Relações de congruência 
 

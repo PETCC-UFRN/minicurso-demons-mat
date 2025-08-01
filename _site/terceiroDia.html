@@ -30,6 +30,34 @@
     <h1>Sumário</h1>
     <ul>
     <details>
+        <summary><a href="#introdução-aos-inteiros">Introdução aos inteiros</a></summary>
+        <ul class="section-content">
+            <li><a href="#definição-dos-naturais">Definição dos Naturais</a></li>
+            <li><a href="#definição-dos-inteiros">Definição dos Inteiros</a></li>
+        </ul>
+    </details>
+    <details>
+        <summary><a href="#divisibilidade-e-primos">Divisibilidade e Primos</a></summary>
+        <ul class="section-content">
+            <li><a href="#relação-de-divisibilidade-e-o-teorema-da-divisão">Relação de Divisibilidade e o Teorema da Divisão</a></li>
+            <details>
+            <summary><a href="#teorema-fundamental-da-aritmética">Teorema Fundamental da Aritmética</a></summary>
+            <ul class="section-content">
+              <li><a href="#qualquer-número-é-primo-ou-composto-por-uma-fatoração-de-primos">Qualquer número é primo, ou composto por uma fatoração de primos</a></li>
+              <li><a href="#a-fatoração-acima-é-única">A Fatoração acima é Única</a></li>
+              <li><a href="#juntando-as-peças">Juntando as peças</a></li>
+              </ul>
+            </details>
+            <details>
+            <summary><a href="#múltiplos-e-divisores-comuns">Múltiplos e Divisores comuns</a></summary>
+            <ul class="section-content">
+              <li><a href="#mmc">MMC</a></li>
+              <li><a href="#mdc">MDC</a></li>
+              <li><a href="#algoritmo-de-euclides-e-o-teorema-de-bezout">Algoritmo de Euclides e o Teorema de Bezout</a></li>
+            </ul></details>
+        </ul>
+    </details>
+    <details>
         <summary><a href="#relações-de-congruência">Relações de Congruência</a></summary>
         <ul class="section-content">
             <li><a href="#o-que-é-um-processo">Conceitualização?</a></li>
@@ -54,6 +82,290 @@
   </button>
   
   </div>
+
+<h1 id="introdução-aos-inteiros">Introdução aos Inteiros</h1>
+
+<h2 id="definição-dos-naturais">Definição dos Naturais</h2>
+<p>Iremos começar o dia definindo o conjunto dos números naturais. Porém, iremos poupar um pouco
+vocês disso e apenas mostrar por cima alguns axiomas de Peano, já que não temos tanto tempo
+para nos aprofundar nessa parte.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1) O 0 existe.
+0 ∈ Nat
+
+2) O sucessor existe.
+(∀n ∈ Nat)[Succ(n) ∈ Nat]
+
+3) O 0 não é sucessor.
+(∀n ∈ Nat)[0 ̸= Succ(n)]
+
+4) Injetividade dos sucessores.
+(∀n, m ∈ Nat)[Succ(n) = Succ(m) → n = m]
+</code></pre></div></div>
+
+<p>Com isso, estamos prontos para criar o conjunto dos inteiros!</p>
+
+<h2 id="definição-dos-inteiros">Definição dos Inteiros</h2>
+
+<p>A nossa definição de inteiros vai utilizar alguns conceitos interessantes sobre classes de equivalência:</p>
+
+<p>Sejam n, m, i, k ∈ Nat e a relação de equivalência (∼).
+Sejam, então, as tuplas (n, m), (i, k) :: Nat X Nat.
+Definimos a relação (∼):</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(∼) :: (Nat × Nat) × (Nat × Nat) → Prop
+
+(n, m) ∼ (i, k) ↔ n + i = k + m.
+
+[(n, m)] = {(k, i) : (k, i) ∈ Nat × Nat e (n, m) ∼ (k, i)}
+
+</code></pre></div></div>
+
+<p>Um pouco dificil de entender, mas, vamos analisar essa definição.</p>
+
+<p>Vamos pegar como exemplo a tupla (2, 3). a classe [(2, 3)] será o conjunto de todas as tuplas que
+tem a relação 2 + k = 3 + i para quaisquer k e i naturais, ou seja, (2, 3), (3, 4), (4, 5), …, e
+também, caso não tenha notado, essa classe [(2, 3)] representa o inteiro -1.</p>
+
+<p>Sendo assim, temos que o conjunto dos inteiros é o conjunto de todas as classes de congruência (∼).
+Exemplos:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[(3, 2)] := 1
+
+[(5, 2)] := 3
+
+[(0, 42)] := −42
+</code></pre></div></div>
+
+<h1 id="divisibilidade-e-primos">Divisibilidade e Primos</h1>
+
+<h2 id="relação-de-divisibilidade-e-o-teorema-da-divisão">Relação de divisibilidade e o Teorema da divisão</h2>
+
+<p>Agora que definimos o nosso escopo, estamos interessados em construir relações para ele, sendo
+o nosso objetivo principal encontrar jeitos de relacionar cada número inteiro. Iniciaremos com as
+seguintes relações:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(+) :: Int x Int → Int
+(*) :: Int x Int → Int
+(−) :: Int → Int
+( | ) :: Int x Int → Prop
+</code></pre></div></div>
+
+<p>Já estamos acostumados com os três primeiros, porém, essa última pode ser um pouco confusa caso vista pela primeira vez.</p>
+
+<p>Sejam a, b ∈ Int com a ̸= 0, temos que a|b significa ”a divide b”, quase como se fosse uma divisão,
+mas retornaria ”true” ou ”false” caso o resultado seja inteiro, ou não. Sendo essa operação o nosso
+tópico principal.
+Definimos a|b da seguinte forma:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a|b ↔ (∃k :: int)[k * a = b]
+</code></pre></div></div>
+
+<p>Alguns podem ter notado que essa relação na verdade não é ”quase como se fosse uma divisão”, como dito antes,
+mas sim, o nosso primeiro passo para construir a própria divisão.</p>
+
+<p>Como o objetivo era ”relacionar cada inteiro”, vamos ”reformular” essa relacão de modo em que
+caso tenhamos 2 inteiros, nós conseguimos extrair uma relação entre os dois:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(∀a, b :: int)(∃!q, r :: int)[0 ≤ r &lt; |b| ⇒ a = q * b + r]
+</code></pre></div></div>
+
+<p>Chamamos essa proposição de o Teorema da Divisão. Caso os simbolos feios tenham deixado
+dificil entender, esse teorema diz que conseguimos relacionar quaisquer dois inteiros de uma única forma.</p>
+
+<p>Note que, quando temos que r = 0, o teorema da divisão é muito similar a nossa relação de divisibilidade,
+o motivo disso é que olhamos esse ”r” como o ”resto” da divisão entre a e b, e caso você se
+lembre do seu 5 ano do fundamental, quando temos resto 0, é quando um inteiro é divisor de outro.</p>
+
+<p>Exemplos:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a := 42, b := 9:
+42 = 4 * 9 + 6 (q = 4, r = 6)
+
+a := 5, b := 2:
+5 = 2 * 2 + 1 (q = 2, r = 1)
+
+a := 4, b := 5
+4 = 0 * 5 + 4 (q = 0, r = 4)
+</code></pre></div></div>
+<p>Logo, chamaremos de div e mod as relações onde:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a div b = div(a, b) = q.
+a mod b = r.
+</code></pre></div></div>
+<p>Com isso, estamos preparados para trabalhar em alto nível.</p>
+
+<h2 id="teorema-fundamental-da-aritmética">Teorema Fundamental da Aritmética</h2>
+
+<p>Iremos começar montando nossos planos para construir o Teorema Fundamental da Aritmética:
+1) Definir o que são primos.
+2) Mostrar que qualquer número é um primo ou composto por uma fatoração de primos
+3) Mostrar que essa fatoração é única.</p>
+
+<h3 id="o-que-são-primos">O que são Primos?</h3>
+
+<p>Primeiramente, iremos definir o que são números primos (viu o que eu fiz? &gt;:))</p>
+
+<p>Seja p um número primo. Temos que o p tem as seguintes características:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(I) p ∈ Int
+(II) p &gt; 1.
+(III) p não tem divisores além de 1 e ele mesmo.
+</code></pre></div></div>
+
+<p>Podemos também reescrever o (II) como:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>p primo ↔ (∀a ∈ Int)[a ̸= 1 &amp; a ̸= p =⇒ a ∤ p]
+</code></pre></div></div>
+
+<p>Ou reduzindo a complexidade para:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>p primo ↔ (∀a &lt; p)[a &gt; 1 =⇒ a ∤ p]
+</code></pre></div></div>
+
+<p>OU REDUZINDO MAIS AINDA PARA:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>p primo ↔ (∀a primo)[a ≤ √p ⇒ a ∤ p]
+</code></pre></div></div>
+
+<p>Brincadeiras a parte, iremos utilizar qualquer uma das duas primeiras reescritas como uma ”definição”, 
+a terceira é conhecida como o Crivo de Eratóstenes, antes de utilizar ele, vocês precisarão demonstrar :). Obs: vocês também precisam definir o que é uma raiz quadrada &gt;:).</p>
+
+<p>Analogamente, chamaremos os números que ”não são primos” como números compostos.</p>
+
+<h3 id="qualquer-número-é-primo-ou-composto-por-uma-fatoração-de-primos">Qualquer número é primo, ou composto por uma fatoração de primos</h3>
+<p>Irei demonstrar em uma linguagem um pouco mais “low level”:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Iremos mostrar que (∀n &gt; 1)(∃p primo)[p | n]</span>
+<span class="kt">Seja</span> <span class="n">n</span> <span class="o">::</span> <span class="kt">Int</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="kt">Inducao</span> <span class="n">forte</span> <span class="n">em</span> <span class="n">n</span><span class="o">.</span>
+<span class="kt">Passo</span> <span class="n">base</span><span class="o">:</span> <span class="c1">-- n = 2</span>
+<span class="kt">Imediato</span> <span class="p">[</span><span class="mi">2</span> <span class="n">primo</span> <span class="n">e</span> <span class="mi">2</span><span class="o">|</span><span class="mi">2</span><span class="p">]</span>
+<span class="kt">Passo</span> <span class="kt">Indutivo</span><span class="o">:</span>      <span class="c1">--Hipotese: (∀k)[1 &lt; k &lt; n ⇒ (∃p primo)[p | k]]</span>
+
+<span class="kt">Caso</span> <span class="n">n</span> <span class="n">primo</span><span class="o">:</span>
+<span class="kt">Imediato</span> <span class="p">[</span><span class="n">n</span> <span class="o">|</span> <span class="n">n</span><span class="p">]</span>
+<span class="kt">Caso</span> <span class="n">n</span> <span class="n">composto</span><span class="o">:</span>
+<span class="kt">Sejam</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="n">tq</span> <span class="n">n</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
+<span class="kt">Logo</span><span class="p">,</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="p">[</span><span class="kt">Teorema</span> <span class="o">?</span><span class="p">]</span>
+<span class="kt">Logo</span><span class="p">,</span> <span class="n">pela</span> <span class="kt">Hipotese</span><span class="p">,</span> <span class="n">a</span> <span class="n">e</span> <span class="n">b</span> <span class="n">sao</span> <span class="n">primos</span><span class="p">,</span> <span class="n">ou</span> <span class="n">compostos</span> <span class="n">por</span> <span class="n">primos</span><span class="o">.</span>
+<span class="kt">Logo</span><span class="p">,</span> <span class="n">n</span>  <span class="err">́</span><span class="n">e</span> <span class="n">composto</span> <span class="n">por</span> <span class="n">primos</span> <span class="p">[</span><span class="kt">Transitividade</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Note que escrevi [Teorema ?] na linha 10, tente descobrir qual teorema eu usei e demonstre-o.</p>
+
+<h3 id="a-fatoração-acima-é-única">A fatoração acima é única</h3>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">--Iremos mostrar a unicidade dessa fatoração.</span>
+<span class="kt">Seja</span> <span class="n">n</span> <span class="n">composto</span><span class="o">.</span> <span class="kt">Suponha</span> <span class="n">que</span> <span class="n">n</span> <span class="n">tenha</span> <span class="n">duas</span> <span class="n">fatoracoes</span> <span class="n">distintas</span><span class="o">.</span>
+<span class="kt">Sejam</span> <span class="n">s</span> <span class="n">e</span> <span class="n">t</span> <span class="n">tq</span><span class="p">,</span> <span class="n">sem</span> <span class="n">perda</span> <span class="n">de</span> <span class="n">generalidade</span><span class="p">,</span> <span class="n">s</span> <span class="err">≤</span> <span class="n">t</span><span class="o">.</span>
+<span class="kt">Logo</span><span class="p">,</span> <span class="n">temos</span> <span class="n">que</span> <span class="n">n</span> <span class="o">=</span> <span class="n">p</span><span class="err">₁</span> <span class="o">*</span> <span class="n">p</span><span class="err">₂</span> <span class="o">*</span> <span class="o">...</span> <span class="o">*</span> <span class="n">p</span><span class="err">ₛ</span><span class="p">,</span> <span class="n">onde</span> <span class="n">cada</span> <span class="n">p</span> <span class="n">sao</span> <span class="n">primos</span> <span class="n">que</span> <span class="n">estao</span> <span class="n">em</span> <span class="n">ordem</span> <span class="n">crescente</span>
+<span class="kt">Analogamente</span><span class="p">,</span> <span class="n">temos</span> <span class="n">que</span> <span class="n">n</span> <span class="o">=</span> <span class="n">q</span><span class="err">₁</span> <span class="o">*</span> <span class="n">q</span><span class="err">₂</span> <span class="o">*</span> <span class="o">...</span><span class="n">q</span><span class="err">ₜ</span><span class="p">,</span> <span class="n">onde</span> <span class="n">cada</span> <span class="n">q</span> <span class="n">sao</span> <span class="n">primos</span> <span class="n">que</span> <span class="n">estao</span> <span class="n">em</span> <span class="n">ordem</span> <span class="n">crescente</span><span class="o">.</span>
+<span class="kt">Como</span> <span class="n">p</span><span class="err">₁</span> <span class="o">|</span> <span class="n">n</span><span class="p">,</span> <span class="n">temos</span> <span class="n">que</span> <span class="n">p</span><span class="err">₁</span><span class="o">|</span><span class="n">q</span><span class="err">₁</span> <span class="o">*</span> <span class="n">q</span><span class="err">₂</span> <span class="o">*</span> <span class="o">...</span> <span class="o">*</span> <span class="n">q</span><span class="err">ₜ</span><span class="o">.</span>
+<span class="kt">Logo</span><span class="p">,</span> <span class="n">seja</span> <span class="n">h</span> <span class="n">tq</span> <span class="n">p</span><span class="err">₁</span> <span class="o">=</span> <span class="n">q</span><span class="err">ₕ</span>  <span class="p">[</span><span class="kt">Lema</span> <span class="o">?</span><span class="p">]</span>
+<span class="kt">Logo</span><span class="p">,</span> <span class="n">p</span><span class="err">₁</span> <span class="err">≥</span> <span class="n">q</span><span class="err">₁</span> <span class="p">[</span><span class="n">h</span> <span class="err">≥</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span> <span class="c1">-- chamarei esse passo de h1.</span>
+<span class="kt">Logo</span><span class="p">,</span> <span class="n">q</span><span class="err">₁</span> <span class="err">≥</span> <span class="n">p</span><span class="err">₁</span> <span class="p">[</span><span class="n">h1</span><span class="p">]</span>
+<span class="kt">Logo</span><span class="p">,</span> <span class="n">p</span><span class="err">₁</span> <span class="o">=</span> <span class="n">q</span><span class="err">₁</span>
+<span class="kt">Analogamente</span><span class="p">,</span> <span class="n">temos</span> <span class="n">que</span> <span class="n">p</span><span class="err">₂</span> <span class="o">*</span> <span class="n">p</span><span class="err">₃</span> <span class="o">*</span> <span class="o">...</span> <span class="o">*</span> <span class="n">p</span><span class="err">ₛ</span> <span class="o">=</span> <span class="n">q</span><span class="err">₂</span> <span class="o">*</span> <span class="n">q</span><span class="err">₃</span> <span class="o">*</span> <span class="o">...</span> <span class="o">*</span> <span class="n">q</span><span class="err">ₜ</span><span class="o">.</span> <span class="p">[</span><span class="n">p</span><span class="err">₁</span> <span class="o">=</span> <span class="n">q</span><span class="err">₁</span><span class="p">]</span>
+<span class="kt">Analogamente</span><span class="p">,</span> <span class="n">para</span> <span class="n">cada</span> <span class="n">p</span><span class="err">ₖ</span> <span class="n">e</span> <span class="n">q</span><span class="err">ₖ</span> <span class="n">com</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="err">ₖ</span> <span class="o">=</span> <span class="n">q</span><span class="err">ₖ</span><span class="o">.</span>
+<span class="kt">Caso</span> <span class="n">s</span> <span class="o">&lt;</span> <span class="n">t</span><span class="o">:</span>
+<span class="kt">Logo</span><span class="p">,</span> <span class="mi">1</span> <span class="o">=</span> <span class="n">q</span><span class="err">ₛ₊₁</span> <span class="o">*</span> <span class="n">q</span><span class="err">ₛ₊₂</span> <span class="o">*</span> <span class="o">...</span> <span class="o">*</span> <span class="n">q</span><span class="err">ₜ</span><span class="o">.</span>
+<span class="kt">Contradicao</span> <span class="p">[</span><span class="n">q</span><span class="err">ₖ</span> <span class="n">primo</span> <span class="n">para</span> <span class="n">cada</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">t</span><span class="p">]</span><span class="o">.</span>
+<span class="kt">Logo</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">t</span> <span class="n">e</span> <span class="n">p</span><span class="err">ₖ</span> <span class="o">=</span> <span class="n">q</span><span class="err">ₖ</span> <span class="n">para</span> <span class="n">cada</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">t</span>
+</code></pre></div></div>
+<p>Similar a última demonstração, encontre o [Lema ?] e o demonstre.</p>
+
+<h3 id="juntando-as-peças">Juntando as peças</h3>
+<p>Juntando tudo isso, para qualquer inteiro positivo a, ou ele é um primo, ou pode ser escrito como uma fatoração
+de primos, onde essa fatoração é única, a menos da ordem de seus fatores.</p>
+
+<p>Podemos ver da seguinte forma:</p>
+
+<p>Para qualquer n &gt; 1, podemos escrever n como:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>n = p₁ᵏ¹ * p₂ᵏ² * ... * pᵣᵏʳ
+</code></pre></div></div>
+
+<p>Onde, para i = 1, 2, … , r, cada kᵢ é um inteiro positivo e cada pᵢ é um número primo, tal
+que p₁ &lt; p₂ &lt; … &lt; pᵣ.</p>
+
+<p>SIM MATEMATICOS, EU SEI QUE ISSO FICARIA MUITO MAIS BONITO COM UMA PRODUTÓRIA.</p>
+
+<p>Chamamos essa forma de forma canônica.
+Note que, o nosso objetivo de ”relacionar dois inteiros quaisquer” já foi cumprido. Esse teorema
+é extremamente poderoso e é a ”base para a matemática básica que vemos nas escolas”. A partir
+disso, podemos iniciar tópicos um pouco mais complexos.</p>
+
+<h2 id="múltiplos-e-divisores-comuns">Múltiplos e Divisores comuns</h2>
+<p>Sim, de fato iremos ver isso.</p>
+
+<p>O Teorema Fundamental da Aritmética nos permite especificar cada divisor/múltiplo comum de
+quaisquer números inteiros, então, iremos analisar como as operações de MMC e MDC nos
+permitem trabalhar melhor com números primos.</p>
+
+<h3 id="mmc">MMC</h3>
+<p>O MMC (Mínimo Múltiplo Comum), como o nome já diz, á a operação que vê o menor número
+que é divisível por outros dois (ou mais). Definimos da seguinte forma:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MMC(a, b) = min(c : a|c &amp; b|c)
+</code></pre></div></div>
+
+<p>Uma definição um pouco diferente do que estamos acostumados, mas que não é tão dificil de
+se compreender, já que ela (literalmente) pega o menor fator “c”, onde a | c e b | c.</p>
+
+<h3 id="mdc">MDC</h3>
+
+<p>Agora, iremos ver o ”mais interessante” que é o MDC. Como o nome já diz, o MDC (Máximo
+Divisor Comum) não foge muito do padrão. Similar ao seu irmão mais novo (MMC), podemos
+utilizar a seguinte definição:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MDC(a, b) = max(c : c|a &amp; c|b)
+</code></pre></div></div>
+
+<p>Onde ela pega o maior fator “c” onde a divide c e b divide c.</p>
+
+<p>Note que, unindo as duas operações, temos que:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MDC(a, b) * MMC(a, b) = a * b
+</code></pre></div></div>
+
+<h3 id="algoritmo-de-euclides-e-o-teorema-de-bezout">Algoritmo de Euclides e o Teorema de Bezout</h3>
+
+<p>Podemos utilizar o seguinte algoritmo para calcular o MDC de 2 números:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MDC(c, 0) = c
+MDC(a, b) = M DC(b, r)
+</code></pre></div></div>
+<p>Onde o r é o resto da divisão de a por b.
+Chamamos esse algoritmo de ”Algoritmo de Euclides”. A ”extratégia” do uso desse algoritmo é continuar
+dividindo o número ”na esquerda” pelo ”da direita” até encontrar o MDC na forma MDC(c.0) para simplificar como apenas ”c”.</p>
+
+<p>O interessante surge quando Bezout constrói seu mais famoso teorema:</p>
+
+<p>(∀a, b ∈ Int=0)(∃s, t ∈ Int)[MDC(a, b) = a * s + b * t]</p>
+
+<p>Em outras palavras, podemos colocar MDC(a, b) como uma combinação linear de a e b.
+Agora, juntando isso com o Algoritmo de Euclides, temos o Algoritmo Extendido de Euclides (nome criativo).
+Nele, buscamos encontrar o ”r” (como no Algoritmo de Euclides), mas, voltamos para encontrar
+a combinaçãoo linear. Confuso? Sim. Útil? MUITO!!
+Exemplo:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">MDC</span><span class="p">(</span><span class="mi">252</span><span class="p">,</span> <span class="mi">198</span><span class="p">)</span>
+<span class="mi">252</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="mi">198</span> <span class="o">+</span> <span class="mi">54</span> <span class="o">-&gt;</span> <span class="mi">54</span> <span class="o">=</span> <span class="mi">252</span> <span class="o">-</span> <span class="mi">1</span><span class="o">*</span><span class="mi">198</span> <span class="p">(</span><span class="kt">I</span><span class="p">)</span>
+<span class="mi">198</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">54</span> <span class="o">+</span> <span class="mi">36</span>  <span class="o">-&gt;</span> <span class="mi">36</span> <span class="o">=</span> <span class="mi">198</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="mi">54</span> <span class="p">(</span><span class="kt">II</span><span class="p">)</span>
+<span class="mi">54</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="mi">36</span> <span class="o">+</span> <span class="mi">18</span>   <span class="o">-&gt;</span> <span class="mi">18</span> <span class="o">=</span> <span class="mi">54</span> <span class="o">-</span> <span class="mi">1</span><span class="o">*</span><span class="mi">36</span> <span class="p">(</span><span class="kt">III</span><span class="p">)</span>
+<span class="mi">36</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">18</span> <span class="o">+</span> <span class="mi">0</span>
+<span class="n">calc</span><span class="o">:</span>
+<span class="mi">18</span> <span class="o">=</span> <span class="mi">54</span> <span class="o">-</span> <span class="mi">1</span><span class="o">*</span><span class="mi">36</span> <span class="p">[</span><span class="kt">III</span><span class="p">]</span>
+<span class="mi">18</span> <span class="o">=</span> <span class="mi">54</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="p">(</span><span class="mi">198</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="mi">54</span><span class="p">)</span> <span class="p">[</span><span class="kt">II</span><span class="p">]</span>
+<span class="mi">18</span> <span class="o">=</span> <span class="o">-</span><span class="mi">198</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="mi">54</span>
+<span class="mi">18</span> <span class="o">=</span> <span class="o">-</span><span class="mi">198</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="mi">252</span> <span class="o">-</span> <span class="mi">1</span><span class="o">*</span><span class="mi">198</span><span class="p">)</span> <span class="p">[</span><span class="kt">I</span><span class="p">]</span>
+<span class="mi">18</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="mi">252</span> <span class="o">-</span><span class="mi">5</span><span class="o">*</span><span class="mi">198</span>
+<span class="kt">Logo</span><span class="p">,</span> <span class="kt">MDC</span><span class="p">(</span><span class="mi">252</span><span class="p">,</span> <span class="mi">198</span><span class="p">)</span> <span class="o">=</span> <span class="n">s</span><span class="o">*</span><span class="mi">252</span> <span class="o">+</span> <span class="n">t</span><span class="o">*</span><span class="mi">198</span> <span class="n">onde</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">4</span> <span class="n">e</span> <span class="n">t</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span><span class="o">.</span>
+</code></pre></div></div>
+
+<p>Se fosse apenas isso, não teria sentido em ver isso agora, porém, esse algoritmo tem diversos usos na área de Aritmética Modular.
+Já pararam para pensar em qual é o menor valor possivel para o MDC?
+De fato é beeem contraditório, já que na operação buscamos o valor máximo, mas,
+temos que o menor valor é o 1, já que o 1 divide qualquer número. Essa parte fica interessante quando a gente faz a seguinte pergunta:</p>
+
+<p>Quando que o MDC de dois números resulta em 1?</p>
+
+<p>Spoiler, ocorre quando nenhum número (além do 1) divide os outros dois (wooow). Nesse caso,
+falaremos que os dois números são ”primos entre si” ou ”coprimos”. Essa informação sobre primos e coprimos será extremamtente útil na área de Aritmética Modular, mais especificamente em teoremas um pouco mais avançados como os teoremas de Fermat.</p>
 
 <h1 id="relações-de-congruência">Relações de congruência</h1>
 
