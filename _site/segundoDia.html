@@ -101,10 +101,10 @@
 <h1 id="indução">Indução</h1>
 <p>Aposto que em determinado momento, você já se deparou com algum exercício em específico que foi solicitado para resolver, seja na escola, na própria faculdade ou até mesmo em brincadeiras da internet. E de alguma forma o resolveu por dedução natural, sem utilizar nenhum artifício matemático de forma séria enquanto analisa padrões ou faz tentativa e erro. No fim, chegando a algum palpite, no qual você tem certeza que está certo.</p>
 
-<p>Dessa forma, chegada à uma conclusão, como podemos provar que uma determinada solução está certa? É aí que entra a Indução</p>
+<p>Dessa forma, chegada a uma conclusão, como podemos provar que uma determinada solução está certa? É aí que entra a Indução</p>
 
 <h2 id="o-que-é-indução">O que é Indução?</h2>
-<p>Indução Matemática ou Indução Finita, nada mais é que um método de demonstração. Sendo uma forma eficaz de verificar a veracidade de uma determinada propriedade.</p>
+<p>Indução Matemática ou Indução Finita, nada mais é que um método de demonstração. É uma forma eficaz de verificar a veracidade de uma determinada propriedade.</p>
 
 <p>Imagine uma fileira de dominós, igualmente espaçados entre si, de tal forma que: derrubando um dominó, o próximo também será derrubado. 
 Você concorda que nesse processo a fileira inteira de dominós será derrubada?</p>
@@ -115,18 +115,104 @@ Você concorda que nesse processo a fileira inteira de dominós será derrubada?
 <p>A indução atua sobre os números inteiros não negativos (1, 2, 3, 4, 5…) e segue a seguinte estrutura:</p>
 <ul>
   <li>Passo base: Provamos que é verdade para o primeiro valor.</li>
-  <li>Passo indutivo: Provamos que é verdade para o valor seguinte.
+  <li>Passo indutivo: Verificamos que é verdadeira para o valor seguinte.
 	- Hipótese de indução
 	- Verificação da hipótese</li>
 </ul>
 
-<p>Por enquanto, apenas se familiarize com o que é. Ainda explicaremos como colocar em prática.</p>
+<p>Por enquanto, apenas se familiarize com o que é. Ainda explicaremos como colocar em prática e sua relação com programação.</p>
 
-<h2 id="soma-de-gauss">Soma de Gauss</h2>
+<h2 id="analisando-um-problema">Analisando um problema</h2>
+<p>Há uma história, em que o matemático alemão, Carl Friedrich Gauss, recebeu como um desafio do seu professor o problema de somar todos os números de 1 até 100. O desafio na verdade era apenas uma pegadinha, que tinha o intuito de mantê-lo ocupado. Contudo, Gauss rapidamente chegou a uma resposta, sem precisar realizar o trabalho árduo de somar número após número. Com isso, vamos analisar o problema e sua solução.</p>
+
+<p>Gauss percebeu algo curioso…</p>
+<ul>
+  <li>A soma do primero número com o último resultava em um determinado valor</li>
+  <li>A soma do segundo número com o penúltimo resultava no mesmo valor</li>
+  <li>A soma do terceiro número com o antipenúltimo novamente tinha o mesmo resultado</li>
+  <li>E assim por diante</li>
+</ul>
+<div style="text-align: center;">  <img src="assets/images/gauss_summation_6.png" alt="" /> </div>
+
+<p>A partir dessas informações, vamos lentamente montar a suposta fórmula que resolveria o problema</p>
+<ul>
+  <li>Temos 100 números divididos em pares, ou seja, 50 pares, todos com o mesmo valor 
+	Soma até 100 = 50 * pares</li>
+  <li>Os números correspondentes de cada par somam em 101
+  Soma até 100 = 50 * 101</li>
+  <li>101 = Número inicial + Número final
+  Soma até 100 = 50 * (1 + 100)</li>
+</ul>
+
+<p>E então generalizando enfim podemos chegar à fórmula:
+	Soma até n = n/2 * (1 + n)
+Que nos informa o valor da soma do número 1 até n.</p>
+
+<p>Contudo, isso abre a questão. Como podemos provar que essa fórmula realmente é verdade?</p>
 
 <h3 id="indução-em-prática">Indução em Prática</h3>
+<p>Problema: Prove que 1 + 2 + 3 + 4 + … + n = n/2 * (1 + n) é verdade para qualquer inteiro n não negativo.</p>
+
+<ul>
+  <li>Passo base
+A princípio, verificaremos se isso é verdade para n = 1.
+Sabemos que o resultado precisa ser 1.</li>
+</ul>
+
+<p>A fórmula funciona para esse caso?
+n/2 * (1 + n) = 1/2 * (1 + 1) = 1/2 * 2 = 1 
+Sim!</p>
+
+<p>Logo, provamos que é verdade para o caso base.
+A fórmula funciona para n = 1</p>
+
+<ul>
+  <li>Passo indutivo
+(É aqui que as coisas começam a ficar um pouco mais extravagantes).</li>
+</ul>
+
+<p>A primeira etapa do passo indutivo é formular a Hipótese de Indução.
+A nossa hipótese é a seguinte: A fórmula funciona para algum número natural qualquer chamado k
+1 + 2 + 3 + … + k = k/2 * (1 + k)
+(Perceba que isso é similar à fórmula que já vimos, porém com um k no lugar do n)</p>
+
+<p>Agora, queremos mostrar que a fórmula também funciona para k + 1.<br />
+Ou seja, queremos provar que:
+1 + 2 + 3 + … + k + (k + 1) = (k + 1)/2 * (1 + (k + 1))</p>
+
+<p>Como é o procedimento a partir daqui?
+Vamos usar a fórmula da Hipótese de Indução como base e, a partir dela, tentar chegar à expressão que queremos provar para k + 1, realizando operações e manipulações nas expressões.</p>
+
+<p>A partir da Hipótese de Indução:
+1 + 2 + 3 + … + k = k/2 * (1 + k)</p>
+
+<p>Somando (k + 1) dos dois lados:
+1 + 2 + 3 + … + k + (k + 1) = (k/2 * (1 + k)) + (k + 1)</p>
+
+<p>Agora vamos simplificar essa expressão:
+(k/2 * (1 + k)) + (k + 1)<br />
+= (k(k + 1))/2 + (k + 1)</p>
+
+<p>Colocando (k + 1) em evidência:
+= (k + 1) * (k/2 + 1)
+Somando os termos dentro do parênteses:
+= (k + 1) * ((k + 2)/2)
+Pela comutatividade da multiplicação: 
+= (k + 1)/2 * (k + 2)</p>
+
+<p>Ou seja:
+1 + 2 + … + k + (k + 1) = (k + 1)/2 * (k + 2)</p>
+
+<p>E isso é exatamente a fórmula com n = k + 1:
+(n/2) * (1 + n), com n = k + 1<br />
+Portanto, está provado!
+A fórmula de fato é verdade!</p>
 
 <h2 id="exercício-1">Exercício 1</h2>
+<p>Mas quando o assunto é Indução, é a prática que faz a perfeição. 
+Agora chegou o seu momento, tente aplicar indução para o seguinte problema:</p>
+
+<p>Prove que n^2 &gt; 2n para todo n &gt;= 3</p>
 
 <h2 id="indução-forte">Indução Forte</h2>
 

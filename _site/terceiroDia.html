@@ -60,17 +60,17 @@
     <details>
         <summary><a href="#relações-de-congruência">Relações de Congruência</a></summary>
         <ul class="section-content">
-            <li><a href="#o-que-é-um-processo">Conceitualização?</a></li>
+            <li><a href="#conceitualização">Conceitualização</a></li>
             <li><a href="#relações-de-congruência-na-programação">Relações de congruência na programação</a></li>
             <li><a href="#aplicações-e-definição-formal">Aplicações e definição formal</a></li>
-            <li><a href="#propriedades">Propriedades</a>&gt;</li>
+            <li><a href="#propriedades">Propriedades e exercícios</a></li>
         </ul>
     </details>
     <details>
   <summary><a href="#criptografia-rsa">Criptografia RSA</a></summary>
     <ul class="section-content">
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
+        <li><a href="#contextualização-histórica">Contextualização histórica</a></li>
+        <li><a href="#a-criptografia-rsa-em-si">A criptografia RSA em si</a></li>
     </ul>
   </details>
 </ul>
@@ -90,17 +90,17 @@
 vocês disso e apenas mostrar por cima alguns axiomas de Peano, já que não temos tanto tempo
 para nos aprofundar nessa parte.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1) O 0 existe.
-0 ∈ Nat
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) O 0 existe.</span>
+<span class="mi">0</span> <span class="err">∈</span> <span class="kt">Nat</span>
 
-2) O sucessor existe.
-(∀n ∈ Nat)[Succ(n) ∈ Nat]
+<span class="c1">-- 2) O sucessor existe.</span>
+<span class="p">(</span><span class="err">∀</span><span class="n">n</span> <span class="err">∈</span> <span class="kt">Nat</span><span class="p">)[</span><span class="kt">Succ</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="err">∈</span> <span class="kt">Nat</span><span class="p">]</span>
 
-3) O 0 não é sucessor.
-(∀n ∈ Nat)[0 ̸= Succ(n)]
+<span class="c1">-- 3) O 0 não é sucessor.</span>
+<span class="p">(</span><span class="err">∀</span><span class="n">n</span> <span class="err">∈</span> <span class="kt">Nat</span><span class="p">)[</span><span class="mi">0</span> <span class="err"≯</span><span class="o">=</span> <span class="kt">Succ</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
 
-4) Injetividade dos sucessores.
-(∀n, m ∈ Nat)[Succ(n) = Succ(m) → n = m]
+<span class="c1">-- 4) Injetividade dos sucessores.</span>
+<span class="p">(</span><span class="err">∀</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="err">∈</span> <span class="kt">Nat</span><span class="p">)[</span><span class="kt">Succ</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="kt">Succ</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="err">→</span> <span class="n">n</span> <span class="o">=</span> <span class="n">m</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>Com isso, estamos prontos para criar o conjunto dos inteiros!</p>
@@ -112,11 +112,11 @@ para nos aprofundar nessa parte.</p>
 <p>Sejam n, m, i, k ∈ Nat e a relação de equivalência (∼).
 Sejam, então, as tuplas (n, m), (i, k) :: Nat X Nat.
 Definimos a relação (∼):</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(∼) :: (Nat × Nat) × (Nat × Nat) → Prop
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="err">∼</span><span class="p">)</span> <span class="o">::</span> <span class="p">(</span><span class="kt">Nat</span> <span class="err">×</span> <span class="kt">Nat</span><span class="p">)</span> <span class="err">×</span> <span class="p">(</span><span class="kt">Nat</span> <span class="err">×</span> <span class="kt">Nat</span><span class="p">)</span> <span class="err">→</span> <span class="kt">Prop</span>
 
-(n, m) ∼ (i, k) ↔ n + i = k + m.
+<span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="err">∼</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="err">↔</span> <span class="n">n</span> <span class="o">+</span> <span class="n">i</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span>
 
-[(n, m)] = {(k, i) : (k, i) ∈ Nat × Nat e (n, m) ∼ (k, i)}
+<span class="p">[(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)]</span> <span class="o">=</span> <span class="p">{(</span><span class="n">k</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">:</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="err">∈</span> <span class="kt">Nat</span> <span class="err">×</span> <span class="kt">Nat</span> <span class="n">e</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="err">∼</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">i</span><span class="p">)}</span>
 
 </code></pre></div></div>
 
@@ -129,11 +129,11 @@ também, caso não tenha notado, essa classe [(2, 3)] representa o inteiro -1.</
 <p>Sendo assim, temos que o conjunto dos inteiros é o conjunto de todas as classes de congruência (∼).
 Exemplos:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[(3, 2)] := 1
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">:=</span> <span class="mi">1</span>
 
-[(5, 2)] := 3
+<span class="p">[(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">:=</span> <span class="mi">3</span>
 
-[(0, 42)] := −42
+<span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">42</span><span class="p">)]</span> <span class="o">:=</span> <span class="err">−</span><span class="mi">42</span>
 </code></pre></div></div>
 
 <h1 id="divisibilidade-e-primos">Divisibilidade e Primos</h1>
@@ -144,10 +144,10 @@ Exemplos:</p>
 o nosso objetivo principal encontrar jeitos de relacionar cada número inteiro. Iniciaremos com as
 seguintes relações:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(+) :: Int x Int → Int
-(*) :: Int x Int → Int
-(−) :: Int → Int
-( | ) :: Int x Int → Prop
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="o">+</span><span class="p">)</span> <span class="o">::</span> <span class="kt">Int</span> <span class="n">x</span> <span class="kt">Int</span> <span class="err">→</span> <span class="kt">Int</span>
+<span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="o">::</span> <span class="kt">Int</span> <span class="n">x</span> <span class="kt">Int</span> <span class="err">→</span> <span class="kt">Int</span>
+<span class="p">(</span><span class="err">−</span><span class="p">)</span> <span class="o">::</span> <span class="kt">Int</span> <span class="err">→</span> <span class="kt">Int</span>
+<span class="p">(</span> <span class="o">|</span> <span class="p">)</span> <span class="o">::</span> <span class="kt">Int</span> <span class="n">x</span> <span class="kt">Int</span> <span class="err">→</span> <span class="kt">Prop</span>
 </code></pre></div></div>
 
 <p>Já estamos acostumados com os três primeiros, porém, essa última pode ser um pouco confusa caso vista pela primeira vez.</p>
@@ -157,7 +157,7 @@ mas retornaria ”true” ou ”false” caso o resultado seja inteiro, ou não.
 tópico principal.
 Definimos a|b da seguinte forma:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a|b ↔ (∃k :: int)[k * a = b]
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="o">|</span><span class="n">b</span> <span class="err">↔</span> <span class="p">(</span><span class="err">∃</span><span class="n">k</span> <span class="o">::</span> <span class="n">int</span><span class="p">)[</span><span class="n">k</span> <span class="o">*</span> <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>Alguns podem ter notado que essa relação na verdade não é ”quase como se fosse uma divisão”, como dito antes,
@@ -166,7 +166,7 @@ mas sim, o nosso primeiro passo para construir a própria divisão.</p>
 <p>Como o objetivo era ”relacionar cada inteiro”, vamos ”reformular” essa relacão de modo em que
 caso tenhamos 2 inteiros, nós conseguimos extrair uma relação entre os dois:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(∀a, b :: int)(∃!q, r :: int)[0 ≤ r &lt; |b| ⇒ a = q * b + r]
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="err">∀</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">::</span> <span class="n">int</span><span class="p">)(</span><span class="err">∃</span><span class="o">!</span><span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">::</span> <span class="n">int</span><span class="p">)[</span><span class="mi">0</span> <span class="err">≤</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="o">|</span><span class="n">b</span><span class="o">|</span> <span class="err">⇒</span> <span class="n">a</span> <span class="o">=</span> <span class="n">q</span> <span class="o">*</span> <span class="n">b</span> <span class="o">+</span> <span class="n">r</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>Chamamos essa proposição de o Teorema da Divisão. Caso os simbolos feios tenham deixado
@@ -177,18 +177,18 @@ o motivo disso é que olhamos esse ”r” como o ”resto” da divisão entre 
 lembre do seu 5 ano do fundamental, quando temos resto 0, é quando um inteiro é divisor de outro.</p>
 
 <p>Exemplos:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a := 42, b := 9:
-42 = 4 * 9 + 6 (q = 4, r = 6)
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">:=</span> <span class="mi">42</span><span class="p">,</span> <span class="n">b</span> <span class="o">:=</span> <span class="mi">9</span><span class="o">:</span>
+<span class="mi">42</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">9</span> <span class="o">+</span> <span class="mi">6</span> <span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
 
-a := 5, b := 2:
-5 = 2 * 2 + 1 (q = 2, r = 1)
+<span class="n">a</span> <span class="o">:=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">b</span> <span class="o">:=</span> <span class="mi">2</span><span class="o">:</span>
+<span class="mi">5</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
-a := 4, b := 5
-4 = 0 * 5 + 4 (q = 0, r = 4)
+<span class="n">a</span> <span class="o">:=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">b</span> <span class="o">:=</span> <span class="mi">5</span>
+<span class="mi">4</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">4</span> <span class="p">(</span><span class="n">q</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
 </code></pre></div></div>
 <p>Logo, chamaremos de div e mod as relações onde:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a div b = div(a, b) = q.
-a mod b = r.
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="n">div</span> <span class="n">b</span> <span class="o">=</span> <span class="n">div</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span>
+<span class="n">a</span> <span class="n">mod</span> <span class="n">b</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span>
 </code></pre></div></div>
 <p>Com isso, estamos preparados para trabalhar em alto nível.</p>
 
@@ -204,24 +204,24 @@ a mod b = r.
 <p>Primeiramente, iremos definir o que são números primos (viu o que eu fiz? &gt;:))</p>
 
 <p>Seja p um número primo. Temos que o p tem as seguintes características:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(I) p ∈ Int
-(II) p &gt; 1.
-(III) p não tem divisores além de 1 e ele mesmo.
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="kt">I</span><span class="p">)</span> <span class="n">p</span> <span class="err">∈</span> <span class="kt">Int</span>
+<span class="p">(</span><span class="kt">II</span><span class="p">)</span> <span class="n">p</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">.</span>
+<span class="p">(</span><span class="kt">III</span><span class="p">)</span> <span class="n">p</span> <span class="n">n</span><span class="err">ã</span><span class="n">o</span> <span class="n">tem</span> <span class="n">divisores</span> <span class="n">al</span><span class="err">é</span><span class="n">m</span> <span class="n">de</span> <span class="mi">1</span> <span class="n">e</span> <span class="n">ele</span> <span class="n">mesmo</span><span class="o">.</span>
 </code></pre></div></div>
 
 <p>Podemos também reescrever o (II) como:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>p primo ↔ (∀a ∈ Int)[a ̸= 1 &amp; a ̸= p =⇒ a ∤ p]
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="n">primo</span> <span class="err">↔</span> <span class="p">(</span><span class="err">∀</span><span class="n">a</span> <span class="err">∈</span> <span class="kt">Int</span><span class="p">)[</span><span class="n">a</span> <span class="err"≯</span><span class="o">=</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="n">a</span> <span class="err"≯</span><span class="o">=</span> <span class="n">p</span> <span class="o">=</span><span class="err">⇒</span> <span class="n">a</span> <span class="err">∤</span> <span class="n">p</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>Ou reduzindo a complexidade para:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>p primo ↔ (∀a &lt; p)[a &gt; 1 =⇒ a ∤ p]
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="n">primo</span> <span class="err">↔</span> <span class="p">(</span><span class="err">∀</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">)[</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">=</span><span class="err">⇒</span> <span class="n">a</span> <span class="err">∤</span> <span class="n">p</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>OU REDUZINDO MAIS AINDA PARA:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>p primo ↔ (∀a primo)[a ≤ √p ⇒ a ∤ p]
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="n">primo</span> <span class="err">↔</span> <span class="p">(</span><span class="err">∀</span><span class="n">a</span> <span class="n">primo</span><span class="p">)[</span><span class="n">a</span> <span class="err">≤</span> <span class="err">√</span><span class="n">p</span> <span class="err">⇒</span> <span class="n">a</span> <span class="err">∤</span> <span class="n">p</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>Brincadeiras a parte, iremos utilizar qualquer uma das duas primeiras reescritas como uma ”definição”, 
@@ -278,7 +278,7 @@ de primos, onde essa fatoração é única, a menos da ordem de seus fatores.</p
 
 <p>Para qualquer n &gt; 1, podemos escrever n como:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>n = p₁ᵏ¹ * p₂ᵏ² * ... * pᵣᵏʳ
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="n">p</span><span class="err">₁ᵏ¹</span> <span class="o">*</span> <span class="n">p</span><span class="err">₂ᵏ²</span> <span class="o">*</span> <span class="o">...</span> <span class="o">*</span> <span class="n">p</span><span class="err">ᵣᵏʳ</span>
 </code></pre></div></div>
 
 <p>Onde, para i = 1, 2, … , r, cada kᵢ é um inteiro positivo e cada pᵢ é um número primo, tal
@@ -302,7 +302,7 @@ permitem trabalhar melhor com números primos.</p>
 <p>O MMC (Mínimo Múltiplo Comum), como o nome já diz, á a operação que vê o menor número
 que é divisível por outros dois (ou mais). Definimos da seguinte forma:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MMC(a, b) = min(c : a|c &amp; b|c)
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">MMC</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">c</span> <span class="o">:</span> <span class="n">a</span><span class="o">|</span><span class="n">c</span> <span class="o">&amp;</span> <span class="n">b</span><span class="o">|</span><span class="n">c</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Uma definição um pouco diferente do que estamos acostumados, mas que não é tão dificil de
@@ -314,20 +314,20 @@ se compreender, já que ela (literalmente) pega o menor fator “c”, onde a | 
 Divisor Comum) não foge muito do padrão. Similar ao seu irmão mais novo (MMC), podemos
 utilizar a seguinte definição:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MDC(a, b) = max(c : c|a &amp; c|b)
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">MDC</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">c</span> <span class="o">:</span> <span class="n">c</span><span class="o">|</span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">c</span><span class="o">|</span><span class="n">b</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>Onde ela pega o maior fator “c” onde a divide c e b divide c.</p>
 
 <p>Note que, unindo as duas operações, temos que:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MDC(a, b) * MMC(a, b) = a * b
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">MDC</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="kt">MMC</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
 </code></pre></div></div>
 
 <h3 id="algoritmo-de-euclides-e-o-teorema-de-bezout">Algoritmo de Euclides e o Teorema de Bezout</h3>
 
 <p>Podemos utilizar o seguinte algoritmo para calcular o MDC de 2 números:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MDC(c, 0) = c
-MDC(a, b) = M DC(b, r)
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">MDC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">c</span>
+<span class="kt">MDC</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="kt">M</span> <span class="kt">DC</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
 </code></pre></div></div>
 <p>Onde o r é o resto da divisão de a por b.
 Chamamos esse algoritmo de ”Algoritmo de Euclides”. A ”extratégia” do uso desse algoritmo é continuar
@@ -410,7 +410,8 @@ O operador ‘%’ (módulo) retorna o resto de uma divisão, o que é a base pa
       <span class="k">return</span> <span class="n">false</span> <span class="c1"># O numéro não é par (ou seja, é impar) 
 </span></code></pre></div></div>
 <p>Da mesma forma que fizemos no exemplo acima, podemos usar o exemplo 2 para definir uma função recebe 2 números e um módulo, e retorna se aqueles números são congruentes em relação aquele módulo.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Exemplo 5: função para verificar se dois números são congruentes em relação a um módulo
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Exemplo 5: função para verificar se dois números são congruentes 
+# em relação a um módulo
 </span>
 <span class="k">def</span> <span class="nf">congruente</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">%</span> <span class="n">m</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">b</span> <span class="o">%</span> <span class="n">m</span><span class="p">):</span>
@@ -423,19 +424,24 @@ O operador ‘%’ (módulo) retorna o resto de uma divisão, o que é a base pa
 <p>A ideia principal por trás das relações de congruência é mostrar que dois números são equivalentes numa divisão por um número m se, ao serem divididos por m, eles deixam o mesmo resto. Por exemplo quando dividimos 6 por 4, obtemos resto 2 (6 mod 4 = 2), e da mesma forma, quando dividimos 10 por 4 também obtemos resto 2 (10 mod 4 = 2), assim, dizemos que 6 equivale a 10 (ou que 6 é congruente a 10) numa divisão por 4. Esse conceito tem diversas aplicações práticas, como:</p>
 
 <ol>
-  <li>Criptografia
+  <li><strong>Criptografia</strong>
     <ul>
       <li>Algoritmos como RSA usam congruências modulares para codificar/decodificar mensagens (ex: cálculo de c ≡ m^e mod n para cifragem). [Idéia: implementar em python um algorítmo de cifra de césar simples]</li>
     </ul>
   </li>
-  <li>Validação de documentos
+  <li><strong>Validação de documentos</strong>
     <ul>
       <li>Dígitos verificadores do CPF, cartões de crédito ou até contas bancárias utilizam congruências modulares</li>
     </ul>
   </li>
-  <li>Hash tables
+  <li><strong>Hash tables</strong>
     <ul>
       <li>Funções hash utilizam o operador ‘%’ para mapear chaves em índices de arrays</li>
+    </ul>
+  </li>
+  <li><strong>RNG (Random Number Generator)</strong>
+    <ul>
+      <li>…</li>
     </ul>
   </li>
 </ol>
@@ -444,33 +450,96 @@ O operador ‘%’ (módulo) retorna o resto de uma divisão, o que é a base pa
 <p>Dados a,b e m inteiros, e m &gt; 0, dizemos que:
 a ≡ b (mod m) se e somente se m | (a - b)
 Exemplos:</p>
-<ul>
-  <li>15 ≡ 3 (mod 12), pois 12 | (15 - 3)</li>
-  <li>6 ≡ 2 (mod 4), pois 4 | (6 - 2)</li>
-  <li>19 ≡ 5 (mod 7), pois 7 | (19 - 5)</li>
-</ul>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">-</span> <span class="mi">15</span> <span class="err">≡</span> <span class="mi">3</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">12</span><span class="p">),</span> <span class="n">pois</span> <span class="mi">12</span> <span class="o">\|</span> <span class="p">(</span><span class="mi">15</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span>
+<span class="o">-</span> <span class="mi">6</span> <span class="err">≡</span> <span class="mi">2</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">4</span><span class="p">),</span> <span class="n">pois</span> <span class="mi">4</span> <span class="o">\|</span> <span class="p">(</span><span class="mi">6</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">-</span> <span class="mi">19</span> <span class="err">≡</span> <span class="mi">5</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">7</span><span class="p">),</span> <span class="n">pois</span> <span class="mi">7</span> <span class="o">\|</span> <span class="p">(</span><span class="mi">19</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
 
-<h2 id="propriedades">Propriedades</h2>
-<p>Agora, vamos ver algumas propriedades fundamentais das relações de equivalência, e demonstrar que elas valem. 
-<strong>Propriedades relacionais:</strong></p>
-<ol>
-  <li>Reflexividade: a ≡ a (mod m)</li>
-  <li>Simetria: a ≡ b (mod m) → b ≡ a (mod m)</li>
-  <li>Transitividade: a ≡ b (mod m) e b ≡ c (mod m) → a ≡ c (mod m)</li>
-</ol>
+<h3 id="propriedades">Propriedades</h3>
+<p>Agora, vamos ver algumas propriedades fundamentais das relações de equivalência, e demonstrar que elas valem.</p>
+<h4 id="propriedades-relacionais"><strong>Propriedades relacionais</strong></h4>
+<p>Vamos começar com algumas propriedades da relação em si.</p>
 
-<p><strong>Propriedades operacionais:</strong>
-<em>Se a ≡ b (mod m) e c ≡ d (mod m), então.</em></p>
-<ol>
-  <li>Adição: a + c  ≡ b + d (mod m)</li>
-  <li>Subtração: a - c ≡ b - d (mod m)</li>
-  <li>Multiplicação: a * c ≡ b * d (mod m)</li>
-</ol>
+<p><strong>Reflexividade:</strong> a ≡ a (mod m)</p>
 
-<h2 id="classes-de-equivalência">Classes de Equivalência</h2>
-<p>~ melhorar ainda</p>
+<p><strong>Resposta:</strong></p>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Podemos demonstrar essa propriedade por contradição. </span>
+<span class="kt">Assuma</span> <span class="n">que</span> <span class="n">a</span> <span class="n">propriedade</span> <span class="err">é</span> <span class="n">falsa</span><span class="p">,</span> <span class="n">ou</span> <span class="n">seja</span><span class="o">:</span>
+<span class="n">a</span> <span class="o">/</span><span class="err">≡</span> <span class="n">a</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span> <span class="c1">-- [onde '/≡' é a negação de '≡']</span>
+<span class="c1">-- Podemos transformar essa proposição através de definições que já vimos de tal forma:</span>
+<span class="n">a</span> <span class="o">/</span><span class="err">≡</span> <span class="n">a</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">m</span> <span class="err">∤</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="c1">-- [pela definição de congruência que vimos a pouco]</span>
+<span class="n">m</span> <span class="err">∤</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="err">∄</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="c1">-- [pela definição do operador '\|' que vimos no começo dessa aula]</span>
+<span class="c1">-- A partir daqui, basta desenvolver um pouco a equação para chegar numa contradição:</span>
+<span class="err">∄</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="err">∄</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">0</span>    
+<span class="c1">-- Sabemos que qualquer número multiplicado por 0 resulta em 0, </span>
+<span class="c1">-- isso contradiz a proposição que concluímos </span>
+<span class="c1">-- a partir da assunção original que fizemos. </span>
+<span class="kt">Logo</span><span class="p">,</span> <span class="n">por</span> <span class="n">prova</span> <span class="n">indireta</span><span class="p">,</span> <span class="n">a</span> <span class="err">≡</span> <span class="n">a</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span><span class="o">.</span>
+</code></pre></div></div>
+<p><strong>Simetria:</strong> a ≡ b (mod m) → b ≡ a (mod m)</p>
+
+<p><strong>Resposta:</strong></p>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Seja</span> <span class="n">a</span> <span class="err">≡</span> <span class="n">b</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span> 
+<span class="c1">-- Como na propriedade anterior, vamos transformar essa proposição</span>
+<span class="n">a</span> <span class="err">≡</span> <span class="n">b</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">m</span> <span class="o">\|</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">\|</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="err">∃</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+<span class="c1">-- Agora, vamos desenvolver essa equação a nosso favor</span>
+<span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> 
+<span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">-&gt;</span> <span class="n">j</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span> <span class="c1">-- [Com j = -k]</span>
+<span class="kt">Logo</span><span class="p">,</span>
+<span class="err">∃</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> 
+<span class="kt">Pela</span> <span class="n">defini</span><span class="err">çã</span><span class="n">o</span> <span class="n">de</span> <span class="o">\|</span><span class="p">,</span> <span class="n">temos</span>
+<span class="err">∃</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">m</span> <span class="o">\|</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span>
+<span class="kt">Pela</span> <span class="n">defini</span><span class="err">çã</span><span class="n">o</span> <span class="n">de</span> <span class="n">congru</span><span class="err">ê</span><span class="n">ncia</span><span class="p">,</span> <span class="n">temos</span>
+<span class="n">m</span> <span class="o">\|</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">b</span> <span class="err">≡</span> <span class="n">a</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span>
+<span class="kt">Que</span> <span class="err">é</span> <span class="n">o</span> <span class="n">que</span> <span class="n">queriamos</span> <span class="n">demonstrar</span><span class="o">.</span>
+</code></pre></div></div>
+<p><strong>Transitividade:</strong> a ≡ b (mod m) e b ≡ c (mod m) → a ≡ c (mod m)</p>
+
+<p><strong>Resposta:</strong></p>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Seja</span> <span class="n">a</span> <span class="err">≡</span> <span class="n">b</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">),</span> <span class="n">e</span>  <span class="n">b</span> <span class="err">≡</span> <span class="n">c</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span>
+<span class="c1">-- Já sabe o que fazer né? Transformar a proposição utilizando as definições</span>
+<span class="kt">Podemos</span> <span class="n">escrever</span><span class="o">:</span>
+<span class="n">a</span> <span class="err">≡</span> <span class="n">b</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">m</span> <span class="o">\|</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">\|</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="err">∃</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+<span class="kt">Analogamente</span><span class="o">:</span>
+<span class="n">b</span> <span class="err">≡</span> <span class="n">c</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">m</span> <span class="o">\|</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">\|</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="err">∃</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span>
+<span class="c1">-- Temos que pensar um pouco fora da caixa agora,</span>
+<span class="c1">-- precisamos chegar que a ≡ c (mod m). Para isso</span>
+<span class="c1">-- precisamos obter b em função de a</span>
+<span class="kt">Temos</span> <span class="n">que</span><span class="o">:</span>
+<span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="n">b</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">-</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">+</span> <span class="n">a</span>
+<span class="c1">-- Agora, basta substituir b na outra equação</span>
+<span class="kt">Logo</span><span class="o">:</span>
+<span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">+</span> <span class="n">a</span><span class="p">)</span> <span class="o">-</span> <span class="n">c</span> <span class="o">-&gt;</span> <span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">+</span> <span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">c</span>
+<span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">+</span> <span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">c</span> <span class="o">-&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">m</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">c</span> <span class="c1">-- Com j = 2 * k</span>
+<span class="c1">-- Agora é so transformar de volta pra forma de congruência </span>
+<span class="kt">Pela</span> <span class="n">defini</span><span class="err">çã</span><span class="n">o</span> <span class="n">de</span> <span class="o">\|</span><span class="p">,</span> <span class="n">temos</span>
+<span class="err">∃</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">m</span> <span class="o">\|</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span>
+<span class="kt">Pela</span> <span class="n">defini</span><span class="err">çã</span><span class="n">o</span> <span class="n">de</span> <span class="n">congru</span><span class="err">ê</span><span class="n">ncia</span><span class="p">,</span> <span class="n">temos</span>
+<span class="n">m</span> <span class="o">\|</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">a</span> <span class="err">≡</span> <span class="n">c</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span>
+<span class="kt">Que</span> <span class="err">é</span> <span class="n">o</span> <span class="n">que</span> <span class="n">queriamos</span> <span class="n">demonstrar</span><span class="o">.</span>
+</code></pre></div></div>
+
+<h4 id="propriedades-operacionais"><strong>Propriedades operacionais</strong></h4>
+<p>Agora é sua vez, como exercício, tente demonstrar as seguintes propriedades. Lembre-se, você pode utilizar as propriedades
+que já foram demonstradas acima.</p>
+
+<blockquote>
+  <p><em>Se a ≡ b (mod m) e c ≡ d (mod m), então:</em></p>
+  <ol>
+    <li>Adição: a + c  ≡ b + d (mod m)</li>
+    <li>Subtração: a - c ≡ b - d (mod m)</li>
+    <li>Multiplicação: a * c ≡ b * d (mod m)</li>
+  </ol>
+</blockquote>
 
 <h1 id="criptografia-rsa">Criptografia RSA</h1>
+
+<h2 id="contextualização-histórica">Contextualização histórica</h2>
 <p>Historicamente, “esconder” mensagens sempre foi uma necessidade: passar informações para aliados de maneira segura, - sem a possibilidade delas serem roubadas - era imprescindível durante episódios como guerras ou conflitos. Nesse contexto, foram desenvolvidas técnicas para que essas mensagens pudessem passar despercebidas ou ininteligíveis diante do olho inimigo, mas claras para os destinatários.</p>
 
 <p>A esteganografia, por exemplo, já é utilizada há milhares de anos. O seu nome vem das palavra gregas “steganos”, que significa “coberta”, e “graphein”, que significa “escrever” - e, como as definições sugerem, a prática se reduz a encobrir a existência dessas mensagens por completo, de forma que elas passem despercebidas a um olho destreinado.</p>
@@ -491,16 +560,18 @@ Exemplos:</p>
 
 <p>Com a modernização da área, foram criados diversos outros sistemas de criptografia, cada vez mais modernos e seguros - um deles sendo a Criptografia RSA (Rivest-Shamir-Adleman), que estudaremos um pouquinho mais a fundo a seguir!</p>
 
-<p>– CRIPTOGRAFIA RSA</p>
+<h2 id="a-criptografia-rsa-em-si">A criptografia RSA em si</h2>
 
 <p>Os três cientistas em questão (Ron Rivest, Adi Shamir e Leonard Adleman) eram do departamento de Ciência da Computação do MIT, e estavam tentando resolver um problema de criptografia assimétrica - proposto anteriormente por cientistas em Harvard. De mai
 os problemas encontrados com a criptografia simétrica eram
 os processos de criptografia e decriptografia eram objetivamente o inverso um do outro
 esconder a chave</p>
 
-<p>Até então, todas as formas de criptografia eram simétricas, - ou seja, o processo de “decriptação” era objetivamente o inverso da “encriptação”. Assim, ambos usavam a mesma chave - o que facilitaria o roubo de informações, já que a chave deveria ser transportada para que o conteúdo pudesse ser revelado! Justamente para tentar mitigar esse problema, Whitfield Diffie e Martin Hellman (dois Cientistas da Computação e oeiroefr de iafiaer,) idealizaram uma maneira diferente de transportar mensagens secretas: a Criptografia Assimétrica.</p>
+<p>Até então, todas as formas de criptografia eram simétricas, - ou seja, o processo de “decriptação” era objetivamente o inverso da “encriptação”. Assim, ambos usavam a mesma chave - o que facilitaria o roubo de informações, já que a chave deveria ser transportada para que o conteúdo pudesse ser revelado! Justamente para tentar mitigar esse problema, Whitfield Diffie e Martin Hellman (dois Cientistas da Computação e pesquisadores de Stanford) idealizaram uma maneira diferente de transportar mensagens secretas: a Criptografia Assimétrica.</p>
 
-<p>Na criptografia assimétrica, ao invés de apenas uma chave, duas chaves são necessárias: uma pública, para a encriptação, e uma privada, para a decriptação. Dessa forma, cada usuário disponibiliza a sua chave pública, de forma que qualquer um pode criptografar mensagens para ele, e mantém em segredo a sua chave privada, para que ele seja o único capaz de descriptografar o que lhe foi enviado. O maior objetivo, então, seria facilitar ao máximo a primeira etapa e dificultar ao máximo a segunda (a não ser que a chave secreta esteja em sua posse!). Ou seja, o problema da necessidade de transportar a chave de maneira segura (para que a mensagem não seja roubada) some!</p>
+<p>Na criptografia assimétrica, ao invés de apenas uma chave, duas chaves são necessárias: uma pública, para a encriptação, e uma privada, para a decriptação. Dessa forma, cada usuário disponibiliza a sua chave pública, de maneira que qualquer um pode criptografar mensagens para ele, e mantém em segredo a sua chave privada, para que ele seja o único capaz de descriptografar o que lhe foi enviado. O maior objetivo, então, seria facilitar ao máximo a primeira etapa e dificultar ao máximo a segunda (a não ser que a chave secreta esteja em sua posse!). Ou seja, o problema da necessidade de transportar a chave de maneira segura (para que a mensagem não seja roubada) some!</p>
+
+<p><em>imagem para representar alice, bob e suas chaves publicas e privadas</em></p>
 
 <p>Para explicar mais claramente essa ideia, vamos imaginar que Alice precisa mandar uma mensagem para Bob. Então, ambos terão disponibilizado suas chaves públicas e escondido suas chaves privadas. Mas vamos também imaginar que Eve quer bisbilhotar as mensagens que eles estão mandando entre si, esse processo precisa ser feito da maneira mais segura possível.</p>
 
@@ -508,24 +579,38 @@ esconder a chave</p>
 
 <p>Até simples de entender, né? Mas um processo que possibilitasse essa propriedade demorou anos a ser desenvolvido! Foi apenas em 1977 que Ron Rivest, Adi Shamir e Leonard Adleman foram capazes de publicar suas descobertas e uma nova forma de criptografar: a chamada Criptografia RSA.</p>
 
-<p>A segurança desse sistema se baseia tanto na infinidade dos números primos quanto na dificuldade para a fatoração em primos.</p>
+<p>A segurança desse sistema se baseia tanto na infinidade dos números primos quanto na dificuldade para a fatoração de números extensos em primos - então os primos escolhidos por Alice seriam tão, tão extensos que teriam centenas de casas decimais!!</p>
 
-<p>– explicar em geral porque funciona (usar mod-&gt; dificil de reverter)
-– exemplificar com alice e bob</p>
+<p>Antes de entrarmos em exemplos com números de verdade, vamos ver o processo idealizado pelos três cientistas: Inicialmente, Alice escolhe os dois primos p e q, e um número e que seja coprimo a (p-1)*(q-1) (que representa o valor da função totiente de euler! mas isso não vem ao caso agora); A chave pública consistirá, então, no produto n entre p e q e no número e. Bob, então, pegaria a sua mensagem e transformaria-na em um número m (por meio de recursos como a tabela ASCII!). O algoritmo geral levaria o garoto a transformar sua mensagem em um texto cifrado C = me(mod n).</p>
 
-<p>Cada pessoa, para criar as suas próprias chaves, escolherá dois números primos - que chamaremos de P e Q. A chave pública, que chamaremos de N, será a multiplicação entre esses 2 números. Então, por exemplo, para um p = 17 159 e um q = 10 247, temos N = p ✕ q = 175 828 273. Esse N será, então, utilizado para criptografar a nossa mensagem</p>
+<p>Em geral, é muito difícil reverter c para a sua mensagem original sem nenhuma informação adicional devido à natureza de funções módulo: elas são imprevisíveis! Você não consegue ir “testando” números diferentes para m e basear seus chutes seguintes nos anteriores (como seria feito em uma busca binária!), já que um resultado maior não necessariamente implica em um m maior. Assim, qualquer espião ou fofoqueiro teria dificuldade em retornar à mensagem original.</p>
 
-<p>Digamos que Alice tenha escolhido p = 7 e q = 13;</p>
+<p>Na volta, precisaremos do valor de outro número: d, o inverso modular multiplicativo daquele e que publicamos anteriormente! Ou seja, temos que: de1(mod(p-1)(q-1)). Conseguimos resolver essa equação usando o algoritmo estendido de euclides, que vimos anteriormente nesta aula!</p>
 
-<p>vale ressaltar que, com a evolução exponencial dos computadores nos últimos 50 anos, esse tipo de tecnologia não é mais considerado tão seguro, já que se baseia na dificuldade de fatoração de primos!</p>
+<p>Logo, pelas propriedades de inverso multiplicativo, nós conseguimos reverter a cifra para a nossa mensagem original! então, m = cd(modn).</p>
 
-<p>Para explicar, voltaremos à ideia de Alice e Bob</p>
+<p>Para deixar as coisas um pouco mais tangíveis, vamos exemplificar com números pequenos. Alice escolheu p = 17, q = 11 e e = 7. Portanto, serão publicados e e n = p*q = 187. Caso Bob queira mandar apenas uma letra ‘X’ para Alice, ele transformará essa letra em um número para que ele possa ser encriptado - logo, ao checar a tabela ASCII, Bob chega à conclusão que sua mensagem m = 88. Usando a fórmula vista anteriormente, c = 887(mod 187). Através de propriedades modulares (aquelas que vimos mais cedo!), podemos chegar aos seguintes resultados:</p>
 
-<p>No entanto, Eve quer bisbilhotar essa mensagem</p>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">88</span><span class="err">⁷</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">88</span><span class="err">⁴</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span> <span class="err">✕</span> <span class="mi">88</span><span class="err">²</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span> <span class="err">✕</span> <span class="mi">88</span><span class="err">¹</span><span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)]</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span>
+<span class="mi">88</span><span class="err">¹</span> <span class="o">=</span> <span class="mi">88</span> <span class="o">=</span> <span class="mi">88</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span>
+<span class="mi">88</span><span class="err">²</span>  <span class="o">=</span> <span class="mi">7</span><span class="p">,</span><span class="mi">744</span> <span class="o">=</span> <span class="mi">77</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span>
+<span class="mi">88</span><span class="err">⁴</span> <span class="o">=</span> <span class="mi">59</span><span class="p">,</span><span class="mi">969</span><span class="p">,</span><span class="mi">536</span> <span class="o">=</span> <span class="mi">132</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span>
+<span class="mi">88</span><span class="err">⁷</span> <span class="o">=</span> <span class="mi">88</span><span class="err">¹</span> <span class="err">✕</span> <span class="mi">88</span><span class="err">²</span> <span class="err">✕</span> <span class="mi">88</span><span class="err">⁴</span> <span class="o">=</span> <span class="mi">88</span> <span class="err">✕</span> <span class="mi">77</span> <span class="err">✕</span> <span class="mi">132</span> <span class="o">=</span> <span class="mi">894</span><span class="p">,</span><span class="mi">432</span> <span class="o">=</span> <span class="mi">11</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span>
+</code></pre></div></div>
 
-<p>A ideia de um sistema assimétrico de criptografia seria justamente mitigar esse problema, de forma que a chave não precisasse ser transportada para quem vai receber a mensagem. Inicialmente isso pode ser difícil de imaginar, mas vamos pensar no seguinte: imagine que</p>
+<p>Alice, para decriptar a mensagem, precisa do valor de d para chegar ao engierie. Assim, obtemos:
+<em>inserir aqui o passo a passo do algoritmo estendido de euclides</em></p>
 
-<p>vamos imaginar que Alice está tentando mandar uma mensagem para Bob.</p>
+<p>No fim, para descobrir o que Bob teria enviado para ela, alice aplica m = cd(mod 187).</p>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">M</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="err">¹</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span> <span class="err">✕</span> <span class="mi">11</span><span class="err">²</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span> <span class="err">✕</span> <span class="mi">11</span><span class="err">⁴</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span>
+<span class="err">✕</span> <span class="mi">11</span><span class="err">¹</span><span class="mi">6</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)]</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span>
+<span class="kt">M</span> <span class="o">=</span> <span class="mi">11</span> <span class="err">✕</span> <span class="mi">121</span> <span class="err">✕</span> <span class="mi">55</span> <span class="err">✕</span> <span class="mi">154</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span>
+<span class="kt">M</span> <span class="o">=</span> <span class="mi">88</span> <span class="o">=</span> <span class="kt">X</span> <span class="n">em</span> <span class="kt">ASCII</span>
+</code></pre></div></div>
+
+<p>A mensagem foi enviada, transportada e entregue de maneira segura! Alice pode, finalmente, ler a letra ‘X’ que Bob lhe enviou.</p>
+
+<p>No entanto, vale ressaltar que os números escolhidos para esse exemplo são pequenos demais para serem seguros. Na realidade, são números que usam até 1024 bits para serem representados! E, mesmo assim, esse sistema é considerado relativamente desatualizado, já que sua segurança depende da fatoração de um número grande em dois primos, e os avanços em hardware têm sido muito extensos nos últimos anos!</p>
 
 <hr />
 
