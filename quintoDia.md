@@ -1,6 +1,6 @@
 ---
 layout: layoutGit 
-title: Minicurso de Linux e Git
+title: Minicurso de Matemática aplicada à Computação
 ---
 
 # Projeto final
