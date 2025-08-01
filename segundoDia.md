@@ -78,10 +78,10 @@ title: Minicurso de Matemática aplicada à Computação
 # Indução
 Aposto que em determinado momento, você já se deparou com algum exercício em específico que foi solicitado para resolver, seja na escola, na própria faculdade ou até mesmo em brincadeiras da internet. E de alguma forma o resolveu por dedução natural, sem utilizar nenhum artifício matemático de forma séria enquanto analisa padrões ou faz tentativa e erro. No fim, chegando a algum palpite, no qual você tem certeza que está certo. 
 
-Dessa forma, chegada à uma conclusão, como podemos provar que uma determinada solução está certa? É aí que entra a Indução
+Dessa forma, chegada a uma conclusão, como podemos provar que uma determinada solução está certa? É aí que entra a Indução
 
 ## O que é Indução?
-Indução Matemática ou Indução Finita, nada mais é que um método de demonstração. Sendo uma forma eficaz de verificar a veracidade de uma determinada propriedade.
+Indução Matemática ou Indução Finita, nada mais é que um método de demonstração. É uma forma eficaz de verificar a veracidade de uma determinada propriedade.
 
 Imagine uma fileira de dominós, igualmente espaçados entre si, de tal forma que: derrubando um dominó, o próximo também será derrubado. 
 Você concorda que nesse processo a fileira inteira de dominós será derrubada?
@@ -91,7 +91,7 @@ A Indução funciona exatamente dessa forma. Provando que uma determinada propri
 ### Estrutura da Indução
 A indução atua sobre os números inteiros não negativos (1, 2, 3, 4, 5...) e segue a seguinte estrutura:
 - Passo base: Provamos que é verdade para o primeiro valor.
-- Passo indutivo: Provamos que é verdade para o valor seguinte.
+- Passo indutivo: Verificamos que é verdadeira para o valor seguinte.
   	- Hipótese de indução
   	- Verificação da hipótese
 
@@ -107,9 +107,79 @@ Gauss percebeu algo curioso...
 - E assim por diante
 <div style="text-align: center;">  <img src="assets/images/gauss_summation_6.png" alt=""> </div>
 
+A partir dessas informações, vamos lentamente montar a suposta fórmula que resolveria o problema
+- Temos 100 números divididos em pares, ou seja, 50 pares, todos com o mesmo valor 
+  	Soma até 100 = 50 * pares 
+- Os números correspondentes de cada par somam em 101
+	Soma até 100 = 50 * 101 
+- 101 = Número inicial + Número final
+	Soma até 100 = 50 * (1 + 100)
+
+E então generalizando enfim podemos chegar à fórmula:
+	Soma até n = n/2 * (1 + n)
+Que nos informa o valor da soma do número 1 até n. 
+
+Contudo, isso abre a questão. Como podemos provar que essa fórmula realmente é verdade? 
+
 ### Indução em Prática
+Problema: Prove que 1 + 2 + 3 + 4 + ... + n = n/2 * (1 + n) é verdade para qualquer inteiro n não negativo. 
+
+- Passo base
+A princípio, verificaremos se isso é verdade para n = 1.
+Sabemos que o resultado precisa ser 1.
+
+A fórmula funciona para esse caso?
+n/2 * (1 + n) = 1/2 * (1 + 1) = 1/2 * 2 = 1 
+Sim!
+
+Logo, provamos que é verdade para o caso base.
+A fórmula funciona para n = 1
+ 	
+- Passo indutivo
+(É aqui que as coisas começam a ficar um pouco mais extravagantes). 
+
+A primeira etapa do passo indutivo é formular a Hipótese de Indução.
+A nossa hipótese é a seguinte: A fórmula funciona para algum número natural qualquer chamado k
+1 + 2 + 3 + ... + k = k/2 * (1 + k)
+(Perceba que isso é similar à fórmula que já vimos, porém com um k no lugar do n)
+
+Agora, queremos mostrar que a fórmula também funciona para k + 1.  
+Ou seja, queremos provar que:
+1 + 2 + 3 + ... + k + (k + 1) = (k + 1)/2 * (1 + (k + 1))
+
+Como é o procedimento a partir daqui?
+Vamos usar a fórmula da Hipótese de Indução como base e, a partir dela, tentar chegar à expressão que queremos provar para k + 1, realizando operações e manipulações nas expressões. 
+
+A partir da Hipótese de Indução:
+1 + 2 + 3 + ... + k = k/2 * (1 + k)
+
+Somando (k + 1) dos dois lados:
+1 + 2 + 3 + ... + k + (k + 1) = (k/2 * (1 + k)) + (k + 1)
+
+Agora vamos simplificar essa expressão:
+(k/2 * (1 + k)) + (k + 1)  
+= (k(k + 1))/2 + (k + 1)
+
+Colocando (k + 1) em evidência:
+= (k + 1) * (k/2 + 1)
+Somando os termos dentro do parênteses:
+= (k + 1) * ((k + 2)/2)
+Pela comutatividade da multiplicação: 
+= (k + 1)/2 * (k + 2) 
+
+Ou seja:
+1 + 2 + ... + k + (k + 1) = (k + 1)/2 * (k + 2)
+
+E isso é exatamente a fórmula com n = k + 1:
+(n/2) * (1 + n), com n = k + 1  
+Portanto, está provado!
+A fórmula de fato é verdade!
 
 ## Exercício 1 
+Mas quando o assunto é Indução, é a prática que faz a perfeição. 
+Agora chegou o seu momento, tente aplicar indução para o seguinte problema:
+
+Prove que n^2 > 2n para todo n >= 3
 
 ## Indução Forte
 
