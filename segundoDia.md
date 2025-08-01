@@ -95,9 +95,17 @@ A indução atua sobre os números inteiros não negativos (1, 2, 3, 4, 5...) e 
   	- Hipótese de indução
   	- Verificação da hipótese
 
-Por enquanto, apenas se familiarize com o que é. Ainda explicaremos como colocar em prática.
+Por enquanto, apenas se familiarize com o que é. Ainda explicaremos como colocar em prática e sua relação com programação. 
 
-## Soma de Gauss
+## Analisando um problema
+Há uma história, em que o matemático alemão, Carl Friedrich Gauss, recebeu como um desafio do seu professor o problema de somar todos os números de 1 até 100. O desafio na verdade era apenas uma pegadinha, que tinha o intuito de mantê-lo ocupado. Contudo, Gauss rapidamente chegou a uma resposta, sem precisar realizar o trabalho árduo de somar número após número. Com isso, vamos analisar o problema e sua solução.
+
+Gauss percebeu algo curioso...
+- A soma do primero número com o último resultava em um determinado valor
+- A soma do segundo número com o penúltimo resultava no mesmo valor
+- A soma do terceiro número com o antipenúltimo novamente tinha o mesmo resultado
+- E assim por diante
+<div style="text-align: center;">  <img src="assets/images/gauss_summation_6.png" alt=""> </div>
 
 ### Indução em Prática
 
