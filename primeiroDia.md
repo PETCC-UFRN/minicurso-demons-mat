@@ -442,7 +442,7 @@ Agora é a sua vez de demonstrar algumas equivalências lógicas, utilize do mes
 
 ```lean
 P ∧ Q ≡ Q ∧ P               --[Comutatividade da conjunção]
-(P ∨ Q) ∧ Q ≡ Q             --[Abrsorção da conjunção sobre a disjunção]
+(P ∨ Q) ∧ Q ≡ Q             --[Absorção da conjunção sobre a disjunção]
 ¬(¬P) ≡ P                   --[Negação da negação]
 ¬(P ∧ Q) ≡ (¬P) ∨ (¬Q)      --[Demorgan]
 ```
