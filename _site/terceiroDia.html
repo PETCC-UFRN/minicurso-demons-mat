@@ -462,8 +462,10 @@ Exemplos:</p>
 
 <p><strong>Reflexividade:</strong> a ≡ a (mod m)</p>
 
-<p><strong>Resposta:</strong></p>
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Podemos demonstrar essa propriedade por contradição. </span>
+<details>
+<summary> Resposta:SPOILER! </summary>
+<div>
+    <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Podemos demonstrar essa propriedade por contradição. </span>
 <span class="kt">Assuma</span> <span class="n">que</span> <span class="n">a</span> <span class="n">propriedade</span> <span class="err">é</span> <span class="n">falsa</span><span class="p">,</span> <span class="n">ou</span> <span class="n">seja</span><span class="o">:</span>
 <span class="n">a</span> <span class="o">/</span><span class="err">≡</span> <span class="n">a</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span> <span class="c1">-- [onde '/≡' é a negação de '≡']</span>
 <span class="c1">-- Podemos transformar essa proposição através de definições que já vimos de tal forma:</span>
@@ -475,11 +477,16 @@ Exemplos:</p>
 <span class="c1">-- isso contradiz a proposição que concluímos </span>
 <span class="c1">-- a partir da assunção original que fizemos. </span>
 <span class="kt">Logo</span><span class="p">,</span> <span class="n">por</span> <span class="n">prova</span> <span class="n">indireta</span><span class="p">,</span> <span class="n">a</span> <span class="err">≡</span> <span class="n">a</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span><span class="o">.</span>
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </div>
+</details>
+
 <p><strong>Simetria:</strong> a ≡ b (mod m) → b ≡ a (mod m)</p>
 
-<p><strong>Resposta:</strong></p>
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Seja</span> <span class="n">a</span> <span class="err">≡</span> <span class="n">b</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span> 
+<details>
+<summary> Resposta:SPOILER! </summary>
+<div>
+    <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Seja</span> <span class="n">a</span> <span class="err">≡</span> <span class="n">b</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span> 
 <span class="c1">-- Como na propriedade anterior, vamos transformar essa proposição</span>
 <span class="n">a</span> <span class="err">≡</span> <span class="n">b</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">m</span> <span class="o">\|</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
 <span class="n">m</span> <span class="o">\|</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="err">∃</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span> <span class="o">*</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
@@ -494,11 +501,16 @@ Exemplos:</p>
 <span class="kt">Pela</span> <span class="n">defini</span><span class="err">çã</span><span class="n">o</span> <span class="n">de</span> <span class="n">congru</span><span class="err">ê</span><span class="n">ncia</span><span class="p">,</span> <span class="n">temos</span>
 <span class="n">m</span> <span class="o">\|</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">b</span> <span class="err">≡</span> <span class="n">a</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span>
 <span class="kt">Que</span> <span class="err">é</span> <span class="n">o</span> <span class="n">que</span> <span class="n">queriamos</span> <span class="n">demonstrar</span><span class="o">.</span>
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </div>
+</details>
+
 <p><strong>Transitividade:</strong> a ≡ b (mod m) e b ≡ c (mod m) → a ≡ c (mod m)</p>
 
-<p><strong>Resposta:</strong></p>
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Seja</span> <span class="n">a</span> <span class="err">≡</span> <span class="n">b</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">),</span> <span class="n">e</span>  <span class="n">b</span> <span class="err">≡</span> <span class="n">c</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span>
+<details>
+<summary> Resposta:SPOILER! </summary>
+<div>
+    <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">Seja</span> <span class="n">a</span> <span class="err">≡</span> <span class="n">b</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">),</span> <span class="n">e</span>  <span class="n">b</span> <span class="err">≡</span> <span class="n">c</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span>
 <span class="c1">-- Já sabe o que fazer né? Transformar a proposição utilizando as definições</span>
 <span class="kt">Podemos</span> <span class="n">escrever</span><span class="o">:</span>
 <span class="n">a</span> <span class="err">≡</span> <span class="n">b</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">m</span> <span class="o">\|</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
@@ -522,7 +534,9 @@ Exemplos:</p>
 <span class="kt">Pela</span> <span class="n">defini</span><span class="err">çã</span><span class="n">o</span> <span class="n">de</span> <span class="n">congru</span><span class="err">ê</span><span class="n">ncia</span><span class="p">,</span> <span class="n">temos</span>
 <span class="n">m</span> <span class="o">\|</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">c</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">a</span> <span class="err">≡</span> <span class="n">c</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span>
 <span class="kt">Que</span> <span class="err">é</span> <span class="n">o</span> <span class="n">que</span> <span class="n">queriamos</span> <span class="n">demonstrar</span><span class="o">.</span>
-</code></pre></div></div>
+</code></pre></div>    </div>
+  </div>
+</details>
 
 <h4 id="propriedades-operacionais"><strong>Propriedades operacionais</strong></h4>
 <p>Agora é sua vez, como exercício, tente demonstrar as seguintes propriedades. Lembre-se, você pode utilizar as propriedades

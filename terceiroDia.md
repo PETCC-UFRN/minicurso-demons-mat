@@ -455,7 +455,10 @@ Vamos começar com algumas propriedades da relação em si.
 
 **Reflexividade:** a ≡ a (mod m)
 
-**Resposta:**
+
+<details>
+<summary> Resposta:SPOILER! </summary>
+<div markdown="1">
 ```haskell
 -- Podemos demonstrar essa propriedade por contradição. 
 Assuma que a propriedade é falsa, ou seja:
@@ -470,9 +473,14 @@ m ∤ (a - a) -> ∄k, k * m = (a - a) -- [pela definição do operador '\|' que
 -- a partir da assunção original que fizemos. 
 Logo, por prova indireta, a ≡ a (mod m).
 ```
+</div>
+</details>
+
 **Simetria:** a ≡ b (mod m) → b ≡ a (mod m)
 
-**Resposta:**
+<details>
+<summary> Resposta:SPOILER! </summary>
+<div markdown="1">
 ```haskell
 Seja a ≡ b (mod m) 
 -- Como na propriedade anterior, vamos transformar essa proposição
@@ -490,9 +498,14 @@ Pela definição de congruência, temos
 m \| (b - a) -> b ≡ a (mod m)
 Que é o que queriamos demonstrar.
 ```
+</div>
+</details>
+
 **Transitividade:** a ≡ b (mod m) e b ≡ c (mod m) → a ≡ c (mod m)
 
-**Resposta:**
+<details>
+<summary> Resposta:SPOILER! </summary>
+<div markdown="1">
 ```haskell
 Seja a ≡ b (mod m), e  b ≡ c (mod m)
 -- Já sabe o que fazer né? Transformar a proposição utilizando as definições
@@ -519,6 +532,9 @@ Pela definição de congruência, temos
 m \| (a - c) -> a ≡ c (mod m)
 Que é o que queriamos demonstrar.
 ```
+</div>
+</details>
+
 
 #### **Propriedades operacionais**
 Agora é sua vez, como exercício, tente demonstrar as seguintes propriedades. Lembre-se, você pode utilizar as propriedades
