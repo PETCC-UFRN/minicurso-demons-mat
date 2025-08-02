@@ -175,13 +175,95 @@ E isso é exatamente a fórmula com n = k + 1:
 Portanto, está provado!
 A fórmula de fato é verdade!
 
-## Exercício 1 
+## Exercício
 Mas quando o assunto é Indução, é a prática que faz a perfeição. 
 Agora chegou o seu momento, tente aplicar indução para o seguinte problema:
 
 Prove que n^2 > 2n para todo n >= 3
 
 ## Indução Forte
+Mas o que acontece quando estamos analisando uma propriedade que para ser analisada ou provada, é necessário múltiplos passos? Por exemplo, tome o seguinte problema:
+
+Suponha que a1, a2, a3... é uma sequência definida da seguinte forma:
+a1 = 1
+a2 = 3
+ak = a(k-2) + 2a(k-1) para todos os inteiros k >= 3
+Prove que an é ímpar para todo n > 1
+
+Perceba que a nossa fórmula é composta por uma sequência, em que um determinado termo é definido pelos dois termos anteriores. A Indução que vimos anteriormente será o suficiente para provar o problema?
+Na verdade, não. Precisamos de uma ferramenta um pouco mais poderosa: a Indução Forte.
+Mais tarde voltaremos para esse problema, o mantenha na cabeça por enquanto. 
+
+### Estrutura da Indução Forte
+Não se preocupe, a estrutura da Indução Forte segue a mesma linha da Indução. Ainda teremos o passo base, hipótese de indução e passo indutivo. Contudo, há algumas particularidades, o passo base pode conter prova de vários valores iniciais. Além disso, no passo indutivo, assumiremos que vários valores atráves de k são verdade, para então provar que k+1 é verdade.
+
+Em resumo, a estrutura da Indução Forte se dá por: 
+- Passo base: Provamos que a afirmação é verdadeira para o primeiro valor (ou primeiros valores, se necessário).
+- Passo indutivo: Suponhamos que a afirmação seja verdadeira para todos os valores até um certo número k .
+  	- Hipótese de indução: Admitimos que a proposição vale para todos os inteiros entre o valor inicial e k.
+  	- Verificação da hipótese: Usamos essa suposição para demonstrar que a proposição também é verdadeira para o valor k+1.
+
+### Indução Forte em prática
+Para ilustrar a Indução Forte em prática, tome o seguinte problema:
+
+Seja s0, s1, s2,... uma sequência é definida da seguinte forma:
+s0 = 0
+s1 = 4
+sk = 6(ak-1) - 5(ak-2) para todos os inteiros k >= 2.
+
+A propriedade que queremos provar (P(n)) é que Sn = 5^n - 1 é a fórmula fechada para um termo da sequência. Mostrando que ela é verdade para todos os inteiros n >= 0. 
+
+- Passo base
+Vamos mostrar que P(0) e P(1) é verdade. Pela própria definição da sequência sabemos que n = 0 precisa resultar em 0 e n = 1 precisa resultar em 4.
+
+(n = 0)
+S0 = 5^0 - 1 = 1 - 1 = 0
+Verdade!
+
+(n = 1)
+S1 = 5^1 - 1 = 5 - 1 = 4
+Verdade!
+
+Os valores da fórmula realmente condizeram com os valores previamente definidos.
+
+- Passo indutivo
+No passo indutivo, queremos mostrar que para todos os inteiros k >= 1, se P(i) é verdade para todos os inteiros i de 0 até k, então P(k+1) também é verdade
+
+Vamos desenvolver
+
+Seja k qualquer inteiro k >= 1 e suponha que 
+si = 5^i - 1 para todos os inteiros i com 0 <= i <= k
+(Essa é a nossa hipótese indutiva)
+
+Queremos mostrar que 
+sk+1 = 5^(k+1) - 1 é verdade
+
+Mas como k >= 1, nós temos que k + 1 >= 2, e então
+sk+1 = 6sk - 5sk - 1 	(Pela definição da sequência)
+     = 6(5^k - 1) - 5(5^(k-1) - 1  (Pela hipótese indutiva)
+     = 6 * 5^k - 6 - 5^k + 5       (Multiplicação e lei dos expoentes)
+     = (6 - 1)5^k - 1              
+     = 5 * 5^k - 1
+     = 5^(k+1) - 1                 (Lei dos expoentes)
+
+Provando assim, que é de verdade!
+
+## Exercício 
+Vamos retornar àquele problema que introduzimos anteriormente, e ver se conseguimos resolvê-lo agora!
+
+Suponha que a1, a2, a3... é uma sequência definida da seguinte forma:
+a1 = 1
+a2 = 3
+ak = a(k-2) + 2a(k-1) para todos os inteiros k >= 3
+Prove que an é ímpar para todo n > 1
+
+## Indução na programação
+Antes de partirmos para o próximo assunto, acredito que existem diversas discussões interessantes que podemos ter em relação à Indução. Quando utiliza-la? Quando não utiliza-la? Qual sua relação com programação? 
+
+A Indução é especialmente útil quando estamos trabalhando problemas recursivos ou com padrões numéricos. Quando o problema em questão parece apresentar uma sequência, talvez cogitar a indução seja uma possibilidade. 
+No entanto, nem todo problema exige indução. Às vezes, uma simples manipulação algébrica ou uma prova direta é suficiente. A indução pode ser desnecessária (ou até mesmo tornar a prova mais complicada) quando o caso a ser provado não depende de forma clara de casos anteriores.
+
+Quanto à indução na programação, a relação se torna mais clara quando falamos de recursão, conceito fortemente presente na indução forte, como vimos anteriormente. Mas afinal, o que é recursão? Apesar de estar presente na indução forte, é um conceito próprio e não um sinônimo. 
 
 # Recursão
 Achou que foi por acaso que nós começamos o nosso dia aprendendo sobre indução?
