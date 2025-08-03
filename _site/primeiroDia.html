@@ -233,8 +233,86 @@
 <span class="k">print</span><span class="p">(</span><span class="s">"Todos os testes passaram para calcular_dobro!"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Abordagens de testes guiadas por raciocínio lógico nos permite não apenas verificar se o código funciona para casos óbvios, mas também garantir sua robustez em cenários complexos e nos limites das condições. Testes são, em essência, pequenas demonstrações de que nosso código se comporta conforme o esperado sob certas condições. Eles não provam a ausência de bugs, mas aumentam significativamente a confiança na qualidade e na corretude do software, reduzindo riscos e facilitando a manutenção a longo prazo.
-—</p>
+<p>Abordagens de testes guiadas por raciocínio lógico nos permite não apenas verificar se o código funciona para casos óbvios, mas também garantir sua robustez em cenários complexos e nos limites das condições. Testes são, em essência, pequenas demonstrações de que nosso código se comporta conforme o esperado sob certas condições. Eles não provam a ausência de bugs, mas aumentam significativamente a confiança na qualidade e na corretude do software, reduzindo riscos e facilitando a manutenção a longo prazo.</p>
+
+<h3 id="colocando-a-mão-na-massa">Colocando a mão na massa</h3>
+
+<p>Agora que nós aprendemos um pouco mais sobre a parte de design, depuração e testes de algoritmos, chegou a hora de colocarmos esses conhecimentos em prática!</p>
+
+<p>Todos os códigos a seguir apresentam algum erro de lógica ou implementação, e é o 🫵 seu dever 🫵 descobrir o que está dando errado! O primeiro exemplo já vem com casos que irão te ajudar a deduzir o erro (pra você ir pegando o jeito), mas você deve criar os seus próprios testes para os últimos exemplos!
+Para fazer seus testes, você pode compilar e executar esses códigos no Vscode da sua máquina atual, em um compilador online ou na IDE de sua preferência.</p>
+
+<h4 id="exercício-1">Exercício 1:</h4>
+
+<p>Função que recebe um inteiro e calcula o seu fatorial. Ou seja, quando ela recebe o inteiro, deve multiplicar todos os seus antecessores positivos e o inteiro em questão.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Definição da Função
+</span><span class="k">def</span> <span class="nf">fatorial</span><span class="p">(</span><span class="n">inteiro</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">inteiro</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="n">numero</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># Casos de Teste
+</span><span class="k">print</span><span class="p">(</span><span class="s">"Resultado de fatorial(2) é "</span><span class="p">,</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Resultado de fatorial(3) é "</span><span class="p">,</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Resultado de fatorial(5) é "</span><span class="p">,</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Resultado de fatorial(0) é "</span><span class="p">,</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Erro: 2 * 1 deveria ser 2"</span>
+<span class="k">assert</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span><span class="p">,</span> <span class="s">"Erro: 3 * 2 * 1 deveria ser 6"</span>
+<span class="k">assert</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">120</span><span class="p">,</span> <span class="s">"Erro: 5 * 4 * 3 * 2 * 1 deveria ser 120"</span>
+<span class="k">assert</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"Erro: o resultado deveria ser 1"</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Todos os testes foram concluídos com sucesso! Parabéns!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>DICA:</em>
+Note que, ao rodar os testes, todos os resultados aparentam dar 0. O que poderia ter causado isso? Talvez alguma subtração errada ou uma multiplicação incorreta?
+Uma maneira de verificarmos o funcionamento da função (e o porquê de estar dando errado) é imprimir todos os resultados parciais, para que possamos ter ideia do que estamos gerando continuamente. Tente imprimir <em>result</em> e <em>numero</em> para cada repetição do <em>loop for</em>!</p>
+
+<h4 id="exercício-2">Exercício 2</h4>
+
+<p>Essa função recebe uma lista de valores e deve retornar a média deles. Você pode se basear no código do exemplo anterior para fazer os testes desse exemplo!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Definição da Função
+</span><span class="k">def</span> <span class="nf">media</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">lista</span><span class="p">(</span><span class="n">numero</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">/</span><span class="mi">2</span>
+</code></pre></div></div>
+
+<p><em>DICA:</em>
+A função <em>len()</em> do python pode ser útil para esse exemplo!</p>
+
+<h4 id="exercício-3">Exercício 3</h4>
+
+<p>Essa função recebe uma lista de valores e deve retornar o menor dentre os eles</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Definição da Função
+</span><span class="k">def</span> <span class="nf">minimo_lista</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+    <span class="n">minimo</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">numero</span> <span class="o">&lt;</span> <span class="n">minimo</span><span class="p">:</span>
+            <span class="n">minimo</span> <span class="o">=</span> <span class="n">numero</span>
+    <span class="k">return</span> <span class="n">minimo</span>
+</code></pre></div></div>
+
+<h4 id="exercício-4">Exercício 4</h4>
+
+<p>Essa função recebe uma lista de valores e um valor específico, com o objetivo de identificar se ele faz parte da lista.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Definição da Função
+</span><span class="k">def</span> <span class="nf">esta_na_lista</span><span class="p">(</span><span class="n">lista</span><span class="p">,</span> <span class="n">valor</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">numero</span> <span class="o">==</span> <span class="n">valor</span><span class="p">:</span>
+            <span class="n">esta</span> <span class="o">=</span> <span class="n">true</span>
+        <span class="k">else</span>
+            <span class="n">esta</span> <span class="o">=</span> <span class="n">false</span>
+    <span class="k">return</span> <span class="n">esta</span>
+
+</code></pre></div></div>
+
+<p>—</p>
 
 <h2 id="elementos-da-lógica-formal">Elementos da Lógica Formal</h2>
 <p>Agora que vimos os benefícios práticos da lógica, vamos aprofundar um pouco mais nos conceitos fundamentais. Pois bem! A lógica é o ‘estudo do raciocínio válido e das inferências’. É uma ferramenta poderosa para a dedução, baseada em hipóteses e premissas. Pensar logicamente é algo que fazemos o tempo todo, mesmo sem perceber. Quando tomamos decisões no dia a dia, resolvemos problemas ou argumentamos sobre algo, estamos aplicando a lógica.</p>
