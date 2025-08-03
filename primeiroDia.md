@@ -201,6 +201,92 @@ print("Todos os testes passaram para calcular_dobro!")
 ```
 
 Abordagens de testes guiadas por raciocínio lógico nos permite não apenas verificar se o código funciona para casos óbvios, mas também garantir sua robustez em cenários complexos e nos limites das condições. Testes são, em essência, pequenas demonstrações de que nosso código se comporta conforme o esperado sob certas condições. Eles não provam a ausência de bugs, mas aumentam significativamente a confiança na qualidade e na corretude do software, reduzindo riscos e facilitando a manutenção a longo prazo.
+
+
+### Colocando a mão na massa
+
+Agora que nós aprendemos um pouco mais sobre a parte de design, depuração e testes de algoritmos, chegou a hora de colocarmos esses conhecimentos em prática!
+
+Todos os códigos a seguir apresentam algum erro de lógica ou implementação, e é o 🫵 seu dever 🫵 descobrir o que está dando errado! O primeiro exemplo já vem com casos que irão te ajudar a deduzir o erro (pra você ir pegando o jeito), mas você deve criar os seus próprios testes para os últimos exemplos!
+Para fazer seus testes, você pode compilar e executar esses códigos no Vscode da sua máquina atual, em um compilador online ou na IDE de sua preferência.
+
+#### Exercício 1:
+
+Função que recebe um inteiro e calcula o seu fatorial. Ou seja, quando ela recebe o inteiro, deve multiplicar todos os seus antecessores positivos e o inteiro em questão.
+ 
+```python
+# Definição da Função
+def fatorial(inteiro):
+    result = 1
+    for numero in range(inteiro):
+        result = result * numero
+    return result
+
+# Casos de Teste
+print("Resultado de fatorial(2) é ", fatorial(2))
+print("Resultado de fatorial(3) é ", fatorial(3))
+print("Resultado de fatorial(5) é ", fatorial(5))
+print("Resultado de fatorial(0) é ", fatorial(0))
+assert fatorial(2) == 2, "Erro: 2 * 1 deveria ser 2"
+assert fatorial(3) == 6, "Erro: 3 * 2 * 1 deveria ser 6"
+assert fatorial(5) == 120, "Erro: 5 * 4 * 3 * 2 * 1 deveria ser 120"
+assert fatorial(0) == 1, "Erro: o resultado deveria ser 1"
+
+print("Todos os testes foram concluídos com sucesso! Parabéns!")
+```
+
+_DICA:_
+Note que, ao rodar os testes, todos os resultados aparentam dar 0. O que poderia ter causado isso? Talvez alguma subtração errada ou uma multiplicação incorreta?
+Uma maneira de verificarmos o funcionamento da função (e o porquê de estar dando errado) é imprimir todos os resultados parciais, para que possamos ter ideia do que estamos gerando continuamente. Tente imprimir *result* e *numero* para cada repetição do _loop for_!
+
+
+#### Exercício 2
+
+Essa função recebe uma lista de valores e deve retornar a média deles. Você pode se basear no código do exemplo anterior para fazer os testes desse exemplo!
+
+```python
+# Definição da Função
+def media(lista):
+    result = 0;
+    for numero in lista:
+        result = result + lista(numero)
+    return result/2
+```
+
+_DICA:_
+A função _len()_ do python pode ser útil para esse exemplo!
+
+#### Exercício 3
+
+Essa função recebe uma lista de valores e deve retornar o menor dentre os eles
+```python
+# Definição da Função
+def minimo_lista(lista):
+    minimo = 1000;
+    for numero in lista:
+        if numero < minimo:
+            minimo = numero
+    return minimo
+```
+
+#### Exercício 4
+
+ Essa função recebe uma lista de valores e um valor específico, com o objetivo de identificar se ele faz parte da lista.
+
+```python
+# Definição da Função
+def esta_na_lista(lista, valor):
+    for numero in lista:
+        if numero == valor:
+            esta = true
+        else
+            esta = false
+    return esta
+
+```
+
+
+
 —
 
 ## Elementos da Lógica Formal
