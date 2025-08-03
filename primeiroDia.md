@@ -28,6 +28,13 @@ title: Minicurso de Matemática aplicada à Computação
                 </ul>
             </li>
             <li><a href="#demonstração-de-equivalências">Demonstração de equivalências</a></li>
+            <li><a href="#lógica-de-predicados">Lógica de Predicados</a>
+                <ul> 
+                    <li><a href="#variáveis">Variáveis</a></li>
+                    <li><a href="#predicados">Predicados</a></li>
+                    <li><a href="#exercícios">Exercícios</a></li>
+                </ul>
+            </li>
         </ul>
     </details>
   <button class="toggle-button" id="toggle-button">
@@ -446,3 +453,64 @@ P ∧ Q ≡ Q ∧ P               --[Comutatividade da conjunção]
 ¬(¬P) ≡ P                   --[Negação da negação]
 ¬(P ∧ Q) ≡ (¬P) ∨ (¬Q)      --[Demorgan]
 ```
+
+### Lógica de Predicados
+
+Tudo o que vimos até agora, dos conectivos às tabelas verdade, fazem parte da lógica proposicional, uma linguagem robusta que é usada em diversos campos da computação, entretanto ela tem como limitação não conseguir expressar proposições como “**todos** os elementos de um conjunto A possuem propriedade x” ou “**existem** elementos do conjunto A que não pertencem ao conjunto B”.
+
+Essas proposições envolvem **quantificadores** sobre **variáveis** e, para representá-las formalmente, precisamos da Lógica de Predicado (também chamada de Lógica de Primeira Ordem) que estende a lógica proposicional com esses novos termos.
+
+#### Variáveis
+
+As variáveis são objetos genéricos do escopo que estamos tratando. Vamos ver alguns exemplos:
+
+- No escopo dos números inteiros, podemos dizer que temos um x inteiro que é par. Nesse caso x é um número inteiro genérico que possui a propriedade “ser par”. Note que ele não é o 2, nem o 4, mas sim um elemento genérico do conjunto dos números inteiros pares.
+
+- No escopo das pessoas presentes nessa sala, podemos dizer que temos um x pessoa que tem cabelo longo. Note que x não é nem Carol, nem André, nem nenhuma das outras pessoas presentes com cabelo grande, mas com certeza faz parte desse subconjunto.
+
+#### Predicados
+
+O conceito de predicados não é nada novo. Dada uma variável ou objeto conhecido x, podemos definir um predicado P, em que P(x) (lê-se “p de x”) significa que x possui a propriedade P. A notação parecida com a de função não é por acaso, pois P funciona como uma função, que recebe um x de um tipo específico e retorna True ou False.
+
+Podemos então definir o predicado que quisermos contanto que respeite o tipo do nosso x, já que não faria sentido definir `P(x) ≝ x é par` se x for uma variável do escopo Alunos do BTI. Vamos ver alguns exemplos:
+
+- Seja x um número inteiro, e P um predicado definido por P(x) ≝ x é primo. Logo P(7) = True e P(8) = False.
+
+- Seja y um aluno do BTI, e T um predicado definido por T(y) ≝ y está no último semestre do curso. Logo T(André) = False.
+
+#### Quantificadores
+
+##### ∀:
+O quantificador universal (∀) permite expressar generalizações sobre todos os elementos de um escopo. Vamos ver alguns exemplos:
+
+- (∀ x estudante nessa sala)[x aprendeu algo novo hoje]
+
+- (∀ y inteiro)[y é divisível por 1]
+
+##### ∃:
+O quantificador existencial nos permite expressar a ideia que dentro de um escopo, existe **ao menos um** elemento que possui uma propriedade qualquer. Vamos ver exemplos disso:
+
+- (∃x pessoa nessa sala)[x é bolsista do PET-CC]
+
+- (∃y inteiro)[y é divisível por 2]
+
+- (∃n natural)[n + 1 = 1]
+
+#### Exercícios
+
+Agora que conhecemos as variáveis e quantificadores da Lógica de Predicados, vamos exercitar a tradução de enunciados.
+
+Escreva em português as seguintes proposições (não é preciso traduzir as equações):
+
+- (∀ x inteiro)[x + 1 = 1 + x]
+- (∃ n natural)[ n + 1 = 1]
+- (∀ x estado do Brasil)(∃ g pessoa)[g é governador de x]
+- (∃ n inteiro)(∀ i inteiro)[ i^n = i ]
+
+Formalize as seguintes frases, usando o conhecimento que adquirimos sobre Lógica Proposicional e Lógica de Predicados:
+
+- Não existe alguém que seja amado por todos.
+- Toda pessoa é odiada por ao menos uma pessoa.
+- Todo professor tem falhas.
+- O 0 é o menor número natural.
+- Todo número natural é maior que o 0.

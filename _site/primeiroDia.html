@@ -52,6 +52,13 @@
                 </ul>
             </li>
             <li><a href="#demonstração-de-equivalências">Demonstração de equivalências</a></li>
+            <li><a href="#lógica-de-predicados">Lógica de Predicados</a>
+                <ul> 
+                    <li><a href="#variáveis">Variáveis</a></li>
+                    <li><a href="#predicados">Predicados</a></li>
+                    <li><a href="#exercícios">Exercícios</a></li>
+                </ul>
+            </li>
         </ul>
     </details>
   <button class="toggle-button" id="toggle-button">
@@ -652,6 +659,92 @@
 <span class="o">¬</span>(<span class="o">¬</span><span class="n">P</span>) <span class="o">≡</span> <span class="n">P</span>                   <span class="o">--</span>[<span class="n">Nega</span><span class="err">çã</span><span class="n">o</span> <span class="n">da</span> <span class="n">nega</span><span class="err">çã</span><span class="n">o</span>]
 <span class="o">¬</span>(<span class="n">P</span> <span class="o">∧</span> <span class="n">Q</span>) <span class="o">≡</span> (<span class="o">¬</span><span class="n">P</span>) <span class="o">∨</span> (<span class="o">¬</span><span class="n">Q</span>)      <span class="o">--</span>[<span class="n">Demorgan</span>]
 </code></pre></div></div>
+
+<h3 id="lógica-de-predicados">Lógica de Predicados</h3>
+
+<p>Tudo o que vimos até agora, dos conectivos às tabelas verdade, fazem parte da lógica proposicional, uma linguagem robusta que é usada em diversos campos da computação, entretanto ela tem como limitação não conseguir expressar proposições como “<strong>todos</strong> os elementos de um conjunto A possuem propriedade x” ou “<strong>existem</strong> elementos do conjunto A que não pertencem ao conjunto B”.</p>
+
+<p>Essas proposições envolvem <strong>quantificadores</strong> sobre <strong>variáveis</strong> e, para representá-las formalmente, precisamos da Lógica de Predicado (também chamada de Lógica de Primeira Ordem) que estende a lógica proposicional com esses novos termos.</p>
+
+<h4 id="variáveis">Variáveis</h4>
+
+<p>As variáveis são objetos genéricos do escopo que estamos tratando. Vamos ver alguns exemplos:</p>
+
+<ul>
+  <li>
+    <p>No escopo dos números inteiros, podemos dizer que temos um x inteiro que é par. Nesse caso x é um número inteiro genérico que possui a propriedade “ser par”. Note que ele não é o 2, nem o 4, mas sim um elemento genérico do conjunto dos números inteiros pares.</p>
+  </li>
+  <li>
+    <p>No escopo das pessoas presentes nessa sala, podemos dizer que temos um x pessoa que tem cabelo longo. Note que x não é nem Carol, nem André, nem nenhuma das outras pessoas presentes com cabelo grande, mas com certeza faz parte desse subconjunto.</p>
+  </li>
+</ul>
+
+<h4 id="predicados">Predicados</h4>
+
+<p>O conceito de predicados não é nada novo. Dada uma variável ou objeto conhecido x, podemos definir um predicado P, em que P(x) (lê-se “p de x”) significa que x possui a propriedade P. A notação parecida com a de função não é por acaso, pois P funciona como uma função, que recebe um x de um tipo específico e retorna True ou False.</p>
+
+<p>Podemos então definir o predicado que quisermos contanto que respeite o tipo do nosso x, já que não faria sentido definir <code class="language-plaintext highlighter-rouge">P(x) ≝ x é par</code> se x for uma variável do escopo Alunos do BTI. Vamos ver alguns exemplos:</p>
+
+<ul>
+  <li>
+    <p>Seja x um número inteiro, e P um predicado definido por P(x) ≝ x é primo. Logo P(7) = True e P(8) = False.</p>
+  </li>
+  <li>
+    <p>Seja y um aluno do BTI, e T um predicado definido por T(y) ≝ y está no último semestre do curso. Logo T(André) = False.</p>
+  </li>
+</ul>
+
+<h4 id="quantificadores">Quantificadores</h4>
+
+<h5>∀:</h5>
+<p>O quantificador universal (∀) permite expressar generalizações sobre todos os elementos de um escopo. Vamos ver alguns exemplos:</p>
+
+<ul>
+  <li>
+    <p>(∀ x estudante nessa sala)[x aprendeu algo novo hoje]</p>
+  </li>
+  <li>
+    <p>(∀ y inteiro)[y é divisível por 1]</p>
+  </li>
+</ul>
+
+<h5 id="-1">∃:</h5>
+<p>O quantificador existencial nos permite expressar a ideia que dentro de um escopo, existe <strong>ao menos um</strong> elemento que possui uma propriedade qualquer. Vamos ver exemplos disso:</p>
+
+<ul>
+  <li>
+    <p>(∃x pessoa nessa sala)[x é bolsista do PET-CC]</p>
+  </li>
+  <li>
+    <p>(∃y inteiro)[y é divisível por 2]</p>
+  </li>
+  <li>
+    <p>(∃n natural)[n + 1 = 1]</p>
+  </li>
+</ul>
+
+<h4 id="exercícios">Exercícios</h4>
+
+<p>Agora que conhecemos as variáveis e quantificadores da Lógica de Predicados, vamos exercitar a tradução de enunciados.</p>
+
+<p>Escreva em português as seguintes proposições (não é preciso traduzir as equações):</p>
+
+<ul>
+  <li>(∀ x inteiro)[x + 1 = 1 + x]</li>
+  <li>(∃ n natural)[ n + 1 = 1]</li>
+  <li>(∀ x estado do Brasil)(∃ g pessoa)[g é governador de x]</li>
+  <li>(∃ n inteiro)(∀ i inteiro)[ i^n = i ]</li>
+</ul>
+
+<p>Formalize as seguintes frases, usando o conhecimento que adquirimos sobre Lógica Proposicional e Lógica de Predicados:</p>
+
+<ul>
+  <li>Não existe alguém que seja amado por todos.</li>
+  <li>Toda pessoa é odiada por ao menos uma pessoa.</li>
+  <li>Todo professor tem falhas.</li>
+  <li>O 0 é o menor número natural.</li>
+  <li>Todo número natural é maior que o 0.</li>
+</ul>
 
             </main>
             <script src="./assets/js/sumario_script.js"></script>
