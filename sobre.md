@@ -9,8 +9,6 @@ title: Sobre o Minicurso
 
 Neste curso iremos explorar a profunda conexão entre matemática e programação, entendendo como conceitos abstratos matemáticos se transformar em soluções computacionais mais seguras e eficientes.
 
-O curso em si é dividido em 5 dias, pensados com base em blablablalblablabla:
-
 O curso é dividido em 5 dias, pensados com base em conteúdos matemáticos essenciais abordados nas disciplinas de Matemática Computacional e Fundamentos Matemáticos da Computação. A divisão dos conteúdos é feita da seguinte maneira:
 
 ### DIA 1 - LÓGICA
