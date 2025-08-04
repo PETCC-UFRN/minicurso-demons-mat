@@ -151,6 +151,7 @@ E organizando-a, temos:
 $$
 \text{Soma até } n = \frac{n(n + 1)}{2}
 $$
+
 Essa expressão nos dá o valor total da soma dos números inteiros de $1$ até $n$.
 
 
@@ -251,14 +252,15 @@ Agora chegou o seu momento, tente aplicar indução para o seguinte problema:
 Prove que $n^2 > 2n$ para todo $n \geq 3$.
 
 ## Indução Forte
-Mas o que acontece quando estamos analisando uma propriedade que para ser analisada ou provada, é necessário múltiplos passos? Por exemplo, tome o seguinte problema:
+Mas o que acontece quando estamos analisando uma propriedade que, para ser analisada ou provada, exige múltiplos passos? Por exemplo, tome o seguinte problema:
 
-Suponha que a$_1$, a$_2$, a$_3$, ... é uma sequência definida da seguinte forma:
-- a$_1$ = 1  
-- a$_2$ = 3  
-- a$_k$ = a$_{k-2}$ + 2a$_{k-1}$, para todo inteiro $k \geq 3$  
+Suponha que $a_1$, $a_2$, $a_3$, ... seja uma sequência definida da seguinte forma:
+- $a_1 = 1$  
+- $a_2 = 3$  
+- $a_k = a_{k-2} + 2a_{k-1}$, para todo inteiro $k \geq 3$  
 
-Prove que a$_n$ é ímpar para todo $n > 1$.
+Prove que $a_n$ é ímpar para todo $n > 1$.
+
 
 
 Perceba que a nossa fórmula é composta por uma sequência, em que um determinado termo é definido pelos dois termos anteriores. A Indução que vimos anteriormente será o suficiente para provar o problema?
@@ -308,13 +310,17 @@ $n=1$ precisa resultar em 4
 
 $$
 S_0 = 5^0 - 1 = 1 - 1 = 0
-$$Verdade!
+$$
+
+Verdade!
 
 - Para $n = 1$:
 
 $$
 S_1 = 5^1 - 1 = 5 - 1 = 4
-$$Verdade!
+$$
+
+Verdade!
 
 Os valores da fórmula realmente condizem com os valores previamente definidos.
 
@@ -330,6 +336,7 @@ Seja $k$ qualquer inteiro $k \geq 1$ e suponha que
 $$
 s_i = 5^i - 1 \quad \text{para todos os inteiros } i \text{ com } 0 \leq i \leq k
 $$
+
 (Perceba que agora apareceu uma nova variável, $i$. Essa variável representa um índice genérico qualquer entre 0 e $k$, e é usada para expressar que estamos assumindo que a propriedade $P(i)$ é verdadeira para todos os valores anteriores a $k+1$, ou seja, desde o início da sequência até o valor $k$.)
 
 (Essa é a principal característica da indução forte: em vez de supor que a propriedade vale apenas para $k$, como na indução simples, aqui suponhamos que ela vale para todos os casos anteriores até k, e usamos essas informações para provar que também vale para $k+1$.)
