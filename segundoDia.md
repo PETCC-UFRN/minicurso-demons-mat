@@ -145,7 +145,9 @@ Portanto, a fórmula geral é:
 $$
 \text{Soma até } n = \frac{n}{2} \cdot (1 + n)
 $$
+
 E organizando-a, temos:
+
 $$
 \text{Soma até } n = \frac{n(n + 1)}{2}
 $$
@@ -163,6 +165,7 @@ Problema: Prove que $1 + 2 + 3 + 4 + \dots + n = \frac{n(n + 1)}{2}$ é verdade 
 Verificamos se isso é verdade para $n = 1$.
 
 A fórmula nos dá:
+
 $$
 \frac{n}{2} \cdot (n + 1) = \frac{1}{2} \cdot (1 + 1) = \frac{1}{2} \cdot 2 = 1
 $$
@@ -178,17 +181,22 @@ Suponha que a fórmula vale para algum $k \in \mathbb{N}$:
 
 $$
 1 + 2 + 3 + \dots + k = \frac{k(k + 1)}{2}
-$$ 
+$$
+
 (Perceba que isso é similar à fórmula que já vimos, porém com um k no lugar do n. O uso de variáveis diferentes ocorre porque o k representa algum número qualquer que desconhecemos, enquanto o n representa o valor que será colocado na fórmula).
 
 Queremos provar que:
+
 $$
 1 + 2 + 3 + \dots + k + (k+1) = \frac{k + 1}{2} \cdot ((k + 1) + 1)
 $$
+
 Ou seja:
+
 $$
 1 + 2 + 3 + \dots + k + (k+1) = \frac{(k + 1)(k + 2)}{2}
 $$
+
 Como é o procedimento a partir daqui?
 Vamos usar a fórmula da Hipótese de Indução como base e, a partir dela, tentar chegar à expressão que queremos provar para (k + 1), realizando operações e manipulações em uma expressão, para chegar na outra. 
 
