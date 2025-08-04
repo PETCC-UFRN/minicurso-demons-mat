@@ -76,9 +76,9 @@ title: Minicurso de Matemática aplicada à Computação
   </div>
 
 # Indução
-Aposto que em determinado momento, você já se deparou com algum exercício em específico que foi solicitado para resolver, seja na escola, na própria faculdade ou até mesmo em brincadeiras da internet. E de alguma forma o resolveu por naturalmente, sem utilizar nenhum artifício matemático de forma séria enquanto analisa padrões ou faz tentativa e erro. No fim, chegando a algum palpite, no qual você tem certeza que está certo. 
+Aposto que em determinado momento, você já se deparou com algum exercício em específico que foi solicitado para resolver, seja na escola, na própria faculdade ou até mesmo em brincadeiras da internet. E de alguma forma o resolveu naturalmente, sem utilizar nenhum artifício matemático de forma séria. Resolvendo por análise de padrões ou tentativa e erro. Para no fim, chegar a um palpite, no qual você tem certeza que está certo. 
 
-Dessa forma, chegada a uma conclusão, como podemos provar que uma determinada solução está certa? É aí que entra a Indução
+Dessa forma, chegada a uma conclusão, como podemos provar que uma determinada solução está certa? É aí que entra a Indução.
 
 ## O que é Indução?
 Indução Matemática ou Indução Finita, nada mais é que um método de demonstração. É uma forma eficaz de verificar a veracidade de uma determinada propriedade.
@@ -176,7 +176,7 @@ Portanto, é verdade para $n = 1$.
 - **Passo indutivo**
 (É aqui que as coisas começam a ficar um pouco mais extravagantes). 
 
-A primeira etapa do passo indutivo é formular a Hipótese de Indução.
+A primeira etapa do passo indutivo é formular a hipótese de indução.
 A nossa hipótese é a seguinte:
 Suponha que a fórmula vale para algum $k \in \mathbb{N}$:
 
@@ -199,9 +199,9 @@ $$
 $$
 
 Como é o procedimento a partir daqui?
-Vamos usar a fórmula da Hipótese de Indução como base e, a partir dela, tentar chegar à expressão que queremos provar para (k + 1), realizando operações e manipulações em uma expressão, para chegar na outra. 
+Vamos usar a fórmula da hipótese de indução como base e, a partir dela, tentar chegar à expressão que queremos provar para (k + 1), realizando operações e manipulações em uma expressão, para chegar na outra. 
 
-Supondo que a Hipótese de Indução é verdade, sabemos que:
+Supondo que a hipótese de indução é verdade, sabemos que:
 
 $$
 1 + 2 + 3 + \dots + k = \frac{k(k + 1)}{2}
@@ -330,7 +330,7 @@ Os valores da fórmula realmente condizem com os valores previamente definidos.
 
 No passo indutivo, queremos mostrar que, para todos os inteiros $k \geq 1$, se $P(i)$ é verdade para todos os inteiros $i$ de $0$ até $k$, então $P(k+1)$ também é verdade.
 
-Nossa Hipótese de Indução é a seguinte: 
+Nossa hipótese de indução é a seguinte: 
 Seja $k$ qualquer inteiro $k \geq 1$ e suponha que
 
 $$
@@ -342,13 +342,11 @@ $$
 (Essa é a principal característica da indução forte: em vez de supor que a propriedade vale apenas para $k$, como na indução simples, aqui suponhamos que ela vale para todos os casos anteriores até k, e usamos essas informações para provar que também vale para $k+1$.)
 
 Continuando:
-Queremos mostrar que
+Queremos mostrar a veracidade de:
 
 $$
 s_{k+1} = 5^{k+1} - 1
 $$
-
-é verdade.
 
 Como $k \geq 1$, temos que $k + 1 \geq 2$, e então:
 
