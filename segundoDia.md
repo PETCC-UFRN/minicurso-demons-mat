@@ -76,7 +76,7 @@ title: Minicurso de Matemática aplicada à Computação
   </div>
 
 # Indução
-Aposto que em determinado momento, você já se deparou com algum exercício em específico que foi solicitado para resolver, seja na escola, na própria faculdade ou até mesmo em brincadeiras da internet. E de alguma forma o resolveu por dedução natural, sem utilizar nenhum artifício matemático de forma séria enquanto analisa padrões ou faz tentativa e erro. No fim, chegando a algum palpite, no qual você tem certeza que está certo. 
+Aposto que em determinado momento, você já se deparou com algum exercício em específico que foi solicitado para resolver, seja na escola, na própria faculdade ou até mesmo em brincadeiras da internet. E de alguma forma o resolveu por naturalmente, sem utilizar nenhum artifício matemático de forma séria enquanto analisa padrões ou faz tentativa e erro. No fim, chegando a algum palpite, no qual você tem certeza que está certo. 
 
 Dessa forma, chegada a uma conclusão, como podemos provar que uma determinada solução está certa? É aí que entra a Indução
 
@@ -107,95 +107,158 @@ Gauss percebeu algo curioso...
 - E assim por diante
 <div style="text-align: center;">  <img src="assets/images/gauss_summation_6.png" alt=""> </div>
 
-A partir dessas informações, vamos lentamente montar a suposta fórmula que resolveria o problema
-- Temos 100 números divididos em pares, ou seja, 50 pares, todos com o mesmo valor 
-  	Soma até 100 = 50 * pares 
-- Os números correspondentes de cada par somam em 101
-	Soma até 100 = 50 * 101 
-- 101 = Número inicial + Número final
-	Soma até 100 = 50 * (1 + 100)
+A partir dessas observações, vamos lentamente deduzir a fórmula que resolveria o problema de somar os números de 1 até 100.
 
-E então generalizando enfim podemos chegar à fórmula:
-	Soma até n = n/2 * (1 + n)
-Que nos informa o valor da soma do número 1 até n. 
+1. Temos 100 números divididos em pares, todos com o mesmo valor:
+
+$$
+\text{Soma até 100} = 50 \cdot \text{valor de cada par}
+$$
+
+2. Cada par soma 101, pois:
+
+$$
+1 + 100 = 2 + 99 = 3 + 98 = \dots = 101
+$$
+
+Logo:
+
+$$
+\text{Soma até 100} = 50 \cdot 101
+$$
+
+3. E como $101 = 1 + 100$, podemos reescrever:
+
+$$
+\text{Soma até 100} = 50 \cdot (1 + 100)
+$$
+
+---
+
+Agora, vamos generalizar essa ideia para qualquer número $n$:
+
+- A quantidade de pares é $n/2$
+- Cada par soma $(1 + n)$
+
+Portanto, a fórmula geral é:
+
+$$
+\text{Soma até } n = \frac{n}{2} \cdot (1 + n)
+$$
+E organizando-a, temos:
+$$
+\text{Soma até } n = \frac{n(n + 1)}{2}
+$$
+Essa expressão nos dá o valor total da soma dos números inteiros de $1$ até $n$.
+
 
 Contudo, isso abre a questão. Como podemos provar que essa fórmula realmente é verdade? 
 
 ### Indução em Prática
-Problema: Prove que 1 + 2 + 3 + 4 + ... + n = n/2 * (1 + n) é verdade para qualquer inteiro n não negativo. 
+Problema: Prove que $1 + 2 + 3 + 4 + \dots + n = \frac{n(n + 1)}{2}$ é verdade para qualquer inteiro $n \geq 1$.
 
-- Passo base
-A princípio, verificaremos se isso é verdade para n = 1.
-Sabemos que o resultado precisa ser 1.
+---
 
-A fórmula funciona para esse caso?
-n/2 * (1 + n) = 1/2 * (1 + 1) = 1/2 * 2 = 1 
-Sim!
+- **Passo base**  
+Verificamos se isso é verdade para $n = 1$.
 
-Logo, provamos que é verdade para o caso base.
-A fórmula funciona para n = 1
- 	
-- Passo indutivo
+A fórmula nos dá:
+$$
+\frac{n}{2} \cdot (n + 1) = \frac{1}{2} \cdot (1 + 1) = \frac{1}{2} \cdot 2 = 1
+$$
+
+Portanto, é verdade para $n = 1$.
+ 
+- **Passo indutivo**
 (É aqui que as coisas começam a ficar um pouco mais extravagantes). 
 
 A primeira etapa do passo indutivo é formular a Hipótese de Indução.
-A nossa hipótese é a seguinte: A fórmula funciona para algum número natural qualquer chamado k
-1 + 2 + 3 + ... + k = k/2 * (1 + k)
-(Perceba que isso é similar à fórmula que já vimos, porém com um k no lugar do n)
+A nossa hipótese é a seguinte:
+Suponha que a fórmula vale para algum $k \in \mathbb{N}$:
 
-Agora, queremos mostrar que a fórmula também funciona para k + 1.  
-Ou seja, queremos provar que:
-1 + 2 + 3 + ... + k + (k + 1) = (k + 1)/2 * (1 + (k + 1))
+$$
+1 + 2 + 3 + \dots + k = \frac{k(k + 1)}{2}
+$$ 
+(Perceba que isso é similar à fórmula que já vimos, porém com um k no lugar do n. O uso de variáveis diferentes ocorre porque o k representa algum número qualquer que desconhecemos, enquanto o n representa o valor que será colocado na fórmula).
 
+Queremos provar que:
+$$
+1 + 2 + 3 + \dots + k + (k+1) = \frac{k + 1}{2} \cdot ((k + 1) + 1)
+$$
+Ou seja:
+$$
+1 + 2 + 3 + \dots + k + (k+1) = \frac{(k + 1)(k + 2)}{2}
+$$
 Como é o procedimento a partir daqui?
-Vamos usar a fórmula da Hipótese de Indução como base e, a partir dela, tentar chegar à expressão que queremos provar para k + 1, realizando operações e manipulações nas expressões. 
+Vamos usar a fórmula da Hipótese de Indução como base e, a partir dela, tentar chegar à expressão que queremos provar para (k + 1), realizando operações e manipulações em uma expressão, para chegar na outra. 
 
-A partir da Hipótese de Indução:
-1 + 2 + 3 + ... + k = k/2 * (1 + k)
+Supondo que a Hipótese de Indução é verdade, sabemos que:
 
-Somando (k + 1) dos dois lados:
-1 + 2 + 3 + ... + k + (k + 1) = (k/2 * (1 + k)) + (k + 1)
+$$
+1 + 2 + 3 + \dots + k = \frac{k(k + 1)}{2}
+$$
 
-Agora vamos simplificar essa expressão:
-(k/2 * (1 + k)) + (k + 1)  
-= (k(k + 1))/2 + (k + 1)
+Nosso objetivo agora é mostrar que essa fórmula também vale para (k + 1). Para isso, somamos (k + 1) dos dois lados da equação:
+
+$$
+1 + 2 + 3 + \dots + k + (k + 1) = \frac{k(k + 1)}{2} + (k+1)
+$$
 
 Colocando (k + 1) em evidência:
-= (k + 1) * (k/2 + 1)
+
+$$
+(k + 1) \cdot \left(\frac{k}{2} + 1\right)
+$$
+
 Somando os termos dentro do parênteses:
-= (k + 1) * ((k + 2)/2)
-Pela comutatividade da multiplicação: 
-= (k + 1)/2 * (k + 2) 
 
-Ou seja:
-1 + 2 + ... + k + (k + 1) = (k + 1)/2 * (k + 2)
+$$
+(k + 1) \cdot \left(\frac{k + 2}{2}\right)
+$$
 
-E isso é exatamente a fórmula com n = k + 1:
-(n/2) * (1 + n), com n = k + 1  
-Portanto, está provado!
-A fórmula de fato é verdade!
+Pela comutatividade da multiplicação:
+
+$$
+\frac{(k + 1)(k + 2)}{2}
+$$
+
+Portanto, mostramos que:
+
+$$
+1 + 2 + 3 + \dots + k + (k + 1) = \frac{(k + 1)(k + 2)}{2}
+$$
+
+Ou seja. Supondo que a fórmula para k é verdade, a fórmula também é válida para (k + 1). Como mostramos que ela vale para (n = 1) (passo base) e que, se vale para (k), então vale para ( k + 1) (passo indutivo), podemos concluir por indução que:
+
+$$
+1 + 2 + 3 + \dots + n = \frac{n(n + 1)}{2}
+$$
+
+É verdadeira para todo  $n \in \mathbb{N}$:
 
 ## Exercício
 Mas quando o assunto é Indução, é a prática que faz a perfeição. 
 Agora chegou o seu momento, tente aplicar indução para o seguinte problema:
 
-Prove que n^2 > 2n para todo n >= 3
+Prove que $n^2 > 2n$ para todo $n \geq 3$.
 
 ## Indução Forte
 Mas o que acontece quando estamos analisando uma propriedade que para ser analisada ou provada, é necessário múltiplos passos? Por exemplo, tome o seguinte problema:
 
-Suponha que a1, a2, a3... é uma sequência definida da seguinte forma:
-a1 = 1
-a2 = 3
-ak = a(k-2) + 2a(k-1) para todos os inteiros k >= 3
-Prove que an é ímpar para todo n > 1
+Suponha que a$_1$, a$_2$, a$_3$, ... é uma sequência definida da seguinte forma:
+- a$_1$ = 1  
+- a$_2$ = 3  
+- a$_k$ = a$_{k-2}$ + 2a$_{k-1}$, para todo inteiro $k \geq 3$  
+
+Prove que a$_n$ é ímpar para todo $n > 1$.
+
 
 Perceba que a nossa fórmula é composta por uma sequência, em que um determinado termo é definido pelos dois termos anteriores. A Indução que vimos anteriormente será o suficiente para provar o problema?
 Na verdade, não. Precisamos de uma ferramenta um pouco mais poderosa: a Indução Forte.
 Mais tarde voltaremos para esse problema, o mantenha na cabeça por enquanto. 
 
 ### Estrutura da Indução Forte
-Não se preocupe, a estrutura da Indução Forte segue a mesma linha da Indução. Ainda teremos o passo base, hipótese de indução e passo indutivo. Contudo, há algumas particularidades, o passo base pode conter prova de vários valores iniciais. Além disso, no passo indutivo, assumiremos que vários valores atráves de k são verdade, para então provar que k+1 é verdade.
+Não se preocupe, a estrutura da Indução Forte segue a mesma linha da Indução. Ainda teremos o passo base, hipótese de indução e passo indutivo. Contudo, há algumas particularidades, o passo base pode conter prova de vários valores iniciais. Além disso, no passo indutivo, assumiremos que vários valores atráves de k são verdade, para então provar que (k+1) é verdade.
 
 Em resumo, a estrutura da Indução Forte se dá por: 
 - Passo base: Provamos que a afirmação é verdadeira para o primeiro valor (ou primeiros valores, se necessário).
@@ -203,59 +266,105 @@ Em resumo, a estrutura da Indução Forte se dá por:
   	- Hipótese de indução: Admitimos que a proposição vale para todos os inteiros entre o valor inicial e k.
   	- Verificação da hipótese: Usamos essa suposição para demonstrar que a proposição também é verdadeira para o valor k+1.
 
+
 ### Indução Forte em prática
+
 Para ilustrar a Indução Forte em prática, tome o seguinte problema:
+Seja $s_0, s_1, s_2, \dots$ uma sequência definida da seguinte forma:
 
-Seja s0, s1, s2,... uma sequência é definida da seguinte forma:
-s0 = 0
-s1 = 4
-sk = 6(ak-1) - 5(ak-2) para todos os inteiros k >= 2.
+$$
+\begin{cases}
+s_0 = 0 \\
+s_1 = 4 \\
+s_k = 6 s_{k-1} - 5 s_{k-2}, \quad \text{para todo inteiro } k \geq 2
+\end{cases}
+$$
 
-A propriedade que queremos provar (P(n)) é que Sn = 5^n - 1 é a fórmula fechada para um termo da sequência. Mostrando que ela é verdade para todos os inteiros n >= 0. 
+A propriedade que queremos provar, $P(n)$, é que
 
-- Passo base
-Vamos mostrar que P(0) e P(1) é verdade. Pela própria definição da sequência sabemos que n = 0 precisa resultar em 0 e n = 1 precisa resultar em 4.
+$$
+S_n = 5^n - 1
+$$
 
-(n = 0)
-S0 = 5^0 - 1 = 1 - 1 = 0
-Verdade!
+é a fórmula fechada para um termo da sequência. Mostrando que ela é verdadeira para todos os inteiros $n \geq 0$.
 
-(n = 1)
-S1 = 5^1 - 1 = 5 - 1 = 4
-Verdade!
+---
 
-Os valores da fórmula realmente condizeram com os valores previamente definidos.
+- **Passo base**
 
-- Passo indutivo
-No passo indutivo, queremos mostrar que para todos os inteiros k >= 1, se P(i) é verdade para todos os inteiros i de 0 até k, então P(k+1) também é verdade
+Vamos mostrar que $P(0)$ e $P(1)$ são verdadeiros. Pela definição da sequência sabemos que:
+$n = 0$ precisa resultar em 0
+$n=1$ precisa resultar em 4
 
-Vamos desenvolver
+- Para $n = 0$:
 
-Seja k qualquer inteiro k >= 1 e suponha que 
-si = 5^i - 1 para todos os inteiros i com 0 <= i <= k
-(Essa é a nossa hipótese indutiva)
+$$
+S_0 = 5^0 - 1 = 1 - 1 = 0
+$$Verdade!
 
-Queremos mostrar que 
-sk+1 = 5^(k+1) - 1 é verdade
+- Para $n = 1$:
 
-Mas como k >= 1, nós temos que k + 1 >= 2, e então
-sk+1 = 6sk - 5sk - 1 	(Pela definição da sequência)
-     = 6(5^k - 1) - 5(5^(k-1) - 1  (Pela hipótese indutiva)
-     = 6 * 5^k - 6 - 5^k + 5       (Multiplicação e lei dos expoentes)
-     = (6 - 1)5^k - 1              
-     = 5 * 5^k - 1
-     = 5^(k+1) - 1                 (Lei dos expoentes)
+$$
+S_1 = 5^1 - 1 = 5 - 1 = 4
+$$Verdade!
 
-Provando assim, que é de verdade!
+Os valores da fórmula realmente condizem com os valores previamente definidos.
+
+
+
+- **Passo indutivo**
+
+No passo indutivo, queremos mostrar que, para todos os inteiros $k \geq 1$, se $P(i)$ é verdade para todos os inteiros $i$ de $0$ até $k$, então $P(k+1)$ também é verdade.
+
+Nossa Hipótese de Indução é a seguinte: 
+Seja $k$ qualquer inteiro $k \geq 1$ e suponha que
+
+$$
+s_i = 5^i - 1 \quad \text{para todos os inteiros } i \text{ com } 0 \leq i \leq k
+$$
+(Perceba que agora apareceu uma nova variável, $i$. Essa variável representa um índice genérico qualquer entre 0 e $k$, e é usada para expressar que estamos assumindo que a propriedade $P(i)$ é verdadeira para todos os valores anteriores a $k+1$, ou seja, desde o início da sequência até o valor $k$.)
+
+(Essa é a principal característica da indução forte: em vez de supor que a propriedade vale apenas para $k$, como na indução simples, aqui suponhamos que ela vale para todos os casos anteriores até k, e usamos essas informações para provar que também vale para $k+1$.)
+
+Continuando:
+Queremos mostrar que
+
+$$
+s_{k+1} = 5^{k+1} - 1
+$$
+
+é verdade.
+
+Como $k \geq 1$, temos que $k + 1 \geq 2$, e então:
+
+$$
+\begin{aligned}
+s_{k+1} &= 6 s_k - 5 s_{k-1} \quad \text{(pela definição da sequência)} \\
+        &= 6 (5^k - 1) - 5 (5^{k-1} - 1) \quad \text{(pela hipótese indutiva)} \\
+        &= 6 \cdot 5^k - 6 - 5 \cdot 5^{k-1} + 5 \quad \text{(realizando a multiplicação)}\\
+        &= 6 \cdot 5^k - 6 - 5^{k} + 5 \quad \text{(pois } 5 \cdot 5^{k-1} = 5^k) \\
+        &= 6 \cdot 5^k - 1 - 5^{k}  \quad \text{(operando -6 + 5)} \\
+        &= 5^k(6 - 1) - 1 \quad \text{(colocando } 5^k \text{ em evidência)}\\
+        &= 5^k \cdot 5 - 1 \quad \text{(subtraindo termos dentro do parênteses)}\\
+        &= 5^{k+1} - 1 \quad \text{(pois } 5 \cdot 5^k = 5^{k+1})
+\end{aligned}
+$$
+
+Provando assim que a fórmula é verdadeira!
+
 
 ## Exercício 
 Vamos retornar àquele problema que introduzimos anteriormente, e ver se conseguimos resolvê-lo agora!
 
-Suponha que a1, a2, a3... é uma sequência definida da seguinte forma:
-a1 = 1
-a2 = 3
-ak = a(k-2) + 2a(k-1) para todos os inteiros k >= 3
-Prove que an é ímpar para todo n > 1
+Suponha que $a_1, a_2, a_3, \ldots$ é uma sequência definida da seguinte forma:
+
+- $a_1 = 1$  
+- $a_2 = 3$  
+- $a_k = a_{k-2} + 2a_{k-1}$, para todo $k \geq 3$
+
+Prove que $a_n$ é ímpar para todo $n \geq 1$.
+Dica: Na matemática definimos um número par como 2q, em que q é qualquer número inteiro. A partir disso como definimos um número ímpar?
+
 
 ## Indução na programação
 Antes de partirmos para o próximo assunto, acredito que existem diversas discussões interessantes que podemos ter em relação à Indução. Quando utiliza-la? Quando não utiliza-la? Qual sua relação com programação? 
@@ -263,7 +372,7 @@ Antes de partirmos para o próximo assunto, acredito que existem diversas discus
 A Indução é especialmente útil quando estamos trabalhando problemas recursivos ou com padrões numéricos. Quando o problema em questão parece apresentar uma sequência, talvez cogitar a indução seja uma possibilidade. 
 No entanto, nem todo problema exige indução. Às vezes, uma simples manipulação algébrica ou uma prova direta é suficiente. A indução pode ser desnecessária (ou até mesmo tornar a prova mais complicada) quando o caso a ser provado não depende de forma clara de casos anteriores.
 
-Quanto à indução na programação, a relação se torna mais clara quando falamos de recursão, conceito fortemente presente na indução forte, como vimos anteriormente. Mas afinal, o que é recursão? Apesar de estar presente na indução forte, é um conceito próprio e não um sinônimo. 
+Quanto à indução na programação, a relação se torna mais clara quando falamos de recursão, conceito fortemente presente na indução forte, como vimos anteriormente. Mas afinal, o que é recursão? Apesar de estar presente na indução forte, é um conceito próprio e não um sinônimo.  
 
 # Recursão
 Achou que foi por acaso que nós começamos o nosso dia aprendendo sobre indução?
