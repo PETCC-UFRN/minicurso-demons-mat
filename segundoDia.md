@@ -109,13 +109,13 @@ Gauss percebeu algo curioso...
 
 A partir dessas observações, vamos lentamente deduzir a fórmula que resolveria o problema de somar os números de 1 até 100.
 
-1. Temos 100 números divididos em pares, todos com o mesmo valor:
+**1)** Temos 100 números divididos em pares, todos com o mesmo valor:
 
 $$
 \text{Soma até 100} = 50 \cdot \text{valor de cada par}
 $$
 
-2. Cada par soma 101, pois:
+**2)** Cada par soma 101, pois:
 
 $$
 1 + 100 = 2 + 99 = 3 + 98 = \dots = 101
@@ -127,7 +127,7 @@ $$
 \text{Soma até 100} = 50 \cdot 101
 $$
 
-3. E como $$101 = 1 + 100$$, podemos reescrever:
+3) E como $$101 = 1 + 100$$, podemos reescrever:
 
 $$
 \text{Soma até 100} = 50 \cdot (1 + 100)
