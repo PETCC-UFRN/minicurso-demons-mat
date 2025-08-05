@@ -116,8 +116,11 @@ Você concorda que nesse processo a fileira inteira de dominós será derrubada?
 <ul>
   <li>Passo base: Provamos que é verdade para o primeiro valor.</li>
   <li>Passo indutivo: Verificamos que é verdadeira para o valor seguinte.
-	- Hipótese de indução
-	- Verificação da hipótese</li>
+    <ul>
+      <li>Hipótese de indução</li>
+      <li>Verificação da hipótese</li>
+    </ul>
+  </li>
 </ul>
 
 <p>Por enquanto, apenas se familiarize com o que é. Ainda explicaremos como colocar em prática e sua relação com programação.</p>
@@ -136,15 +139,11 @@ Você concorda que nesse processo a fileira inteira de dominós será derrubada?
 
 <p>A partir dessas observações, vamos lentamente deduzir a fórmula que resolveria o problema de somar os números de 1 até 100.</p>
 
-<ol>
-  <li>Temos 100 números divididos em pares, todos com o mesmo valor:</li>
-</ol>
+<p><strong>1)</strong> Temos 100 números divididos em pares, todos com o mesmo valor:</p>
 
 \[\text{Soma até 100} = 50 \cdot \text{valor de cada par}\]
 
-<ol>
-  <li>Cada par soma 101, pois:</li>
-</ol>
+<p><strong>2)</strong> Cada par soma 101, pois:</p>
 
 \[1 + 100 = 2 + 99 = 3 + 98 = \dots = 101\]
 
@@ -152,9 +151,7 @@ Você concorda que nesse processo a fileira inteira de dominós será derrubada?
 
 \[\text{Soma até 100} = 50 \cdot 101\]
 
-<ol>
-  <li>E como \(101 = 1 + 100\), podemos reescrever:</li>
-</ol>
+<p>3) E como \(101 = 1 + 100\), podemos reescrever:</p>
 
 \[\text{Soma até 100} = 50 \cdot (1 + 100)\]
 
@@ -260,13 +257,9 @@ Agora chegou o seu momento, tente aplicar indução para o seguinte problema:</p
 
 <p>Suponha que \(a_1\), \(a_2\), \(a_3\), … seja uma sequência definida da seguinte forma:</p>
 <ul>
-  <li>
-\[a_1 = 1\]
-  </li>
-  <li>
-\[a_2 = 3\]
-  </li>
-  <li>\(a_k = a_{k-2} + 2a_{k-1}\), para todo inteiro \(k \geq 3\)</li>
+  <li>\(a_1 = 1\);</li>
+  <li>\(a_2 = 3\);</li>
+  <li>\(a_k = a_{k-2} + 2a_{k-1}\), para todo \(k \geq 3\).</li>
 </ul>
 
 <p>Prove que \(a_n\) é ímpar para todo \(n &gt; 1\).</p>
@@ -282,8 +275,11 @@ Mais tarde voltaremos para esse problema, o mantenha na cabeça por enquanto.</p
 <ul>
   <li>Passo base: Provamos que a afirmação é verdadeira para o primeiro valor (ou primeiros valores, se necessário).</li>
   <li>Passo indutivo: Suponhamos que a afirmação seja verdadeira para todos os valores até um certo número k .
-	- Hipótese de indução: Admitimos que a proposição vale para todos os inteiros entre o valor inicial e k.
-	- Verificação da hipótese: Usamos essa suposição para demonstrar que a proposição também é verdadeira para o valor k+1.</li>
+    <ul>
+      <li>Hipótese de indução: Admitimos que a proposição vale para todos os inteiros entre o valor inicial e k.</li>
+      <li>Verificação da hipótese: Usamos essa suposição para demonstrar que a proposição também é verdadeira para o valor k+1.</li>
+    </ul>
+  </li>
 </ul>
 
 <h3 id="indução-forte-em-prática">Indução Forte em prática</h3>
@@ -309,9 +305,11 @@ s_k = 6 s_{k-1} - 5 s_{k-2}, \quad \text{para todo inteiro } k \geq 2
   <li><strong>Passo base</strong></li>
 </ul>
 
-<p>Vamos mostrar que \(P(0)\) e \(P(1)\) são verdadeiros. Pela definição da sequência sabemos que:
-\(n = 0\) precisa resultar em 0
-\(n=1\) precisa resultar em 4</p>
+<p>Vamos mostrar que \(P(0)\) e \(P(1)\) são verdadeiros. Pela definição da sequência sabemos que:</p>
+<ol>
+  <li>\(n = 0\) precisa resultar em 0</li>
+  <li>\(n=1\) precisa resultar em 4</li>
+</ol>
 
 <ul>
   <li>Para \(n = 0\):</li>

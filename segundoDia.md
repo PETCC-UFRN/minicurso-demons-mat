@@ -92,8 +92,8 @@ A Indução funciona exatamente dessa forma. Provando que uma determinada propri
 A indução atua sobre os números inteiros não negativos (1, 2, 3, 4, 5...) e segue a seguinte estrutura:
 - Passo base: Provamos que é verdade para o primeiro valor.
 - Passo indutivo: Verificamos que é verdadeira para o valor seguinte.
-  	- Hipótese de indução
-  	- Verificação da hipótese
+	- Hipótese de indução
+	- Verificação da hipótese
 
 Por enquanto, apenas se familiarize com o que é. Ainda explicaremos como colocar em prática e sua relação com programação. 
 
@@ -109,13 +109,13 @@ Gauss percebeu algo curioso...
 
 A partir dessas observações, vamos lentamente deduzir a fórmula que resolveria o problema de somar os números de 1 até 100.
 
-1. Temos 100 números divididos em pares, todos com o mesmo valor:
+**1)** Temos 100 números divididos em pares, todos com o mesmo valor:
 
 $$
 \text{Soma até 100} = 50 \cdot \text{valor de cada par}
 $$
 
-2. Cada par soma 101, pois:
+**2)** Cada par soma 101, pois:
 
 $$
 1 + 100 = 2 + 99 = 3 + 98 = \dots = 101
@@ -127,7 +127,7 @@ $$
 \text{Soma até 100} = 50 \cdot 101
 $$
 
-3. E como $$101 = 1 + 100$$, podemos reescrever:
+3) E como $$101 = 1 + 100$$, podemos reescrever:
 
 $$
 \text{Soma até 100} = 50 \cdot (1 + 100)
@@ -255,9 +255,9 @@ Prove que $$n^2 > 2n$$ para todo $$n \geq 3$$.
 Mas o que acontece quando estamos analisando uma propriedade que, para ser analisada ou provada, exige múltiplos passos? Por exemplo, tome o seguinte problema:
 
 Suponha que $$a_1$$, $$a_2$$, $$a_3$$, ... seja uma sequência definida da seguinte forma:
-- $$a_1 = 1$$  
-- $$a_2 = 3$$  
-- $$a_k = a_{k-2} + 2a_{k-1}$$, para todo inteiro $$k \geq 3$$  
+- $$a_1 = 1$$;  
+- $$a_2 = 3$$;  
+- $$a_k = a_{k-2} + 2a_{k-1}$$, para todo $$k \geq 3$$.
 
 Prove que $$a_n$$ é ímpar para todo $$n > 1$$.
 
@@ -273,8 +273,8 @@ Não se preocupe, a estrutura da Indução Forte segue a mesma linha da Induçã
 Em resumo, a estrutura da Indução Forte se dá por: 
 - Passo base: Provamos que a afirmação é verdadeira para o primeiro valor (ou primeiros valores, se necessário).
 - Passo indutivo: Suponhamos que a afirmação seja verdadeira para todos os valores até um certo número k .
-  	- Hipótese de indução: Admitimos que a proposição vale para todos os inteiros entre o valor inicial e k.
-  	- Verificação da hipótese: Usamos essa suposição para demonstrar que a proposição também é verdadeira para o valor k+1.
+	- Hipótese de indução: Admitimos que a proposição vale para todos os inteiros entre o valor inicial e k.
+	- Verificação da hipótese: Usamos essa suposição para demonstrar que a proposição também é verdadeira para o valor k+1.
 
 
 ### Indução Forte em prática
@@ -303,8 +303,8 @@ $$
 - **Passo base**
 
 Vamos mostrar que $$P(0)$$ e $$P(1)$$ são verdadeiros. Pela definição da sequência sabemos que:
-$$n = 0$$ precisa resultar em 0
-$$n=1$$ precisa resultar em 4
+1. $$n = 0$$ precisa resultar em 0
+2. $$n=1$$ precisa resultar em 4
 
 - Para $$n = 0$$:
 
