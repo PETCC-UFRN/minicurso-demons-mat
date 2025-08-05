@@ -73,7 +73,7 @@ if nota >= 60 and frequencia >= 75:
 else:
     print("Aluno Reprovado!")
 
-# Saída: Aluno Reprovado!
+# Saída: Aluno Aprovado!
 ```
 
 Agora, vamos ver um exemplo de como uma lógica mal definida pode levar a erros.
