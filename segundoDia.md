@@ -255,9 +255,9 @@ Prove que $$n^2 > 2n$$ para todo $$n \geq 3$$.
 Mas o que acontece quando estamos analisando uma propriedade que, para ser analisada ou provada, exige múltiplos passos? Por exemplo, tome o seguinte problema:
 
 Suponha que $$a_1$$, $$a_2$$, $$a_3$$, ... seja uma sequência definida da seguinte forma:
-- $$a_1 = 1$$  
-- $$a_2 = 3$$  
-- $$a_k = a_{k-2} + 2a_{k-1}\text{, para todo inteiro } k \geq 3$$   
+- $$a_1 = 1$$;  
+- $$a_2 = 3$$;  
+- $$a_k = a_{k-2} + 2a_{k-1}$$, para todo $$k \geq 3$$.
 
 Prove que $$a_n$$ é ímpar para todo $$n > 1$$.
 
