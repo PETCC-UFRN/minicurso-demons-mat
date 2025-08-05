@@ -273,8 +273,8 @@ Não se preocupe, a estrutura da Indução Forte segue a mesma linha da Induçã
 Em resumo, a estrutura da Indução Forte se dá por: 
 - Passo base: Provamos que a afirmação é verdadeira para o primeiro valor (ou primeiros valores, se necessário).
 - Passo indutivo: Suponhamos que a afirmação seja verdadeira para todos os valores até um certo número k .
-  	- Hipótese de indução: Admitimos que a proposição vale para todos os inteiros entre o valor inicial e k.
-  	- Verificação da hipótese: Usamos essa suposição para demonstrar que a proposição também é verdadeira para o valor k+1.
+	- Hipótese de indução: Admitimos que a proposição vale para todos os inteiros entre o valor inicial e k.
+	- Verificação da hipótese: Usamos essa suposição para demonstrar que a proposição também é verdadeira para o valor k+1.
 
 
 ### Indução Forte em prática
