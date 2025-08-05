@@ -257,7 +257,7 @@ Mas o que acontece quando estamos analisando uma propriedade que, para ser anali
 Suponha que $$a_1$$, $$a_2$$, $$a_3$$, ... seja uma sequência definida da seguinte forma:
 - $$a_1 = 1$$  
 - $$a_2 = 3$$  
-- $$a_k = a_{k-2} + 2a_{k-1}$$, para todo inteiro $$k \geq 3$$  
+- $$a_k = a_{k-2} + 2a_{k-1}\text{, para todo inteiro } k \geq 3$$   
 
 Prove que $$a_n$$ é ímpar para todo $$n > 1$$.
 
