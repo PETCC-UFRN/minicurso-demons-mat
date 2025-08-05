@@ -303,8 +303,8 @@ $$
 - **Passo base**
 
 Vamos mostrar que $$P(0)$$ e $$P(1)$$ são verdadeiros. Pela definição da sequência sabemos que:
-$$n = 0$$ precisa resultar em 0
-$$n=1$$ precisa resultar em 4
+1. $$n = 0$$ precisa resultar em 0
+2. $$n=1$$ precisa resultar em 4
 
 - Para $$n = 0$$:
 
