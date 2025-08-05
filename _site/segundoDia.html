@@ -682,6 +682,29 @@ No entanto, nem todo problema exige indução. Às vezes, uma simples manipulaç
 
 <p>Você consegue imaginar como seria definir essa função de forma iterativa?</p>
 
+<details>
+    <summary>SPOILER!</summary>
+<div>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">double_list</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
+  <span class="n">doubled_list</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">:</span>
+    <span class="n">doubled_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">doubled_list</span>
+
+<span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">input_list</span><span class="p">):</span>
+  <span class="n">result_list</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">:</span>
+    <span class="n">result_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">result_list</span>
+
+<span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="mi">2</span>
+</code></pre></div>    </div>
+
+  </div>
+</details>
+
 <h3 id="descobrindo-a-função-replicate">Descobrindo a função <span style="color: #081849; font-weight: bold;">REPLICATE</span></h3>
 <p>De forma semelhante, também podemos diversificar o que colocamos na entrada da nossa função! Veja só a replicate, que pega um número natural, um elemento, e o replica por essa quantidade de vezes formando uma lista!</p>
 
@@ -691,6 +714,14 @@ No entanto, nem todo problema exige indução. Às vezes, uma simples manipulaç
 
 <span class="n">replicate</span> <span class="mi">5</span> <span class="kt">True</span> <span class="o">=</span> <span class="p">[</span><span class="kt">True</span><span class="p">,</span> <span class="kt">True</span><span class="p">,</span> <span class="kt">True</span><span class="p">,</span> <span class="kt">True</span><span class="p">,</span> <span class="kt">True</span><span class="p">]</span>
 </code></pre></div></div>
+
+<h2 id="agora-vamos-praticar-um-pouco-que-aprendemos">Agora, vamos praticar um pouco que aprendemos!</h2>
+
+<p>Vocês conseguem definir mais funções com o tipo dos Bools?</p>
+
+<p>Antes de tudo, precisamos definir o tipo Bool.</p>
+
+<p>Agora, utilize as funções aprendidas ontem, como as and, or e not para definir novas funções que utilizem listas de booleanos. Tente fazer a any e a all.</p>
 
 <h2 id="é-possível-extrapolar-para-outros-tipos">É possível extrapolar para outros tipos?</h2>
 
@@ -722,6 +753,18 @@ No entanto, nem todo problema exige indução. Às vezes, uma simples manipulaç
 <span class="n">odd</span> <span class="o">::</span> <span class="kt">Nat</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
 <span class="n">odd</span> <span class="n">n</span> <span class="o">=</span> <span class="n">even</span> <span class="kt">S</span> <span class="n">n</span>
 </code></pre></div></div>
+
+<h2 id="agora-vamos-praticar-um-pouco-que-aprendemos-1">Agora, vamos praticar um pouco que aprendemos!</h2>
+
+<p>Vocês conseguem definir mais funções com o tipo dos Nats?</p>
+
+<p>Defina as funções mínimo e máximo, que recebem dois naturais e retornam aquele que for o menor, ou o maior.</p>
+
+<p>Defina a função plus, que soma dois naturais.</p>
+
+<p>Defina a função prod, que multiplica dois naturais.</p>
+
+<p>DESAFIO: Defina a função factorial.</p>
 
 <h3 id="verificando-se-uma-função-foi-bem-definida-recursivamente-kahoot">Verificando se uma função foi bem definida recursivamente (kahoot)</h3>
 

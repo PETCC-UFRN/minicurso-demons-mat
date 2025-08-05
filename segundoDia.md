@@ -694,6 +694,30 @@ map double [ 42. 43. 42] = -- ?
 
 Você consegue imaginar como seria definir essa função de forma iterativa?
 
+<details>
+    <summary >SPOILER!</summary>
+<div markdown="1">
+
+```python
+def double_list(input_list):
+  doubled_list = []
+  for item in input_list:
+    doubled_list.append(item * 2)
+  return doubled_list
+
+def map(func, input_list):
+  result_list = []
+  for item in input_list:
+    result_list.append(func(item))
+  return result_list
+
+def double(n):
+  return n * 2
+```
+
+</div>
+</details>
+
 ### Descobrindo a função <span style="color: #081849; font-weight: bold;">REPLICATE</span>
 De forma semelhante, também podemos diversificar o que colocamos na entrada da nossa função! Veja só a replicate, que pega um número natural, um elemento, e o replica por essa quantidade de vezes formando uma lista!
 
@@ -704,6 +728,14 @@ replicate n x = (x : replicate (n-1) x)
 
 replicate 5 True = [True, True, True, True, True]
 ```
+
+## Agora, vamos praticar um pouco que aprendemos!
+
+Vocês conseguem definir mais funções com o tipo dos Bools?
+
+Antes de tudo, precisamos definir o tipo Bool.
+
+Agora, utilize as funções aprendidas ontem, como as and, or e not para definir novas funções que utilizem listas de booleanos. Tente fazer a any e a all.
 
 ## É possível extrapolar para outros tipos?
 
@@ -738,6 +770,18 @@ even (S (S n)) = even n
 odd :: Nat -> Bool
 odd n = even S n
 ```
+
+## Agora, vamos praticar um pouco que aprendemos!
+
+Vocês conseguem definir mais funções com o tipo dos Nats?
+
+Defina as funções mínimo e máximo, que recebem dois naturais e retornam aquele que for o menor, ou o maior.
+
+Defina a função plus, que soma dois naturais.
+
+Defina a função prod, que multiplica dois naturais.
+
+DESAFIO: Defina a função factorial.
 
 ### Verificando se uma função foi bem definida recursivamente (kahoot)
 
