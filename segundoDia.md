@@ -92,8 +92,8 @@ A Indução funciona exatamente dessa forma. Provando que uma determinada propri
 A indução atua sobre os números inteiros não negativos (1, 2, 3, 4, 5...) e segue a seguinte estrutura:
 - Passo base: Provamos que é verdade para o primeiro valor.
 - Passo indutivo: Verificamos que é verdadeira para o valor seguinte.
-  	- Hipótese de indução
-  	- Verificação da hipótese
+	- Hipótese de indução
+	- Verificação da hipótese
 
 Por enquanto, apenas se familiarize com o que é. Ainda explicaremos como colocar em prática e sua relação com programação. 
 
