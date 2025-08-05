@@ -127,7 +127,7 @@ $$
 \text{Soma até 100} = 50 \cdot 101
 $$
 
-3. E como $101 = 1 + 100$, podemos reescrever:
+3. E como $$101 = 1 + 100$$, podemos reescrever:
 
 $$
 \text{Soma até 100} = 50 \cdot (1 + 100)
@@ -135,10 +135,10 @@ $$
 
 ---
 
-Agora, vamos generalizar essa ideia para qualquer número $n$:
+Agora, vamos generalizar essa ideia para qualquer número $$n$$:
 
-- A quantidade de pares é $n/2$
-- Cada par soma $(1 + n)$
+- A quantidade de pares é $$n/2$$
+- Cada par soma $$(1 + n)$$
 
 Portanto, a fórmula geral é:
 
@@ -152,18 +152,18 @@ $$
 \text{Soma até } n = \frac{n(n + 1)}{2}
 $$
 
-Essa expressão nos dá o valor total da soma dos números inteiros de $1$ até $n$.
+Essa expressão nos dá o valor total da soma dos números inteiros de $$1$$ até $$n$$.
 
 
 Contudo, isso abre a questão. Como podemos provar que essa fórmula realmente é verdade? 
 
 ### Indução em Prática
-Problema: Prove que $1 + 2 + 3 + 4 + \dots + n = \frac{n(n + 1)}{2}$ é verdade para qualquer inteiro $n \geq 1$.
+Problema: Prove que $$1 + 2 + 3 + 4 + \dots + n = \frac{n(n + 1)}{2}$$ é verdade para qualquer inteiro $$n \geq 1$$.
 
 ---
 
 - **Passo base**  
-Verificamos se isso é verdade para $n = 1$.
+Verificamos se isso é verdade para $$n = 1$$.
 
 A fórmula nos dá:
 
@@ -171,14 +171,14 @@ $$
 \frac{n}{2} \cdot (n + 1) = \frac{1}{2} \cdot (1 + 1) = \frac{1}{2} \cdot 2 = 1
 $$
 
-Portanto, é verdade para $n = 1$.
+Portanto, é verdade para $$n = 1$$.
  
 - **Passo indutivo**
 (É aqui que as coisas começam a ficar um pouco mais extravagantes). 
 
 A primeira etapa do passo indutivo é formular a hipótese de indução.
 A nossa hipótese é a seguinte:
-Suponha que a fórmula vale para algum $k \in \mathbb{N}$:
+Suponha que a fórmula vale para algum $$k \in \mathbb{N}$$:
 
 $$
 1 + 2 + 3 + \dots + k = \frac{k(k + 1)}{2}
@@ -207,13 +207,13 @@ $$
 1 + 2 + 3 + \dots + k = \frac{k(k + 1)}{2}
 $$
 
-Nosso objetivo agora é mostrar que essa fórmula também vale para (k + 1). Para isso, somamos (k + 1) dos dois lados da equação:
+Nosso objetivo agora é mostrar que essa fórmula também vale para $$(k + 1)$$. Para isso, somamos $$(k + 1)$$ dos dois lados da equação:
 
 $$
 1 + 2 + 3 + \dots + k + (k + 1) = \frac{k(k + 1)}{2} + (k+1)
 $$
 
-Colocando (k + 1) em evidência:
+Colocando $$(k + 1)$$ em evidência:
 
 $$
 (k + 1) \cdot \left(\frac{k}{2} + 1\right)
@@ -237,29 +237,29 @@ $$
 1 + 2 + 3 + \dots + k + (k + 1) = \frac{(k + 1)(k + 2)}{2}
 $$
 
-Ou seja. Supondo que a fórmula para k é verdade, a fórmula também é válida para (k + 1). Como mostramos que ela vale para (n = 1) (passo base) e que, se vale para (k), então vale para ( k + 1) (passo indutivo), podemos concluir por indução que:
+Ou seja. Supondo que a fórmula para $$k$$ é verdade, a fórmula também é válida para $$(k + 1)$$. Como mostramos que ela vale para $$(n = 1)$$ (passo base) e que, se vale para $$(k)$$, então vale para $$(k + 1)$$ (passo indutivo), podemos concluir por indução que:
 
 $$
 1 + 2 + 3 + \dots + n = \frac{n(n + 1)}{2}
 $$
 
-É verdadeira para todo  $n \in \mathbb{N}$:
+É verdadeira para todo  $$n \in \mathbb{N}$$:
 
 ## Exercício
 Mas quando o assunto é Indução, é a prática que faz a perfeição. 
 Agora chegou o seu momento, tente aplicar indução para o seguinte problema:
 
-Prove que $n^2 > 2n$ para todo $n \geq 3$.
+Prove que $$n^2 > 2n$$ para todo $$n \geq 3$$.
 
 ## Indução Forte
 Mas o que acontece quando estamos analisando uma propriedade que, para ser analisada ou provada, exige múltiplos passos? Por exemplo, tome o seguinte problema:
 
-Suponha que $a_1$, $a_2$, $a_3$, ... seja uma sequência definida da seguinte forma:
-- $a_1 = 1$  
-- $a_2 = 3$  
-- $a_k = a_{k-2} + 2a_{k-1}$, para todo inteiro $k \geq 3$  
+Suponha que $$a_1$$, $$a_2$$, $$a_3$$, ... seja uma sequência definida da seguinte forma:
+- $$a_1 = 1$$  
+- $$a_2 = 3$$  
+- $$a_k = a_{k-2} + 2a_{k-1}$$, para todo inteiro $$k \geq 3$$  
 
-Prove que $a_n$ é ímpar para todo $n > 1$.
+Prove que $$a_n$$ é ímpar para todo $$n > 1$$.
 
 
 
@@ -280,7 +280,7 @@ Em resumo, a estrutura da Indução Forte se dá por:
 ### Indução Forte em prática
 
 Para ilustrar a Indução Forte em prática, tome o seguinte problema:
-Seja $s_0, s_1, s_2, \dots$ uma sequência definida da seguinte forma:
+Seja $$s_0, s_1, s_2, \dots$$ uma sequência definida da seguinte forma:
 
 $$
 \begin{cases}
@@ -290,23 +290,23 @@ s_k = 6 s_{k-1} - 5 s_{k-2}, \quad \text{para todo inteiro } k \geq 2
 \end{cases}
 $$
 
-A propriedade que queremos provar, $P(n)$, é que
+A propriedade que queremos provar, $$P(n)$$, é que
 
 $$
 S_n = 5^n - 1
 $$
 
-é a fórmula fechada para um termo da sequência. Mostrando que ela é verdadeira para todos os inteiros $n \geq 0$.
+é a fórmula fechada para um termo da sequência. Mostrando que ela é verdadeira para todos os inteiros $$n \geq 0$$.
 
 ---
 
 - **Passo base**
 
-Vamos mostrar que $P(0)$ e $P(1)$ são verdadeiros. Pela definição da sequência sabemos que:
-$n = 0$ precisa resultar em 0
-$n=1$ precisa resultar em 4
+Vamos mostrar que $$P(0)$$ e $$P(1)$$ são verdadeiros. Pela definição da sequência sabemos que:
+$$n = 0$$ precisa resultar em 0
+$$n=1$$ precisa resultar em 4
 
-- Para $n = 0$:
+- Para $$n = 0$$:
 
 $$
 S_0 = 5^0 - 1 = 1 - 1 = 0
@@ -314,7 +314,7 @@ $$
 
 Verdade!
 
-- Para $n = 1$:
+- Para $$n = 1$$:
 
 $$
 S_1 = 5^1 - 1 = 5 - 1 = 4
@@ -328,18 +328,18 @@ Os valores da fórmula realmente condizem com os valores previamente definidos.
 
 - **Passo indutivo**
 
-No passo indutivo, queremos mostrar que, para todos os inteiros $k \geq 1$, se $P(i)$ é verdade para todos os inteiros $i$ de $0$ até $k$, então $P(k+1)$ também é verdade.
+No passo indutivo, queremos mostrar que, para todos os inteiros $$k \geq 1$$, se $$P(i)$$ é verdade para todos os inteiros $$i$$ de $$0$$ até $$k$$, então $$P(k+1)$$ também é verdade.
 
 Nossa hipótese de indução é a seguinte: 
-Seja $k$ qualquer inteiro $k \geq 1$ e suponha que
+Seja $$k$$ qualquer inteiro $$k \geq 1$$ e suponha que
 
 $$
 s_i = 5^i - 1 \quad \text{para todos os inteiros } i \text{ com } 0 \leq i \leq k
 $$
 
-(Perceba que agora apareceu uma nova variável, $i$. Essa variável representa um índice genérico qualquer entre 0 e $k$, e é usada para expressar que estamos assumindo que a propriedade $P(i)$ é verdadeira para todos os valores anteriores a $k+1$, ou seja, desde o início da sequência até o valor $k$.)
+(Perceba que agora apareceu uma nova variável, $$i$$. Essa variável representa um índice genérico qualquer entre $$0$$ e $$k$$, e é usada para expressar que estamos assumindo que a propriedade $$P(i)$$ é verdadeira para todos os valores anteriores a $$k+1$$, ou seja, desde o início da sequência até o valor $$k$$.)
 
-(Essa é a principal característica da indução forte: em vez de supor que a propriedade vale apenas para $k$, como na indução simples, aqui suponhamos que ela vale para todos os casos anteriores até k, e usamos essas informações para provar que também vale para $k+1$.)
+(Essa é a principal característica da indução forte: em vez de supor que a propriedade vale apenas para $$k$$, como na indução simples, aqui suponhamos que ela vale para todos os casos anteriores até $$k$$, e usamos essas informações para provar que também vale para $$k+1$$.)
 
 Continuando:
 Queremos mostrar a veracidade de:
@@ -348,7 +348,7 @@ $$
 s_{k+1} = 5^{k+1} - 1
 $$
 
-Como $k \geq 1$, temos que $k + 1 \geq 2$, e então:
+Como $$k \geq 1$$, temos que $$k + 1 \geq 2$$, e então:
 
 $$
 \begin{aligned}
@@ -369,13 +369,13 @@ Provando assim que a fórmula é verdadeira!
 ## Exercício 
 Vamos retornar àquele problema que introduzimos anteriormente, e ver se conseguimos resolvê-lo agora!
 
-Suponha que $a_1, a_2, a_3, \ldots$ é uma sequência definida da seguinte forma:
+Suponha que $$a_1, a_2, a_3, \ldots$$ é uma sequência definida da seguinte forma:
 
-- $a_1 = 1$  
-- $a_2 = 3$  
-- $a_k = a_{k-2} + 2a_{k-1}$, para todo $k \geq 3$
+- $$a_1 = 1$$;  
+- $$a_2 = 3$$;  
+- $$a_k = a_{k-2} + 2a_{k-1}$$, para todo $$k \geq 3$$.
 
-Prove que $a_n$ é ímpar para todo $n \geq 1$.
+Prove que $$a_n$$ é ímpar para todo $$n \geq 1$$.
 Dica: Na matemática definimos um número par como 2q, em que q é qualquer número inteiro. A partir disso como definimos um número ímpar?
 
 

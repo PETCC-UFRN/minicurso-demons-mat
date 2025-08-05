@@ -153,18 +153,18 @@ Você concorda que nesse processo a fileira inteira de dominós será derrubada?
 \[\text{Soma até 100} = 50 \cdot 101\]
 
 <ol>
-  <li>E como $101 = 1 + 100$, podemos reescrever:</li>
+  <li>E como \(101 = 1 + 100\), podemos reescrever:</li>
 </ol>
 
 \[\text{Soma até 100} = 50 \cdot (1 + 100)\]
 
 <hr />
 
-<p>Agora, vamos generalizar essa ideia para qualquer número $n$:</p>
+<p>Agora, vamos generalizar essa ideia para qualquer número \(n\):</p>
 
 <ul>
-  <li>A quantidade de pares é $n/2$</li>
-  <li>Cada par soma $(1 + n)$</li>
+  <li>A quantidade de pares é \(n/2\)</li>
+  <li>Cada par soma \((1 + n)\)</li>
 </ul>
 
 <p>Portanto, a fórmula geral é:</p>
@@ -175,25 +175,25 @@ Você concorda que nesse processo a fileira inteira de dominós será derrubada?
 
 \[\text{Soma até } n = \frac{n(n + 1)}{2}\]
 
-<p>Essa expressão nos dá o valor total da soma dos números inteiros de $1$ até $n$.</p>
+<p>Essa expressão nos dá o valor total da soma dos números inteiros de \(1\) até \(n\).</p>
 
 <p>Contudo, isso abre a questão. Como podemos provar que essa fórmula realmente é verdade?</p>
 
 <h3 id="indução-em-prática">Indução em Prática</h3>
-<p>Problema: Prove que $1 + 2 + 3 + 4 + \dots + n = \frac{n(n + 1)}{2}$ é verdade para qualquer inteiro $n \geq 1$.</p>
+<p>Problema: Prove que \(1 + 2 + 3 + 4 + \dots + n = \frac{n(n + 1)}{2}\) é verdade para qualquer inteiro \(n \geq 1\).</p>
 
 <hr />
 
 <ul>
   <li><strong>Passo base</strong><br />
-Verificamos se isso é verdade para $n = 1$.</li>
+Verificamos se isso é verdade para \(n = 1\).</li>
 </ul>
 
 <p>A fórmula nos dá:</p>
 
 \[\frac{n}{2} \cdot (n + 1) = \frac{1}{2} \cdot (1 + 1) = \frac{1}{2} \cdot 2 = 1\]
 
-<p>Portanto, é verdade para $n = 1$.</p>
+<p>Portanto, é verdade para \(n = 1\).</p>
 
 <ul>
   <li><strong>Passo indutivo</strong>
@@ -202,7 +202,7 @@ Verificamos se isso é verdade para $n = 1$.</li>
 
 <p>A primeira etapa do passo indutivo é formular a hipótese de indução.
 A nossa hipótese é a seguinte:
-Suponha que a fórmula vale para algum $k \in \mathbb{N}$:</p>
+Suponha que a fórmula vale para algum \(k \in \mathbb{N}\):</p>
 
 \[1 + 2 + 3 + \dots + k = \frac{k(k + 1)}{2}\]
 
@@ -223,11 +223,11 @@ Vamos usar a fórmula da hipótese de indução como base e, a partir dela, tent
 
 \[1 + 2 + 3 + \dots + k = \frac{k(k + 1)}{2}\]
 
-<p>Nosso objetivo agora é mostrar que essa fórmula também vale para (k + 1). Para isso, somamos (k + 1) dos dois lados da equação:</p>
+<p>Nosso objetivo agora é mostrar que essa fórmula também vale para \((k + 1)\). Para isso, somamos \((k + 1)\) dos dois lados da equação:</p>
 
 \[1 + 2 + 3 + \dots + k + (k + 1) = \frac{k(k + 1)}{2} + (k+1)\]
 
-<p>Colocando (k + 1) em evidência:</p>
+<p>Colocando \((k + 1)\) em evidência:</p>
 
 \[(k + 1) \cdot \left(\frac{k}{2} + 1\right)\]
 
@@ -243,29 +243,33 @@ Vamos usar a fórmula da hipótese de indução como base e, a partir dela, tent
 
 \[1 + 2 + 3 + \dots + k + (k + 1) = \frac{(k + 1)(k + 2)}{2}\]
 
-<p>Ou seja. Supondo que a fórmula para k é verdade, a fórmula também é válida para (k + 1). Como mostramos que ela vale para (n = 1) (passo base) e que, se vale para (k), então vale para ( k + 1) (passo indutivo), podemos concluir por indução que:</p>
+<p>Ou seja. Supondo que a fórmula para \(k\) é verdade, a fórmula também é válida para \((k + 1)\). Como mostramos que ela vale para \((n = 1)\) (passo base) e que, se vale para \((k)\), então vale para \((k + 1)\) (passo indutivo), podemos concluir por indução que:</p>
 
 \[1 + 2 + 3 + \dots + n = \frac{n(n + 1)}{2}\]
 
-<p>É verdadeira para todo  $n \in \mathbb{N}$:</p>
+<p>É verdadeira para todo  \(n \in \mathbb{N}\):</p>
 
 <h2 id="exercício">Exercício</h2>
 <p>Mas quando o assunto é Indução, é a prática que faz a perfeição. 
 Agora chegou o seu momento, tente aplicar indução para o seguinte problema:</p>
 
-<p>Prove que $n^2 &gt; 2n$ para todo $n \geq 3$.</p>
+<p>Prove que \(n^2 &gt; 2n\) para todo \(n \geq 3\).</p>
 
 <h2 id="indução-forte">Indução Forte</h2>
 <p>Mas o que acontece quando estamos analisando uma propriedade que, para ser analisada ou provada, exige múltiplos passos? Por exemplo, tome o seguinte problema:</p>
 
-<p>Suponha que $a_1$, $a_2$, $a_3$, … seja uma sequência definida da seguinte forma:</p>
+<p>Suponha que \(a_1\), \(a_2\), \(a_3\), … seja uma sequência definida da seguinte forma:</p>
 <ul>
-  <li>$a_1 = 1$</li>
-  <li>$a_2 = 3$</li>
-  <li>$a_k = a_{k-2} + 2a_{k-1}$, para todo inteiro $k \geq 3$</li>
+  <li>
+\[a_1 = 1\]
+  </li>
+  <li>
+\[a_2 = 3\]
+  </li>
+  <li>\(a_k = a_{k-2} + 2a_{k-1}\), para todo inteiro \(k \geq 3\)</li>
 </ul>
 
-<p>Prove que $a_n$ é ímpar para todo $n &gt; 1$.</p>
+<p>Prove que \(a_n\) é ímpar para todo \(n &gt; 1\).</p>
 
 <p>Perceba que a nossa fórmula é composta por uma sequência, em que um determinado termo é definido pelos dois termos anteriores. A Indução que vimos anteriormente será o suficiente para provar o problema?
 Na verdade, não. Precisamos de uma ferramenta um pouco mais poderosa: a Indução Forte.
@@ -285,7 +289,7 @@ Mais tarde voltaremos para esse problema, o mantenha na cabeça por enquanto.</p
 <h3 id="indução-forte-em-prática">Indução Forte em prática</h3>
 
 <p>Para ilustrar a Indução Forte em prática, tome o seguinte problema:
-Seja $s_0, s_1, s_2, \dots$ uma sequência definida da seguinte forma:</p>
+Seja \(s_0, s_1, s_2, \dots\) uma sequência definida da seguinte forma:</p>
 
 \[\begin{cases}
 s_0 = 0 \\
@@ -293,11 +297,11 @@ s_1 = 4 \\
 s_k = 6 s_{k-1} - 5 s_{k-2}, \quad \text{para todo inteiro } k \geq 2
 \end{cases}\]
 
-<p>A propriedade que queremos provar, $P(n)$, é que</p>
+<p>A propriedade que queremos provar, \(P(n)\), é que</p>
 
 \[S_n = 5^n - 1\]
 
-<p>é a fórmula fechada para um termo da sequência. Mostrando que ela é verdadeira para todos os inteiros $n \geq 0$.</p>
+<p>é a fórmula fechada para um termo da sequência. Mostrando que ela é verdadeira para todos os inteiros \(n \geq 0\).</p>
 
 <hr />
 
@@ -305,12 +309,12 @@ s_k = 6 s_{k-1} - 5 s_{k-2}, \quad \text{para todo inteiro } k \geq 2
   <li><strong>Passo base</strong></li>
 </ul>
 
-<p>Vamos mostrar que $P(0)$ e $P(1)$ são verdadeiros. Pela definição da sequência sabemos que:
-$n = 0$ precisa resultar em 0
-$n=1$ precisa resultar em 4</p>
+<p>Vamos mostrar que \(P(0)\) e \(P(1)\) são verdadeiros. Pela definição da sequência sabemos que:
+\(n = 0\) precisa resultar em 0
+\(n=1\) precisa resultar em 4</p>
 
 <ul>
-  <li>Para $n = 0$:</li>
+  <li>Para \(n = 0\):</li>
 </ul>
 
 \[S_0 = 5^0 - 1 = 1 - 1 = 0\]
@@ -318,7 +322,7 @@ $n=1$ precisa resultar em 4</p>
 <p>Verdade!</p>
 
 <ul>
-  <li>Para $n = 1$:</li>
+  <li>Para \(n = 1\):</li>
 </ul>
 
 \[S_1 = 5^1 - 1 = 5 - 1 = 4\]
@@ -331,23 +335,23 @@ $n=1$ precisa resultar em 4</p>
   <li><strong>Passo indutivo</strong></li>
 </ul>
 
-<p>No passo indutivo, queremos mostrar que, para todos os inteiros $k \geq 1$, se $P(i)$ é verdade para todos os inteiros $i$ de $0$ até $k$, então $P(k+1)$ também é verdade.</p>
+<p>No passo indutivo, queremos mostrar que, para todos os inteiros \(k \geq 1\), se \(P(i)\) é verdade para todos os inteiros \(i\) de \(0\) até \(k\), então \(P(k+1)\) também é verdade.</p>
 
 <p>Nossa hipótese de indução é a seguinte: 
-Seja $k$ qualquer inteiro $k \geq 1$ e suponha que</p>
+Seja \(k\) qualquer inteiro \(k \geq 1\) e suponha que</p>
 
 \[s_i = 5^i - 1 \quad \text{para todos os inteiros } i \text{ com } 0 \leq i \leq k\]
 
-<p>(Perceba que agora apareceu uma nova variável, $i$. Essa variável representa um índice genérico qualquer entre 0 e $k$, e é usada para expressar que estamos assumindo que a propriedade $P(i)$ é verdadeira para todos os valores anteriores a $k+1$, ou seja, desde o início da sequência até o valor $k$.)</p>
+<p>(Perceba que agora apareceu uma nova variável, \(i\). Essa variável representa um índice genérico qualquer entre \(0\) e \(k\), e é usada para expressar que estamos assumindo que a propriedade \(P(i)\) é verdadeira para todos os valores anteriores a \(k+1\), ou seja, desde o início da sequência até o valor \(k\).)</p>
 
-<p>(Essa é a principal característica da indução forte: em vez de supor que a propriedade vale apenas para $k$, como na indução simples, aqui suponhamos que ela vale para todos os casos anteriores até k, e usamos essas informações para provar que também vale para $k+1$.)</p>
+<p>(Essa é a principal característica da indução forte: em vez de supor que a propriedade vale apenas para \(k\), como na indução simples, aqui suponhamos que ela vale para todos os casos anteriores até \(k\), e usamos essas informações para provar que também vale para \(k+1\).)</p>
 
 <p>Continuando:
 Queremos mostrar a veracidade de:</p>
 
 \[s_{k+1} = 5^{k+1} - 1\]
 
-<p>Como $k \geq 1$, temos que $k + 1 \geq 2$, e então:</p>
+<p>Como \(k \geq 1\), temos que \(k + 1 \geq 2\), e então:</p>
 
 \[\begin{aligned}
 s_{k+1} &amp;= 6 s_k - 5 s_{k-1} \quad \text{(pela definição da sequência)} \\
@@ -365,15 +369,15 @@ s_{k+1} &amp;= 6 s_k - 5 s_{k-1} \quad \text{(pela definição da sequência)} \
 <h2 id="exercício-1">Exercício</h2>
 <p>Vamos retornar àquele problema que introduzimos anteriormente, e ver se conseguimos resolvê-lo agora!</p>
 
-<p>Suponha que $a_1, a_2, a_3, \ldots$ é uma sequência definida da seguinte forma:</p>
+<p>Suponha que \(a_1, a_2, a_3, \ldots\) é uma sequência definida da seguinte forma:</p>
 
 <ul>
-  <li>$a_1 = 1$</li>
-  <li>$a_2 = 3$</li>
-  <li>$a_k = a_{k-2} + 2a_{k-1}$, para todo $k \geq 3$</li>
+  <li>\(a_1 = 1\);</li>
+  <li>\(a_2 = 3\);</li>
+  <li>\(a_k = a_{k-2} + 2a_{k-1}\), para todo \(k \geq 3\).</li>
 </ul>
 
-<p>Prove que $a_n$ é ímpar para todo $n \geq 1$.
+<p>Prove que \(a_n\) é ímpar para todo \(n \geq 1\).
 Dica: Na matemática definimos um número par como 2q, em que q é qualquer número inteiro. A partir disso como definimos um número ímpar?</p>
 
 <h2 id="indução-na-programação">Indução na programação</h2>
