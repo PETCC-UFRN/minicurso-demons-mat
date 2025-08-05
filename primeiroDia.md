@@ -503,7 +503,7 @@ Uma contradição é uma proposição que é sempre falsa, independentemente do 
 
 **Tabela Verdade**
 
-| P | ¬P | P ∨ ¬P |
+| P | ¬P | P ∧ ¬P |
 |---|----|--------|
 | V | F  | F |
 | F | V  | F |
