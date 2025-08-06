@@ -1,6 +1,6 @@
 ---
 layout: layoutGit
-title: Minicurso de Linux e Git
+title: Minicurso de Matemática aplicada à Computação
 ---
 <div id="sumario" class="sumario-git">
     <h1>Dia 1</h1>
@@ -28,6 +28,13 @@ title: Minicurso de Linux e Git
                 </ul>
             </li>
             <li><a href="#demonstração-de-equivalências">Demonstração de equivalências</a></li>
+            <li><a href="#lógica-de-predicados">Lógica de Predicados</a>
+                <ul> 
+                    <li><a href="#variáveis">Variáveis</a></li>
+                    <li><a href="#predicados">Predicados</a></li>
+                    <li><a href="#exercícios">Exercícios</a></li>
+                </ul>
+            </li>
         </ul>
     </details>
   <button class="toggle-button" id="toggle-button">
@@ -66,7 +73,7 @@ if nota >= 60 and frequencia >= 75:
 else:
     print("Aluno Reprovado!")
 
-# Saída: Aluno Reprovado!
+# Saída: Aluno Aprovado!
 ```
 
 Agora, vamos ver um exemplo de como uma lógica mal definida pode levar a erros.
@@ -194,6 +201,92 @@ print("Todos os testes passaram para calcular_dobro!")
 ```
 
 Abordagens de testes guiadas por raciocínio lógico nos permite não apenas verificar se o código funciona para casos óbvios, mas também garantir sua robustez em cenários complexos e nos limites das condições. Testes são, em essência, pequenas demonstrações de que nosso código se comporta conforme o esperado sob certas condições. Eles não provam a ausência de bugs, mas aumentam significativamente a confiança na qualidade e na corretude do software, reduzindo riscos e facilitando a manutenção a longo prazo.
+
+
+### Colocando a mão na massa
+
+Agora que nós aprendemos um pouco mais sobre a parte de design, depuração e testes de algoritmos, chegou a hora de colocarmos esses conhecimentos em prática!
+
+Todos os códigos a seguir apresentam algum erro de lógica ou implementação, e é o 🫵 seu dever 🫵 descobrir o que está dando errado! O primeiro exemplo já vem com casos que irão te ajudar a deduzir o erro (pra você ir pegando o jeito), mas você deve criar os seus próprios testes para os últimos exemplos!
+Para fazer seus testes, você pode compilar e executar esses códigos no Vscode da sua máquina atual, em um compilador online ou na IDE de sua preferência.
+
+#### Exercício 1:
+
+Função que recebe um inteiro e calcula o seu fatorial. Ou seja, quando ela recebe o inteiro, deve multiplicar todos os seus antecessores positivos e o inteiro em questão.
+ 
+```python
+# Definição da Função
+def fatorial(inteiro):
+    result = 1
+    for numero in range(inteiro):
+        result = result * numero
+    return result
+
+# Casos de Teste
+print("Resultado de fatorial(2) é ", fatorial(2))
+print("Resultado de fatorial(3) é ", fatorial(3))
+print("Resultado de fatorial(5) é ", fatorial(5))
+print("Resultado de fatorial(0) é ", fatorial(0))
+assert fatorial(2) == 2, "Erro: 2 * 1 deveria ser 2"
+assert fatorial(3) == 6, "Erro: 3 * 2 * 1 deveria ser 6"
+assert fatorial(5) == 120, "Erro: 5 * 4 * 3 * 2 * 1 deveria ser 120"
+assert fatorial(0) == 1, "Erro: o resultado deveria ser 1"
+
+print("Todos os testes foram concluídos com sucesso! Parabéns!")
+```
+
+_DICA:_
+Note que, ao rodar os testes, todos os resultados aparentam dar 0. O que poderia ter causado isso? Talvez alguma subtração errada ou uma multiplicação incorreta?
+Uma maneira de verificarmos o funcionamento da função (e o porquê de estar dando errado) é imprimir todos os resultados parciais, para que possamos ter ideia do que estamos gerando continuamente. Tente imprimir *result* e *numero* para cada repetição do _loop for_!
+
+
+#### Exercício 2
+
+Essa função recebe uma lista de valores e deve retornar a média deles. Você pode se basear no código do exemplo anterior para fazer os testes desse exemplo!
+
+```python
+# Definição da Função
+def media(lista):
+    result = 0;
+    for numero in lista:
+        result = result + lista(numero)
+    return result/2
+```
+
+_DICA:_
+A função _len()_ do python pode ser útil para esse exemplo!
+
+#### Exercício 3
+
+Essa função recebe uma lista de valores e deve retornar o menor dentre os eles
+```python
+# Definição da Função
+def minimo_lista(lista):
+    minimo = 1000;
+    for numero in lista:
+        if numero < minimo:
+            minimo = numero
+    return minimo
+```
+
+#### Exercício 4
+
+ Essa função recebe uma lista de valores e um valor específico, com o objetivo de identificar se ele faz parte da lista.
+
+```python
+# Definição da Função
+def esta_na_lista(lista, valor):
+    for numero in lista:
+        if numero == valor:
+            esta = true
+        else
+            esta = false
+    return esta
+
+```
+
+
+
 —
 
 ## Elementos da Lógica Formal
@@ -410,7 +503,7 @@ Uma contradição é uma proposição que é sempre falsa, independentemente do 
 
 **Tabela Verdade**
 
-| P | ¬P | P ∨ ¬P |
+| P | ¬P | P ∧ ¬P |
 |---|----|--------|
 | V | F  | F |
 | F | V  | F |
@@ -442,7 +535,68 @@ Agora é a sua vez de demonstrar algumas equivalências lógicas, utilize do mes
 
 ```lean
 P ∧ Q ≡ Q ∧ P               --[Comutatividade da conjunção]
-(P ∨ Q) ∧ Q ≡ Q             --[Abrsorção da conjunção sobre a disjunção]
+(P ∨ Q) ∧ Q ≡ Q             --[Absorção da conjunção sobre a disjunção]
 ¬(¬P) ≡ P                   --[Negação da negação]
 ¬(P ∧ Q) ≡ (¬P) ∨ (¬Q)      --[Demorgan]
 ```
+
+### Lógica de Predicados
+
+Tudo o que vimos até agora, dos conectivos às tabelas verdade, fazem parte da lógica proposicional, uma linguagem robusta que é usada em diversos campos da computação, entretanto ela tem como limitação não conseguir expressar proposições como “**todos** os elementos de um conjunto A possuem propriedade x” ou “**existem** elementos do conjunto A que não pertencem ao conjunto B”.
+
+Essas proposições envolvem **quantificadores** sobre **variáveis** e, para representá-las formalmente, precisamos da Lógica de Predicado (também chamada de Lógica de Primeira Ordem) que estende a lógica proposicional com esses novos termos.
+
+#### Variáveis
+
+As variáveis são objetos genéricos do escopo que estamos tratando. Vamos ver alguns exemplos:
+
+- No escopo dos números inteiros, podemos dizer que temos um x inteiro que é par. Nesse caso x é um número inteiro genérico que possui a propriedade “ser par”. Note que ele não é o 2, nem o 4, mas sim um elemento genérico do conjunto dos números inteiros pares.
+
+- No escopo das pessoas presentes nessa sala, podemos dizer que temos um x pessoa que tem cabelo longo. Note que x não é nem Carol, nem André, nem nenhuma das outras pessoas presentes com cabelo grande, mas com certeza faz parte desse subconjunto.
+
+#### Predicados
+
+O conceito de predicados não é nada novo. Dada uma variável ou objeto conhecido x, podemos definir um predicado P, em que P(x) (lê-se “p de x”) significa que x possui a propriedade P. A notação parecida com a de função não é por acaso, pois P funciona como uma função, que recebe um x de um tipo específico e retorna True ou False.
+
+Podemos então definir o predicado que quisermos contanto que respeite o tipo do nosso x, já que não faria sentido definir `P(x) ≝ x é par` se x for uma variável do escopo Alunos do BTI. Vamos ver alguns exemplos:
+
+- Seja x um número inteiro, e P um predicado definido por P(x) ≝ x é primo. Logo P(7) = True e P(8) = False.
+
+- Seja y um aluno do BTI, e T um predicado definido por T(y) ≝ y está no último semestre do curso. Logo T(André) = False.
+
+#### Quantificadores
+
+##### ∀:
+O quantificador universal (∀) permite expressar generalizações sobre todos os elementos de um escopo. Vamos ver alguns exemplos:
+
+- (∀ x estudante nessa sala)[x aprendeu algo novo hoje]
+
+- (∀ y inteiro)[y é divisível por 1]
+
+##### ∃:
+O quantificador existencial nos permite expressar a ideia que dentro de um escopo, existe **ao menos um** elemento que possui uma propriedade qualquer. Vamos ver exemplos disso:
+
+- (∃x pessoa nessa sala)[x é bolsista do PET-CC]
+
+- (∃y inteiro)[y é divisível por 2]
+
+- (∃n natural)[n + 1 = 1]
+
+#### Exercícios
+
+Agora que conhecemos as variáveis e quantificadores da Lógica de Predicados, vamos exercitar a tradução de enunciados.
+
+Escreva em português as seguintes proposições (não é preciso traduzir as equações):
+
+- (∀ x inteiro)[x + 1 = 1 + x]
+- (∃ n natural)[ n + 1 = 1]
+- (∀ x estado do Brasil)(∃ g pessoa)[g é governador de x]
+- (∃ n inteiro)(∀ i inteiro)[ i^n = i ]
+
+Formalize as seguintes frases, usando o conhecimento que adquirimos sobre Lógica Proposicional e Lógica de Predicados:
+
+- Não existe alguém que seja amado por todos.
+- Toda pessoa é odiada por ao menos uma pessoa.
+- Todo professor tem falhas.
+- O 0 é o menor número natural.
+- Todo número natural é maior que o 0.

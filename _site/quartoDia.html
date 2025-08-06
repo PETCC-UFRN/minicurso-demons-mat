@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Minicurso de Linux e Git</title>
+        <title>Minicurso de Matemática aplicada à Computação</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="./assets/css/styles.css">
-        <link rel="stylesheet" href="/minicurso-demons-mat/assets/css/syntax.css">
+        <link rel="stylesheet" href="/matcomp/assets/css/syntax.css">
         <link rel="icon" href="https://i.ibb.co/RD7XwYH/pet-logo.png" type="image/png">
     </head>
     <body class="layoutGit">
@@ -594,7 +594,7 @@ Analogamente, temos algumas características dessas funções que serão importa
 
 <ul>
   <li>Não alteram o valor de entrada</li>
-  <li>Para qualquer entrada, a saída sempre será a mesma. (Chamamos isso de pureza)</li>
+  <li>Entradas iguais implicam em saídas iguais. (Chamamos isso de pureza)</li>
 </ul>
 
 <p>Sobre as funções na programação, vocês também já devem ter visto (PC ou ITP). Em resumo, na programação, funções são blocos de códigos nomeados que executam alguma tarefa onde podem ter valores de entrada e/ou saída.
@@ -603,10 +603,44 @@ Funções na programação não são limitadas da mesma forma que as funções n
 
 <ul>
   <li>PODEM alterar o valor de entrada</li>
-  <li>PODEM variar o valor de saída (impureza)</li>
+  <li>Entradas iguais NÃO implicam em saídas iguais (impureza)</li>
 </ul>
 
 <p>Funções na programação são como quests pequenas em uma questline de um jogo de RPG, onde cada quest pequena tem um objetivo definido, e logo após terminar ela, voltamos para a questline principal com suas recompensas.</p>
+
+<h5 id="exercícios-3">Exercícios</h5>
+
+<p>Tendo visto o que seriam funções puras e impuras, tente definir formalmente cada uma (obs: quando for definir, chame a função e o seu domínio respectivamente, de “f” e “A”).</p>
+<details>
+<summary>resposta: SPOILER!</summary>
+    Resposta:
+    
+    f pura ≝ (∀a, a' ∈ A)[a = a' ⇒ f(a) = f(a')] e f impura ≝ (∃a, a' ∈ A)[a = a' &amp;&amp; f(a) ≠ f(a')]
+</details>
+
+<p>Veja as funções abaixo e diga se elas são puras ou impuras e caso sejam impuras, crie uma função similar que seja pura:</p>
+
+<p>1)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">somar</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div></div>
+
+<p>2)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">contador</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">adicionar_um</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">contador</span>
+    <span class="n">contador</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">contador</span>
+</code></pre></div></div>
+
+<p>3)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">adicionar_item_na_lista</span><span class="p">(</span><span class="n">lista</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+    <span class="n">lista</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lista</span>
+</code></pre></div></div>
+
+<p>Após ver esses exemplos, crie 2 funções (na linguagem que preferir!), sendo 1 pura e 1 impura.</p>
 
 <h4 id="pontos-em-comum">Pontos em comum</h4>
 <p>Como visto anteriormente, as funções na programação tem a possibilidade de manter as características das funções matemáticas, nos permitindo dizer que temos os seguintes pontos em comum:</p>
@@ -625,9 +659,97 @@ Funções na programação não são limitadas da mesma forma que as funções n
 Funções puras, onde o valor de saída sempre é o mesmo para as mesmas entradas, são ideais para cálculos e transformações de dados, já que garantem resultados exatos e previsíveis.
 Portanto, ao trabalhar com transformações de dados, observar um modelo de uma função matemática facilita não só na lógica, mas também na sua aplicação e confiabilidade.</p>
 
+<h5 id="exemplos">Exemplos</h5>
+
+<p>Exemplo 1) Um ótimo exemplo para mostrar a importância da noção de pureza na programação é quando queremos ler um arquivo de configuração para calcular algum valor. Um erro comum é definir uma função da seguinte forma:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calcular_imposto</span><span class="p">(</span><span class="n">valor_produto</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"config.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">imposto_sobre_valor</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">valor_produto</span> <span class="o">*</span> <span class="n">imposto_sobre_valor</span>
+</code></pre></div></div>
+
+<p>Note que, não só a manuntenção da função fica complicada (já que temos que criar um arquivo “config.txt” para testar), mas, toda a vez que temos que utilizar essa função, esse trabalho se repete. Porém, quando colocamos o imposto_sobre_valor como argumento, a leitura fica mais simples, além de diminuir a complexidade:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calcular_imposto</span><span class="p">(</span><span class="n">valor_produto</span><span class="p">,</span> <span class="n">imposto_sobre_valor</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">valor_produto</span> <span class="o">*</span> <span class="n">imposto_sobre_valor</span>
+</code></pre></div></div>
+
+<p>Exemplo 2)</p>
+
+<p>Outro exemplo interessante é quando queremos fazer uma função para adicionar itens a uma lista. Esse caso não é necessariamente um erro, porém pode causar problemas inesperados:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="s">"algo1"</span><span class="p">,</span> <span class="s">"algo2"</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">adicionar_algo</span><span class="p">(</span><span class="n">algo_novo</span><span class="p">):</span>
+    <span class="n">lista</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">algo_novo</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Note que, essa função sempre altera a original, o que pode causar problemas caso você esteja trabalhando com constantes. Dito isso, uma função que cria uma lista nova pode ser melhor a depender do problema:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">adicionar_algo</span><span class="p">(</span><span class="n">lista</span><span class="p">,</span> <span class="n">algo_novo</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">lista</span> <span class="o">+</span> <span class="p">[</span><span class="n">algo_novo</span><span class="p">]</span>
+
+</code></pre></div></div>
+
+<p>Exemplo 3) Por fim, temos um exemplo de função recursiva pura. Nesse caso, queremos uma função que faça uma contagem regressiva e registre ela em uma lista:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">contagem</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span> <span class="nf">contagem_regressiva</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">contagem</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">contagem_regressiva</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">contagem</span>
+
+</code></pre></div></div>
+
+<p>Note que ela altera o valor da variável “contagem”, mas ela também pode variar sua saída, já que caso a gente use:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">contagem_regressiva</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">contagem_regressiva</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Teremos as seguintes saídas: [3, 2, 1] e [3, 2, 1, 3, 2, 1]. O motivo disso é porque o estado global foi alterado após a primeira chamada da função. Para corrigir essa função, colocaríamos a lista na chamada da função, fazendo isso evitamos o erro e tornamos essa função mais “corrigível”:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">contagem_regressiva</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">resultado</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">resultado</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">nova_lista</span> <span class="o">=</span> <span class="n">resultado</span> <span class="o">+</span> <span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">contagem_regressiva</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">nova_lista</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Dessa forma, corrigimos todos esses erros e deixamos a função mais organizada.</p>
+
+<h5 id="exercícios-4">Exercícios</h5>
+
+<p>Utilizando o que foi visto nos exemplos, faça três funções puras (na linguagem que você quiser!) que sigam as seguintes restrições:</p>
+
+<p>1) Faça uma função que some dois números (a, b) e conte quantas vezes ela foi chamada.</p>
+
+<p>2) Faça uma função que remove elementos repetidos em uma lista.</p>
+
+<p>3) (desafio) Faça uma função que calcule o fatorial de um número n e armazene o resultado de cada passo.</p>
 
             </main>
             <script src="./assets/js/sumario_script.js"></script>
         </div>
     </body>
 </html>
+
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  options: {
+    ignoreHtmlClass: 'highlight|code'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

@@ -1,6 +1,6 @@
 ---
 layout: layoutGit
-title: Minicurso de Linux e Git
+title: Minicurso de Matemática aplicada à Computação
 ---
 
 <div id="sumario" class="sumario-git">
@@ -508,16 +508,53 @@ Por exemplo, caso a gente tenha uma função real f (Domínio e contradomínio r
 Analogamente, temos algumas características dessas funções que serão importantes para o futuro, sendo essas:
 
 - Não alteram o valor de entrada 
-- Para qualquer entrada, a saída sempre será a mesma. (Chamamos isso de pureza)
+- Entradas iguais implicam em saídas iguais. (Chamamos isso de pureza)
 
 Sobre as funções na programação, vocês também já devem ter visto (PC ou ITP). Em resumo, na programação, funções são blocos de códigos nomeados que executam alguma tarefa onde podem ter valores de entrada e/ou saída.
 Olhando rápido, podem parecer a mesma coisa, porém o ponto chave está no “podem”.
 Funções na programação não são limitadas da mesma forma que as funções na matemática, temos por exemplo as seguintes características:
 
 - PODEM alterar o valor de entrada
-- PODEM variar o valor de saída (impureza)
+- Entradas iguais NÃO implicam em saídas iguais (impureza)
 
 Funções na programação são como quests pequenas em uma questline de um jogo de RPG, onde cada quest pequena tem um objetivo definido, e logo após terminar ela, voltamos para a questline principal com suas recompensas.
+
+##### Exercícios
+
+Tendo visto o que seriam funções puras e impuras, tente definir formalmente cada uma (obs: quando for definir, chame a função e o seu domínio respectivamente, de "f" e "A").
+<details>
+<summary>resposta: SPOILER!</summary>
+    Resposta:
+    
+    f pura ≝ (∀a, a' ∈ A)[a = a' ⇒ f(a) = f(a')] e f impura ≝ (∃a, a' ∈ A)[a = a' && f(a) ≠ f(a')]
+</details>
+
+Veja as funções abaixo e diga se elas são puras ou impuras e caso sejam impuras, crie uma função similar que seja pura:
+
+1)
+```python
+def somar(a, b):
+    return a + b
+```
+
+2)
+```python
+contador = 0
+
+def adicionar_um():
+    global contador
+    contador += 1
+    return contador
+```
+
+3) 
+```python
+def adicionar_item_na_lista(lista, item):
+    lista.append(item)
+    return lista
+```
+
+Após ver esses exemplos, crie 2 funções (na linguagem que preferir!), sendo 1 pura e 1 impura.
 
 #### Pontos em comum
 Como visto anteriormente, as funções na programação tem a possibilidade de manter as características das funções matemáticas, nos permitindo dizer que temos os seguintes pontos em comum:
@@ -534,5 +571,86 @@ A noção de “pureza” que vimos anteriormente será crucial para definir qua
 Funções puras, onde o valor de saída sempre é o mesmo para as mesmas entradas, são ideais para cálculos e transformações de dados, já que garantem resultados exatos e previsíveis.
 Portanto, ao trabalhar com transformações de dados, observar um modelo de uma função matemática facilita não só na lógica, mas também na sua aplicação e confiabilidade.
 
+##### Exemplos
 
+Exemplo 1) Um ótimo exemplo para mostrar a importância da noção de pureza na programação é quando queremos ler um arquivo de configuração para calcular algum valor. Um erro comum é definir uma função da seguinte forma:
 
+```python
+def calcular_imposto(valor_produto):
+    with open("config.txt", "r") as f:
+        imposto_sobre_valor = float(f.read())
+    return valor_produto * imposto_sobre_valor
+```
+
+Note que, não só a manuntenção da função fica complicada (já que temos que criar um arquivo "config.txt" para testar), mas, toda a vez que temos que utilizar essa função, esse trabalho se repete. Porém, quando colocamos o imposto_sobre_valor como argumento, a leitura fica mais simples, além de diminuir a complexidade:
+
+```python
+def calcular_imposto(valor_produto, imposto_sobre_valor):
+    return valor_produto * imposto_sobre_valor
+```
+
+Exemplo 2)
+
+Outro exemplo interessante é quando queremos fazer uma função para adicionar itens a uma lista. Esse caso não é necessariamente um erro, porém pode causar problemas inesperados:
+
+```python
+lista = ["algo1", "algo2"]
+
+def adicionar_algo(algo_novo):
+    lista.append(algo_novo)
+```
+
+Note que, essa função sempre altera a original, o que pode causar problemas caso você esteja trabalhando com constantes. Dito isso, uma função que cria uma lista nova pode ser melhor a depender do problema:
+
+```python
+def adicionar_algo(lista, algo_novo):
+    return lista + [algo_novo]
+
+```
+
+Exemplo 3) Por fim, temos um exemplo de função recursiva pura. Nesse caso, queremos uma função que faça uma contagem regressiva e registre ela em uma lista:
+
+```python
+contagem = []
+
+def contagem_regressiva(n):
+    if n > 0:
+        contagem.append(n)
+        contagem_regressiva(n - 1)
+
+    return contagem
+
+```
+
+Note que ela altera o valor da variável "contagem", mas ela também pode variar sua saída, já que caso a gente use:
+
+```python
+print(contagem_regressiva(3))
+
+print(contagem_regressiva(3))
+```
+
+Teremos as seguintes saídas: [3, 2, 1] e [3, 2, 1, 3, 2, 1]. O motivo disso é porque o estado global foi alterado após a primeira chamada da função. Para corrigir essa função, colocaríamos a lista na chamada da função, fazendo isso evitamos o erro e tornamos essa função mais "corrigível":
+
+```python
+
+def contagem_regressiva(n, resultado=[]):
+    if n <= 0:
+        return resultado
+
+    else:
+        nova_lista = resultado + [n]
+        return contagem_regressiva(n - 1, nova_lista)
+```
+
+Dessa forma, corrigimos todos esses erros e deixamos a função mais organizada.
+
+##### Exercícios
+
+Utilizando o que foi visto nos exemplos, faça três funções puras (na linguagem que você quiser!) que sigam as seguintes restrições:
+
+1) Faça uma função que some dois números (a, b) e conte quantas vezes ela foi chamada.
+
+2) Faça uma função que remove elementos repetidos em uma lista.
+
+3) (desafio) Faça uma função que calcule o fatorial de um número n e armazene o resultado de cada passo. 

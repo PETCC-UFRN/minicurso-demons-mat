@@ -4,7 +4,7 @@
         <title>Minicurso de Matemática aplicada à Computação</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="./assets/css/styles.css">
-        <link rel="stylesheet" href="/minicurso-demons-mat/assets/css/syntax.css">
+        <link rel="stylesheet" href="/matcomp/assets/css/syntax.css">
         <link rel="icon" href="https://i.ibb.co/RD7XwYH/pet-logo.png" type="image/png">
     </head>
     <body class="layoutGit">
@@ -99,12 +99,12 @@
   </div>
 
 <h1 id="indução">Indução</h1>
-<p>Aposto que em determinado momento, você já se deparou com algum exercício em específico que foi solicitado para resolver, seja na escola, na própria faculdade ou até mesmo em brincadeiras da internet. E de alguma forma o resolveu por dedução natural, sem utilizar nenhum artifício matemático de forma séria enquanto analisa padrões ou faz tentativa e erro. No fim, chegando a algum palpite, no qual você tem certeza que está certo.</p>
+<p>Aposto que em determinado momento, você já se deparou com algum exercício em específico que foi solicitado para resolver, seja na escola, na própria faculdade ou até mesmo em brincadeiras da internet. E de alguma forma o resolveu naturalmente, sem utilizar nenhum artifício matemático de forma séria. Resolvendo por análise de padrões ou tentativa e erro. Para no fim, chegar a um palpite, no qual você tem certeza que está certo.</p>
 
-<p>Dessa forma, chegada à uma conclusão, como podemos provar que uma determinada solução está certa? É aí que entra a Indução</p>
+<p>Dessa forma, chegada a uma conclusão, como podemos provar que uma determinada solução está certa? É aí que entra a Indução.</p>
 
 <h2 id="o-que-é-indução">O que é Indução?</h2>
-<p>Indução Matemática ou Indução Finita, nada mais é que um método de demonstração. Sendo uma forma eficaz de verificar a veracidade de uma determinada propriedade.</p>
+<p>Indução Matemática ou Indução Finita, nada mais é que um método de demonstração. É uma forma eficaz de verificar a veracidade de uma determinada propriedade.</p>
 
 <p>Imagine uma fileira de dominós, igualmente espaçados entre si, de tal forma que: derrubando um dominó, o próximo também será derrubado. 
 Você concorda que nesse processo a fileira inteira de dominós será derrubada?</p>
@@ -115,20 +115,276 @@ Você concorda que nesse processo a fileira inteira de dominós será derrubada?
 <p>A indução atua sobre os números inteiros não negativos (1, 2, 3, 4, 5…) e segue a seguinte estrutura:</p>
 <ul>
   <li>Passo base: Provamos que é verdade para o primeiro valor.</li>
-  <li>Passo indutivo: Provamos que é verdade para o valor seguinte.
-	- Hipótese de indução
-	- Verificação da hipótese</li>
+  <li>Passo indutivo: Verificamos que é verdadeira para o valor seguinte.
+    <ul>
+      <li>Hipótese de indução</li>
+      <li>Verificação da hipótese</li>
+    </ul>
+  </li>
 </ul>
 
-<p>Por enquanto, apenas se familiarize com o que é. Ainda explicaremos como colocar em prática.</p>
+<p>Por enquanto, apenas se familiarize com o que é. Ainda explicaremos como colocar em prática e sua relação com programação.</p>
 
-<h2 id="soma-de-gauss">Soma de Gauss</h2>
+<h2 id="analisando-um-problema">Analisando um problema</h2>
+<p>Há uma história, em que o matemático alemão, Carl Friedrich Gauss, recebeu como um desafio do seu professor o problema de somar todos os números de 1 até 100. O desafio na verdade era apenas uma pegadinha, que tinha o intuito de mantê-lo ocupado. Contudo, Gauss rapidamente chegou a uma resposta, sem precisar realizar o trabalho árduo de somar número após número. Com isso, vamos analisar o problema e sua solução.</p>
+
+<p>Gauss percebeu algo curioso…</p>
+<ul>
+  <li>A soma do primero número com o último resultava em um determinado valor</li>
+  <li>A soma do segundo número com o penúltimo resultava no mesmo valor</li>
+  <li>A soma do terceiro número com o antipenúltimo novamente tinha o mesmo resultado</li>
+  <li>E assim por diante</li>
+</ul>
+<div style="text-align: center;">  <img src="assets/images/gauss_summation_6.png" alt="" /> </div>
+
+<p>A partir dessas observações, vamos lentamente deduzir a fórmula que resolveria o problema de somar os números de 1 até 100.</p>
+
+<p><strong>1)</strong> Temos 100 números divididos em pares, todos com o mesmo valor:</p>
+
+\[\text{Soma até 100} = 50 \cdot \text{valor de cada par}\]
+
+<p><strong>2)</strong> Cada par soma 101, pois:</p>
+
+\[1 + 100 = 2 + 99 = 3 + 98 = \dots = 101\]
+
+<p>Logo:</p>
+
+\[\text{Soma até 100} = 50 \cdot 101\]
+
+<p>3) E como \(101 = 1 + 100\), podemos reescrever:</p>
+
+\[\text{Soma até 100} = 50 \cdot (1 + 100)\]
+
+<hr />
+
+<p>Agora, vamos generalizar essa ideia para qualquer número \(n\):</p>
+
+<ul>
+  <li>A quantidade de pares é \(n/2\)</li>
+  <li>Cada par soma \((1 + n)\)</li>
+</ul>
+
+<p>Portanto, a fórmula geral é:</p>
+
+\[\text{Soma até } n = \frac{n}{2} \cdot (1 + n)\]
+
+<p>E organizando-a, temos:</p>
+
+\[\text{Soma até } n = \frac{n(n + 1)}{2}\]
+
+<p>Essa expressão nos dá o valor total da soma dos números inteiros de \(1\) até \(n\).</p>
+
+<p>Contudo, isso abre a questão. Como podemos provar que essa fórmula realmente é verdade?</p>
 
 <h3 id="indução-em-prática">Indução em Prática</h3>
+<p>Problema: Prove que \(1 + 2 + 3 + 4 + \dots + n = \frac{n(n + 1)}{2}\) é verdade para qualquer inteiro \(n \geq 1\).</p>
 
-<h2 id="exercício-1">Exercício 1</h2>
+<hr />
+
+<ul>
+  <li><strong>Passo base</strong><br />
+Verificamos se isso é verdade para \(n = 1\).</li>
+</ul>
+
+<p>A fórmula nos dá:</p>
+
+\[\frac{n}{2} \cdot (n + 1) = \frac{1}{2} \cdot (1 + 1) = \frac{1}{2} \cdot 2 = 1\]
+
+<p>Portanto, é verdade para \(n = 1\).</p>
+
+<ul>
+  <li><strong>Passo indutivo</strong>
+(É aqui que as coisas começam a ficar um pouco mais extravagantes).</li>
+</ul>
+
+<p>A primeira etapa do passo indutivo é formular a hipótese de indução.
+A nossa hipótese é a seguinte:
+Suponha que a fórmula vale para algum \(k \in \mathbb{N}\):</p>
+
+\[1 + 2 + 3 + \dots + k = \frac{k(k + 1)}{2}\]
+
+<p>(Perceba que isso é similar à fórmula que já vimos, porém com um k no lugar do n. O uso de variáveis diferentes ocorre porque o k representa algum número qualquer que desconhecemos, enquanto o n representa o valor que será colocado na fórmula).</p>
+
+<p>Queremos provar que:</p>
+
+\[1 + 2 + 3 + \dots + k + (k+1) = \frac{k + 1}{2} \cdot ((k + 1) + 1)\]
+
+<p>Ou seja:</p>
+
+\[1 + 2 + 3 + \dots + k + (k+1) = \frac{(k + 1)(k + 2)}{2}\]
+
+<p>Como é o procedimento a partir daqui?
+Vamos usar a fórmula da hipótese de indução como base e, a partir dela, tentar chegar à expressão que queremos provar para (k + 1), realizando operações e manipulações em uma expressão, para chegar na outra.</p>
+
+<p>Supondo que a hipótese de indução é verdade, sabemos que:</p>
+
+\[1 + 2 + 3 + \dots + k = \frac{k(k + 1)}{2}\]
+
+<p>Nosso objetivo agora é mostrar que essa fórmula também vale para \((k + 1)\). Para isso, somamos \((k + 1)\) dos dois lados da equação:</p>
+
+\[1 + 2 + 3 + \dots + k + (k + 1) = \frac{k(k + 1)}{2} + (k+1)\]
+
+<p>Colocando \((k + 1)\) em evidência:</p>
+
+\[(k + 1) \cdot \left(\frac{k}{2} + 1\right)\]
+
+<p>Somando os termos dentro do parênteses:</p>
+
+\[(k + 1) \cdot \left(\frac{k + 2}{2}\right)\]
+
+<p>Pela comutatividade da multiplicação:</p>
+
+\[\frac{(k + 1)(k + 2)}{2}\]
+
+<p>Portanto, mostramos que:</p>
+
+\[1 + 2 + 3 + \dots + k + (k + 1) = \frac{(k + 1)(k + 2)}{2}\]
+
+<p>Ou seja. Supondo que a fórmula para \(k\) é verdade, a fórmula também é válida para \((k + 1)\). Como mostramos que ela vale para \((n = 1)\) (passo base) e que, se vale para \((k)\), então vale para \((k + 1)\) (passo indutivo), podemos concluir por indução que:</p>
+
+\[1 + 2 + 3 + \dots + n = \frac{n(n + 1)}{2}\]
+
+<p>É verdadeira para todo  \(n \in \mathbb{N}\):</p>
+
+<h2 id="exercício">Exercício</h2>
+<p>Mas quando o assunto é Indução, é a prática que faz a perfeição. 
+Agora chegou o seu momento, tente aplicar indução para o seguinte problema:</p>
+
+<p>Prove que \(n^2 &gt; 2n\) para todo \(n \geq 3\).</p>
 
 <h2 id="indução-forte">Indução Forte</h2>
+<p>Mas o que acontece quando estamos analisando uma propriedade que, para ser analisada ou provada, exige múltiplos passos? Por exemplo, tome o seguinte problema:</p>
+
+<p>Suponha que \(a_1\), \(a_2\), \(a_3\), … seja uma sequência definida da seguinte forma:</p>
+<ul>
+  <li>\(a_1 = 1\);</li>
+  <li>\(a_2 = 3\);</li>
+  <li>\(a_k = a_{k-2} + 2a_{k-1}\), para todo \(k \geq 3\).</li>
+</ul>
+
+<p>Prove que \(a_n\) é ímpar para todo \(n &gt; 1\).</p>
+
+<p>Perceba que a nossa fórmula é composta por uma sequência, em que um determinado termo é definido pelos dois termos anteriores. A Indução que vimos anteriormente será o suficiente para provar o problema?
+Na verdade, não. Precisamos de uma ferramenta um pouco mais poderosa: a Indução Forte.
+Mais tarde voltaremos para esse problema, o mantenha na cabeça por enquanto.</p>
+
+<h3 id="estrutura-da-indução-forte">Estrutura da Indução Forte</h3>
+<p>Não se preocupe, a estrutura da Indução Forte segue a mesma linha da Indução. Ainda teremos o passo base, hipótese de indução e passo indutivo. Contudo, há algumas particularidades, o passo base pode conter prova de vários valores iniciais. Além disso, no passo indutivo, assumiremos que vários valores atráves de k são verdade, para então provar que (k+1) é verdade.</p>
+
+<p>Em resumo, a estrutura da Indução Forte se dá por:</p>
+<ul>
+  <li>Passo base: Provamos que a afirmação é verdadeira para o primeiro valor (ou primeiros valores, se necessário).</li>
+  <li>Passo indutivo: Suponhamos que a afirmação seja verdadeira para todos os valores até um certo número k .
+    <ul>
+      <li>Hipótese de indução: Admitimos que a proposição vale para todos os inteiros entre o valor inicial e k.</li>
+      <li>Verificação da hipótese: Usamos essa suposição para demonstrar que a proposição também é verdadeira para o valor k+1.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="indução-forte-em-prática">Indução Forte em prática</h3>
+
+<p>Para ilustrar a Indução Forte em prática, tome o seguinte problema:
+Seja \(s_0, s_1, s_2, \dots\) uma sequência definida da seguinte forma:</p>
+
+\[\begin{cases}
+s_0 = 0 \\
+s_1 = 4 \\
+s_k = 6 s_{k-1} - 5 s_{k-2}, \quad \text{para todo inteiro } k \geq 2
+\end{cases}\]
+
+<p>A propriedade que queremos provar, \(P(n)\), é que</p>
+
+\[S_n = 5^n - 1\]
+
+<p>é a fórmula fechada para um termo da sequência. Mostrando que ela é verdadeira para todos os inteiros \(n \geq 0\).</p>
+
+<hr />
+
+<ul>
+  <li><strong>Passo base</strong></li>
+</ul>
+
+<p>Vamos mostrar que \(P(0)\) e \(P(1)\) são verdadeiros. Pela definição da sequência sabemos que:</p>
+<ol>
+  <li>\(n = 0\) precisa resultar em 0</li>
+  <li>\(n=1\) precisa resultar em 4</li>
+</ol>
+
+<ul>
+  <li>Para \(n = 0\):</li>
+</ul>
+
+\[S_0 = 5^0 - 1 = 1 - 1 = 0\]
+
+<p>Verdade!</p>
+
+<ul>
+  <li>Para \(n = 1\):</li>
+</ul>
+
+\[S_1 = 5^1 - 1 = 5 - 1 = 4\]
+
+<p>Verdade!</p>
+
+<p>Os valores da fórmula realmente condizem com os valores previamente definidos.</p>
+
+<ul>
+  <li><strong>Passo indutivo</strong></li>
+</ul>
+
+<p>No passo indutivo, queremos mostrar que, para todos os inteiros \(k \geq 1\), se \(P(i)\) é verdade para todos os inteiros \(i\) de \(0\) até \(k\), então \(P(k+1)\) também é verdade.</p>
+
+<p>Nossa hipótese de indução é a seguinte: 
+Seja \(k\) qualquer inteiro \(k \geq 1\) e suponha que</p>
+
+\[s_i = 5^i - 1 \quad \text{para todos os inteiros } i \text{ com } 0 \leq i \leq k\]
+
+<p>(Perceba que agora apareceu uma nova variável, \(i\). Essa variável representa um índice genérico qualquer entre \(0\) e \(k\), e é usada para expressar que estamos assumindo que a propriedade \(P(i)\) é verdadeira para todos os valores anteriores a \(k+1\), ou seja, desde o início da sequência até o valor \(k\).)</p>
+
+<p>(Essa é a principal característica da indução forte: em vez de supor que a propriedade vale apenas para \(k\), como na indução simples, aqui suponhamos que ela vale para todos os casos anteriores até \(k\), e usamos essas informações para provar que também vale para \(k+1\).)</p>
+
+<p>Continuando:
+Queremos mostrar a veracidade de:</p>
+
+\[s_{k+1} = 5^{k+1} - 1\]
+
+<p>Como \(k \geq 1\), temos que \(k + 1 \geq 2\), e então:</p>
+
+\[\begin{aligned}
+s_{k+1} &amp;= 6 s_k - 5 s_{k-1} \quad \text{(pela definição da sequência)} \\
+        &amp;= 6 (5^k - 1) - 5 (5^{k-1} - 1) \quad \text{(pela hipótese indutiva)} \\
+        &amp;= 6 \cdot 5^k - 6 - 5 \cdot 5^{k-1} + 5 \quad \text{(realizando a multiplicação)}\\
+        &amp;= 6 \cdot 5^k - 6 - 5^{k} + 5 \quad \text{(pois } 5 \cdot 5^{k-1} = 5^k) \\
+        &amp;= 6 \cdot 5^k - 1 - 5^{k}  \quad \text{(operando -6 + 5)} \\
+        &amp;= 5^k(6 - 1) - 1 \quad \text{(colocando } 5^k \text{ em evidência)}\\
+        &amp;= 5^k \cdot 5 - 1 \quad \text{(subtraindo termos dentro do parênteses)}\\
+        &amp;= 5^{k+1} - 1 \quad \text{(pois } 5 \cdot 5^k = 5^{k+1})
+\end{aligned}\]
+
+<p>Provando assim que a fórmula é verdadeira!</p>
+
+<h2 id="exercício-1">Exercício</h2>
+<p>Vamos retornar àquele problema que introduzimos anteriormente, e ver se conseguimos resolvê-lo agora!</p>
+
+<p>Suponha que \(a_1, a_2, a_3, \ldots\) é uma sequência definida da seguinte forma:</p>
+
+<ul>
+  <li>\(a_1 = 1\);</li>
+  <li>\(a_2 = 3\);</li>
+  <li>\(a_k = a_{k-2} + 2a_{k-1}\), para todo \(k \geq 3\).</li>
+</ul>
+
+<p>Prove que \(a_n\) é ímpar para todo \(n \geq 1\).
+Dica: Na matemática definimos um número par como 2q, em que q é qualquer número inteiro. A partir disso como definimos um número ímpar?</p>
+
+<h2 id="indução-na-programação">Indução na programação</h2>
+<p>Antes de partirmos para o próximo assunto, acredito que existem diversas discussões interessantes que podemos ter em relação à Indução. Quando utiliza-la? Quando não utiliza-la? Qual sua relação com programação?</p>
+
+<p>A Indução é especialmente útil quando estamos trabalhando problemas recursivos ou com padrões numéricos. Quando o problema em questão parece apresentar uma sequência, talvez cogitar a indução seja uma possibilidade. 
+No entanto, nem todo problema exige indução. Às vezes, uma simples manipulação algébrica ou uma prova direta é suficiente. A indução pode ser desnecessária (ou até mesmo tornar a prova mais complicada) quando o caso a ser provado não depende de forma clara de casos anteriores.</p>
+
+<p>Quanto à indução na programação, a relação se torna mais clara quando falamos de recursão, conceito fortemente presente na indução forte, como vimos anteriormente. Mas afinal, o que é recursão? Apesar de estar presente na indução forte, é um conceito próprio e não um sinônimo.</p>
 
 <h1 id="recursão">Recursão</h1>
 <p>Achou que foi por acaso que nós começamos o nosso dia aprendendo sobre indução?</p>
@@ -426,6 +682,29 @@ Você concorda que nesse processo a fileira inteira de dominós será derrubada?
 
 <p>Você consegue imaginar como seria definir essa função de forma iterativa?</p>
 
+<details>
+    <summary>SPOILER!</summary>
+<div>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">double_list</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
+  <span class="n">doubled_list</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">:</span>
+    <span class="n">doubled_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">doubled_list</span>
+
+<span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">input_list</span><span class="p">):</span>
+  <span class="n">result_list</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">input_list</span><span class="p">:</span>
+    <span class="n">result_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">result_list</span>
+
+<span class="k">def</span> <span class="nf">double</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="mi">2</span>
+</code></pre></div>    </div>
+
+  </div>
+</details>
+
 <h3 id="descobrindo-a-função-replicate">Descobrindo a função <span style="color: #081849; font-weight: bold;">REPLICATE</span></h3>
 <p>De forma semelhante, também podemos diversificar o que colocamos na entrada da nossa função! Veja só a replicate, que pega um número natural, um elemento, e o replica por essa quantidade de vezes formando uma lista!</p>
 
@@ -435,6 +714,14 @@ Você concorda que nesse processo a fileira inteira de dominós será derrubada?
 
 <span class="n">replicate</span> <span class="mi">5</span> <span class="kt">True</span> <span class="o">=</span> <span class="p">[</span><span class="kt">True</span><span class="p">,</span> <span class="kt">True</span><span class="p">,</span> <span class="kt">True</span><span class="p">,</span> <span class="kt">True</span><span class="p">,</span> <span class="kt">True</span><span class="p">]</span>
 </code></pre></div></div>
+
+<h2 id="agora-vamos-praticar-um-pouco-que-aprendemos">Agora, vamos praticar um pouco que aprendemos!</h2>
+
+<p>Vocês conseguem definir mais funções com o tipo dos Bools?</p>
+
+<p>Antes de tudo, precisamos definir o tipo Bool.</p>
+
+<p>Agora, utilize as funções aprendidas ontem, como as and, or e not para definir novas funções que utilizem listas de booleanos. Tente fazer a any e a all.</p>
 
 <h2 id="é-possível-extrapolar-para-outros-tipos">É possível extrapolar para outros tipos?</h2>
 
@@ -467,6 +754,18 @@ Você concorda que nesse processo a fileira inteira de dominós será derrubada?
 <span class="n">odd</span> <span class="n">n</span> <span class="o">=</span> <span class="n">even</span> <span class="kt">S</span> <span class="n">n</span>
 </code></pre></div></div>
 
+<h2 id="agora-vamos-praticar-um-pouco-que-aprendemos-1">Agora, vamos praticar um pouco que aprendemos!</h2>
+
+<p>Vocês conseguem definir mais funções com o tipo dos Nats?</p>
+
+<p>Defina as funções mínimo e máximo, que recebem dois naturais e retornam aquele que for o menor, ou o maior.</p>
+
+<p>Defina a função plus, que soma dois naturais.</p>
+
+<p>Defina a função prod, que multiplica dois naturais.</p>
+
+<p>DESAFIO: Defina a função factorial.</p>
+
 <h3 id="verificando-se-uma-função-foi-bem-definida-recursivamente-kahoot">Verificando se uma função foi bem definida recursivamente (kahoot)</h3>
 
 <hr />
@@ -490,3 +789,15 @@ if (agora < dataDia2) {
         </div>
     </body>
 </html>
+
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  options: {
+    ignoreHtmlClass: 'highlight|code'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>

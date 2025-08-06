@@ -67,7 +67,11 @@ pre .highlight { background-color: #f9f9f9; background-clip: border-box }
     pre.highlight { background-color: #141414; }
     .highlight .hll { background-color: #141414; }
     .highlight .c { color: #75715e } /* Comment */
-    .highlight .err { color: #960050; background-color: #1e0010 } /* Error */
+        .highlight .err {
+        color: inherit;
+        background: none;
+        font-style: normal;
+    } /* Error */
     .highlight .k { color: #66d9ef } /* Keyword */
     .highlight .l { color: #ae81ff } /* Literal */
     .highlight .n { color: #f8f8f2 } /* Name */

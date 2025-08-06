@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Minicurso de Linux e Git</title>
+        <title>Minicurso de Matemática aplicada à Computação</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="./assets/css/styles.css">
-        <link rel="stylesheet" href="/minicurso-demons-mat/assets/css/syntax.css">
+        <link rel="stylesheet" href="/matcomp/assets/css/syntax.css">
         <link rel="icon" href="https://i.ibb.co/RD7XwYH/pet-logo.png" type="image/png">
     </head>
     <body class="layoutGit">
@@ -52,6 +52,13 @@
                 </ul>
             </li>
             <li><a href="#demonstração-de-equivalências">Demonstração de equivalências</a></li>
+            <li><a href="#lógica-de-predicados">Lógica de Predicados</a>
+                <ul> 
+                    <li><a href="#variáveis">Variáveis</a></li>
+                    <li><a href="#predicados">Predicados</a></li>
+                    <li><a href="#exercícios">Exercícios</a></li>
+                </ul>
+            </li>
         </ul>
     </details>
   <button class="toggle-button" id="toggle-button">
@@ -91,7 +98,7 @@
 <span class="k">else</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">"Aluno Reprovado!"</span><span class="p">)</span>
 
-<span class="c1"># Saída: Aluno Reprovado!
+<span class="c1"># Saída: Aluno Aprovado!
 </span></code></pre></div></div>
 
 <p>Agora, vamos ver um exemplo de como uma lógica mal definida pode levar a erros.</p>
@@ -226,8 +233,86 @@
 <span class="k">print</span><span class="p">(</span><span class="s">"Todos os testes passaram para calcular_dobro!"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Abordagens de testes guiadas por raciocínio lógico nos permite não apenas verificar se o código funciona para casos óbvios, mas também garantir sua robustez em cenários complexos e nos limites das condições. Testes são, em essência, pequenas demonstrações de que nosso código se comporta conforme o esperado sob certas condições. Eles não provam a ausência de bugs, mas aumentam significativamente a confiança na qualidade e na corretude do software, reduzindo riscos e facilitando a manutenção a longo prazo.
-—</p>
+<p>Abordagens de testes guiadas por raciocínio lógico nos permite não apenas verificar se o código funciona para casos óbvios, mas também garantir sua robustez em cenários complexos e nos limites das condições. Testes são, em essência, pequenas demonstrações de que nosso código se comporta conforme o esperado sob certas condições. Eles não provam a ausência de bugs, mas aumentam significativamente a confiança na qualidade e na corretude do software, reduzindo riscos e facilitando a manutenção a longo prazo.</p>
+
+<h3 id="colocando-a-mão-na-massa">Colocando a mão na massa</h3>
+
+<p>Agora que nós aprendemos um pouco mais sobre a parte de design, depuração e testes de algoritmos, chegou a hora de colocarmos esses conhecimentos em prática!</p>
+
+<p>Todos os códigos a seguir apresentam algum erro de lógica ou implementação, e é o 🫵 seu dever 🫵 descobrir o que está dando errado! O primeiro exemplo já vem com casos que irão te ajudar a deduzir o erro (pra você ir pegando o jeito), mas você deve criar os seus próprios testes para os últimos exemplos!
+Para fazer seus testes, você pode compilar e executar esses códigos no Vscode da sua máquina atual, em um compilador online ou na IDE de sua preferência.</p>
+
+<h4 id="exercício-1">Exercício 1:</h4>
+
+<p>Função que recebe um inteiro e calcula o seu fatorial. Ou seja, quando ela recebe o inteiro, deve multiplicar todos os seus antecessores positivos e o inteiro em questão.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Definição da Função
+</span><span class="k">def</span> <span class="nf">fatorial</span><span class="p">(</span><span class="n">inteiro</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">inteiro</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="n">numero</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1"># Casos de Teste
+</span><span class="k">print</span><span class="p">(</span><span class="s">"Resultado de fatorial(2) é "</span><span class="p">,</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Resultado de fatorial(3) é "</span><span class="p">,</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Resultado de fatorial(5) é "</span><span class="p">,</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Resultado de fatorial(0) é "</span><span class="p">,</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"Erro: 2 * 1 deveria ser 2"</span>
+<span class="k">assert</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span><span class="p">,</span> <span class="s">"Erro: 3 * 2 * 1 deveria ser 6"</span>
+<span class="k">assert</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">120</span><span class="p">,</span> <span class="s">"Erro: 5 * 4 * 3 * 2 * 1 deveria ser 120"</span>
+<span class="k">assert</span> <span class="n">fatorial</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"Erro: o resultado deveria ser 1"</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Todos os testes foram concluídos com sucesso! Parabéns!"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>DICA:</em>
+Note que, ao rodar os testes, todos os resultados aparentam dar 0. O que poderia ter causado isso? Talvez alguma subtração errada ou uma multiplicação incorreta?
+Uma maneira de verificarmos o funcionamento da função (e o porquê de estar dando errado) é imprimir todos os resultados parciais, para que possamos ter ideia do que estamos gerando continuamente. Tente imprimir <em>result</em> e <em>numero</em> para cada repetição do <em>loop for</em>!</p>
+
+<h4 id="exercício-2">Exercício 2</h4>
+
+<p>Essa função recebe uma lista de valores e deve retornar a média deles. Você pode se basear no código do exemplo anterior para fazer os testes desse exemplo!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Definição da Função
+</span><span class="k">def</span> <span class="nf">media</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">lista</span><span class="p">(</span><span class="n">numero</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">/</span><span class="mi">2</span>
+</code></pre></div></div>
+
+<p><em>DICA:</em>
+A função <em>len()</em> do python pode ser útil para esse exemplo!</p>
+
+<h4 id="exercício-3">Exercício 3</h4>
+
+<p>Essa função recebe uma lista de valores e deve retornar o menor dentre os eles</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Definição da Função
+</span><span class="k">def</span> <span class="nf">minimo_lista</span><span class="p">(</span><span class="n">lista</span><span class="p">):</span>
+    <span class="n">minimo</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">numero</span> <span class="o">&lt;</span> <span class="n">minimo</span><span class="p">:</span>
+            <span class="n">minimo</span> <span class="o">=</span> <span class="n">numero</span>
+    <span class="k">return</span> <span class="n">minimo</span>
+</code></pre></div></div>
+
+<h4 id="exercício-4">Exercício 4</h4>
+
+<p>Essa função recebe uma lista de valores e um valor específico, com o objetivo de identificar se ele faz parte da lista.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Definição da Função
+</span><span class="k">def</span> <span class="nf">esta_na_lista</span><span class="p">(</span><span class="n">lista</span><span class="p">,</span> <span class="n">valor</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">numero</span> <span class="ow">in</span> <span class="n">lista</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">numero</span> <span class="o">==</span> <span class="n">valor</span><span class="p">:</span>
+            <span class="n">esta</span> <span class="o">=</span> <span class="n">true</span>
+        <span class="k">else</span>
+            <span class="n">esta</span> <span class="o">=</span> <span class="n">false</span>
+    <span class="k">return</span> <span class="n">esta</span>
+
+</code></pre></div></div>
+
+<p>—</p>
 
 <h2 id="elementos-da-lógica-formal">Elementos da Lógica Formal</h2>
 <p>Agora que vimos os benefícios práticos da lógica, vamos aprofundar um pouco mais nos conceitos fundamentais. Pois bem! A lógica é o ‘estudo do raciocínio válido e das inferências’. É uma ferramenta poderosa para a dedução, baseada em hipóteses e premissas. Pensar logicamente é algo que fazemos o tempo todo, mesmo sem perceber. Quando tomamos decisões no dia a dia, resolvemos problemas ou argumentamos sobre algo, estamos aplicando a lógica.</p>
@@ -585,7 +670,7 @@
     <tr>
       <th>P</th>
       <th>¬P</th>
-      <th>P ∨ ¬P</th>
+      <th>P ∧ ¬P</th>
     </tr>
   </thead>
   <tbody>
@@ -648,13 +733,111 @@
 <p>Agora é a sua vez de demonstrar algumas equivalências lógicas, utilize do mesmo método que mostramos anterioremente para demonstrar as seguintes bi-implicações:</p>
 
 <div class="language-lean highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">P</span> <span class="o">∧</span> <span class="n">Q</span> <span class="o">≡</span> <span class="n">Q</span> <span class="o">∧</span> <span class="n">P</span>               <span class="o">--</span>[<span class="n">Comutatividade</span> <span class="n">da</span> <span class="n">conjun</span><span class="err">çã</span><span class="n">o</span>]
-(<span class="n">P</span> <span class="o">∨</span> <span class="n">Q</span>) <span class="o">∧</span> <span class="n">Q</span> <span class="o">≡</span> <span class="n">Q</span>             <span class="o">--</span>[<span class="n">Abrsor</span><span class="err">çã</span><span class="n">o</span> <span class="n">da</span> <span class="n">conjun</span><span class="err">çã</span><span class="n">o</span> <span class="n">sobre</span> <span class="n">a</span> <span class="n">disjun</span><span class="err">çã</span><span class="n">o</span>]
+(<span class="n">P</span> <span class="o">∨</span> <span class="n">Q</span>) <span class="o">∧</span> <span class="n">Q</span> <span class="o">≡</span> <span class="n">Q</span>             <span class="o">--</span>[<span class="n">Absor</span><span class="err">çã</span><span class="n">o</span> <span class="n">da</span> <span class="n">conjun</span><span class="err">çã</span><span class="n">o</span> <span class="n">sobre</span> <span class="n">a</span> <span class="n">disjun</span><span class="err">çã</span><span class="n">o</span>]
 <span class="o">¬</span>(<span class="o">¬</span><span class="n">P</span>) <span class="o">≡</span> <span class="n">P</span>                   <span class="o">--</span>[<span class="n">Nega</span><span class="err">çã</span><span class="n">o</span> <span class="n">da</span> <span class="n">nega</span><span class="err">çã</span><span class="n">o</span>]
 <span class="o">¬</span>(<span class="n">P</span> <span class="o">∧</span> <span class="n">Q</span>) <span class="o">≡</span> (<span class="o">¬</span><span class="n">P</span>) <span class="o">∨</span> (<span class="o">¬</span><span class="n">Q</span>)      <span class="o">--</span>[<span class="n">Demorgan</span>]
 </code></pre></div></div>
+
+<h3 id="lógica-de-predicados">Lógica de Predicados</h3>
+
+<p>Tudo o que vimos até agora, dos conectivos às tabelas verdade, fazem parte da lógica proposicional, uma linguagem robusta que é usada em diversos campos da computação, entretanto ela tem como limitação não conseguir expressar proposições como “<strong>todos</strong> os elementos de um conjunto A possuem propriedade x” ou “<strong>existem</strong> elementos do conjunto A que não pertencem ao conjunto B”.</p>
+
+<p>Essas proposições envolvem <strong>quantificadores</strong> sobre <strong>variáveis</strong> e, para representá-las formalmente, precisamos da Lógica de Predicado (também chamada de Lógica de Primeira Ordem) que estende a lógica proposicional com esses novos termos.</p>
+
+<h4 id="variáveis">Variáveis</h4>
+
+<p>As variáveis são objetos genéricos do escopo que estamos tratando. Vamos ver alguns exemplos:</p>
+
+<ul>
+  <li>
+    <p>No escopo dos números inteiros, podemos dizer que temos um x inteiro que é par. Nesse caso x é um número inteiro genérico que possui a propriedade “ser par”. Note que ele não é o 2, nem o 4, mas sim um elemento genérico do conjunto dos números inteiros pares.</p>
+  </li>
+  <li>
+    <p>No escopo das pessoas presentes nessa sala, podemos dizer que temos um x pessoa que tem cabelo longo. Note que x não é nem Carol, nem André, nem nenhuma das outras pessoas presentes com cabelo grande, mas com certeza faz parte desse subconjunto.</p>
+  </li>
+</ul>
+
+<h4 id="predicados">Predicados</h4>
+
+<p>O conceito de predicados não é nada novo. Dada uma variável ou objeto conhecido x, podemos definir um predicado P, em que P(x) (lê-se “p de x”) significa que x possui a propriedade P. A notação parecida com a de função não é por acaso, pois P funciona como uma função, que recebe um x de um tipo específico e retorna True ou False.</p>
+
+<p>Podemos então definir o predicado que quisermos contanto que respeite o tipo do nosso x, já que não faria sentido definir <code class="language-plaintext highlighter-rouge">P(x) ≝ x é par</code> se x for uma variável do escopo Alunos do BTI. Vamos ver alguns exemplos:</p>
+
+<ul>
+  <li>
+    <p>Seja x um número inteiro, e P um predicado definido por P(x) ≝ x é primo. Logo P(7) = True e P(8) = False.</p>
+  </li>
+  <li>
+    <p>Seja y um aluno do BTI, e T um predicado definido por T(y) ≝ y está no último semestre do curso. Logo T(André) = False.</p>
+  </li>
+</ul>
+
+<h4 id="quantificadores">Quantificadores</h4>
+
+<h5>∀:</h5>
+<p>O quantificador universal (∀) permite expressar generalizações sobre todos os elementos de um escopo. Vamos ver alguns exemplos:</p>
+
+<ul>
+  <li>
+    <p>(∀ x estudante nessa sala)[x aprendeu algo novo hoje]</p>
+  </li>
+  <li>
+    <p>(∀ y inteiro)[y é divisível por 1]</p>
+  </li>
+</ul>
+
+<h5 id="-1">∃:</h5>
+<p>O quantificador existencial nos permite expressar a ideia que dentro de um escopo, existe <strong>ao menos um</strong> elemento que possui uma propriedade qualquer. Vamos ver exemplos disso:</p>
+
+<ul>
+  <li>
+    <p>(∃x pessoa nessa sala)[x é bolsista do PET-CC]</p>
+  </li>
+  <li>
+    <p>(∃y inteiro)[y é divisível por 2]</p>
+  </li>
+  <li>
+    <p>(∃n natural)[n + 1 = 1]</p>
+  </li>
+</ul>
+
+<h4 id="exercícios">Exercícios</h4>
+
+<p>Agora que conhecemos as variáveis e quantificadores da Lógica de Predicados, vamos exercitar a tradução de enunciados.</p>
+
+<p>Escreva em português as seguintes proposições (não é preciso traduzir as equações):</p>
+
+<ul>
+  <li>(∀ x inteiro)[x + 1 = 1 + x]</li>
+  <li>(∃ n natural)[ n + 1 = 1]</li>
+  <li>(∀ x estado do Brasil)(∃ g pessoa)[g é governador de x]</li>
+  <li>(∃ n inteiro)(∀ i inteiro)[ i^n = i ]</li>
+</ul>
+
+<p>Formalize as seguintes frases, usando o conhecimento que adquirimos sobre Lógica Proposicional e Lógica de Predicados:</p>
+
+<ul>
+  <li>Não existe alguém que seja amado por todos.</li>
+  <li>Toda pessoa é odiada por ao menos uma pessoa.</li>
+  <li>Todo professor tem falhas.</li>
+  <li>O 0 é o menor número natural.</li>
+  <li>Todo número natural é maior que o 0.</li>
+</ul>
 
             </main>
             <script src="./assets/js/sumario_script.js"></script>
         </div>
     </body>
 </html>
+
+<script type="text/javascript">
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  options: {
+    ignoreHtmlClass: 'highlight|code'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
