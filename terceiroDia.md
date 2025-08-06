@@ -718,7 +718,7 @@ Uma das criptografias mais conhecidas é a chamada "Cifra de César", usada dura
 
 <div style="text-align: center;">  <img src="assets/images/ceaserCipher.png" alt=""> </div>
 
-Uma outra ferramenta que pode facilitar a nossa visualização é o disco de cifra! Infelizmente não temos um exemplo presencial, as duas rodas possibilitariam o deslocamento relativo das letras de maneira circular, facilitando a etapa da encriptação!
+Uma outra ferramenta que pode facilitar a nossa visualização é o disco de cifra! Infelizmente não temos um exemplo presencial pra mostrar pra vocês, mas as duas rodas possibilitariam o deslocamento relativo das letras de maneira circular, facilitando a etapa da encriptação!
 
 <div style="text-align: center;">  <img src="assets/images/cipher-wheel.jpg" alt=""> </div>
 
@@ -766,8 +766,6 @@ Então Bob chega à conclusão que a mensagem encriptada tem o valor 11!
 
 Alice, para decriptar a mensagem, precisa encontrar o valor de ***e*** - e, para isso, irá utilizar os valores de suas chaves privadas ***d***, ***p*** e ***q***!. Assim, como temos que ***d*** e ***e*** são inversos modulares, podemos aplicar o algoritmo estendido de euclides para descobrirmos o valor de ***d***:
 
-inverso mod multiplicativo de 7 mod 160
-
 ```haskell
 d * 7 ≡ 1(mod(17-1)*(11-1))
 d * 7 ≡ 1(mod 16*10)
@@ -801,7 +799,7 @@ M = 88 = X em ASCII
 
 A mensagem foi enviada, transportada e entregue de maneira segura! Alice pode, finalmente, ler a letra ‘X’ que Bob lhe enviou.
 
-No entanto, vale ressaltar que os números escolhidos para esse exemplo são pequenos demais para serem seguros. Na realidade, são utilizados números que usam até 1024 bits para serem representados! E, mesmo assim, esse sistema é considerado relativamente desatualizado, já que sua segurança depende da fatoração de um número grande em dois primos, e os avanços em hardware têm sido muito extensos nos últimos anos! Assim, os usos mais seguros desse sistema de criptografia incluem, em geral, a utilização da criptografia RSA junto a outros sistemas de criptografia.
+No entanto, vale ressaltar que os números escolhidos para esse exemplo são pequenos demais para serem seguros. Na realidade, são utilizados números que usam até 2048 bits para serem representados! E, mesmo assim, esse sistema é considerado relativamente desatualizado, já que sua segurança depende da fatoração de um número grande em dois primos, e os avanços em hardware têm sido muito extensos nos últimos anos! Assim, os usos mais seguros desse sistema de criptografia incluem, em geral, a utilização da criptografia RSA junto a outros sistemas de criptografia.
 
 ---
 
