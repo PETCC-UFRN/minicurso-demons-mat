@@ -428,7 +428,7 @@ dividindo o número ”na esquerda” pelo ”da direita” até encontrar o MDC
 <p>(∀a, b ∈ Int=0)(∃s, t ∈ Int)[MDC(a, b) = a * s + b * t]</p>
 
 <p>Em outras palavras, podemos colocar MDC(a, b) como uma combinação linear de a e b.
-Agora, juntando isso com o Algoritmo de Euclides, temos o Algoritmo Extendido de Euclides (nome criativo).
+Agora, juntando isso com o Algoritmo de Euclides, temos o Algoritmo Estendido de Euclides (nome criativo).
 Nele, buscamos encontrar o ”r” (como no Algoritmo de Euclides), mas, voltamos para encontrar
 a combinaçãoo linear. Confuso? Sim. Útil? MUITO!!
 Exemplo:</p>
@@ -684,7 +684,7 @@ m se, e somente se, a e m não têm fatores primos em comum “. Note que, como 
 <span class="mi">1</span> <span class="err">≡</span> <span class="n">at</span>         <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span>      <span class="p">[</span><span class="n">ms</span> <span class="err">≡</span> <span class="mi">0</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)]</span>
 </code></pre></div></div>
 
-<p>Logo, utilizando conceitos vistos no passado, podemos utilizar o Algoritmo Extendido de Euclides para encontrar os inversos modulares, apenas encontrando o “t” que aparece no MDC(a, m) = at + ms.</p>
+<p>Logo, utilizando conceitos vistos no passado, podemos utilizar o Algoritmo Estendido de Euclides para encontrar os inversos modulares, apenas encontrando o “t” que aparece no MDC(a, m) = at + ms.</p>
 
 <h4 id="exercícios">Exercícios</h4>
 
@@ -767,7 +767,7 @@ m se, e somente se, a e m não têm fatores primos em comum “. Note que, como 
 </code></pre></div></div>
 <p>Então Bob chega à conclusão que a mensagem encriptada tem o valor 11!</p>
 
-<p>Alice, para decriptar a mensagem, precisa encontrar o valor de <strong><em>e</em></strong> - e, para isso, irá utilizar os valores de suas chaves privadas <strong><em>d</em></strong>, <strong><em>p</em></strong> e <strong><em>q</em></strong>!. Assim, como temos que <strong><em>d</em></strong> e <strong><em>e</em></strong> são inversos modulares, podemos aplicar o algoritmo extendido de euclides para descobrirmos o valor de <strong><em>d</em></strong>:</p>
+<p>Alice, para decriptar a mensagem, precisa encontrar o valor de <strong><em>e</em></strong> - e, para isso, irá utilizar os valores de suas chaves privadas <strong><em>d</em></strong>, <strong><em>p</em></strong> e <strong><em>q</em></strong>!. Assim, como temos que <strong><em>d</em></strong> e <strong><em>e</em></strong> são inversos modulares, podemos aplicar o algoritmo estendido de euclides para descobrirmos o valor de <strong><em>d</em></strong>:</p>
 
 <p>inverso mod multiplicativo de 7 mod 160</p>
 
@@ -776,12 +776,24 @@ m se, e somente se, a e m não têm fatores primos em comum “. Note que, como 
 <span class="n">d</span> <span class="o">*</span> <span class="mi">7</span> <span class="err">≡</span> <span class="mi">1</span><span class="p">(</span><span class="n">mod</span> <span class="mi">160</span><span class="p">)</span>
 
 </code></pre></div></div>
+<p>ou seja, temos que, para algum <strong><em>d</em></strong> e algum outro inteiro k, 7*d + 160k = 1</p>
 
-<p><em>inserir aqui o passo a passo do algoritmo estendido de euclides</em></p>
+<p>pelo algoritmo de euclides:</p>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">160</span> <span class="o">=</span> <span class="mi">22</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">6</span>
+<span class="mi">7</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">6</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="mi">6</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Agora, para realizar os passos extras do algoritmo estendido, isolamos cada resto do passo anterior e substituímos os valores!:</p>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span> <span class="o">=</span> <span class="mi">7</span> <span class="o">-</span> <span class="mi">1</span><span class="o">*</span><span class="mi">6</span>
+<span class="mi">1</span> <span class="o">=</span> <span class="mi">7</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="mi">160</span> <span class="o">-</span> <span class="mi">22</span><span class="o">*</span><span class="mi">7</span><span class="p">)</span>
+<span class="mi">1</span> <span class="o">=</span> <span class="mi">7</span> <span class="o">-</span> <span class="mi">160</span> <span class="o">+</span> <span class="mi">22</span><span class="o">*</span><span class="mi">7</span>
+<span class="mi">1</span> <span class="o">=</span> <span class="mi">23</span> <span class="o">*</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">160</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>No fim, para descobrir o que Bob teria enviado para ela, alice aplica <strong><em>m</em></strong> = <strong><em>c</em></strong>^<strong><em>d</em></strong> (mod 187).</p>
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">M</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="err">¹</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span> <span class="err">✕</span> <span class="mi">11</span><span class="err">²</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span> <span class="err">✕</span> <span class="mi">11</span><span class="err">⁴</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span>
-<span class="err">✕</span> <span class="mi">11</span><span class="err">¹</span><span class="mi">6</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)]</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">M</span><span class="o">=</span> <span class="mi">11</span><span class="err">²³</span><span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span>
+<span class="kt">M</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="err">¹</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span> <span class="err">✕</span> <span class="mi">11</span><span class="err">²</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span> <span class="err">✕</span> <span class="mi">11</span><span class="err">⁴</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span> <span class="err">✕</span> <span class="mi">11</span><span class="err">¹⁶</span><span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)]</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span>
 <span class="kt">M</span> <span class="o">=</span> <span class="mi">11</span> <span class="err">✕</span> <span class="mi">121</span> <span class="err">✕</span> <span class="mi">55</span> <span class="err">✕</span> <span class="mi">154</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">187</span><span class="p">)</span>
 <span class="kt">M</span> <span class="o">=</span> <span class="mi">88</span> <span class="o">=</span> <span class="kt">X</span> <span class="n">em</span> <span class="kt">ASCII</span>
 </code></pre></div></div>

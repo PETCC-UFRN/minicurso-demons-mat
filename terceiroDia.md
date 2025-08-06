@@ -431,7 +431,7 @@ O interessante surge quando Bezout constrói seu mais famoso teorema:
 (∀a, b ∈ Int=0)(∃s, t ∈ Int)[MDC(a, b) = a * s + b * t]
 
 Em outras palavras, podemos colocar MDC(a, b) como uma combinação linear de a e b.
-Agora, juntando isso com o Algoritmo de Euclides, temos o Algoritmo Extendido de Euclides (nome criativo).
+Agora, juntando isso com o Algoritmo de Euclides, temos o Algoritmo Estendido de Euclides (nome criativo).
 Nele, buscamos encontrar o ”r” (como no Algoritmo de Euclides), mas, voltamos para encontrar
 a combinaçãoo linear. Confuso? Sim. Útil? MUITO!!
 Exemplo:
@@ -679,7 +679,7 @@ MDC(a, m) = at + ms         [teorema de bezout]
 1 ≡ at         (mod m)      [ms ≡ 0 (mod m)]
 ```
 
-Logo, utilizando conceitos vistos no passado, podemos utilizar o Algoritmo Extendido de Euclides para encontrar os inversos modulares, apenas encontrando o "t" que aparece no MDC(a, m) = at + ms.
+Logo, utilizando conceitos vistos no passado, podemos utilizar o Algoritmo Estendido de Euclides para encontrar os inversos modulares, apenas encontrando o "t" que aparece no MDC(a, m) = at + ms.
 
 #### Exercícios
 
@@ -758,7 +758,7 @@ Para deixar as coisas um pouco mais tangíveis, vamos exemplificar com números 
 Então Bob chega à conclusão que a mensagem encriptada tem o valor 11!
 
 
-Alice, para decriptar a mensagem, precisa encontrar o valor de ***e*** - e, para isso, irá utilizar os valores de suas chaves privadas ***d***, ***p*** e ***q***!. Assim, como temos que ***d*** e ***e*** são inversos modulares, podemos aplicar o algoritmo extendido de euclides para descobrirmos o valor de ***d***:
+Alice, para decriptar a mensagem, precisa encontrar o valor de ***e*** - e, para isso, irá utilizar os valores de suas chaves privadas ***d***, ***p*** e ***q***!. Assim, como temos que ***d*** e ***e*** são inversos modulares, podemos aplicar o algoritmo estendido de euclides para descobrirmos o valor de ***d***:
 
 inverso mod multiplicativo de 7 mod 160
 
@@ -768,13 +768,27 @@ d * 7 ≡ 1(mod 16*10)
 d * 7 ≡ 1(mod 160)
 
 ```
+ou seja, temos que, para algum ***d*** e algum outro inteiro k, 7*d + 160k = 1
 
-*inserir aqui o passo a passo do algoritmo estendido de euclides*
+pelo algoritmo de euclides:
+```haskell
+160 = 22 * 7 + 6
+7 = 1 * 6 + 1
+6 = 6 * 1 + 0
+```
+
+Agora, para realizar os passos extras do algoritmo estendido, isolamos cada resto do passo anterior e substituímos os valores!:
+```haskell
+1 = 7 - 1*6
+1 = 7 - 1 * (160 - 22*7)
+1 = 7 - 160 + 22*7
+1 = 23 * 7 + 160 * (-1)
+```
 
 No fim, para descobrir o que Bob teria enviado para ela, alice aplica ***m*** = ***c***^***d*** (mod 187).
 ```haskell
-M = [11¹ (mod 187) ✕ 11² (mod 187) ✕ 11⁴ (mod 187)
-✕ 11¹6 (mod 187)] (mod 187)
+M= 11²³(mod 187)
+M = [11¹ (mod 187) ✕ 11² (mod 187) ✕ 11⁴ (mod 187) ✕ 11¹⁶(mod 187)] (mod 187)
 M = 11 ✕ 121 ✕ 55 ✕ 154 (mod 187)
 M = 88 = X em ASCII
 ```
