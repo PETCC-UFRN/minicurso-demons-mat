@@ -10,7 +10,16 @@ title: Minicurso de Matemática aplicada à Computação
     <details>
         <summary><a href="#introdução-aos-inteiros">Introdução aos inteiros</a></summary>
         <ul class="section-content">
-            <li><a href="#definição-dos-naturais">Definição dos Naturais</a></li>
+            <li><a href="#contextualização" >Contextualização</a></li>
+            <li><a href="#ue-questões"> Ue, questões..? </a></li>
+            <li><a href="#definição-dos-números"> Definição dos... Números? </a></li>
+            <details>
+            <summary><a href="#definição-dos-naturais">Definição dos Naturais</a>
+            </summary>
+            <ul class="section-content">
+              <li><a href="#os-axiomas-de-peano"> Os Axiomas de Peano </a></li>
+              <li><a href="#ordinais-de-john-von-neumann"> Ordinais de John von Neumann </a></li>
+            </ul></details>
             <li><a href="#definição-dos-inteiros">Definição dos Inteiros</a></li>
         </ul>
     </details>
@@ -42,6 +51,8 @@ title: Minicurso de Matemática aplicada à Computação
             <li><a href="#relações-de-congruência-na-programação">Relações de congruência na programação</a></li>
             <li><a href="#aplicações-e-definição-formal">Aplicações e definição formal</a></li>
             <li><a href="#propriedades">Propriedades e exercícios</a></li>
+            <li><a href="#congruência-linear-e-inversos-modulares"> Congruência Linear e Inversos Modulares</a></li>
+
         </ul>
     </details>
     <details>
@@ -63,29 +74,111 @@ title: Minicurso de Matemática aplicada à Computação
 
 # Introdução aos Inteiros 
 
+## Contextualização
+
+Nosso objetivo no dia de hoje é aprender de onde que surgiram algumas noções algébricas que são utilizadas desde o seu fundamental, mas de uma forma mais aprofundada, além de entender como elas se relacionam a conceitos importantíssimos na programação.
+
+Note que teremos alguns simbolos diferentes do que vocês devem ter visto, então, sempre perguntem caso sintam dúvidas!
+
+## Ue, questões..?
+
+Antes de começar, iremos conversar um pouco e discutir certas questões sobre o que são os números. Peço para que não olhem as definições do site ainda.
+
+1) O que você acha que são os números naturais?
+
+2) O que você acha que são os números inteiros?
+
+3) Esses números (naturais e inteiros) servem para o quê?
+
+Algumas delas podem ser dificeis ou faceis dependendo de quem veja essas perguntas, porém, elas escondem tópicos complexos. No fim, alguns podem definir o 1 como "números sem resto decimal" e o 2 como "números sem resto decimal que podem ser negativos", mas percebem que sempre voltamos na mesma questão?
+
+4) Que questão é essa? (eu vou parar com isso, eu juro)
+<details>
+<summary>resposta: SPOILER!</summary>
+    O QUE SÃO NÚMEROS???
+</details>
+
+Nesse minicurso, para poupar vocês, iremos dar tudo mastigadinho para contextualizar e iremos construir do zero cada um desses números utilizando os Axiomas de Peano e os modelos de von Neumann (mas de uma forma um pouco simplificada).
+
+## Definição dos... Números?
+
+Sim, isso é bem feio de ler, mas para criar os números naturais, precisamos saber o que são números (mesmo que seja bem trivial).
+
+Note que iremos ver o que são conjuntos no dia 4, mas irei dar um spoiler para construir de forma similar a forma que os matemáticos Peano e von Neumann construíram. 
+
+
 ## Definição dos Naturais
+
+
 Iremos começar o dia definindo o conjunto dos números naturais. Porém, iremos poupar um pouco
-vocês disso e apenas mostrar por cima alguns axiomas de Peano, já que não temos tanto tempo
+vocês disso e apenas mostrar por cima o sistema de von Neumann e alguns axiomas de Peano, já que não temos tanto tempo
 para nos aprofundar nessa parte.
+Além disso, (coloquem na conta de Heitor) serei hipócrita e irei falar um pouco sobre a história da criação dos naturais, depois disso nós iremos construir nossas coisas se baseando na perspectiva deles.
+
+### Os Axiomas de Peano
+
+Estamos em 1889, no fim do século XIX, a matemática está em crescimento (mas prestes a estar em uma era de medo :o), mas estamos com alguns problemas nas teorias dos números naturais. Basicamente, o matemático Giuseppe Peano notou que a teoria dos números tinha um grande problema: A falta de rigor matemático. Durante essa época, a teoria dos naturais era baseada apenas em intuição, e Peano notou que isso poderia levar a ambiguidades e contradições. 
+
+Após isso, inspirado pelos trabalhos de Euclides (axiomatização da geometria), Peano resolveu fazer o mesmo para a aritmética, mostrando que as operações básicas (adição, subtração, multiplicação etc) poderiam ser deduzidas em um conjunto pequeno de premissas, ou axiomas que não precisassem de prova. Então, Peano publicou "Arithmetices principia, nova methodo exposita", onde continham seus 5 axiomas e 3 objetos primitivos, sendo eles:
 
 ```haskell
--- 1) O 0 existe.
-0 ∈ Nat
+-- Objetos
+  -- apenas o número 0
+  -- apenas o conjunto dos naturais N (sim, é o N e não o ℕ)
+  -- apenas uma função sucessor (Succ()) (pega um numero e retorna o sucessor dele)
 
--- 2) O sucessor existe.
-(∀n ∈ Nat)[Succ(n) ∈ Nat]
+-- Axiomas
+  -- 1) O 0 existe.
+  0 ∈ N
 
--- 3) O 0 não é sucessor.
-(∀n ∈ Nat)[0 ̸= Succ(n)]
+  -- 2) O sucessor existe.
+  (∀n ∈ N)[Succ(n) ∈ N]
 
--- 4) Injetividade dos sucessores.
-(∀n, m ∈ Nat)[Succ(n) = Succ(m) → n = m]
+  -- 3) O 0 não é sucessor.
+  (∀n ∈ N)[0 != Succ(n)]
+
+  -- 4) Injetividade dos sucessores.
+  (∀n, m ∈ N)[Succ(n) = Succ(m) → n = m]
+
+  -- 5) Axioma da Indução
+  --Não irei escrever, mas é a indução que vocês viram ontem.
 ```
 
-Com isso, estamos prontos para criar o conjunto dos inteiros!
+Porém, mesmo com esses axiomas, ainda temos aquela mesma dúvida de antes, "O que são números?", von Neumann irá resolver isso e ainda ajudar a deixar esses axiomas mais "fortes" e "robustos".
+
+### Ordinais de John von Neumann
+
+Agora estamos no começo do século XX, o momento onde começa a Crise dos Fundamentos da Matemática, a matemática até aquele momento era vista como a ciência "perfeita" e "rigorosa", mas, foi o momento onde surgiram diversos paradoxos, como o paradoxo de Russel, que foi o mais famoso (uma analogia dele seria "se um barbeiro que barbeia todos os homens de uma vila que não barbeiam si mesmos, quem barbeia o barbeiro?). Basicamente, a solução para a crise seria criar um sistema de axiomas "perfeito", onde não teriam erros e paradoxos, logo, a solução foi útilizar a querida Teoria dos conjuntos ZFC (Zermelo-Fraenkel com o axioma da escolha), onde não iremos nos aprofundar.
+
+Com isso, por volta de 1923, John von Neumann pensou: "como eu posso consertar os paradoxicos lógicos dos números?" e também "Como eu posso fazer isso respeitando os Axiomas de Peano", como a teoria dos conjuntos ZFC estava em alta por ser "simples" e "completa", von Neumann buscou formalizar ela para resolver esses paradoxos, dando uma base firme para a criação da Teoria dos Números.
+
+Nessa teoria, definimos cada natural como o "conjunto dos naturais que os precedem". Confuso? Um pouco. Então iremos mostrar de forma visual:
+
+```haskell
+0 ≝ Ø --antes do 0 não tem ninguém
+1 ≝ {0} ≝ { Ø } -- antes do 1 tem o 0
+2 ≝ {1, 0} ≝ { { Ø } , Ø } -- antes do 2 tem o 1 e o 0
+```
+
+Em termos formais, temos:
+
+```haskell
+
+Succ(n) ≝ n ∪ {n}
+
+```
+
+Com isso, temos não só como construir os naturais de forma "simples", mas estamos prontos para criar o conjunto dos inteiros!
 
 ## Definição dos Inteiros
 
+Antes de iniciar isso, tenho duas perguntas:
+
+1) Alguém já sabe como definir os inteiros?
+
+2) Alguém consegue explicar como ela funciona?
+
+Sim, eu sei como funciona, tanto que fiz esse material, mas o ponto é que a partir daqui, temos MUITAS definições possíveis, algumas mais fortes que outras, e hoje, irei mostrar uma das favoritas e iremos criar ela do zero:
 
 A nossa definição de inteiros vai utilizar alguns conceitos interessantes sobre classes de equivalência:
 
@@ -202,13 +295,13 @@ Seja p um número primo. Temos que o p tem as seguintes características:
 Podemos também reescrever o (II) como:
 
 ```haskell
-p primo ↔ (∀a ∈ Int)[a ̸= 1 & a ̸= p =⇒ a ∤ p]
+p primo ↔ (∀a ∈ Int)[a != 1 & a != p ⇒ a ∤ p]
 ```
 
 Ou reduzindo a complexidade para:
 
 ```haskell
-p primo ↔ (∀a < p)[a > 1 =⇒ a ∤ p]
+p primo ↔ (∀a < p)[a > 1 ⇒ a ∤ p]
 ```
 
 OU REDUZINDO MAIS AINDA PARA:
@@ -327,7 +420,7 @@ MDC(a, b) * MMC(a, b) = a * b
 Podemos utilizar o seguinte algoritmo para calcular o MDC de 2 números:
 ```haskell
 MDC(c, 0) = c
-MDC(a, b) = M DC(b, r)
+MDC(a, b) = MDC(b, r)
 ```
 Onde o r é o resto da divisão de a por b.
 Chamamos esse algoritmo de ”Algoritmo de Euclides”. A ”extratégia” do uso desse algoritmo é continuar
@@ -447,6 +540,7 @@ Exemplos:
 - 6 ≡ 2 (mod 4), pois 4 \| (6 - 2)
 - 19 ≡ 5 (mod 7), pois 7 \| (19 - 5)
 ```
+## Aritmética Modular
 
 ### Propriedades
 Agora, vamos ver algumas propriedades fundamentais das relações de equivalência, e demonstrar que elas valem.
@@ -544,6 +638,58 @@ que já foram demonstradas acima.
 1. Adição: a + c  ≡ b + d (mod m)
 2. Subtração: a - c ≡ b - d (mod m)
 3. Multiplicação: a * c ≡ b * d (mod m)
+
+> *Desafio!*
+1. Se c * a ≡ c * b (mod m), então a ≡ b (mod n/MDC(c, n))
+2. Se c * a ≡ c * b (mod m) e MDC(c, m) = 1, então a ≡ b (mod m)
+3. Se c * a ≡ c * b (mod p) e p ∤ c, onde p é primo, então a ≡ b (mod p)
+
+### Congruência Linear e Inversos Modulares
+
+Similar as funções lineares que vocês devem ter visto recentemente em ME, MBM, Cálculo, uma congruência linear é uma equação na seguinte forma:
+
+a * x ≡ b (mod m)
+
+E como ocorre em qualquer equação, nós podemos resolver ela (encontrar o x onde a congruência acontece). Porém, note que caso b = 1, nós temos uma situação bem conhecida na matemática:
+
+a * x ≡ 1 (mod m)
+
+Chamamos o "x" de "inverso modular de a no módulo m", ou apenas de "inverso de a mod m". Essa informação nos permite manipular equações e montar sistemas. Note que existem alguns casos onde alguns números não possuem inversos, por exemplo:
+
+2x ≡ 1 (mod 4)
+
+Não nos aprofundaremos nisso, mas temos o seguinte Teorema sem nome: "O elemento a tem inverso módulo
+m se, e somente se, a e m não têm fatores primos em comum ". Note que, como consequência do último teorema, temos o seguinte: "se m for primo, todos os elementos não nulos possuem inversos" 
+
+#### Como encontrar um inverso modular
+
+"ah, é só sair multiplicando até achar"
+
+encontre o x em 5x ≡ 1 (mod 10007).
+
+Ok, é possivel fazer isso com números pequenos, mas para valores grandes isso se torna inviável. 
+
+Voltando um pouco no tempo, nós temos uma ferramente muito útil para esse momento, e ele é o Teorema de Bezout! Ele diz que MDC(a, b) = at + bs para algum t e s inteiros. Como o nosso outro teorema diz que "a tem inverso modulo m apenas se eles não tem fatores primos em comum", podemos ver ele como "a tem inverso módulo m apenas de MDC(a, m) = 1" (caso não se lembre, foi visto anteriormente no módulo de MDC). Logo, calculemos:
+
+
+```haskell
+MDC(a, m) = at + ms         [teorema de bezout]
+1 = at + ms                 [a e m não tem fatores primos em comum]
+1 ≡ at + ms    (mod m)      [1 ≡ 1 (mod m), como 1 = at + ms, então 1 ≡ at + ms (mod m)]
+1 ≡ at         (mod m)      [ms ≡ 0 (mod m)]
+```
+
+Logo, utilizando conceitos vistos no passado, podemos utilizar o Algoritmo Extendido de Euclides para encontrar os inversos modulares, apenas encontrando o "t" que aparece no MDC(a, m) = at + ms.
+
+#### Exercícios
+
+1. Faça um "esquema" que mostre o passo à passo de como se calcula o inverso modular.
+2. Faça um pseudocódigo que aplique esse "esquema".
+3. Calcule os inversos de 3 mod 7 e 42 mod 11.
+
+> *Desafio!*
+4. Implemente um código na linguagem que você preferir que calcule o inverso modular de algum número a no módulo m. (dica: fazer isso e rodar o código para resolver a questão 3 é beeem divertido!)
+5. Resolva os desafios do último tópico utilizando inversos modulares.
 
 # Criptografia RSA
 

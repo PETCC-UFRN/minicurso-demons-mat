@@ -32,7 +32,16 @@
     <details>
         <summary><a href="#introdução-aos-inteiros">Introdução aos inteiros</a></summary>
         <ul class="section-content">
-            <li><a href="#definição-dos-naturais">Definição dos Naturais</a></li>
+            <li><a href="#contextualização">Contextualização</a></li>
+            <li><a href="#ue-questões"> Ue, questões..? </a></li>
+            <li><a href="#definição-dos-números"> Definição dos... Números? </a></li>
+            <details>
+            <summary><a href="#definição-dos-naturais">Definição dos Naturais</a>
+            </summary>
+            <ul class="section-content">
+              <li><a href="#os-axiomas-de-peano"> Os Axiomas de Peano </a></li>
+              <li><a href="#ordinais-de-john-von-neumann"> Ordinais de John von Neumann </a></li>
+            </ul></details>
             <li><a href="#definição-dos-inteiros">Definição dos Inteiros</a></li>
         </ul>
     </details>
@@ -64,6 +73,8 @@
             <li><a href="#relações-de-congruência-na-programação">Relações de congruência na programação</a></li>
             <li><a href="#aplicações-e-definição-formal">Aplicações e definição formal</a></li>
             <li><a href="#propriedades">Propriedades e exercícios</a></li>
+            <li><a href="#congruência-linear-e-inversos-modulares"> Congruência Linear e Inversos Modulares</a></li>
+
         </ul>
     </details>
     <details>
@@ -85,27 +96,106 @@
 
 <h1 id="introdução-aos-inteiros">Introdução aos Inteiros</h1>
 
+<h2 id="contextualização">Contextualização</h2>
+
+<p>Nosso objetivo no dia de hoje é aprender de onde que surgiram algumas noções algébricas que são utilizadas desde o seu fundamental, mas de uma forma mais aprofundada, além de entender como elas se relacionam a conceitos importantíssimos na programação.</p>
+
+<p>Note que teremos alguns simbolos diferentes do que vocês devem ter visto, então, sempre perguntem caso sintam dúvidas!</p>
+
+<h2 id="ue-questões">Ue, questões..?</h2>
+
+<p>Antes de começar, iremos conversar um pouco e discutir certas questões sobre o que são os números. Peço para que não olhem as definições do site ainda.</p>
+
+<p>1) O que você acha que são os números naturais?</p>
+
+<p>2) O que você acha que são os números inteiros?</p>
+
+<p>3) Esses números (naturais e inteiros) servem para o quê?</p>
+
+<p>Algumas delas podem ser dificeis ou faceis dependendo de quem veja essas perguntas, porém, elas escondem tópicos complexos. No fim, alguns podem definir o 1 como “números sem resto decimal” e o 2 como “números sem resto decimal que podem ser negativos”, mas percebem que sempre voltamos na mesma questão?</p>
+
+<p>4) Que questão é essa? (eu vou parar com isso, eu juro)</p>
+<details>
+<summary>resposta: SPOILER!</summary>
+    O QUE SÃO NÚMEROS???
+</details>
+
+<p>Nesse minicurso, para poupar vocês, iremos dar tudo mastigadinho para contextualizar e iremos construir do zero cada um desses números utilizando os Axiomas de Peano e os modelos de von Neumann (mas de uma forma um pouco simplificada).</p>
+
+<h2 id="definição-dos-números">Definição dos… Números?</h2>
+
+<p>Sim, isso é bem feio de ler, mas para criar os números naturais, precisamos saber o que são números (mesmo que seja bem trivial).</p>
+
+<p>Note que iremos ver o que são conjuntos no dia 4, mas irei dar um spoiler para construir de forma similar a forma que os matemáticos Peano e von Neumann construíram.</p>
+
 <h2 id="definição-dos-naturais">Definição dos Naturais</h2>
+
 <p>Iremos começar o dia definindo o conjunto dos números naturais. Porém, iremos poupar um pouco
-vocês disso e apenas mostrar por cima alguns axiomas de Peano, já que não temos tanto tempo
-para nos aprofundar nessa parte.</p>
+vocês disso e apenas mostrar por cima o sistema de von Neumann e alguns axiomas de Peano, já que não temos tanto tempo
+para nos aprofundar nessa parte.
+Além disso, (coloquem na conta de Heitor) serei hipócrita e irei falar um pouco sobre a história da criação dos naturais, depois disso nós iremos construir nossas coisas se baseando na perspectiva deles.</p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- 1) O 0 existe.</span>
-<span class="mi">0</span> <span class="err">∈</span> <span class="kt">Nat</span>
+<h3 id="os-axiomas-de-peano">Os Axiomas de Peano</h3>
 
-<span class="c1">-- 2) O sucessor existe.</span>
-<span class="p">(</span><span class="err">∀</span><span class="n">n</span> <span class="err">∈</span> <span class="kt">Nat</span><span class="p">)[</span><span class="kt">Succ</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="err">∈</span> <span class="kt">Nat</span><span class="p">]</span>
+<p>Estamos em 1889, no fim do século XIX, a matemática está em crescimento (mas prestes a estar em uma era de medo :o), mas estamos com alguns problemas nas teorias dos números naturais. Basicamente, o matemático Giuseppe Peano notou que a teoria dos números tinha um grande problema: A falta de rigor matemático. Durante essa época, a teoria dos naturais era baseada apenas em intuição, e Peano notou que isso poderia levar a ambiguidades e contradições.</p>
 
-<span class="c1">-- 3) O 0 não é sucessor.</span>
-<span class="p">(</span><span class="err">∀</span><span class="n">n</span> <span class="err">∈</span> <span class="kt">Nat</span><span class="p">)[</span><span class="mi">0</span> <span class="err"≯</span><span class="o">=</span> <span class="kt">Succ</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<p>Após isso, inspirado pelos trabalhos de Euclides (axiomatização da geometria), Peano resolveu fazer o mesmo para a aritmética, mostrando que as operações básicas (adição, subtração, multiplicação etc) poderiam ser deduzidas em um conjunto pequeno de premissas, ou axiomas que não precisassem de prova. Então, Peano publicou “Arithmetices principia, nova methodo exposita”, onde continham seus 5 axiomas e 3 objetos primitivos, sendo eles:</p>
 
-<span class="c1">-- 4) Injetividade dos sucessores.</span>
-<span class="p">(</span><span class="err">∀</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="err">∈</span> <span class="kt">Nat</span><span class="p">)[</span><span class="kt">Succ</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="kt">Succ</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="err">→</span> <span class="n">n</span> <span class="o">=</span> <span class="n">m</span><span class="p">]</span>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- Objetos</span>
+  <span class="c1">-- apenas o número 0</span>
+  <span class="c1">-- apenas o conjunto dos naturais N (sim, é o N e não o ℕ)</span>
+  <span class="c1">-- apenas uma função sucessor (Succ()) (pega um numero e retorna o sucessor dele)</span>
+
+<span class="c1">-- Axiomas</span>
+  <span class="c1">-- 1) O 0 existe.</span>
+  <span class="mi">0</span> <span class="err">∈</span> <span class="kt">N</span>
+
+  <span class="c1">-- 2) O sucessor existe.</span>
+  <span class="p">(</span><span class="err">∀</span><span class="n">n</span> <span class="err">∈</span> <span class="kt">N</span><span class="p">)[</span><span class="kt">Succ</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="err">∈</span> <span class="kt">N</span><span class="p">]</span>
+
+  <span class="c1">-- 3) O 0 não é sucessor.</span>
+  <span class="p">(</span><span class="err">∀</span><span class="n">n</span> <span class="err">∈</span> <span class="kt">N</span><span class="p">)[</span><span class="mi">0</span> <span class="o">!=</span> <span class="kt">Succ</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+
+  <span class="c1">-- 4) Injetividade dos sucessores.</span>
+  <span class="p">(</span><span class="err">∀</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="err">∈</span> <span class="kt">N</span><span class="p">)[</span><span class="kt">Succ</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="kt">Succ</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="err">→</span> <span class="n">n</span> <span class="o">=</span> <span class="n">m</span><span class="p">]</span>
+
+  <span class="c1">-- 5) Axioma da Indução</span>
+  <span class="c1">--Não irei escrever, mas é a indução que vocês viram ontem.</span>
 </code></pre></div></div>
 
-<p>Com isso, estamos prontos para criar o conjunto dos inteiros!</p>
+<p>Porém, mesmo com esses axiomas, ainda temos aquela mesma dúvida de antes, “O que são números?”, von Neumann irá resolver isso e ainda ajudar a deixar esses axiomas mais “fortes” e “robustos”.</p>
+
+<h3 id="ordinais-de-john-von-neumann">Ordinais de John von Neumann</h3>
+
+<p>Agora estamos no começo do século XX, o momento onde começa a Crise dos Fundamentos da Matemática, a matemática até aquele momento era vista como a ciência “perfeita” e “rigorosa”, mas, foi o momento onde surgiram diversos paradoxos, como o paradoxo de Russel, que foi o mais famoso (uma analogia dele seria “se um barbeiro que barbeia todos os homens de uma vila que não barbeiam si mesmos, quem barbeia o barbeiro?). Basicamente, a solução para a crise seria criar um sistema de axiomas “perfeito”, onde não teriam erros e paradoxos, logo, a solução foi útilizar a querida Teoria dos conjuntos ZFC (Zermelo-Fraenkel com o axioma da escolha), onde não iremos nos aprofundar.</p>
+
+<p>Com isso, por volta de 1923, John von Neumann pensou: “como eu posso consertar os paradoxicos lógicos dos números?” e também “Como eu posso fazer isso respeitando os Axiomas de Peano”, como a teoria dos conjuntos ZFC estava em alta por ser “simples” e “completa”, von Neumann buscou formalizar ela para resolver esses paradoxos, dando uma base firme para a criação da Teoria dos Números.</p>
+
+<p>Nessa teoria, definimos cada natural como o “conjunto dos naturais que os precedem”. Confuso? Um pouco. Então iremos mostrar de forma visual:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">0</span> <span class="err">≝</span> <span class="err">Ø</span> <span class="c1">--antes do 0 não tem ninguém</span>
+<span class="mi">1</span> <span class="err">≝</span> <span class="p">{</span><span class="mi">0</span><span class="p">}</span> <span class="err">≝</span> <span class="p">{</span> <span class="err">Ø</span> <span class="p">}</span> <span class="c1">-- antes do 1 tem o 0</span>
+<span class="mi">2</span> <span class="err">≝</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span> <span class="err">≝</span> <span class="p">{</span> <span class="p">{</span> <span class="err">Ø</span> <span class="p">}</span> <span class="p">,</span> <span class="err">Ø</span> <span class="p">}</span> <span class="c1">-- antes do 2 tem o 1 e o 0</span>
+</code></pre></div></div>
+
+<p>Em termos formais, temos:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kt">Succ</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="err">≝</span> <span class="n">n</span> <span class="err">∪</span> <span class="p">{</span><span class="n">n</span><span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>Com isso, temos não só como construir os naturais de forma “simples”, mas estamos prontos para criar o conjunto dos inteiros!</p>
 
 <h2 id="definição-dos-inteiros">Definição dos Inteiros</h2>
+
+<p>Antes de iniciar isso, tenho duas perguntas:</p>
+
+<p>1) Alguém já sabe como definir os inteiros?</p>
+
+<p>2) Alguém consegue explicar como ela funciona?</p>
+
+<p>Sim, eu sei como funciona, tanto que fiz esse material, mas o ponto é que a partir daqui, temos MUITAS definições possíveis, algumas mais fortes que outras, e hoje, irei mostrar uma das favoritas e iremos criar ela do zero:</p>
 
 <p>A nossa definição de inteiros vai utilizar alguns conceitos interessantes sobre classes de equivalência:</p>
 
@@ -211,12 +301,12 @@ lembre do seu 5 ano do fundamental, quando temos resto 0, é quando um inteiro �
 
 <p>Podemos também reescrever o (II) como:</p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="n">primo</span> <span class="err">↔</span> <span class="p">(</span><span class="err">∀</span><span class="n">a</span> <span class="err">∈</span> <span class="kt">Int</span><span class="p">)[</span><span class="n">a</span> <span class="err"≯</span><span class="o">=</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="n">a</span> <span class="err"≯</span><span class="o">=</span> <span class="n">p</span> <span class="o">=</span><span class="err">⇒</span> <span class="n">a</span> <span class="err">∤</span> <span class="n">p</span><span class="p">]</span>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="n">primo</span> <span class="err">↔</span> <span class="p">(</span><span class="err">∀</span><span class="n">a</span> <span class="err">∈</span> <span class="kt">Int</span><span class="p">)[</span><span class="n">a</span> <span class="o">!=</span> <span class="mi">1</span> <span class="o">&amp;</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">p</span> <span class="err">⇒</span> <span class="n">a</span> <span class="err">∤</span> <span class="n">p</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>Ou reduzindo a complexidade para:</p>
 
-<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="n">primo</span> <span class="err">↔</span> <span class="p">(</span><span class="err">∀</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">)[</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">=</span><span class="err">⇒</span> <span class="n">a</span> <span class="err">∤</span> <span class="n">p</span><span class="p">]</span>
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="n">primo</span> <span class="err">↔</span> <span class="p">(</span><span class="err">∀</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">p</span><span class="p">)[</span><span class="n">a</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="err">⇒</span> <span class="n">a</span> <span class="err">∤</span> <span class="n">p</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>OU REDUZINDO MAIS AINDA PARA:</p>
@@ -327,7 +417,7 @@ utilizar a seguinte definição:</p>
 
 <p>Podemos utilizar o seguinte algoritmo para calcular o MDC de 2 números:</p>
 <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">MDC</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">c</span>
-<span class="kt">MDC</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="kt">M</span> <span class="kt">DC</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="kt">MDC</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="kt">MDC</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
 </code></pre></div></div>
 <p>Onde o r é o resto da divisão de a por b.
 Chamamos esse algoritmo de ”Algoritmo de Euclides”. A ”extratégia” do uso desse algoritmo é continuar
@@ -454,6 +544,7 @@ Exemplos:</p>
 <span class="o">-</span> <span class="mi">6</span> <span class="err">≡</span> <span class="mi">2</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">4</span><span class="p">),</span> <span class="n">pois</span> <span class="mi">4</span> <span class="o">\|</span> <span class="p">(</span><span class="mi">6</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
 <span class="o">-</span> <span class="mi">19</span> <span class="err">≡</span> <span class="mi">5</span> <span class="p">(</span><span class="n">mod</span> <span class="mi">7</span><span class="p">),</span> <span class="n">pois</span> <span class="mi">7</span> <span class="o">\|</span> <span class="p">(</span><span class="mi">19</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div></div>
+<h2 id="aritmética-modular">Aritmética Modular</h2>
 
 <h3 id="propriedades">Propriedades</h3>
 <p>Agora, vamos ver algumas propriedades fundamentais das relações de equivalência, e demonstrar que elas valem.</p>
@@ -548,6 +639,66 @@ que já foram demonstradas acima.</p>
     <li>Adição: a + c  ≡ b + d (mod m)</li>
     <li>Subtração: a - c ≡ b - d (mod m)</li>
     <li>Multiplicação: a * c ≡ b * d (mod m)</li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <p><em>Desafio!</em></p>
+  <ol>
+    <li>Se c * a ≡ c * b (mod m), então a ≡ b (mod n/MDC(c, n))</li>
+    <li>Se c * a ≡ c * b (mod m) e MDC(c, m) = 1, então a ≡ b (mod m)</li>
+    <li>Se c * a ≡ c * b (mod p) e p ∤ c, onde p é primo, então a ≡ b (mod p)</li>
+  </ol>
+</blockquote>
+
+<h3 id="congruência-linear-e-inversos-modulares">Congruência Linear e Inversos Modulares</h3>
+
+<p>Similar as funções lineares que vocês devem ter visto recentemente em ME, MBM, Cálculo, uma congruência linear é uma equação na seguinte forma:</p>
+
+<p>a * x ≡ b (mod m)</p>
+
+<p>E como ocorre em qualquer equação, nós podemos resolver ela (encontrar o x onde a congruência acontece). Porém, note que caso b = 1, nós temos uma situação bem conhecida na matemática:</p>
+
+<p>a * x ≡ 1 (mod m)</p>
+
+<p>Chamamos o “x” de “inverso modular de a no módulo m”, ou apenas de “inverso de a mod m”. Essa informação nos permite manipular equações e montar sistemas. Note que existem alguns casos onde alguns números não possuem inversos, por exemplo:</p>
+
+<p>2x ≡ 1 (mod 4)</p>
+
+<p>Não nos aprofundaremos nisso, mas temos o seguinte Teorema sem nome: “O elemento a tem inverso módulo
+m se, e somente se, a e m não têm fatores primos em comum “. Note que, como consequência do último teorema, temos o seguinte: “se m for primo, todos os elementos não nulos possuem inversos”</p>
+
+<h4 id="como-encontrar-um-inverso-modular">Como encontrar um inverso modular</h4>
+
+<p>“ah, é só sair multiplicando até achar”</p>
+
+<p>encontre o x em 5x ≡ 1 (mod 10007).</p>
+
+<p>Ok, é possivel fazer isso com números pequenos, mas para valores grandes isso se torna inviável.</p>
+
+<p>Voltando um pouco no tempo, nós temos uma ferramente muito útil para esse momento, e ele é o Teorema de Bezout! Ele diz que MDC(a, b) = at + bs para algum t e s inteiros. Como o nosso outro teorema diz que “a tem inverso modulo m apenas se eles não tem fatores primos em comum”, podemos ver ele como “a tem inverso módulo m apenas de MDC(a, m) = 1” (caso não se lembre, foi visto anteriormente no módulo de MDC). Logo, calculemos:</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">MDC</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">=</span> <span class="n">at</span> <span class="o">+</span> <span class="n">ms</span>         <span class="p">[</span><span class="n">teorema</span> <span class="n">de</span> <span class="n">bezout</span><span class="p">]</span>
+<span class="mi">1</span> <span class="o">=</span> <span class="n">at</span> <span class="o">+</span> <span class="n">ms</span>                 <span class="p">[</span><span class="n">a</span> <span class="n">e</span> <span class="n">m</span> <span class="n">n</span><span class="err">ã</span><span class="n">o</span> <span class="n">tem</span> <span class="n">fatores</span> <span class="n">primos</span> <span class="n">em</span> <span class="n">comum</span><span class="p">]</span>
+<span class="mi">1</span> <span class="err">≡</span> <span class="n">at</span> <span class="o">+</span> <span class="n">ms</span>    <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span>      <span class="p">[</span><span class="mi">1</span> <span class="err">≡</span> <span class="mi">1</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">),</span> <span class="n">como</span> <span class="mi">1</span> <span class="o">=</span> <span class="n">at</span> <span class="o">+</span> <span class="n">ms</span><span class="p">,</span> <span class="n">ent</span><span class="err">ã</span><span class="n">o</span> <span class="mi">1</span> <span class="err">≡</span> <span class="n">at</span> <span class="o">+</span> <span class="n">ms</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)]</span>
+<span class="mi">1</span> <span class="err">≡</span> <span class="n">at</span>         <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)</span>      <span class="p">[</span><span class="n">ms</span> <span class="err">≡</span> <span class="mi">0</span> <span class="p">(</span><span class="n">mod</span> <span class="n">m</span><span class="p">)]</span>
+</code></pre></div></div>
+
+<p>Logo, utilizando conceitos vistos no passado, podemos utilizar o Algoritmo Extendido de Euclides para encontrar os inversos modulares, apenas encontrando o “t” que aparece no MDC(a, m) = at + ms.</p>
+
+<h4 id="exercícios">Exercícios</h4>
+
+<ol>
+  <li>Faça um “esquema” que mostre o passo à passo de como se calcula o inverso modular.</li>
+  <li>Faça um pseudocódigo que aplique esse “esquema”.</li>
+  <li>Calcule os inversos de 3 mod 7 e 42 mod 11.</li>
+</ol>
+
+<blockquote>
+  <p><em>Desafio!</em></p>
+  <ol>
+    <li>Implemente um código na linguagem que você preferir que calcule o inverso modular de algum número a no módulo m. (dica: fazer isso e rodar o código para resolver a questão 3 é beeem divertido!)</li>
+    <li>Resolva os desafios do último tópico utilizando inversos modulares.</li>
   </ol>
 </blockquote>
 
