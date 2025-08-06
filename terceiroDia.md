@@ -13,13 +13,12 @@ title: Minicurso de Matemática aplicada à Computação
             <li><a href="#contextualização" >Contextualização</a></li>
             <li><a href="#ue-questões"> Ue, questões..? </a></li>
             <li><a href="#definição-dos-números"> Definição dos... Números? </a></li>
-            <details>
             <summary><a href="#definição-dos-naturais">Definição dos Naturais</a>
             </summary>
             <ul class="section-content">
               <li><a href="#os-axiomas-de-peano"> Os Axiomas de Peano </a></li>
               <li><a href="#ordinais-de-john-von-neumann"> Ordinais de John von Neumann </a></li>
-            </ul></details>
+            </ul>
             <li><a href="#definição-dos-inteiros">Definição dos Inteiros</a></li>
         </ul>
     </details>
@@ -50,16 +49,23 @@ title: Minicurso de Matemática aplicada à Computação
             <li><a href="#conceitualização">Conceitualização</a></li>
             <li><a href="#relações-de-congruência-na-programação">Relações de congruência na programação</a></li>
             <li><a href="#aplicações-e-definição-formal">Aplicações e definição formal</a></li>
-            <li><a href="#propriedades">Propriedades e exercícios</a></li>
-            <li><a href="#congruência-linear-e-inversos-modulares"> Congruência Linear e Inversos Modulares</a></li>
-
+            <summary><a href="#propriedades">Propriedades</a></summary>
+            <ul class="section-content">
+              <li><a href="#propriedades-relacionais">Propriedades Relacionais</a></li>
+              <li><a href="#propriedades-operacionais">Propriedades Operacionais</a></li>
+            </ul>
+            <summary><a href="#congruência-linear-e-inversos-modulares">Congruência Linear e Inversos Modulares </a></summary>
+            <ul class="section-content">
+            <li><a href="#como-encontrar-um-inverso-modular"> Como encontrar um Inverso Modular</a></li>
+            </ul>
         </ul>
     </details>
     <details>
-  <summary><a href="#criptografia-rsa">Criptografia RSA</a></summary>
+  <summary><a href="#criptografia">Criptografia</a></summary>
     <ul class="section-content">
         <li><a href="#contextualização-histórica">Contextualização histórica</a></li>
-        <li><a href="#a-criptografia-rsa-em-si">A criptografia RSA em si</a></li>
+        <li><a href="#criptografia-assimétrica">Criptografia Assimétrica</a></li>
+        <li><a href="#criptografia-rsa">Criptografia RSA </a></li>
     </ul>
   </details>
 </ul>
