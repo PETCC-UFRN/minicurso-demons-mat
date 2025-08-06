@@ -729,7 +729,7 @@ m se, e somente se, a e m não têm fatores primos em comum “. Note que, como 
 
 <div style="text-align: center;">  <img src="assets/images/ceaserCipher.png" alt="" /> </div>
 
-<p>Uma outra ferramenta que pode facilitar a nossa visualização é o disco de cifra! Infelizmente não temos um exemplo presencial, as duas rodas possibilitariam o deslocamento relativo das letras de maneira circular, facilitando a etapa da encriptação!</p>
+<p>Uma outra ferramenta que pode facilitar a nossa visualização é o disco de cifra! Infelizmente não temos um exemplo presencial pra mostrar pra vocês, mas as duas rodas possibilitariam o deslocamento relativo das letras de maneira circular, facilitando a etapa da encriptação!</p>
 
 <div style="text-align: center;">  <img src="assets/images/cipher-wheel.jpg" alt="" /> </div>
 
@@ -775,8 +775,6 @@ m se, e somente se, a e m não têm fatores primos em comum “. Note que, como 
 
 <p>Alice, para decriptar a mensagem, precisa encontrar o valor de <strong><em>e</em></strong> - e, para isso, irá utilizar os valores de suas chaves privadas <strong><em>d</em></strong>, <strong><em>p</em></strong> e <strong><em>q</em></strong>!. Assim, como temos que <strong><em>d</em></strong> e <strong><em>e</em></strong> são inversos modulares, podemos aplicar o algoritmo estendido de euclides para descobrirmos o valor de <strong><em>d</em></strong>:</p>
 
-<p>inverso mod multiplicativo de 7 mod 160</p>
-
 <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">d</span> <span class="o">*</span> <span class="mi">7</span> <span class="err">≡</span> <span class="mi">1</span><span class="p">(</span><span class="n">mod</span><span class="p">(</span><span class="mi">17</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">11</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">d</span> <span class="o">*</span> <span class="mi">7</span> <span class="err">≡</span> <span class="mi">1</span><span class="p">(</span><span class="n">mod</span> <span class="mi">16</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">d</span> <span class="o">*</span> <span class="mi">7</span> <span class="err">≡</span> <span class="mi">1</span><span class="p">(</span><span class="n">mod</span> <span class="mi">160</span><span class="p">)</span>
@@ -806,7 +804,7 @@ m se, e somente se, a e m não têm fatores primos em comum “. Note que, como 
 
 <p>A mensagem foi enviada, transportada e entregue de maneira segura! Alice pode, finalmente, ler a letra ‘X’ que Bob lhe enviou.</p>
 
-<p>No entanto, vale ressaltar que os números escolhidos para esse exemplo são pequenos demais para serem seguros. Na realidade, são utilizados números que usam até 1024 bits para serem representados! E, mesmo assim, esse sistema é considerado relativamente desatualizado, já que sua segurança depende da fatoração de um número grande em dois primos, e os avanços em hardware têm sido muito extensos nos últimos anos! Assim, os usos mais seguros desse sistema de criptografia incluem, em geral, a utilização da criptografia RSA junto a outros sistemas de criptografia.</p>
+<p>No entanto, vale ressaltar que os números escolhidos para esse exemplo são pequenos demais para serem seguros. Na realidade, são utilizados números que usam até 2048 bits para serem representados! E, mesmo assim, esse sistema é considerado relativamente desatualizado, já que sua segurança depende da fatoração de um número grande em dois primos, e os avanços em hardware têm sido muito extensos nos últimos anos! Assim, os usos mais seguros desse sistema de criptografia incluem, em geral, a utilização da criptografia RSA junto a outros sistemas de criptografia.</p>
 
 <hr />
 

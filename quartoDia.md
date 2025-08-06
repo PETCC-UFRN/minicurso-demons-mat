@@ -35,7 +35,7 @@ title: Minicurso de Matemática aplicada à Computação
         </ul>
     </details>
     <details>
-        <summary><a href="#Conjuntos e Programação">Conjuntos e Programação</a></summary>
+        <summary><a href="#conjuntos-e-programação">Conjuntos e Programação</a></summary>
         <ul>
             <li><a href="#tipos-x-objetos-x-conjuntos/sets">Tipos ⨯ Objetos ⨯ Conjuntos/Sets</a></li>
             <li><a href="#conjuntos-como-inspiração-para-a-montagem-da-lógica-de-tipos">Conjuntos como inspiração para a montagem da lógica de tipos</a></li>
@@ -48,6 +48,16 @@ title: Minicurso de Matemática aplicada à Computação
             <li><a href="#tipos-de-coleções-semelhantes">Tipos de coleções semelhantes</a></li>
             <li><a href="#especificação-elementar-dos-sets">Especificação elementar dos Sets</a></li>
             <li><a href="#ocasiões-em-que-sets-podem-aparecer">Ocasiões em que Sets podem aparecer</a></li>
+        </ul>
+    </details>
+    <details>
+        <summary><a href="#funções-na-matemática-vs-funções-na-programação">Funções na Matemática vs funções na programação</a></summary>
+        <ul>
+            <li><a href="#o-que-são-funções">O que são funções?</a></li>
+                <ul>
+                    <li><a href="#pontos-em-comum">Pontos em comum</a></li>
+                </ul>
+            <li><a href="#aplicação-de-funções-matemáticas-na-programação">Aplicação de funções matemáticas na programação</a></li>
         </ul>
     </details>
   <button class="toggle-button" id="toggle-button">
@@ -430,9 +440,7 @@ Agora, utilizando apenas as ferramentas dispostas na especificação dos Sets, v
     Resposta: {x, {x,y}}
 </details>
 
-## Conjuntos e funções
-
-#### List X Set
+### List X Set
 Como visto anteriormente nesse dia, vocês viram que existem algumas estruturas de dados similares aos Sets, também viram que as Listas são um exemplo disso.
 Ao contrário de Sets, as listas possuem algumas propriedades específicas que tornam ela “especial”, sendo algumas delas:
 
@@ -501,9 +509,10 @@ Vantagens da sintaxe:
 - Geralmente é mais eficiente do que o “jeito normal”
 
 
-### Funções na matemática vs Funções na programação
-#### O que são funções?
-Entender o que são funções é primordial para a formação de um bom programador, já que afeta diretamente nos seus códigos. Como a maioria são calouros do BTI ou do BCC, já devem ter visto, respectivamente, em ME e Cálculo 1 o que são funções na matemática. Apenas para relembrar, funções na matemática são relações entre elementos de 2 conjuntos, onde, para cada entrada, existe apenas uma saída.
+## Funções na Matemática vs Funções na programação
+
+### O que são funções
+Entender o que são funções é primordial para a formação de um bom programador, já que afeta diretamente nos seus códigos. Como a maioria são calouros do BTI ou do BCC, já devem ter visto, respectivamente, em ME e Cálculo 1 o que são funções na Matemática. Apenas para relembrar, funções na Matemática são relações entre elementos de 2 conjuntos, onde, para cada entrada, existe apenas uma saída.
 Por exemplo, caso a gente tenha uma função real f (Domínio e contradomínio real), onde f(x) = x, sabemos que f(1) = 1, f(2) = 2, porém, temos também que f(21) = 42 com toda certeza está errado, já que f(21) = 21.
 Analogamente, temos algumas características dessas funções que serão importantes para o futuro, sendo essas:
 
@@ -512,7 +521,7 @@ Analogamente, temos algumas características dessas funções que serão importa
 
 Sobre as funções na programação, vocês também já devem ter visto (PC ou ITP). Em resumo, na programação, funções são blocos de códigos nomeados que executam alguma tarefa onde podem ter valores de entrada e/ou saída.
 Olhando rápido, podem parecer a mesma coisa, porém o ponto chave está no “podem”.
-Funções na programação não são limitadas da mesma forma que as funções na matemática, temos por exemplo as seguintes características:
+Funções na programação não são limitadas da mesma forma que as funções na Matemática, temos por exemplo as seguintes características:
 
 - PODEM alterar o valor de entrada
 - Entradas iguais NÃO implicam em saídas iguais (impureza)
@@ -565,7 +574,7 @@ Como visto anteriormente, as funções na programação tem a possibilidade de m
 
 E com isso, temos um novo tópico:
 
-#### Aplicação de funções matemáticas na programação
+### Aplicação de funções matemáticas na programação
 
 A noção de “pureza” que vimos anteriormente será crucial para definir quando uma função será útil.
 Funções puras, onde o valor de saída sempre é o mesmo para as mesmas entradas, são ideais para cálculos e transformações de dados, já que garantem resultados exatos e previsíveis.
@@ -573,7 +582,9 @@ Portanto, ao trabalhar com transformações de dados, observar um modelo de uma 
 
 ##### Exemplos
 
-Exemplo 1) Um ótimo exemplo para mostrar a importância da noção de pureza na programação é quando queremos ler um arquivo de configuração para calcular algum valor. Um erro comum é definir uma função da seguinte forma:
+Exemplo 1) 
+
+Um ótimo exemplo para mostrar a importância da noção de pureza na programação é quando queremos ler um arquivo de configuração para calcular algum valor. Um erro comum é definir uma função da seguinte forma:
 
 ```python
 def calcular_imposto(valor_produto):
@@ -608,7 +619,9 @@ def adicionar_algo(lista, algo_novo):
 
 ```
 
-Exemplo 3) Por fim, temos um exemplo de função recursiva pura. Nesse caso, queremos uma função que faça uma contagem regressiva e registre ela em uma lista:
+Exemplo 3) 
+
+Por fim, temos um exemplo de função recursiva pura. Nesse caso, queremos uma função que faça uma contagem regressiva e registre ela em uma lista:
 
 ```python
 contagem = []
