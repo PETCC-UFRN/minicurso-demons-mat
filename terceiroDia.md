@@ -691,7 +691,7 @@ Logo, utilizando conceitos vistos no passado, podemos utilizar o Algoritmo Exten
 4. Implemente um código na linguagem que você preferir que calcule o inverso modular de algum número a no módulo m. (dica: fazer isso e rodar o código para resolver a questão 3 é beeem divertido!)
 5. Resolva os desafios do último tópico utilizando inversos modulares.
 
-# Criptografia RSA
+# Criptografia
 
 ## Contextualização histórica
 Historicamente, "esconder" mensagens sempre foi uma necessidade: passar informações para aliados de maneira segura, - sem a possibilidade delas serem roubadas - era imprescindível durante episódios como guerras ou conflitos. Nesse contexto, foram desenvolvidas técnicas para que essas mensagens pudessem passar despercebidas ou ininteligíveis diante do olho inimigo, mas claras para os destinatários.
@@ -710,40 +710,43 @@ Uma das criptografias mais conhecidas é a chamada "Cifra de César", usada dura
 
 *imagem cifra de césar*
 
+<div style="text-align: center;">  <img src="assets/images/ceaserCipher.png" alt=""> </div>
+
+Uma outra ferramenta que pode facilitar a nossa visualização é o disco de cifra! Infelizmente não temos um exemplo presencial, as duas rodas possibilitariam o deslocamento relativo das letras de maneira circular, facilitando a etapa da encriptação!
+
+<div style="text-align: center;">  <img src="assets/images/cipher-wheel.jpg" alt=""> </div>
+
 Diversas variações dessa cifra existem - e enquanto sim, só existem 25 diferentes possibilidades triviais de chaves, não se engane! Há cerca de 400,000,000,000,000,000,000,000,000 chaves diferentes caso o alfabeto seja rearranjado; Se levássemos um segundo para checar cada uma das possibilidades, esse processo duraria cerca de um bilhão de vezes o tempo de vida do universo!
 
 Com a modernização da área, foram criados diversos outros sistemas de criptografia, cada vez mais modernos e seguros - um deles sendo a Criptografia RSA (Rivest-Shamir-Adleman), que estudaremos um pouquinho mais a fundo a seguir!
 
-## A criptografia RSA em si
-
-Os três cientistas em questão (Ron Rivest, Adi Shamir e Leonard Adleman) eram do departamento de Ciência da Computação do MIT, e estavam tentando resolver um problema de criptografia assimétrica - proposto anteriormente por cientistas em Harvard. De mai
-os problemas encontrados com a criptografia simétrica eram
-os processos de criptografia e decriptografia eram objetivamente o inverso um do outro
-esconder a chave
+## Criptografia Assimétrica
 
 Até então, todas as formas de criptografia eram simétricas, - ou seja, o processo de “decriptação” era objetivamente o inverso da “encriptação”. Assim, ambos usavam a mesma chave - o que facilitaria o roubo de informações, já que a chave deveria ser transportada para que o conteúdo pudesse ser revelado! Justamente para tentar mitigar esse problema, Whitfield Diffie e Martin Hellman (dois Cientistas da Computação e pesquisadores de Stanford) idealizaram uma maneira diferente de transportar mensagens secretas: a Criptografia Assimétrica.
 
 Na criptografia assimétrica, ao invés de apenas uma chave, duas chaves são necessárias: uma pública, para a encriptação, e uma privada, para a decriptação. Dessa forma, cada usuário disponibiliza a sua chave pública, de maneira que qualquer um pode criptografar mensagens para ele, e mantém em segredo a sua chave privada, para que ele seja o único capaz de descriptografar o que lhe foi enviado. O maior objetivo, então, seria facilitar ao máximo a primeira etapa e dificultar ao máximo a segunda (a não ser que a chave secreta esteja em sua posse!). Ou seja, o problema da necessidade de transportar a chave de maneira segura (para que a mensagem não seja roubada) some!
 
-*imagem para representar alice, bob e suas chaves publicas e privadas*
+<div style="text-align: center;">  <img src="assets/images/alice-e-bob-2.png" alt=""> </div>
 
 Para explicar mais claramente essa ideia, vamos imaginar que Alice precisa mandar uma mensagem para Bob. Então, ambos terão disponibilizado suas chaves públicas e escondido suas chaves privadas. Mas vamos também imaginar que Eve quer bisbilhotar as mensagens que eles estão mandando entre si, esse processo precisa ser feito da maneira mais segura possível.
 
 Para Alice criptografar uma mensagem e enviá-la para Bob, ela vai usar a chave pública oferecida por ele para deixar a mensagem ininteligível. Eve, por mais que ela queira descobrir o que foi mandado, não vai conseguir fazer com que a mensagem passe a ser compreensível, porque ela não tem a chave secreta! Bob, assim que receber a mensagem, vai usar a chave secreta que ele tem para decriptar a mensagem.
 
-Até simples de entender, né? Mas um processo que possibilitasse essa propriedade demorou anos a ser desenvolvido! Foi apenas em 1977 que Ron Rivest, Adi Shamir e Leonard Adleman foram capazes de publicar suas descobertas e uma nova forma de criptografar: a chamada Criptografia RSA. 
+Até simples de entender, né? Mas um processo que possibilitasse essa propriedade demorou anos a ser desenvolvido! Foi apenas em 1977 que Ron Rivest, Adi Shamir e Leonard Adleman foram capazes de publicar suas descobertas e uma nova forma de criptografar: a chamada Criptografia RSA.
+
+## Criptografia RSA
 
 A segurança desse sistema se baseia tanto na infinidade dos números primos quanto na dificuldade para a fatoração de números extensos em primos - então os primos escolhidos por Alice seriam tão, tão extensos que teriam centenas de casas decimais!!
 
-Antes de entrarmos em exemplos com números de verdade, vamos ver o processo idealizado pelos três cientistas: Inicialmente, Alice escolhe os dois primos p e q, e um número e que seja coprimo a (p-1)*(q-1) (que representa o valor da função totiente de euler! mas isso não vem ao caso agora); A chave pública consistirá, então, no produto n entre p e q e no número e. Bob, então, pegaria a sua mensagem e transformaria-na em um número m (por meio de recursos como a tabela ASCII!). O algoritmo geral levaria o garoto a transformar sua mensagem em um texto cifrado C = me(mod n).
+Antes de entrarmos em exemplos com números de verdade, vamos ver o processo idealizado pelos três cientistas: Inicialmente, Alice escolhe os dois primos ***p*** e ***q***, e um número e que seja coprimo a (***p***-1)x(***q***-1) (que representa o valor da função totiente de euler! mas isso não vem ao caso agora); A chave pública consistirá, então, no produto ***n*** entre ***p*** e ***q*** e no número e. Bob, então, pegaria a sua mensagem e transformaria-na em um número ***m*** (por meio de recursos como a tabela ASCII!). O algoritmo geral levaria o garoto a transformar sua mensagem em um texto cifrado ***C*** = ***m***^***e***(mod ***n***).
 
 Em geral, é muito difícil reverter c para a sua mensagem original sem nenhuma informação adicional devido à natureza de funções módulo: elas são imprevisíveis! Você não consegue ir “testando” números diferentes para m e basear seus chutes seguintes nos anteriores (como seria feito em uma busca binária!), já que um resultado maior não necessariamente implica em um m maior. Assim, qualquer espião ou fofoqueiro teria dificuldade em retornar à mensagem original.
 
-Na volta, precisaremos do valor de outro número: d, o inverso modular multiplicativo daquele e que publicamos anteriormente! Ou seja, temos que: de1(mod(p-1)(q-1)). Conseguimos resolver essa equação usando o algoritmo estendido de euclides, que vimos anteriormente nesta aula!
+Na volta, precisaremos do valor de outro número: ***d***, o inverso modular multiplicativo daquele e que publicamos anteriormente! Ou seja, temos que: ***d*** x ***e*** ≡ 1(mod(***p***-1)(***q***-1)). Conseguimos resolver essa equação usando o algoritmo estendido de euclides, que vimos anteriormente nesta aula!
 
-Logo, pelas propriedades de inverso multiplicativo, nós conseguimos reverter a cifra para a nossa mensagem original! então, m = cd(modn).
+Logo, pelas propriedades de inverso multiplicativo, nós conseguimos reverter a cifra para a nossa mensagem original! então, ***m*** = ***c***^***d***(mod ***n***).
 
-Para deixar as coisas um pouco mais tangíveis, vamos exemplificar com números pequenos. Alice escolheu p = 17, q = 11 e e = 7. Portanto, serão publicados e e n = p*q = 187. Caso Bob queira mandar apenas uma letra ‘X’ para Alice, ele transformará essa letra em um número para que ele possa ser encriptado - logo, ao checar a tabela ASCII, Bob chega à conclusão que sua mensagem m = 88. Usando a fórmula vista anteriormente, c = 887(mod 187). Através de propriedades modulares (aquelas que vimos mais cedo!), podemos chegar aos seguintes resultados:
+Para deixar as coisas um pouco mais tangíveis, vamos exemplificar com números pequenos. Alice escolheu ***p*** = 17, ***q*** = 11 e ***e*** = 7. Portanto, serão publicados ***e*** e ***n*** = ***p*** x ***q*** = 187. Caso Bob queira mandar apenas uma letra ‘X’ para Alice, ele precisa transformar essa letra em um número para que ele possa ser encriptado - e, ao checar a tabela ASCII, Bob chega à conclusão que sua mensagem ***m*** = 88. Usando a fórmula vista anteriormente, ***c*** = 887(mod 187). Através de propriedades modulares (aquelas que vimos mais cedo!), podemos chegar aos seguintes resultados:
 
 ```haskell
 88⁷ (mod 187) = [88⁴ (mod 187) ✕ 88² (mod 187) ✕ 88¹(mod 187)] (mod 187)
@@ -752,11 +755,23 @@ Para deixar as coisas um pouco mais tangíveis, vamos exemplificar com números 
 88⁴ = 59,969,536 = 132 (mod 187)
 88⁷ = 88¹ ✕ 88² ✕ 88⁴ = 88 ✕ 77 ✕ 132 = 894,432 = 11 (mod 187)
 ```
+Então Bob chega à conclusão que a mensagem encriptada tem o valor 11!
 
-Alice, para decriptar a mensagem, precisa do valor de d para chegar ao engierie. Assim, obtemos:
+
+Alice, para decriptar a mensagem, precisa encontrar o valor de ***e*** - e, para isso, irá utilizar os valores de suas chaves privadas ***d***, ***p*** e ***q***!. Assim, como temos que ***d*** e ***e*** são inversos modulares, podemos aplicar o algoritmo extendido de euclides para descobrirmos o valor de ***d***:
+
+inverso mod multiplicativo de 7 mod 160
+
+```haskell
+d * 7 ≡ 1(mod(17-1)*(11-1))
+d * 7 ≡ 1(mod 16*10)
+d * 7 ≡ 1(mod 160)
+
+```
+
 *inserir aqui o passo a passo do algoritmo estendido de euclides*
 
-No fim, para descobrir o que Bob teria enviado para ela, alice aplica m = cd(mod 187).
+No fim, para descobrir o que Bob teria enviado para ela, alice aplica ***m*** = ***c***^***d*** (mod 187).
 ```haskell
 M = [11¹ (mod 187) ✕ 11² (mod 187) ✕ 11⁴ (mod 187)
 ✕ 11¹6 (mod 187)] (mod 187)
@@ -766,7 +781,7 @@ M = 88 = X em ASCII
 
 A mensagem foi enviada, transportada e entregue de maneira segura! Alice pode, finalmente, ler a letra ‘X’ que Bob lhe enviou.
 
-No entanto, vale ressaltar que os números escolhidos para esse exemplo são pequenos demais para serem seguros. Na realidade, são números que usam até 1024 bits para serem representados! E, mesmo assim, esse sistema é considerado relativamente desatualizado, já que sua segurança depende da fatoração de um número grande em dois primos, e os avanços em hardware têm sido muito extensos nos últimos anos!
+No entanto, vale ressaltar que os números escolhidos para esse exemplo são pequenos demais para serem seguros. Na realidade, são utilizados números que usam até 1024 bits para serem representados! E, mesmo assim, esse sistema é considerado relativamente desatualizado, já que sua segurança depende da fatoração de um número grande em dois primos, e os avanços em hardware têm sido muito extensos nos últimos anos! Assim, os usos mais seguros desse sistema de criptografia incluem, em geral, a utilização da criptografia RSA junto a outros sistemas de criptografia.
 
 ---
 
