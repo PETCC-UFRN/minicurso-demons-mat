@@ -36,10 +36,10 @@
       <li><a href="#pontos-que-devem-estar-presentes-na-apresentação-da-solução-alcançada">Pontos essenciais</a></li>
       <li><a href="#critérios-de-avaliação">Critérios de avaliação</a></li>
       <li><a href="#problema-1-números-bloqueados">Problema 1</a></li>
-      <li><a href="#problema 2">Problema 2</a></li>
+      <li><a href="#problema-2-conversão-de-minutos-para-horas">Problema 2</a></li>
       <li><a href="#problema-3-histórico-de-comandos-de-um-terminal">Problema 3</a></li>
-      <li><a href="#problema 4">Problema 4</a></li>
-      <li><a href="#problema 5">Problema 5</a></li>
+      <li><a href="#problema-4-criptografia-fraca">Problema 4</a></li>
+      <li><a href="#problema-5-testando-segurança-da-criptografia">Problema 5</a></li>
     </ul>
   <button class="toggle-button" id="toggle-button">
   
@@ -96,7 +96,17 @@
   <li>Uma função auxiliar que bloqueia chamadas de números presentes na estrutura de dados</li>
 </ul>
 
-<h2 id="problema-3-histórico-de-comandos-de-um-terminal">Problema 3 Histórico de Comandos de um Terminal</h2>
+<h2 id="problema-2-conversão-de-minutos-para-horas">Problema 2 Conversão de minutos para horas</h2>
+
+<p>Você está trabalhando numa pesquisa sobre o tempo de uso de smartphones pela população do Brasil. No entanto, os dados de tempo de uso são coletados em minutos, e sua equipe precisa dos dados em horas. Os dados são muitos para ficar convertendo tudo à mão, então você decide utilizar seus conhecimentos de matemática e programação para fazer um algoritmo que recebe o tempo em minutos e retorna o tempo em horas.</p>
+
+<ul>
+  <li>Qual estrutura matemática estudada durante o curso melhor resolve esse problema e porquê?</li>
+  <li>Implemente um algorítmo em pseudocódigo ou na linguagem de sua preferência que faça a conversão desejada.</li>
+  <li><strong>DESAFIO:</strong> Como podemos modificar esse código para converter minutos para qualquer outro formato temporal (dias, semanas, etc)?</li>
+</ul>
+
+<h2 id="problema-3-histórico-de-comandos-de-um-terminal">Problema 3 Histórico de comandos de um terminal</h2>
 
 <p>Você participa de uma equipe de programadores que faz parte do desenvolvimento do sistema operacional PET OS, o novo sistema operacional do PET-CC. Ao longo do desenvolvimento seu grupo nota que seria uma boa ideia implementar um sistema que armazene os comandos recentes utilizados no terminal. Ao ouvir isso, Umberto, o líder do projeto, decidiu que essa <em>feature</em> deve ser implementada como uma lista.</p>
 
@@ -108,6 +118,30 @@
   <li>Limpeza de comandos repetidos</li>
   <li>A visualização do histórico na ordem inversa</li>
   <li>A limpeza de todo o histórico</li>
+</ul>
+
+<h2 id="problema-4-criptografia-fraca">Problema 4 Criptografia fraca</h2>
+
+<p>Você trabalha em uma empresa que guarda as senhas dos colaboradores de forma criptografada em seu banco de dados, entretanto, eles não fazem isso de uma forma muito segura. O diretor de tecnologia acredita tanto na confiabilidade da criptografia utilizada na empresa que deixa o banco de dados localmente público, ou seja, qualquer usuário da empresa pode acessar a versão criptografada da senha dos seus colegas. Suponha que você quer convencer o diretor de que a criptografia usada não é segura e, para isso, você pretende fazer o seguinte:</p>
+
+<p><strong>Primeiro momento:</strong></p>
+<ul>
+  <li>Sua senha é “banana123” e sua versão criptografada é armazenada como “edqdqd456”. Sabendo que todas as senhas são criptografadas sob o mesmo padrão e usando o mesmo número de encriptação, faça um script que aplique o processo reverso a todas as senhas (faça isso usando os “ASCII printable characters” como referência de alfabeto)</li>
+</ul>
+
+<p><strong>Segundo momento:</strong></p>
+<ul>
+  <li>Depois que você fez isso, o diretor da equipe reconheceu que a forma de criptografia atual não era segura e optou por implementar a atualização da criptografia de outra maneira: agora, cada senha é criptografada usando um número diferente, entretanto, ele também concatenou “colaborador@” com todas as senhas. Adapte o código anterior para apresentar na reunião e, possivelmente, ser promovido por evitar um possível vazamento de dados.</li>
+</ul>
+
+<h2 id="problema-5-testando-segurança-da-criptografia">Problema 5 Testando segurança da criptografia</h2>
+
+<p>Você é parte de um grupo de programadores contratado por uma grande empresa para realizar testes e verificar se o sistema de segurança implementado está seguro o suficiente. Você sabe que o método utilizado na criptografia local é a criptografia RSA, com números relativamente pequenos (podem ser computados em python, c++ e outras linguagens!) para as mensagens passadas entre os seus chefes. Dado uma chave pública (N), responda:</p>
+
+<ul>
+  <li>Porque esse sistema de segurança é falho e simples de violar?</li>
+  <li>Escreva um pseudocódigo que descubra quais primos P e Q foram utilizados para a geração da chave pública N.</li>
+  <li><strong>Desafio:</strong> Implemente esse código em python, c++ ou na linguagem de sua preferência</li>
 </ul>
 
 <script>
