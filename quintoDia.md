@@ -9,14 +9,14 @@ title: Minicurso de Matemática aplicada à Computação
     <h1>Dia 5</h1>
     <summary><a href="#Projeto final">Projeto final</a></summary>
     <ul>
-      <li><a href="#Orientações gerais">Orientações Gerais</a></li>
-      <li><a href="#Pontos essenciais">Pontos essenciais</a></li>
-      <li><a href="#Critérios de avaliação">Critérios de avaliação</a></li>
-      <li><a href="#Problema 1">Problema 1</a></li>
-      <li><a href="#Problema 1">Problema 1</a></li>
-      <li><a href="#Problema 2">Problema 2</a></li>
-      <li><a href="#Problema 3">Problema 3</a></li>
-      <li><a href="#Problema 4">Problema 4</a></li>
+      <li><a href="#orientações-gerais">Orientações Gerais</a></li>
+      <li><a href="#pontos-que-devem-estar-presentes-na-apresentação-da-solução-alcançada">Pontos essenciais</a></li>
+      <li><a href="#critérios-de-avaliação">Critérios de avaliação</a></li>
+      <li><a href="#problema-1-números-bloqueados">Problema 1</a></li>
+      <li><a href="#problema 2">Problema 2</a></li>
+      <li><a href="#problema-3-histórico-de-comandos-de-um-terminal">Problema 3</a></li>
+      <li><a href="#problema 4">Problema 4</a></li>
+      <li><a href="#problema 5">Problema 5</a></li>
     </ul>
   <button class="toggle-button" id="toggle-button">
   
@@ -33,7 +33,7 @@ title: Minicurso de Matemática aplicada à Computação
 
 3) Faça uma apresentação a todo o corpo de colaboradores presentes, esmiuçando os pontos-chaves essenciais à continuidade de ações que garantam um produto final.
 
-## Pontos que devem estar presentes na apresentação da solução alcançada:
+## Pontos que devem estar presentes na apresentação da solução alcançada
 
 1) Aspectos observados ao decorrer da solução que se aproximam de conceitos matemáticos vistos nesse curso;
 
@@ -43,7 +43,7 @@ title: Minicurso de Matemática aplicada à Computação
 
 4) Aplicação em um caso teste hipotético;
 
-## Critérios de Avaliação:
+## Critérios de Avaliação
 
 1) Entendimento satisfatório da situação problema;
 
@@ -57,11 +57,9 @@ title: Minicurso de Matemática aplicada à Computação
 
 6) Boas práticas e documentação;
 
-## Situação Problema 1: Números bloqueados
+## Problema 1 Números bloqueados
 
-Você é encarregado de solucionar a seguinte problemática:
-
-Determinado usuário da empresa faz-tudo para a qual você presta serviços tem recebido uma quantidade excessiva de ligações spam. Ao perceber que muitas dessas ligações eram de números repetidos, o usuário solicitou uma aplicação que fosse capaz de bloquear essas chamadas.
+Determinado usuário da empresa para a qual você presta serviços tem recebido uma quantidade excessiva de ligações spam. Ao perceber que muitas dessas ligações eram de números repetidos, o usuário solicitou uma aplicação que fosse capaz de bloquear essas chamadas.
 
 Sendo parte da equipe que ficou com essa demanda, você precisa criar um sistema que armazene os números de telefones bloqueados e, baseando-se nessa coleção de dados, seja capaz de bloquear as chamadas provenientes dos números listados.
 
@@ -73,7 +71,22 @@ A sua equipe deve entregar as seguintes funções implementadas:
 - Uma função que remove um número
 - Uma função auxiliar que bloqueia chamadas de números presentes na estrutura de dados
 
----
+## Problema 3 Histórico de Comandos de um Terminal
+
+Você participa de uma equipe de programadores que faz parte do desenvolvimento do sistema operacional PET OS, o novo sistema operacional do PET-CC. Ao longo do desenvolvimento seu grupo nota que seria uma boa ideia implementar um sistema que armazene os comandos recentes utilizados no terminal. Ao ouvir isso, Umberto, o líder do projeto, decidiu que essa _feature_ deve ser implementada como uma lista.
+
+A sua equipe deve entregar as seguintes utilidades implementadas:
+
+- O histórico de comandos
+- A busca de um comando no histórico (ex: verificar se git push foi usado)
+- Limpeza de comandos repetidos
+- A visualização do histórico na ordem inversa
+- A limpeza de todo o histórico
+
+
+
+
+
 <script>
 const dataDia5 = new Date('2025-03-13');
 const agora = new Date();
@@ -83,4 +96,6 @@ if (agora < dataDia5) {
                               '<p style="text-align:center;">Esta página estará disponível a partir de ' + dataDia5.toLocaleDateString() + '.</p>';
 }
 </script>
+
+---
 {% include petcccopyright.html %}
